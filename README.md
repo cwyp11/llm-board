@@ -70,10 +70,10 @@
 
 ### 线上地址（无需登录）
 
-## **https://ccl0722.github.io/llm-board/**
+## **https://cwyp11.github.io/llm-board/**
 
 GitHub Pages，任何设备直接打开，**不用登录、不用账号**。仓库：
-<https://github.com/ccl0722/llm-board>
+<https://github.com/cwyp11/llm-board>
 
 **更新数据的完整流程**：
 
@@ -93,6 +93,25 @@ git add -A && git commit -m "更新数据至 YYYY-MM-DD" && git push
 
 Pages 配置为 `main` 分支根目录，`index.html` 就在根目录，所以推上去即发布，无需任何构建流水线。
 根目录的 `.nojekyll` 让 GitHub 跳过 Jekyll 处理，直接按静态文件发布。
+
+**账号与推送环境**（2026-09-23 由 `ccl0722` 迁移到 `cwyp11` 之后的现状）：
+
+- 仓库归属 `cwyp11`。Pages 地址是「账号名 + 仓库名」拼出来的，**换账号地址就会变**。
+- 本仓库 `.git/config` 里锁死了提交身份 `cwyp11 <261224879+cwyp11@users.noreply.github.com>`，
+  不受 GitHub Desktop 改全局配置影响。用 GitHub 官方 noreply 邮箱，避免把私人邮箱
+  永久写进公开仓库的提交历史。
+- 本仓库 `.git/config` 里另外单独指定了 `credential.helper = !gh auth git-credential`，
+  推送走 gh CLI 的活动账号，而不是系统级的 Git Credential Manager ——
+  GCM 里存的是旧账号 `ccl0722` 的令牌，拿它推新仓库会 403。
+  **因此 GitHub Desktop 推这个项目不一定好使，命令行 `git push` 才是可靠路径。**
+- `gh` 是 Go 程序，**不读 Windows 系统代理设置**。本机若靠 Clash 之类的工具上网，
+  终端里必须先设环境变量，否则 `gh` 会直连 github.com 然后超时：
+
+  ```powershell
+  $env:HTTP_PROXY="http://127.0.0.1:7897"; $env:HTTPS_PROXY=$env:HTTP_PROXY
+  ```
+
+- 旧仓库保留为 remote `old-ccl0722`，未删除，可随时 `git push old-ccl0722 main` 回退。
 
 **另有一个 claude.ai 上的私有副本**：<https://claude.ai/artifact/KcoPwxe2juTGvcGJ77yHJq>
 （需要登录 claude.ai 才能打开，内容同源但不会随 git push 自动更新；不需要的话可以直接删掉。）
