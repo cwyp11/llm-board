@@ -126,7 +126,10 @@ Pages 配置为 `main` 分支根目录，`index.html` 就在根目录，所以�
   $env:HTTP_PROXY="http://127.0.0.1:7897"; $env:HTTPS_PROXY=$env:HTTP_PROXY
   ```
 
-- 旧仓库保留为 remote `old-ccl0722`，未删除，可随时 `git push old-ccl0722 main` 回退。
+- 旧仓库 `ccl0722/llm-board` **代码仍保留**，但其 GitHub Pages 已于 2026-09-23 关闭，
+  旧地址 `https://ccl0722.github.io/llm-board/` 现在返回 404，不会再有一份无声过期的旧看板。
+  该仓库仍挂在本地 remote `old-ccl0722` 上且有写权限，真要回退的话需要两步：
+  `git push old-ccl0722 main`，再重新开启该仓库的 Pages。
 
 **另有一个 claude.ai 上的私有副本**：<https://claude.ai/artifact/KcoPwxe2juTGvcGJ77yHJq>
 （需要登录 claude.ai 才能打开，内容同源但不会随 git push 自动更新；不需要的话可以直接删掉。）
