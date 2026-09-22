@@ -100,10 +100,25 @@ Pages 配置为 `main` 分支根目录，`index.html` 就在根目录，所以�
 - 本仓库 `.git/config` 里锁死了提交身份 `cwyp11 <261224879+cwyp11@users.noreply.github.com>`，
   不受 GitHub Desktop 改全局配置影响。用 GitHub 官方 noreply 邮箱，避免把私人邮箱
   永久写进公开仓库的提交历史。
-- 本仓库 `.git/config` 里另外单独指定了 `credential.helper = !gh auth git-credential`，
-  推送走 gh CLI 的活动账号，而不是系统级的 Git Credential Manager ——
-  GCM 里存的是旧账号 `ccl0722` 的令牌，拿它推新仓库会 403。
-  **因此 GitHub Desktop 推这个项目不一定好使，命令行 `git push` 才是可靠路径。**
+- **凭据解析是确定的**，不依赖任何继承顺序。本仓库 `.git/config` 里显式写死了三段助手链：
+
+  | 顺序 | 助手 | 作用 |
+  |---|---|---|
+  | 1 | `""`（空值） | git 遇到空值会**重置之前累积的整条链**，作废系统级继承来的 GCM，消除歧义 |
+  | 2 | `!gh auth git-credential` | 新账号 `cwyp11` 由 gh CLI 应答 |
+  | 3 | `manager` | gh 应答不了时落回 GCM，供旧账号 `ccl0722` 使用 |
+
+  两个 remote 的 URL 里都写进了账号名（`https://cwyp11@github.com/...`、
+  `https://ccl0722@github.com/...`），凭据按 username 精确匹配。即使哪天本地配置丢失、
+  退回系统 GCM，它也会去找对应账号的凭据，而不是默默拿错账号去撞 403。
+
+  实测结果：`origin` → `cwyp11`、`old-ccl0722` → `ccl0722`，两个 remote 的
+  `git push --dry-run` 都通过。仓库外的其他项目仍走系统 GCM 解析到 `ccl0722`，未受影响。
+
+- GitHub Desktop 用的是它自己的令牌存储（凭据管理器里的
+  `GitHub - https://api.github.com/cwyp11`），与上面这条链互不干涉。迁移前它推不动这个项目，
+  是因为它登的 `cwyp11` 对当时归属 `ccl0722` 的仓库没有写权限 —— 仓库迁到 `cwyp11` 之后
+  这个原因已经不存在了。
 - `gh` 是 Go 程序，**不读 Windows 系统代理设置**。本机若靠 Clash 之类的工具上网，
   终端里必须先设环境变量，否则 `gh` 会直连 github.com 然后超时：
 
