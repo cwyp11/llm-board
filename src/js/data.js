@@ -1,7 +1,7 @@
 /* ==========================================================
    data.js  ·  数据层（唯一事实来源）
    --------------------------------------------------------
-   本次数据抓取日：2026-09-19，来源全部为公开权威榜单（见 SOURCES）。
+   本次增量核验日：2026-10-02；未重新核实的旧字段保留 2026-09-19 标记。
    仍然没有自动更新管线 —— 页面不会自己变新，下次更新要重新跑一遍采集。
 
    ★ 本期最重要的口径变更（影响与上一版所有历史数字的可比性）：
@@ -27,10 +27,10 @@
    ========================================================== */
 
 const META = {
-  pageBuilt:   '2026-09-19',   // 这一版页面的生成日期
-  dataSnapshot:'2026-09-19',   // 数据抓取日
-  dataBasis:   '2026-09-19',   // 榜单读取日（AA 与 Arena 均为滚动更新，不标注单期日期）
-  arenaAsOf:   '2026-09-19',
+  pageBuilt:   '2026-10-02',
+  dataSnapshot:'2026-10-02',
+  dataBasis:   '2026-10-02',
+  arenaAsOf:   '2026-09-30',
   updatePipeline: false,       // 无自动更新管线 —— 不得声称「每日自动更新」
   updateCommand: '更新报告'
 };
@@ -65,6 +65,10 @@ const BRANDS = {
   huggingface:{name:'Hugging Face',         logo:'assets/logos/huggingface.svg'},
   openrouter: {name:'OpenRouter',           logo:'assets/logos/openrouter.svg'}
 };
+/* 拆分源码页位于 src/，发布页位于根目录；两者都从同一套本地 Logo 读取。 */
+if(/\/(?:src\/index|dist\/artifact)\.html$/i.test(location.pathname)){
+  Object.values(BRANDS).forEach(b=>{if(b.logo)b.logo='../'+b.logo;});
+}
 
 /* ---------- 厂商图表色（只用于图表与模型行的色条，不用于 UI 框架） ----------
    构造：色相按「离各家品牌色最近」分配到 15 个均匀槽位（OpenAI 单独用象牙反白，
@@ -94,11 +98,11 @@ const MONO_COLOR = 'rgba(238,234,226,.30)';
 
 /* ---------- 数据来源登记表 ---------- */
 const SOURCES = {
-  aa:      {name:'Artificial Analysis',   url:'https://artificialanalysis.ai/leaderboards/models', kind:'独立评测机构', asOf:'2026-09-19',
-            note:'智能指数 v4.3（10 项评测）、Terminal-Bench 2.1 / 4.0、GDPval-AA v2、GPQA、SciCode、AA-LCR、非幻觉率、价格、速度、单任务成本 —— 本页绝大多数数值的来源', link:'site'},
-  aacai:   {name:'AA Coding Agent Index',  url:'https://artificialanalysis.ai/agents/coding-agents', kind:'独立评测机构', asOf:'2026-09-19',
+  aa:      {name:'Artificial Analysis',   url:'https://artificialanalysis.ai/leaderboards/models', kind:'独立评测机构', asOf:'2026-10-02',
+            note:'智能指数 v4.3.2、输出速度、上下文、单任务成本；仅有明确对应模型与档位的数据更新到本次快照', link:'site'},
+  aacai:   {name:'AA Coding Agent Index',  url:'https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-grok-build', kind:'独立评测机构', asOf:'2026-10-02',
             note:'编码 Agent 指数 v1.5 = DeepSWE v1.1 + Terminal-Bench 4.0 + SWE-Atlas-QnA 等权合成，评测对象是「框架 × 模型」组合', link:'site'},
-  arena:   {name:'LMArena（现 arena.ai）',  url:'https://arena.ai/leaderboard/text', kind:'真人盲测平台', asOf:'2026-09-19',
+  arena:   {name:'Arena 文本盲测榜',  url:'https://arena.ai/leaderboard/text', kind:'真人盲测平台', asOf:'2026-09-30',
             note:'文本综合榜 Elo，含 ± 置信区间与名次区间；头部十余名互相统计并列', link:'site'},
   vals:    {name:'vals.ai',               url:'https://www.vals.ai/benchmarks/swebench', kind:'独立复测', asOf:'2026-09-01',
             note:'SWE-bench Verified（Mini-SWE-agent harness）· 已于 2026-09-01 归档，不再跑新模型', link:'site'},
@@ -111,35 +115,56 @@ const SOURCES = {
   editor:  {name:'本报告编辑判断',          url:'',  kind:'编辑判断', asOf:'2026-09-19',
             note:'变化条目的重要性排序、场景归类等，非测量值'}
 };
+SOURCES.anthropic55={name:'Anthropic · Opus / Sonnet 5.5',url:'https://www.anthropic.com/claude-sonnet-5-5',kind:'厂商官方',asOf:'2026-10-02',note:'价格与发布信息；Opus 定价另见 https://www.anthropic.com/claude/opus',link:'site'};
+SOURCES.openai61={name:'OpenAI API · GPT-6.1 Sol',url:'https://developers.openai.com/api/docs/models/gpt-6.1-sol',kind:'厂商官方',asOf:'2026-10-02',note:'价格、缓存、上下文和最大输出',link:'site'};
+SOURCES.google4={name:'Google · Gemini 4 Argon',url:'https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/',kind:'厂商官方',asOf:'2026-10-02',note:'发布、预告价格与受限开放状态',link:'site'};
+SOURCES.xai47={name:'SpaceXAI · Grok 4.7',url:'https://docs.x.ai/developers/models/grok-4.7',kind:'厂商官方',asOf:'2026-10-02',note:'API 价格与上下文',link:'site'};
+SOURCES.xiaomi26={name:'小米 MiMo-V2.6-Pro',url:'https://mimo.mi.com/models/zh-CN/mimo-v2.6-pro',kind:'厂商官方',asOf:'2026-10-02',note:'规格、API 价格与可用状态',link:'site'};
 
 /* ---------- 指标定义（对比表的行、模型库的列都从这里生成） ---------- */
 /* better: 'high' 越高越好 / 'low' 越低越好 / null 无优劣之分（不算最优值） */
 const METRICS = [
   {k:'aaii',   g:'cap',  label:'AAII 智能指数',       short:'AAII',    better:'high', dec:0,
-   basis:'Artificial Analysis Intelligence Index v4.3', src:'aa',
+   basis:'Artificial Analysis Intelligence Index v4.3.2', src:'aa',
    warn:'v4.3 已重新标定，与上一版页面的 v4.1.1 分数（Opus 5 曾为 63.1）不是同一把尺，不可跨版本比较',
-   hint:'10 项评测等权合成：AA-Briefcase、GDPval-AA v2、AutomationBench-AA、Terminal-Bench 4.0、SciCode、HLE、GDP.pdf、CritPt、AA-Omniscience、AA-LCR。'},
+   hint:'综合推理与任务能力。10 项评测等权合成，含真实工作、终端任务、科学编码、长文档等；只和同版本分数比较。'},
   {k:'cai',    g:'cap',  label:'编码 Agent 指数',      short:'CAI',     better:'high', dec:0,
    basis:'AA Coding Agent Index v1.5（DeepSWE v1.1 + Terminal-Bench 4.0 + SWE-Atlas-QnA）', src:'aacai',
-   warn:'评的是「框架 × 模型」组合，不是模型本身；各行括注了取得该分数的 harness'},
-  {k:'tb40',   g:'cap',  label:'Terminal-Bench 4.0',  short:'TB 4.0',  better:'high', dec:0, unit:'%',
+   warn:'评的是「框架 × 模型」组合，不是模型本身；各行括注了取得该分数的 harness',
+   hint:'衡量编码 Agent 完成真实任务的能力，由 DeepSWE v1.1、Terminal-Bench 4.0 和 SWE-Atlas-QnA 等权组成。'},
+  {k:'deepswe',g:'cap',label:'DeepSWE v1.1（Agent）',short:'DeepSWE',better:'high',dec:0,unit:'%',
+   basis:'AA Coding Agent Index v1.5 · 同一 Agent harness 的 DeepSWE v1.1 分项',src:'aacai',
+   warn:'评的是模型 × Agent 框架，不可与纯模型分数混排',
+   hint:'113 道真实代码仓库改动任务，要求 Agent 跨文件理解、修改并通过隔离环境中的自动验证；体现长链软件工程能力。'},
+  {k:'sweatlas',g:'cap',label:'SWE-Atlas-QnA（Agent）',short:'SWE-Atlas',better:'high',dec:0,unit:'%',
+   basis:'AA Coding Agent Index v1.5 · 同一 Agent harness 的 SWE-Atlas-QnA 分项',src:'aacai',
+   warn:'评的是模型 × Agent 框架，不可与纯模型分数混排',
+   hint:'124 道代码仓库阅读与问答任务，考察 Agent 能否定位代码、理解实现并给出准确答案，而非修改代码。'},
+  {k:'tb40',   g:'cap',  label:'Terminal-Bench 4.0',  short:'TB 4.0',  better:'high', dec:1, unit:'%',
    basis:'Terminal-Bench 4.0（66 题）· AA 独立复跑，pass@1 取 3 次平均', src:'aa',
-   warn:'与 TB 2.1 题目与标定都不同，两者分数不可互比'},
+   warn:'与 TB 2.1 题目与标定都不同，两者分数不可互比',
+   hint:'在终端环境完成 66 道软件、机器学习、科学、运维及安全等多步任务；考察工具使用和持续执行。'},
   {k:'tb21',   g:'cap',  label:'Terminal-Bench 2.1',  short:'TB 2.1',  better:'high', dec:0, unit:'%',
    basis:'Terminal-Bench 2.1 · AA 独立复跑', src:'aa',
-   warn:'头部已饱和（多家 88–91%），区分度很低，判断长链能力请看 TB 4.0'},
+   warn:'头部已饱和（多家 88–91%），区分度很低，判断长链能力请看 TB 4.0',
+   hint:'较早版本的终端任务基准。头部分数接近满分，已难区分前沿模型；不能与 4.0 数值横比。'},
   {k:'swe',    g:'cap',  label:'SWE-bench Verified',  short:'SWE',     better:'high', dec:1, unit:'%',
    basis:'vals.ai 独立复测 · Mini-SWE-agent harness · 500 题', src:'vals',
-   warn:'该基准已于 2026-09-01 归档停更。9 月后发布的模型永远不会有分数，这不是缺数据'},
+   warn:'该基准已于 2026-09-01 归档停更。9 月后发布的模型不会有新分数',
+   hint:'在 500 个真实 GitHub 问题上修复代码并运行验证；此处是 vals.ai 用 Mini-SWE-agent 复测的旧快照。'},
   {k:'gdpval', g:'cap',  label:'GDPval-AA v2 真实工作', short:'GDPval', better:'high', dec:0, unit:'%',
-   basis:'GDPval-AA v2 真实职业工作任务 · AA 独立评测', src:'aa'},
+   basis:'GDPval-AA v2（2026-09-19 旧快照；当前 AAII 使用 v2.1）', src:'aa',
+   warn:'旧版 GDPval 数据未按 v2.1 复核，不与新版分数混排',
+   hint:'模拟专业岗位中的真实工作交付物，衡量按要求完成知识工作的能力；本页该单项仍为 v2 旧快照。'},
   {k:'gpqa',   g:'cap',  label:'GPQA Diamond 科学',    short:'GPQA',    better:'high', dec:0, unit:'%',
-   basis:'GPQA Diamond 研究生级科学问答 · AA 独立评测', src:'aa'},
+   basis:'GPQA Diamond 研究生级科学问答 · AA 独立评测', src:'aa',
+   hint:'研究生级、需要跨学科知识的高难度科学选择题；衡量专业知识与推理，不能代表日常问答体验。'},
   {k:'scicode',g:'cap',  label:'SciCode 科学编码',     short:'SciCode', better:'high', dec:0, unit:'%',
-   basis:'SciCode · AA 独立评测', src:'aa'},
+   basis:'SciCode · AA 独立评测', src:'aa',
+   hint:'把科学研究问题转化成可执行代码；衡量科学计算、算法实现与代码正确性。'},
   {k:'lcr',    g:'cap',  label:'AA-LCR 长上下文推理',  short:'AA-LCR',  better:'high', dec:0, unit:'%',
    basis:'AA-LCR v1.1 长上下文推理 · AA 独立评测', src:'aa',
-   hint:'比「上下文窗口有多大」更能说明长文档能力：窗口开得大不等于窗口内容真的用得上。'},
+   hint:'在很长的输入材料中检索并综合相关信息，考察真正利用长上下文的能力；窗口开得大不等于内容用得上。'},
   {k:'nonhall',g:'cap',  label:'非幻觉率',             short:'非幻觉',   better:'high', dec:0, unit:'%',
    basis:'AA-Omniscience 非幻觉率（1 − 幻觉率）· AA 独立评测', src:'aa',
    hint:'不知道就说不知道的比例。分数低不代表知识差，代表它更倾向于硬答。'},
@@ -148,19 +173,19 @@ const METRICS = [
    basis:'跑完一道智能指数任务的加权平均 API 成本（USD）· AA 实测', src:'aa',
    hint:'比单价更接近真实账单：它把推理 token 消耗量、缓存命中都算进去了。'},
   {k:'priceIn',   g:'cost', label:'输入价',     short:'输入', better:'low',  dec:2, unit:' $/M', money:true, perM:true,
-   basis:'官方 API 标价 · 美元 · 每百万 token', src:'aa',
+   basis:'官方 API 标价 · 美元 · 每百万 token', src:'vendor',
    hint:'不含批量、渠道折扣与分时优惠，这些写在「计价方式」列。'},
   {k:'priceOut',  g:'cost', label:'输出价',     short:'输出', better:'low',  dec:2, unit:' $/M', money:true, perM:true,
-   basis:'官方 API 标价 · 美元 · 每百万 token', src:'aa'},
+   basis:'官方 API 标价 · 美元 · 每百万 token', src:'vendor'},
   {k:'priceCache',g:'cost', label:'缓存命中价', short:'缓存', better:'low',  dec:2, unit:' $/M', money:true, perM:true,
-   basis:'官方 API 缓存读取标价 · 美元 · 每百万 token', src:'aa',
+   basis:'官方 API 缓存读取标价 · 美元 · 每百万 token', src:'vendor',
    hint:'高频 Agent 场景里缓存命中往往占账单大头，这一列比输入价更值得看。'},
   {k:'speed',     g:'cost', label:'输出速度',   short:'速度', better:'high', dec:0, unit:' t/s',
    basis:'AA 实测输出吞吐中位数（tokens / 秒）', src:'aa',
    hint:'吞吐高不等于总耗时短 —— 完成同一任务所需的轮数与 token 量差异更大，那部分看「单任务成本」。'},
 
   {k:'ctx',        g:'spec', label:'上下文窗口',   short:'上下文', better:'high', fmt:'tok',
-   basis:'官方公布的最大输入上下文（token）', src:'aa',
+   basis:'AA 榜单或官方公布的最大输入上下文（token）；冲突见行内备注', src:'aa',
    warn:'上下文窗口不是参数规模，本页两者分列'},
   {k:'maxOut',     g:'spec', label:'最大输出长度', short:'最大输出', better:'high', fmt:'tok',
    basis:'官方公布的单次最大输出 token', src:'vendor'},
@@ -171,7 +196,8 @@ const METRICS = [
    basis:'MoE 架构单次前向的激活参数', src:'vendor'},
   {k:'arena',      g:'cap',  label:'LMArena Elo',  short:'Arena',   better:'high', dec:0,
    basis:'arena.ai 文本综合榜 Elo', src:'arena',
-   warn:'头部十余名的置信区间互相重叠，名次差不构成能力差；各行备注了 ± 区间与对应档位'}
+   warn:'头部十余名的置信区间互相重叠，名次差不构成能力差；各行备注了 ± 区间与对应档位',
+   hint:'真实用户双盲对比后的偏好分，覆盖写作、编程与开放式问答；± 区间重叠时不能断言谁更强。'}
 ];
 
 const METRIC_GROUPS = [
@@ -186,8 +212,9 @@ const METRIC_GROUPS = [
    v(数值, 类型, 备注)  —— 缺失写 null，绝不写 0                      */
 function v(val, kind, note, disp){
   if(val === null || val === undefined) return null;
-  return {v: val, kind: kind || 'ind', note: note || '', disp: disp || null};
+  return {v: val, kind: kind || 'ind', note: note || '', disp: disp || null, asOf:'2026-09-19'};
 }
+function fresh(val,kind,note){const x=v(val,kind,note);if(x)x.asOf='2026-10-02';return x;}
 const K = 1000, M_ = 1000000;
 
 /* ==========================================================
@@ -844,6 +871,117 @@ const MODELS = [
    只给「值得进一步比较的候选 + 依据」，不产出「最强」结论。
    候选由 app.js 依据 metrics 里实际存在的数据动态算出。
    ========================================================== */
+/* 2026-10-02 人工核验增量。旧版未复核的单项仍保留原日期，不冒充本次实测。
+   主榜的 AAII / 单任务成本 / 吞吐 / 上下文来自 AA 当前榜单；API 价格来自厂商页。 */
+function updateModel(id, fields){const m=MODELS.find(x=>x.id===id);if(m)Object.assign(m,fields);}
+function currentModel(o){
+  return Object.assign({status:'current',fresh:true,tag:'新近',released:'',variant:'',
+    tb21:null,swe:null,gdpval:null,gpqa:null,scicode:null,lcr:null,nonhall:null,arena:null,
+    deepswe:null,sweatlas:null,maxOut:null,paramsTotal:null,paramsAct:null,
+    priceIn:null,priceOut:null,priceCache:null,cai:null,tb40:null,cpt:null,speed:null,ctx:null,
+    priceMode:'',priceAlt:'',license:'',openWeights:false,access:'',scenes:[],strength:'',limits:'',tech:'',srcs:[]},o);
+}
+MODELS.forEach(m=>{
+  m.fresh=false;
+  if(m.aaii && m.aaii.asOf==='2026-09-19')m.aaii.note=(m.aaii.note?m.aaii.note+' · ':'')+'旧 AAII v4.3，未按 v4.3.2 复核';
+  if(m.strength)m.strength='9/19 研究判断（历史）：'+m.strength;
+  if(m.tech)m.tech='9/19 资料记录：'+m.tech;
+});
+MODELS.unshift(
+  currentModel({id:'claude-opus55',name:'Claude Opus 5.5',org:'anthropic',brand:'claude',variant:'max 档（含回退）',released:'2026-09-22',tag:'旗舰',
+    aaii:fresh(58,'ind','AAII v4.3.2 · max 档'),cai:fresh(66,'ind','Claude Code + Opus 5.5 max'),
+    deepswe:fresh(68,'ind','Claude Code'),sweatlas:fresh(66,'ind','Claude Code'),tb40:fresh(59.6,'ind','模型独立评测；Agent harness 为 63%'),
+    arena:fresh(1504,'ind','9/30 文本榜 Opus 5.5 high：±10，#4；与本行 max 档不同'),
+    cpt:fresh(5.98,'ind'),speed:fresh(92,'ind'),ctx:fresh(1*M_,'ind'),
+    priceIn:fresh(4,'vendor'),priceOut:fresh(20,'vendor'),priceCache:fresh(.20,'vendor'),
+    priceMode:'Anthropic API 标准价',priceAlt:'快速模式另行计价',license:'闭源',access:'Claude API · Claude Code · 云平台',scenes:['coding','agent','daily','longdoc'],
+    strength:'AAII 58；Claude Code 组合 CAI 66。适合与 Sonnet 5.5、GPT-6 Astra 比较长链任务和实际成本。',
+    limits:'max 档单任务成本 $5.98；Arena 是 high 档，不能直接映射 max 档。',srcs:['aa','aacai','arena','anthropic55']}),
+  currentModel({id:'claude-sonnet55',name:'Claude Sonnet 5.5',org:'anthropic',brand:'claude',variant:'max 档（含回退）',released:'2026-09-28',tag:'旗舰',
+    aaii:fresh(56,'ind'),cai:fresh(68,'ind','Claude Code + Sonnet 5.5 max'),
+    deepswe:fresh(72,'ind','Claude Code'),sweatlas:fresh(67,'ind','Claude Code'),tb40:fresh(63.6,'ind','模型独立评测；Agent harness 为 66%'),
+    cpt:fresh(7.62,'ind'),speed:fresh(139,'ind'),ctx:fresh(1*M_,'ind'),
+    priceIn:fresh(2,'vendor'),priceOut:fresh(10,'vendor'),priceCache:fresh(.20,'vendor'),
+    priceMode:'Anthropic API 标准价',license:'闭源',access:'Claude API · Claude Code · AWS · Google Cloud · Azure',scenes:['coding','agent','daily'],
+    strength:'Claude Code 组合 CAI 68、DeepSWE 72%；模型 TB 4.0 为 63.6%。',
+    limits:'max 档单任务成本 $7.62，需与 high / xhigh 档分别比较；无本页已核实的 Arena 分数。',srcs:['aa','aacai','anthropic55']}),
+  currentModel({id:'gemini4-argon',name:'Gemini 4 Argon',org:'google',brand:'gemini',variant:'high 档',released:'2026-09-30',tag:'受限',
+    aaii:fresh(53,'ind'),tb40:fresh(57,'ind'),scicode:fresh(62,'ind'),lcr:fresh(80,'ind'),
+    arena:fresh(1525,'ind','9/30 文本榜 high 档：±9、初步数据、#1'),cpt:fresh(1.99,'ind'),ctx:fresh(1*M_,'ind'),
+    priceIn:fresh(2,'vendor','正式开放后的预告价'),priceOut:fresh(10,'vendor','正式开放后的预告价'),priceCache:fresh(.10,'vendor','预告为输入价 95% 折扣'),
+    priceMode:'预告价；尚未普遍开放 API',license:'闭源',access:'早期测试 / 可信安全研究者；开发者开放待公告',scenes:['coding','agent','daily','longdoc'],
+    strength:'AAII 53、TB 4.0 57%、Arena 初步 Elo 1525；值得跟踪开放情况。',
+    limits:'目前尚未普遍开放，价格是未来上线预告；AA 未给出可比吞吐。',srcs:['aa','arena','google4']}),
+  currentModel({id:'gpt61-sol',name:'GPT-6.1 Sol',org:'openai',brand:'openai',variant:'max 档',released:'2026-09-29',tag:'新近',
+    aaii:fresh(52,'ind'),cpt:fresh(.72,'ind'),speed:fresh(65,'ind'),ctx:fresh(1050000,'vendor'),maxOut:fresh(128000,'vendor'),
+    priceIn:fresh(2,'vendor'),priceOut:fresh(10,'vendor'),priceCache:fresh(.10,'vendor'),
+    priceMode:'≤272K 输入的标准价',priceAlt:'超过 272K 整个请求按长上下文价；Batch/Flex 半价',
+    license:'闭源',access:'OpenAI Responses API · Chat Completions',scenes:['coding','agent','daily','longdoc'],
+    strength:'AAII 52、AA 单任务成本 $0.72；在新近高能力模型中值得按实际任务比较成本。',
+    limits:'max 档长思考响应耗时较高；长上下文请求与 Fast 模式另有价格。',srcs:['aa','openai61']}),
+  currentModel({id:'gpt6-sol',name:'GPT-6 Sol',org:'openai',brand:'openai',variant:'max 档',released:'2026-09-22',
+    aaii:fresh(48,'ind'),cpt:fresh(1.05,'ind'),speed:fresh(74,'ind'),ctx:fresh(872000,'ind','AA 实测可用窗口；官方文档列 1.05M，上限口径待核实'),
+    maxOut:fresh(128000,'vendor'),priceIn:fresh(2,'vendor'),priceOut:fresh(10,'vendor'),priceCache:fresh(.20,'vendor'),
+    priceMode:'≤272K 输入的标准价',priceAlt:'长上下文另行计价',license:'闭源',access:'OpenAI API · Codex',scenes:['coding','agent','daily'],
+    strength:'AAII 48，适合与同价的新款 6.1 Sol 比较。',limits:'AA 上下文 872K 与官方文档 1.05M 冲突，保留两者并标待核实。',srcs:['aa','openai61']}),
+  currentModel({id:'gpt6-luna',name:'GPT-6 Luna',org:'openai',brand:'openai',variant:'max 档',released:'2026-09-22',
+    aaii:fresh(37,'ind'),cpt:fresh(.07,'ind'),speed:fresh(127,'ind'),ctx:fresh(1*M_,'ind'),
+    priceIn:fresh(.10,'vendor'),priceOut:fresh(.50,'vendor'),priceCache:fresh(.01,'vendor'),
+    priceMode:'≤272K 输入的标准价',license:'闭源',access:'OpenAI API · Codex',scenes:['coding','daily'],
+    strength:'低价档候选：AAII 37、单任务成本 $0.07。',limits:'与 Astra / Sol 不同能力档；长上下文另行计价。',srcs:['aa','openai61']}),
+  currentModel({id:'grok47',name:'Grok 4.7',org:'xai',brand:'grok',variant:'xhigh 档',released:'2026-09-21',
+    aaii:fresh(46,'ind'),cai:fresh(56,'ind','Grok Build + Grok 4.7 xhigh'),
+    deepswe:fresh(73,'ind','Grok Build'),sweatlas:fresh(63,'ind','Grok Build'),cpt:fresh(3.74,'ind'),speed:fresh(73,'ind'),ctx:fresh(500000,'vendor'),
+    priceIn:fresh(2,'vendor'),priceOut:fresh(6,'vendor'),priceCache:fresh(.50,'vendor'),
+    priceMode:'≤200K 输入的标准价',priceAlt:'超过 200K 按更高档计价',license:'闭源',access:'SpaceXAI API · Grok Build',scenes:['coding','agent','daily'],
+    strength:'Grok Build 组合 DeepSWE 73%，但 CAI 56；适合检验仓库修改任务。',
+    limits:'Agent 组合的 Terminal-Bench 4.0 为 33%，不能代替模型独立评测 TB 4.0。',srcs:['aa','aacai','xai47']}),
+  currentModel({id:'mimo26pro',name:'MiMo-V2.6-Pro',org:'xiaomi',brand:'xiaomi',variant:'默认档',released:'2026-09-21',tag:'开源',
+    aaii:fresh(46,'ind'),cpt:fresh(.13,'ind'),speed:fresh(42,'ind'),ctx:fresh(1*M_,'vendor'),maxOut:fresh(128000,'vendor'),
+    arena:fresh(1480,'ind','9/30 文本榜：±9、#25'),priceIn:fresh(.435,'vendor'),priceOut:fresh(.87,'vendor'),priceCache:fresh(.0036,'vendor'),
+    priceMode:'小米官方 API 按量价（USD / 百万 token）',license:'MIT 开放权重',openWeights:true,access:'MiMo API · 自部署',scenes:['coding','agent','daily','longdoc'],
+    strength:'AAII 46、单任务成本 $0.13；1M 上下文和 128K 最大输出，值得做开源部署候选。',
+    limits:'官方称多模态输入；本页只列文本对比数据。',srcs:['aa','arena','xiaomi26']}),
+  currentModel({id:'mimo26flash',name:'MiMo-V2.6-Flash',org:'xiaomi',brand:'xiaomi',variant:'默认档',released:'2026-09-21',tag:'开源',
+    aaii:fresh(38,'ind'),cpt:fresh(.06,'ind'),speed:fresh(54,'ind'),ctx:fresh(1*M_,'ind'),
+    priceMode:'API 定价待逐项核实',license:'MIT 开放权重',openWeights:true,access:'MiMo API · 自部署',scenes:['coding','daily'],
+    strength:'AAII 38、单任务成本 $0.06，低成本候选。',limits:'本页尚未核实官方 API 输入 / 输出单价。',srcs:['aa','xiaomi26']})
+);
+
+/* AA 当前榜单逐行核对：每个条目对应指定档位。未列出的旧模型维持 9/19 快照。 */
+[
+ ['claude-fable51',53,7.63,69,1000000],['gpt6-astra',53,3.26,51,1000000],
+ ['muse13',48,1.60,181,1000000],['qwen38max',45,5.41,39,984000],
+ ['glm53',45,2.01,68,1000000],['kimi-k3',44,2.00,34,1050000],
+ ['step5',44,.72,86,1000000],['gpt56-terra',42,1.40,93,1000000],
+ ['glm53flash',42,.25,45,1000000],['gemini38',41,1.24,236,1000000],
+ ['qwen38flashnext',40,.37,58,256000],['ds-v41flash',39,.27,209,1000000],
+ ['ds-v4pro',36,.67,81,1000000],['qwen38-27b',34,1.01,44,256000],
+ ['gemini31pro',30,.67,113,1000000],['minimax-m3',29,.51,99,1000000],
+ ['hy3',25,.07,88,256000],['nemotron3ultra',23,.60,180,262000],
+ ['gemini35lite',22,.12,339,1000000],['muse-glimmer',17,.06,148,131000],
+ ['claude-haiku45',17,.28,91,200000],['nemotron35',13,.09,302,1000000],
+ ['mistral-l3',9,.03,79,256000]
+].forEach(([id,score,cost,speed,ctx])=>updateModel(id,{
+  aaii:fresh(score,'ind','AAII v4.3.2'),cpt:fresh(cost,'ind'),speed:fresh(speed,'ind'),ctx:fresh(ctx,'ind')
+}));
+updateModel('claude-fable51',{cai:fresh(62,'ind','Claude Code + Fable 5.1 max'),deepswe:fresh(64,'ind','Claude Code'),sweatlas:fresh(65,'ind','Claude Code'),arena:fresh(1501,'ind','9/30 文本榜 max：±7、#6')});
+updateModel('claude-opus5',{cai:fresh(60,'ind','Claude Code + Opus 5 max'),deepswe:fresh(63,'ind','Claude Code'),sweatlas:fresh(62,'ind','Claude Code'),arena:fresh(1489,'ind','9/30 文本榜 max：±5、#14')});
+updateModel('grok46',{cai:fresh(47,'ind','Grok Build + Grok 4.6 xhigh'),deepswe:fresh(65,'ind','Grok Build'),sweatlas:fresh(58,'ind','Grok Build')});
+updateModel('qwen38max',{cai:fresh(43,'ind','Claude Code + Qwen3.8 Max'),deepswe:fresh(51,'ind','Claude Code'),sweatlas:fresh(62,'ind','Claude Code'),arena:fresh(1481,'ind','9/30 文本榜：±5、#24')});
+updateModel('muse13',{arena:fresh(1495,'ind','9/30 文本榜 max：±6、#8')});
+updateModel('kimi-k3',{arena:fresh(1488,'ind','9/30 文本榜 max：±5、#17')});
+updateModel('gemini38',{arena:fresh(1494,'ind','9/30 文本榜 high：±5、初步数据、#11')});
+updateModel('gpt6-astra',{arena:fresh(1476,'ind','9/30 文本榜 max：±7、#30')});
+updateModel('gpt56-sol',{arena:fresh(1484,'ind','9/30 文本榜 xhigh：±4、#20')});
+updateModel('gemini31pro',{arena:fresh(1487,'ind','9/30 文本榜：±3、#18')});
+updateModel('glm53',{arena:fresh(1479,'ind','9/30 文本榜 max：±6、#26')});
+updateModel('claude-fable5',{arena:fresh(1505,'ind','9/30 文本榜 high：±4、#3')});
+updateModel('muse12',{arena:fresh(1494,'ind','9/30 文本榜 xhigh：±10、#10')});
+updateModel('gemini37',{arena:fresh(1488,'ind','9/30 文本榜 high：±5、初步数据、#16')});
+updateModel('gpt55',{arena:fresh(1477,'ind','9/30 文本榜默认档：±4、#28')});
+MODELS.forEach(m=>{if(m.arena && m.arena.asOf==='2026-10-02')m.arena.asOf='2026-09-30';});
+
 const SCENES = [
   {k:'coding', name:'编程与重构', metrics:['cai','tb40','scicode'],
    why:'看真实 IDE / Agent 环境里的端到端表现（CAI）、长链终端任务（TB 4.0），以及科学编码（SciCode）。',
@@ -1252,3 +1390,98 @@ const CONFLICTS = [
  {model:'—', field:'「每日自动更新」', a:'页面标注数据抓取日与生成日', b:'实际靠人工 / AI 重新采集',
   status:'已修复', why:'没有自动抓取管线。按钮名为「复制更新指令」，即其实际动作。'}
 ];
+
+/* 10 月核验记录。旧研究条目保留为可展开档案，不再作为当前结论。 */
+CHANGES.forEach(c=>{c.rank+=10;c.title='9 月资料 · '+c.title;c.detail='2026-09-19 旧快照记录：'+c.detail;c.impact='历史判断，仅供追溯；当前选型以模型库及本期新条目为准。';});
+CHANGES.unshift(
+ {rank:1,kind:'评测',date:'2026-10-02',models:['claude-opus55','claude-sonnet55'],
+  title:'Opus 5.5 登上 AAII 首位；Sonnet 5.5 的编码 Agent 表现突出',
+  detail:'AAII v4.3.2：Opus 5.5 max 58、Sonnet 5.5 max 56。Claude Code + Sonnet 5.5 max 的 CAI v1.5 为 68，DeepSWE v1.1 为 72%。',
+  impact:'把模型独立评测与 Claude Code 组合分开看；Sonnet max 的 AA 单任务成本 $7.62，需按具体任务和低推理档复核账单。',src:'aa',view:'models'},
+ {rank:2,kind:'厂商',date:'2026-09-30',models:['gemini4-argon'],
+  title:'Gemini 4 Argon 出现在榜首区间，开放范围仍有限',
+  detail:'AAII 53、TB 4.0 为 57%；Arena 9/30 文本榜 1525±9，标为初步数据。Google 预告 API 价格 $2/$10 / 百万 token。',
+  impact:'值得加入候选观察，但目前尚未普遍向开发者开放；预告价不等于已经可购买的 API 价。',src:'google4',view:'models'},
+ {rank:3,kind:'价格',date:'2026-09-29',models:['gpt61-sol','gpt6-astra'],
+  title:'GPT-6.1 Sol 上线：AAII 52，单任务成本 $0.72',
+  detail:'官方标准价 $2 输入 / $10 输出 / $0.10 缓存读取（美元 / 百万 token，≤272K 输入）；AA max 档 AAII 52。Astra max 为 53、$3.26 / 任务。',
+  impact:'做编程或专业工作时可先把 6.1 Sol 与 Astra 放在同一任务集实测；不同推理档和长上下文价需分别计算。',src:'openai61',view:'pricing'},
+ {rank:4,kind:'厂商',date:'2026-09-21',models:['mimo26pro','mimo26flash'],
+  title:'小米 MiMo-V2.6 进入开源候选：Pro 的 AAII 46',
+  detail:'Pro 官方 API 价为 $0.435 输入 / $0.87 输出 / $0.0036 缓存读取（美元 / 百万 token）；AA 单任务成本 $0.13。Flash AAII 38、单任务 $0.06。',
+  impact:'对预算敏感、需要本地部署时值得评测；单任务成本是 AA 特定任务集测量，不能直接当作你的账单。',src:'xiaomi26',view:'models'},
+ {rank:5,kind:'评测',date:'2026-09-21',models:['grok47','claude-sonnet55'],
+  title:'Grok 4.7 的仓库改动与终端任务分化明显',
+  detail:'Grok Build + Grok 4.7 xhigh 的 DeepSWE v1.1 为 73%，高于 Claude Code + Sonnet 5.5 max 的 72%；但 CAI 是 56 对 68，Agent 版 TB 4.0 是 33% 对 66%。',
+  impact:'不要用单项 DeepSWE 代替综合编码能力；Agent 框架与推理档位同样影响结果。',src:'aacai',view:'models'}
+);
+AGENT_MATRIX.unshift(
+ {id:'claude-sonnet55',cells:[{s:68,t:'native',note:'max · $14.19 / 任务'},{t:'na'},{t:'na'},{t:'na'},{t:'compat'},{t:'na'},{t:'na'},{t:'na'}]},
+ {id:'claude-opus55',cells:[{s:66,t:'native',note:'max · $13.04 / 任务'},{t:'na'},{t:'na'},{t:'na'},{t:'compat'},{t:'na'},{t:'na'},{t:'na'}]},
+ {id:'grok47',cells:[{t:'na'},{t:'na'},{t:'na'},{t:'na'},{t:'na'},{s:56,t:'native',note:'xhigh · $8.82 / 任务'},{t:'na'},{t:'na'}]}
+);
+TIMELINE.push(
+ {d:'09-21',t:'Grok 4.7 与 MiMo-V2.6 系列进入候选',x:'Grok Build + Grok 4.7 的 DeepSWE v1.1 为 73%；MiMo-V2.6-Pro AAII 46。'},
+ {d:'09-22',t:'Claude Opus 5.5、GPT-6 Sol / Luna 发布',x:'Opus 5.5 后续在 AAII v4.3.2 达 58；OpenAI 扩展 GPT-6 价格档。'},
+ {d:'09-28',t:'Claude Sonnet 5.5 发布',x:'Claude Code + Sonnet 5.5 max 在 AA CAI v1.5 达 68。'},
+ {d:'09-29',t:'GPT-6.1 Sol API 发布',x:'官方标准价 $2/$10；AA max 档 AAII 52。'},
+ {d:'09-30',t:'Google 发布 Gemini 4 Argon',x:'AAII 53、Arena 初步 Elo 1525±9；面向开发者的普遍开放仍待公告。'},
+ {d:'10-02',t:'本期人工核验',x:'更新 AA 当前榜单、Arena 9/30 快照及厂商 API 定价；旧单项保留原抓取日。',hot:true,last:true}
+);
+TIMELINE.forEach(t=>{if(t.d==='09-19')t.last=false;});
+NOTES.forEach(n=>{n.t='9 月研究档案 · '+n.t;n.s+=' · 历史快照';});
+NOTES.unshift(
+ {n:'v4.3.2',t:'当前智能指数口径',s:'Artificial Analysis · 2026-10-02',models:['claude-opus55','claude-sonnet55','gpt61-sol'],
+  d:'AAII v4.3.2 由 10 项评测合成，其中 GDPval-AA 已为 v2.1。旧页面 GDPval-AA v2 的百分比分数不能直接混进 v2.1 的 Elo 口径；该旧单项仍标注 9/19。'},
+ {n:'113题',t:'DeepSWE v1.1 测什么',s:'Artificial Analysis CAI v1.5 方法页 · 2026-10-02',models:['claude-sonnet55','grok47'],
+  d:'DeepSWE v1.1 共 113 道真实仓库改动任务，要求 Agent 阅读、修改并通过隔离环境验证。它评的是「Agent 框架 × 模型 × 推理档」，不能当成裸模型分数；要连同 TB 4.0 和 SWE-Atlas-QnA 看。'}
+);
+SCENES.find(x=>x.k==='agent').caveat='CAI 是框架 × 模型分数；TB 4.0 的模型独立评测与 Agent harness 结果也不应混排。';
+SCENES.find(x=>x.k==='coding').metrics=['cai','deepswe','tb40'];
+SCENES.find(x=>x.k==='coding').why='先看模型 × Agent 组合的 CAI 与 DeepSWE，再看模型独立评测的终端任务成绩；同一行才可比。';
+SCENES.find(x=>x.k==='longdoc').caveat='本期长上下文推理分项复核覆盖不足，当前只列待比较候选；窗口大小不能替代实际长文档测试。';
+const vendorUpdates={
+ anthropic:{models:['claude-opus55','claude-sonnet55','claude-fable51','claude-opus5','claude-sonnet5'],family:'Opus 5.5 / Sonnet 5.5 / Fable 5.1',
+  lede:'Opus 5.5 的 AAII v4.3.2 为 58；Claude Code + Sonnet 5.5 max 的 CAI 为 68。',
+  facts:[['AAII','Opus 5.5 max · 58'],['CAI','Sonnet 5.5 max + Claude Code · 68'],['API 输入 / 输出','Opus 5.5 · $4 / $20']],
+  tech:'9 月下旬发布 Opus 5.5 和 Sonnet 5.5。Opus 标准 API 价 $4/$20；Sonnet $2/$10（美元 / 百万 token）。新旧推理档的任务成本差异大。',
+  keypoints:'厂商发布信息见 Anthropic 官网；能力与成本分数见 Artificial Analysis 10/2 快照。旧 IPO 传闻未在本期核验，故不作为当前结论。',
+  foot:'Opus 5.5 $4/$20 · Sonnet 5.5 $2/$10 · 均为 1M 上下文'},
+ openai:{models:['gpt61-sol','gpt6-astra','gpt6-sol','gpt6-luna','gpt56-sol'],family:'GPT-6.1 Sol / GPT-6 Astra · Sol · Luna',
+  lede:'6.1 Sol 的 AAII 52、AA 单任务成本 $0.72；Astra max 为 53、$3.26。',
+  facts:[['AAII','Astra max · 53'],['单任务成本','6.1 Sol max · $0.72'],['API 输入 / 输出','6.1 Sol · $2 / $10']],
+  tech:'GPT-6.1 Sol 9/29 发布。≤272K 输入时标准价 $2/$10、缓存读取 $0.10；更长请求整单进入长上下文计价。',
+  keypoints:'API 定价及上下文见 OpenAI 官方模型页；AA 指数和成本来自独立榜单。旧市场份额与 IPO 叙述本期未核验。',
+  foot:'6.1 Sol $2/$10 · Astra $10/$50 · Luna $0.10/$0.50'},
+ google:{models:['gemini4-argon','gemini38','gemini35lite','gemini31pro'],family:'Gemini 4 Argon / 3.8 Flash / 3.5 Flash-Lite',
+  lede:'Argon AAII 53、Arena 初步 Elo 1525±9；尚未普遍开放开发者 API。',
+  facts:[['AAII','Argon high · 53'],['Arena','Argon high · 1525±9'],['开放','早期测试']],
+  tech:'Google 9/30 公布 Gemini 4 Argon，预告推出后 $2/$10 / 百万 token，缓存读取按输入价 95% 折扣。',
+  keypoints:'Argon 的价格是预告价，不能作为已可购买服务计价。Arena 当前为初步数据。',
+  foot:'Argon 预告价 $2/$10 · 1M 上下文'},
+ xiaomi:{models:['mimo26pro','mimo26flash','mimo25pro'],family:'MiMo-V2.6-Pro / Flash',
+  lede:'V2.6-Pro AAII 46、AA 单任务成本 $0.13，官方 API 输入 $0.435/M。',
+  facts:[['AAII','V2.6-Pro · 46'],['成本 / 任务','$0.13'],['输入价','$0.435 / M']],
+  tech:'官方模型页列 1M 上下文、128K 最大输出，输入/输出/缓存读取分别 $0.435/$0.87/$0.0036 / 百万 token。',
+  keypoints:'旧 V2.5 系列仍保留为历史候选；官方公告其 10/21 将下线，迁移需另行安排。',
+  foot:'MiMo-V2.6-Pro $0.435/$0.87 · 1M 上下文'},
+ xai:{models:['grok47','grok46','grok45'],family:'Grok 4.7 / 4.6',
+  lede:'Grok Build + 4.7 xhigh 的 DeepSWE 73%，但 CAI 为 56；500K 上下文。',
+  facts:[['DeepSWE','73% · Grok Build'],['CAI','56 · Grok Build'],['API 输入 / 输出','$2 / $6']],
+  tech:'Grok 4.7 官方标准价 $2/$6，缓存读取 $0.50 / 百万 token（≤200K）；超过 200K 另行计价。',
+  keypoints:'DeepSWE 只覆盖仓库改动，Grok Build 的 TB 4.0 分项为 33%，不要单凭 DeepSWE 判定综合编码能力。',
+  foot:'Grok 4.7 $2/$6 · 500K 上下文'}
+};
+VENDORS.forEach(v=>{if(vendorUpdates[v.key])Object.assign(v,vendorUpdates[v.key]);else{
+  v.fresh=false;v.lede='历史厂商档案 · '+v.lede;
+  v.facts=(v.facts||[]).map(([k,value])=>['9月 · '+k,value]);
+  v.tech='9/19 旧资料：'+(v.tech||'');v.foot='9/19 旧快照 · '+(v.foot||'');
+  v.keypoints='以下为 2026-09-19 旧快照，未按 10/2 逐条复核。'+(v.keypoints||'');
+}});
+SUBSCRIPTIONS.forEach(s=>{s.note='订阅档位沿用 2026-09-19 快照，本期未逐项核价。'+(s.note||'');});
+AGENT_MATRIX.slice(3).forEach(r=>r.cells.forEach(c=>{if(c.s!=null)c.note=(c.note?c.note+' · ':'')+'9/19 快照';}));
+const claudePlan=SUBSCRIPTIONS.find(s=>s.brand==='anthropic');if(claudePlan)claudePlan.note='套餐价沿用 9/19 记录，本期未逐档核验；新模型可用额度以官方订阅页为准。';
+CONFLICTS.push(
+ {model:'gpt6-sol',field:'上下文窗口',a:'AA 当前榜单 872K',b:'OpenAI 官方模型页 1.05M',status:'待核实',why:'展示 AA 榜单口径，行内保留官方值；不把两者当同一数字。'},
+ {model:'gemini4-argon',field:'API 价格与开放状态',a:'Google 预告 $2/$10',b:'开发者 API 尚未普遍开放',status:'待开放',why:'价格为推出时预告价，不能当作当前可购买 API 价。'}
+);

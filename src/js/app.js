@@ -59,7 +59,7 @@ const KIND_LABEL = {ind:'独立评测', vendor:'官方自报', est:'估算', edi
 function kindTag(val, full){
   if(!val || val.kind==='ind') return '';
   if(!full && val.kind!=='est') return '';
-  return '<span class="kind '+val.kind+'" title="'+esc(KIND_LABEL[val.kind]||'')+'">'+esc(KIND_LABEL[val.kind]||'')+'</span>';
+  return '<span class="kind '+val.kind+'" title="'+esc(KIND_LABEL[val.kind]||'')+' · 核验 '+esc(val.asOf||'2026-09-19')+'">'+esc(KIND_LABEL[val.kind]||'')+'</span>';
 }
 
 /* ---------------- 品牌标识 ---------------- */
@@ -167,10 +167,12 @@ function filtered(){
 function bestOf(list, mk){
   const m = MET[mk];
   if(!m || !m.better) return {v:null, reason:'nodir'};
+  if(/^price/.test(mk) && list.some(x=>/预告价/.test(x.priceMode||''))) return {v:null,reason:'future'};
   const vals = list.map(x=>x[mk]).filter(Boolean);
   if(vals.length < 2) return {v:null, reason:'thin'};
   const kinds = new Set(vals.map(v=>v.kind));
   if(kinds.size > 1) return {v:null, reason:'mixed'};
+  if(new Set(vals.map(v=>v.asOf || '2026-09-19')).size > 1) return {v:null, reason:'dated'};
   if(kinds.has('est')) return {v:null, reason:'est'};
   const nums = vals.map(v=>v.v);
   return {v: m.better==='high' ? Math.max.apply(null,nums) : Math.min.apply(null,nums),
@@ -294,13 +296,13 @@ function renderOverview(){
 
   renderChanges();
 
-  const top = MODELS.filter(m=>m.aaii).sort((a,b)=>b.aaii.v-a.aaii.v).slice(0,8);
+  const top = MODELS.filter(m=>m.aaii && m.aaii.asOf===META.dataSnapshot).sort((a,b)=>b.aaii.v-a.aaii.v).slice(0,8);
   $('#topTable').innerHTML = miniTable(top, {cols:['aaii','cai','cpt']});
 
   /* ---- 场景推荐：候选与依据都从当前数据算出 ---- */
   $('#scenes').innerHTML = SCENES.map(sc=>{
     const primary = sc.metrics[0];
-    let cands = MODELS.filter(m => m[primary]);
+    let cands = MODELS.filter(m => m[primary] && m[primary].asOf>='2026-09-30');
     cands.sort((a,b)=>{
       for(const k of sc.metrics){
         const dir = (MET[k] && MET[k].better==='low') ? 1 : -1;   /* 价格类越低越靠前 */
@@ -386,7 +388,7 @@ function cellFor(m, ck){
   }
   const val = m[ck], t = fmtVal(ck, val);
   if(!t) return '<td class="n"><span class="na">暂无数据</span></td>';
-  return '<td class="n">'+esc(t)+'<span class="u">'+esc(unitOf(ck))+'</span>'+kindTag(val)+'</td>';
+  return '<td class="n" title="数据快照 '+esc(val.asOf||'2026-09-19')+'">'+esc(t)+'<span class="u">'+esc(unitOf(ck))+'</span>'+kindTag(val)+(val.asOf!==META.dataSnapshot?'<span class="old-val">旧快照</span>':'')+'</td>';
 }
 
 function renderModelTable(){
@@ -400,7 +402,7 @@ function renderModelTable(){
       '<th class="pick"><span class="sr">加入对比</span></th>'+
       '<th class="fav"><span class="sr">关注</span></th>'+
       '<th class="sortable'+(state.sort.k==='name'?' sorted':'')+'" data-sort="name" role="button" tabindex="0">模型'+arw('name')+'</th>'+
-      cols.map(c=>'<th '+sortable(c.k)+'>'+esc(colLabel(c))+arw(c.k)+
+      cols.map(c=>'<th '+sortable(c.k)+'>'+esc(colLabel(c))+(MET[c.k]?metricHelp(MET[c.k]):'')+arw(c.k)+
         '<span class="th-sub">'+esc(COL_UNIT[c.k]||'')+'</span></th>').join('')+
     '</tr></thead>'+
     '<tbody>'+ (list.length ? list.map(m=>
@@ -426,7 +428,31 @@ function renderModelTable(){
 /* ================================================================
    指标排行柱状图
    ================================================================ */
-const RANK_METRICS = ['aaii','cai','tb40','gdpval','lcr','nonhall','speed','cpt'];
+const RANK_METRICS = ['aaii','cai','deepswe','tb40','arena','speed','cpt'];
+
+/* 每项说明与指标定义共用，鼠标悬停和键盘焦点都可读；不依赖远程资源。 */
+function metricHelp(m){
+  const hint = m.hint || m.basis;
+  return '<span class="metric-help" tabindex="0" role="button" aria-label="了解'+esc(m.label)+'">?'+
+    '<span class="metric-tip" role="tooltip"><b>'+esc(m.label)+'</b>'+esc(hint)+
+    '<small>'+esc(m.basis)+' · '+esc((SOURCES[m.src]||{}).name||'来源待核实')+'</small></span></span>';
+}
+const metricPortal=document.createElement('span');
+metricPortal.className='metric-tip portal';metricPortal.hidden=true;metricPortal.id='metricTipPortal';
+document.body.appendChild(metricPortal);
+function placeMetricTip(el){
+  const r=el.getBoundingClientRect();
+  metricPortal.innerHTML=el.querySelector('.metric-tip').innerHTML;
+  metricPortal.hidden=false;
+  const w=metricPortal.getBoundingClientRect().width,h=metricPortal.getBoundingClientRect().height;
+  metricPortal.style.left=Math.max(w/2+12,Math.min(innerWidth-w/2-12,r.left+r.width/2))+'px';
+  metricPortal.style.top=(r.bottom+h+12>innerHeight ? Math.max(8,r.top-h-9) : r.bottom+9)+'px';
+}
+document.addEventListener('mouseover',e=>{const el=e.target.closest('.metric-help');if(el)placeMetricTip(el)});
+document.addEventListener('mouseout',e=>{const el=e.target.closest('.metric-help');if(el&&!el.contains(e.relatedTarget))metricPortal.hidden=true});
+document.addEventListener('focusin',e=>{const el=e.target.closest('.metric-help');if(el)placeMetricTip(el)});
+document.addEventListener('focusout',e=>{if(e.target.closest('.metric-help'))metricPortal.hidden=true});
+document.addEventListener('click',e=>{if(e.target.closest('.metric-help'))e.stopPropagation()},true);
 
 function renderRank(){
   const host = $('#rankChart'); if(!host) return;
@@ -434,12 +460,14 @@ function renderRank(){
 
   /* 分段控件 */
   $('#rankMetric').innerHTML = RANK_METRICS.map(k =>
-    '<button type="button" data-rank="'+k+'" aria-pressed="'+(k===state.rankMetric)+'">'+esc(MET[k].short)+'</button>').join('');
+    '<button type="button" data-rank="'+k+'" title="'+esc(MET[k].hint||MET[k].basis)+'" aria-pressed="'+(k===state.rankMetric)+'">'+esc(MET[k].short)+'</button>').join('');
   $('#rankColor').textContent = state.labColor ? '厂商着色' : '单色';
   $('#rankColor').setAttribute('aria-pressed', state.labColor);
 
   /* 只画有该指标的模型；缺失的不按 0 参与，直接不进图 */
-  const withVal = MODELS.filter(m => m[met.k]);
+  const withVal = MODELS.filter(m => m[met.k] && (
+    ['aaii','cpt','speed'].includes(met.k) ? m[met.k].asOf===META.dataSnapshot :
+    ['cai','deepswe','arena'].includes(met.k) ? m[met.k].asOf>='2026-09-30' : true));
   const dir = met.better === 'low' ? 1 : -1;
   withVal.sort((a,b)=> cmpBy(a,b,met.k,dir) || a.name.localeCompare(b.name));
 
@@ -454,17 +482,18 @@ function renderRank(){
   const rows = shown.map(m => ({
     id:m.id, name:m.name, orgName:orgName(m.org), brand:m.brand,
     value:m[met.k].v, disp:fmtVal(met.k,m[met.k]) + unitOf(met.k),
-    sub:(m[met.k].note || '') || (m.variant || ''),
+    sub:'快照 '+m[met.k].asOf+' · '+((m[met.k].note || '') || (m.variant || '')),
     logo:(BRANDS[m.brand]||{}).logo, color:labColor(m),
     dim: inFilter.size !== MODELS.length && !inFilter.has(m.id),
     marked: inCmp(m.id)
   }));
 
-  $('#rankTitle').textContent = met.label + ' 排行';
+  $('#rankTitle').innerHTML = esc(met.label) + ' 排行 ' + metricHelp(met);
   $('#rankBasis').innerHTML = esc(met.basis) +
     ' · ' + (met.better==='low' ? '越低越好' : '越高越好') +
     ' · 共 <b class="mono">' + withVal.length + '</b> / ' + MODELS.length + ' 个模型有该项数据' +
-    (cap < withVal.length ? '，屏幕较窄，图中只画前 <b class="mono">'+cap+'</b> 名' : '');
+    (cap < withVal.length ? '，屏幕较窄，图中只画前 <b class="mono">'+cap+'</b> 名' : '')+
+    ' · 悬停指标名称旁的 ? 查看测试含义';
 
   CH.rankChart(host, {
     metric: met.label, rows, better: met.better,
@@ -545,13 +574,13 @@ function rowCells(list, mk){
     const isBest = best.v != null && val.v === best.v;
     /* 行内条：占最优值的比例（越低越好的指标取倒数比），只在本行内可比 */
     let bar = '';
-    if(nums.length > 1 && vmax > 0){
+    if(best.v!=null && nums.length > 1 && vmax > 0){
       const w = lowBetter ? (vmin / m[mk].v) * 100 : (m[mk].v / vmax) * 100;
       bar = '<span class="cbar" title="占本行最优值的 '+Math.round(w)+'%"><i class="'+(isBest?'best':'')+
             '" style="width:'+Math.max(4,Math.min(100,w)).toFixed(1)+'%"></i></span>';
     }
     return {txt:t, html:'<td><span class="cval'+(isBest?' best':'')+'">'+esc(t)+'<span class="u">'+esc(unitOf(mk))+'</span></span>'+
-      kindTag(val, true) + (val.note ? '<span class="cnote">'+esc(val.note)+'</span>' : '') + bar + '</td>'};
+      kindTag(val, true) + '<span class="cnote">快照 '+esc(val.asOf||'2026-09-19')+'</span>' + (val.note ? '<span class="cnote">'+esc(val.note)+'</span>' : '') + bar + '</td>'};
   });
   return {cells, best};
 }
@@ -561,6 +590,8 @@ function compareTable(list){
     nodir:'该项无优劣之分，不评最优',
     thin:'有效数据不足 2 个，不评最优',
     mixed:'所选模型的取值口径不一致（独立评测 / 官方自报混用），不评最优',
+    dated:'取值来自不同快照日期，不评最优',
+    future:'包含尚未普遍开放模型的预告价，不评最优',
     est:'含估算值，不评最优'
   };
   let rows = '';
@@ -577,9 +608,11 @@ function compareTable(list){
       const flag = best.v==null && best.reason && best.reason!=='nodir'
         ? '<span class="warnline">'+esc(bestNote[best.reason])+'</span>'
         : (best.partial ? '<span class="warnline">仅 '+best.have+' / '+list.length+' 个有数据，最优值只在有数据的之间比较</span>' : '');
-      inner += '<tr><th class="rowh" scope="row">'+esc(met.label)+
+      const source=SOURCES[met.src];
+      inner += '<tr><th class="rowh" scope="row">'+esc(met.label)+metricHelp(met)+
         (met.better?'<span class="basis">'+(met.better==='high'?'越高越好':'越低越好')+' · '+esc(met.basis)+'</span>'
                    :'<span class="basis">'+esc(met.basis)+'</span>')+
+        (source&&source.url?'<a class="metric-source" href="'+esc(source.url)+'" target="_blank" rel="noopener">来源 ↗</a>':'')+
         (met.warn?'<span class="warnline">'+esc(met.warn)+'</span>':'')+ flag +'</th>'+
         cells.map(c=>c.html).join('')+'</tr>';
     });
@@ -629,7 +662,7 @@ function compareTable(list){
 function renderPricing(){
   const priced = MODELS.filter(m=>m.priceIn || m.priceOut)
     .sort((a,b)=> cmpBy(a,b,'priceOut',1) || 0);
-  $('#priceSub').textContent = '美元 / 每百万 token · 共 '+priced.length+' 个有公开标价的模型 · 核验日 '+META.dataBasis;
+  $('#priceSub').textContent = '美元 / 每百万 token · 共 '+priced.length+' 个有公开或预告标价的模型 · 新数据核验 '+META.dataBasis+'；旧价标注快照';
   $('#priceTable').innerHTML =
     '<thead><tr><th class="pick"><span class="sr">加入对比</span></th><th>模型</th>'+
       '<th class="n">输入<span class="th-sub">$ / 百万 token</span></th>'+
@@ -643,7 +676,9 @@ function renderPricing(){
           '<span class="txt"><span class="nm">'+esc(m.name)+'</span><span class="sub">'+esc(orgName(m.org))+'</span></span></button></td>'+
         ['priceIn','priceOut','priceCache'].map(k=>{
           const t = fmtVal(k,m[k]);
-          return '<td class="n">'+(t?esc(t):'<span class="na">暂无数据</span>')+(m[k]&&m[k].note?'<span class="cnote">'+esc(m[k].note)+'</span>':'')+'</td>';
+          return '<td class="n">'+(t?esc(t):'<span class="na">暂无数据</span>')+
+            (m[k]&&m[k].asOf!==META.dataSnapshot?'<span class="old-val" title="2026-09-19 旧价，未按本次核验">旧快照</span>':'')+
+            (m[k]&&m[k].note?'<span class="cnote">'+esc(m[k].note)+'</span>':'')+'</td>';
         }).join('')+
         '<td style="font-size:12.5px;color:var(--ink-3);line-height:1.6;max-width:32ch">'+
           (m.priceMode?esc(m.priceMode):'<span class="na">暂无数据</span>')+
@@ -663,7 +698,8 @@ function renderPricing(){
       logoHTML(m.brand)+'<span class="txt"><span class="nm">'+esc(m.name)+'</span></span></button></td>'+
       ['speed','ctx','maxOut','paramsTotal','paramsAct'].map(k=>{
         const t = fmtVal(k,m[k]);
-        return '<td class="n">'+(t?esc(t)+'<span class="u">'+esc(unitOf(k))+'</span>':'<span class="na">暂无数据</span>')+'</td>';
+        return '<td class="n">'+(t?esc(t)+'<span class="u">'+esc(unitOf(k))+'</span>':'<span class="na">暂无数据</span>')+
+          (m[k]&&m[k].asOf!==META.dataSnapshot?'<span class="old-val" title="2026-09-19 旧快照">旧快照</span>':'')+'</td>';
       }).join('')+'</tr>').join('')+
     '</tbody><tfoot><tr><td colspan="6">上下文窗口、最大输出长度、参数量是三件不同的事，本表分列。原始资料里把 753B、428B 这类参数量填进上下文列的条目已改为「暂无数据」并列入待核实清单。</td></tr></tfoot>';
 
@@ -689,7 +725,7 @@ function renderPricing(){
 /* ---- 散点：智能指数 × 单任务成本（两轴同源，均为 AA 实测） ---- */
 function drawChart(){
   const box = $('#chartBox'); if(!box) return;
-  const pts = MODELS.filter(m => m.aaii && m.cpt).map(m => ({
+  const pts = MODELS.filter(m => m.aaii && m.cpt && m.aaii.asOf===META.dataSnapshot && m.cpt.asOf===META.dataSnapshot).map(m => ({
     id:m.id, name:m.name, orgName:orgName(m.org),
     x:m.cpt.v, y:m.aaii.v,
     xDisp:'单任务 '+fmtVal('cpt',m.cpt), yDisp:'智能指数 '+fmtVal('aaii',m.aaii),
@@ -722,7 +758,7 @@ function renderIntel(){
         '<span class="txt"><span class="nm">'+esc(orgName(v.key))+(v.fresh?' <span class="tag brass">本期</span>':'')+'</span></span></button></td>'+
       '<td style="font-size:12.5px;color:var(--ink-3);max-width:24ch">'+esc(v.family)+'</td>'+
       '<td style="font-size:13px;color:var(--ink-2);max-width:46ch">'+esc(v.lede)+'</td>'+
-      '<td class="n">'+v.models.length+'</td></tr>').join('')+
+      '<td class="n">'+MODELS.filter(m=>m.org===v.key).length+'</td></tr>').join('')+
     '</tbody>';
 
   $('#timeline').innerHTML = TIMELINE.slice().reverse().map(t=>
@@ -799,7 +835,7 @@ function openModel(id){
     const t = fmtVal(k, m[k]);
     const note = (m[k] && m[k].note) ? '<small>'+esc(m[k].note)+'</small>' : (k==='ctx'&&m.ctxNote?'<small>'+esc(m.ctxNote)+'</small>':'');
     return '<div class="r"><span class="k">'+esc(label)+'</span><span class="v">'+
-      (t? esc(t)+esc(unitOf(k))+kindTag(m[k], true) : '<span class="na">暂无数据</span>') + note + '</span></div>';
+      (t? esc(t)+esc(unitOf(k))+kindTag(m[k], true)+'<small>数据快照 '+esc(m[k].asOf||'2026-09-19')+'</small>' : '<span class="na">暂无数据</span>') + note + '</span></div>';
   };
   const group = g => METRICS.filter(x=>x.g===g).map(x=>specRow(x.label, x.k)).join('');
 
@@ -819,7 +855,7 @@ function openModel(id){
     '<div class="dsec"><h3>数据来源</h3><p>'+ ((m.srcs&&m.srcs.length)
         ? m.srcs.map(s=>{const o=SOURCES[s]; return o? (o.url?'<a href="'+esc(o.url)+'" target="_blank" rel="noopener" style="border-bottom:1px solid var(--line-2)">'+esc(o.name)+' ↗</a>':esc(o.name)) : esc(s);}).join(' · ')
         : '<span class="na">本期无明确来源记录</span>') +
-      '</p><p style="font-size:12px;color:var(--ink-3);margin-top:8px">这些链接指向来源站点首页，不是该模型每一项数据的逐条证据。</p></div>';
+      '</p><p style="font-size:12px;color:var(--ink-3);margin-top:8px">来源链接有具体模型页，也有榜单或站点入口；各数值以标注的快照日期和档位为准。</p></div>';
 
   $('#drawerFoot').innerHTML =
     '<button class="btn'+(inCmp(id)?' on':'')+'" type="button" data-cmp="'+id+'">'+(inCmp(id)?'已在对比中 · 移除':'加入对比')+'</button>'+

@@ -229,6 +229,14 @@ tr.grp td .gn{text-transform:none;letter-spacing:0;font-family:var(--sans);font-
 .rowh .basis{display:block;font-size:10.5px;color:var(--ink-3);line-height:1.45;margin-top:3px}
 .rowh .warnline{display:block;font-size:10.5px;color:var(--warn);line-height:1.45;margin-top:3px}
 .rowh .warnline::before{content:'⚠ '}
+.metric-source{display:inline-block;margin-top:3px;color:var(--sage);font-size:11px;text-decoration:underline;text-underline-offset:2px}
+.metric-help{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;margin-left:5px;border:1px solid var(--line-3);border-radius:50%;font:600 11px var(--sans);color:var(--ink-2);cursor:help;vertical-align:1px}
+.metric-help:hover,.metric-help:focus-visible{color:var(--ink-hi);border-color:var(--sage);outline:2px solid var(--sage-line);outline-offset:2px}
+.metric-tip{display:none;position:fixed;z-index:100;left:var(--tip-x,50vw);top:var(--tip-y,50vh);transform:translateX(-50%);width:min(340px,calc(100vw - 24px));padding:12px 14px;border:1px solid var(--line-3);border-radius:8px;background:var(--surface-3);box-shadow:0 14px 32px rgba(0,0,0,.4);font:13px/1.55 var(--sans);font-weight:400;color:var(--ink);text-align:left;white-space:normal;pointer-events:none}
+.metric-tip b,.metric-tip small{display:block}.metric-tip b{font-size:13px;margin-bottom:3px}.metric-tip small{font-size:11.5px;color:var(--ink-3);margin-top:6px}
+.metric-tip.portal{display:block}
+.metric-tip.portal[hidden]{display:none}
+.old-val{display:inline-block;margin-left:5px;color:var(--warn);font:10px var(--sans);vertical-align:1px}
 
 /* ---------- 价格 / 订阅 ---------- */
 .subs{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
