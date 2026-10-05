@@ -7,7 +7,7 @@
 
    配色约定（重要）：
      厂商色只承担「聚类」—— 一眼看出某家占据了榜首那一片。
-     它**不承担识别**：识别由柱下 logo、名称、图例、悬停提示与下方表格承担。
+     它**不承担识别**：识别由柱下 logo、名称、悬停提示与下方表格承担。
      16 个分类色在数学上无法两两可分（最糟一对正常视觉 ΔE 7.4，
      色盲视角下品红与绿会重合），所以任何一处都不能只靠颜色读懂。
      需要精确区分时用「单色」模式：一个色 + 选中态强调。
@@ -24,6 +24,12 @@ const CH = (function(){
 const NS = 'http://www.w3.org/2000/svg';
 const el = (n, a) => { const e = document.createElementNS(NS, n); for(const k in a){ if(a[k]!=null) e.setAttribute(k, a[k]); } return e; };
 const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')document.querySelectorAll('.ch-tip').forEach(t=>t.hidden=true);
+});
+document.addEventListener('pointerdown',e=>{
+  if(!e.target.closest('.ch-identity,.ch-col,.ch-pt'))document.querySelectorAll('.ch-tip').forEach(t=>t.hidden=true);
+});
 
 /* 读取当前主题令牌，图表文字一律走文字色，绝不穿数据色 */
 function tok(name, fallback){
@@ -34,7 +40,7 @@ function tok(name, fallback){
 /* ---------- 共用：悬停提示 ---------- */
 function mkTip(host){
   let tip = host.querySelector('.ch-tip');
-  if(!tip){ tip = document.createElement('div'); tip.className = 'ch-tip'; tip.hidden = true; host.appendChild(tip); }
+  if(!tip){ tip = document.createElement('div'); tip.className = 'ch-tip'; tip.hidden = true; tip.id=host.id+'Tip'; tip.setAttribute('role','tooltip'); host.appendChild(tip); }
   return {
     show(html, x, y){
       tip.innerHTML = html; tip.hidden = false;
@@ -57,6 +63,12 @@ function bindMark(node, tip, html, host){
   node.addEventListener('focus', on);
   node.addEventListener('mouseleave', tip.hide);
   node.addEventListener('blur', tip.hide);
+  node.addEventListener('click', () => { node.focus({preventScroll:true}); on(); });
+  node.addEventListener('keydown', e => {
+    if(e.key==='Escape')tip.hide();
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();on();}
+  });
+  node.setAttribute('aria-describedby',host.id+'Tip');
 }
 
 /* ==========================================================
@@ -77,7 +89,7 @@ function rankChart(host, opts){
   const surf  = tok('--surface','#171A17');
   const sage  = tok('--sage','#A8B39C');
 
-  const W = Math.max(520, host.clientWidth || 900);
+  const W = Math.max(300, host.clientWidth || 900);
   const PAD = {t:18, r:10, b:118, l:46};
   const PLOT_H = 224;
   const H = PAD.t + PLOT_H + PAD.b;
@@ -93,7 +105,7 @@ function rankChart(host, opts){
   const Y = v => PAD.t + PLOT_H - (v - lo) / (top - lo) * PLOT_H;
 
   const svg = el('svg', {width:'100%', viewBox:`0 0 ${W} ${H}`, class:'ch-svg',
-                         role:'img', 'aria-label': opts.aria || (opts.metric + ' 排行')});
+                         role:'group', 'aria-label': opts.aria || (opts.metric + ' 排行')});
   svg.style.height = H + 'px';
 
   /* --- 网格：一步之差的灰、1px 实线、在数据之下 --- */
@@ -120,7 +132,7 @@ function rankChart(host, opts){
     const rad = Math.min(4, colW/2);
 
     const g = el('g', {class:'ch-col' + (r.dim ? ' dim' : '') + (r.marked ? ' marked' : ''),
-                       tabindex:0, role:'listitem'});
+                       tabindex:0, role:'group', 'aria-label':r.name+'，'+r.orgName+'，'+r.disp});
     /* 顶端 4px 圆角、底端切平：用 path 而不是 rect，避免底部也被圆掉 */
     const d = `M${x},${y+h} L${x},${y+rad} Q${x},${y} ${x+rad},${y} L${x+colW-rad},${y} Q${x+colW},${y} ${x+colW},${y+rad} L${x+colW},${y+h} Z`;
     /* 满色渲染：柱宽只有 24px，属于「细标记」而非大色块；
@@ -128,15 +140,19 @@ function rankChart(host, opts){
     g.appendChild(el('path', {d, fill: r.color}));
     svg.appendChild(g);
 
-    bindMark(g, tip,
-      '<b>'+esc(r.name)+'</b><span class="o">'+esc(r.orgName)+'</span>'+
+    const help='<b>'+esc(r.name)+'</b><span class="o">'+esc(r.orgName)+'</span>'+
       '<span class="v">'+esc(r.disp)+'</span>'+
-      (r.sub ? '<span class="s">'+esc(r.sub)+'</span>' : ''), host);
+      (r.sub ? '<span class="s">'+esc(r.sub)+'</span>' : '');
+    bindMark(g, tip, help, host);
+
+    const identity=el('g',{class:'ch-identity',tabindex:0,role:'group',
+      'data-chart-model':r.id,'aria-label':r.name+'，'+r.orgName});
+    bindMark(identity,tip,help,host);
 
     /* --- 柱下品牌标识：识别的主通道 --- */
     if(r.logo){
       const sz = Math.min(17, Math.max(11, colW));
-      svg.appendChild(el('image', {href:r.logo, x:cx-sz/2, y:PAD.t+PLOT_H+9, width:sz, height:sz,
+      identity.appendChild(el('image', {href:r.logo, x:cx-sz/2, y:PAD.t+PLOT_H+9, width:sz, height:sz,
                                    preserveAspectRatio:'xMidYMid meet', class:'ch-logo'}));
     }
 
@@ -145,7 +161,8 @@ function rankChart(host, opts){
     const t = el('text', {x:cx, y:ty, class:'ch-name'+(r.marked?' on':''),
                           transform:`rotate(-52 ${cx} ${ty})`, 'text-anchor':'end'});
     t.textContent = r.name.length > 20 ? r.name.slice(0,19)+'…' : r.name;
-    svg.appendChild(t);
+    identity.appendChild(t);
+    svg.appendChild(identity);
   });
 
   /* --- 数值标签：只给前三与已选中的，其余交给坐标轴与悬停 --- */

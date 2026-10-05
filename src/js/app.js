@@ -67,7 +67,7 @@ function brandOf(key){ return BRANDS[key] || null; }
 function logoHTML(key, cls){
   const b = brandOf(key);
   const c = 'logo' + (cls?' '+cls:'') + (b && b.wide ? ' wide' : '');
-  if(b && b.logo) return '<span class="'+c+'" aria-hidden="true"><img src="'+b.logo+'" alt="" decoding="async"></span>';
+  if(b && b.logo) return '<span class="'+c+'" title="'+esc(orgName(b.of||key))+'" aria-hidden="true"><img src="'+b.logo+'" alt="" decoding="async"></span>';
   /* 找不到可核实的真实标识时，显示品牌全名文字，不用首字母头像顶替 */
   return '<span class="logo-txt">'+esc(b?b.name:key)+'</span>';
 }
@@ -99,7 +99,7 @@ const state = {
   chgAll: false,
   voiceAll: false,
   rankMetric: store.get('rankMetric','aaii'),
-  labColor:   store.get('labColor', true)      /* 厂商着色，默认开 */
+  labColor:   store.get('labColor', false)     /* 默认单色，保留用户已有的着色偏好 */
 };
 const MAXCMP = 4;
 const DEFAULT_COLS = ['aaii','cai','tb40','cpt','priceOut','ctx','license'];
@@ -273,7 +273,7 @@ function miniTable(list, opts){
   opts = opts || {};
   const cols = opts.cols || ['aaii','cai','cpt'];
   return '<thead><tr><th class="pick"><span class="sr">加入对比</span></th><th>模型</th>'+
-    cols.map(k=>'<th class="n">'+esc(MET[k].short)+'<span class="th-sub">'+esc(COL_UNIT_SHORT[k]||'')+'</span></th>').join('')+
+    cols.map(k=>'<th class="n">'+metricHelp(MET[k],MET[k].short)+'<span class="th-sub">'+esc(COL_UNIT_SHORT[k]||'')+'</span></th>').join('')+
     '</tr></thead><tbody>'+
     list.map(m=>
       '<tr'+(inCmp(m.id)?' class="picked"':'')+' data-row="'+m.id+'"'+labStrip(m)+'>'+
@@ -392,6 +392,7 @@ function cellFor(m, ck){
 }
 
 function renderModelTable(){
+  hideMetricTip();
   const list = filtered();
   const cols = COLS.filter(c=> state.cols.indexOf(c.k)>=0);
   const sortable = k => 'class="'+(k==='license'?'lic':'n')+' sortable'+(state.sort.k===k?' sorted':'')+'" data-sort="'+k+'" role="button" tabindex="0" aria-sort="'+(state.sort.k===k?(state.sort.dir<0?'descending':'ascending'):'none')+'"';
@@ -402,7 +403,7 @@ function renderModelTable(){
       '<th class="pick"><span class="sr">加入对比</span></th>'+
       '<th class="fav"><span class="sr">关注</span></th>'+
       '<th class="sortable'+(state.sort.k==='name'?' sorted':'')+'" data-sort="name" role="button" tabindex="0">模型'+arw('name')+'</th>'+
-      cols.map(c=>'<th '+sortable(c.k)+'>'+esc(colLabel(c))+(MET[c.k]?metricHelp(MET[c.k]):'')+arw(c.k)+
+      cols.map(c=>'<th '+sortable(c.k)+'>'+(MET[c.k]?metricHelp(MET[c.k],colLabel(c),false):esc(colLabel(c)))+arw(c.k)+
         '<span class="th-sub">'+esc(COL_UNIT[c.k]||'')+'</span></th>').join('')+
     '</tr></thead>'+
     '<tbody>'+ (list.length ? list.map(m=>
@@ -431,36 +432,65 @@ function renderModelTable(){
 const RANK_METRICS = ['aaii','cai','deepswe','tb40','arena','speed','cpt'];
 
 /* 每项说明与指标定义共用，鼠标悬停和键盘焦点都可读；不依赖远程资源。 */
-function metricHelp(m){
+function metricHelp(m, label, focusable=true){
   const hint = m.hint || m.basis;
-  return '<span class="metric-help" tabindex="0" role="button" aria-label="了解'+esc(m.label)+'">?'+
-    '<span class="metric-tip" role="tooltip"><b>'+esc(m.label)+'</b>'+esc(hint)+
-    '<small>'+esc(m.basis)+' · '+esc((SOURCES[m.src]||{}).name||'来源待核实')+'</small></span></span>';
+  return '<span class="metric-help"'+(focusable?' tabindex="0"':'')+'>'+esc(label||m.label)+
+    '<span class="metric-tip" aria-hidden="true"><b>'+esc(m.label)+'</b>'+esc(hint)+
+    '<small>'+esc(m.basis)+' · '+esc((SOURCES[m.src]||{}).name||'来源待核实')+'</small>'+
+    (m.warn?'<small class="tip-caution">'+esc(m.warn)+'</small>':'')+'</span></span>';
 }
 const metricPortal=document.createElement('span');
 metricPortal.className='metric-tip portal';metricPortal.hidden=true;metricPortal.id='metricTipPortal';
+metricPortal.setAttribute('role','tooltip');
 document.body.appendChild(metricPortal);
+let activeMetric=null,activeMetricOwner=null;
+function hideMetricTip(){
+  metricPortal.hidden=true;
+  if(activeMetricOwner)activeMetricOwner.removeAttribute('aria-describedby');
+  activeMetric=null;activeMetricOwner=null;
+}
 function placeMetricTip(el){
+  hideMetricTip();
+  activeMetric=el;
+  activeMetricOwner=el.hasAttribute('tabindex')?el:el.closest('button,[tabindex]')||el;
+  activeMetricOwner.setAttribute('aria-describedby',metricPortal.id);
   const r=el.getBoundingClientRect();
   metricPortal.innerHTML=el.querySelector('.metric-tip').innerHTML;
   metricPortal.hidden=false;
   const w=metricPortal.getBoundingClientRect().width,h=metricPortal.getBoundingClientRect().height;
-  metricPortal.style.left=Math.max(w/2+12,Math.min(innerWidth-w/2-12,r.left+r.width/2))+'px';
+  metricPortal.style.left=(Math.max(12,Math.min(innerWidth-w-12,r.left))+w/2)+'px';
   metricPortal.style.top=(r.bottom+h+12>innerHeight ? Math.max(8,r.top-h-9) : r.bottom+9)+'px';
 }
 document.addEventListener('mouseover',e=>{const el=e.target.closest('.metric-help');if(el)placeMetricTip(el)});
-document.addEventListener('mouseout',e=>{const el=e.target.closest('.metric-help');if(el&&!el.contains(e.relatedTarget))metricPortal.hidden=true});
-document.addEventListener('focusin',e=>{const el=e.target.closest('.metric-help');if(el)placeMetricTip(el)});
-document.addEventListener('focusout',e=>{if(e.target.closest('.metric-help'))metricPortal.hidden=true});
-document.addEventListener('click',e=>{if(e.target.closest('.metric-help'))e.stopPropagation()},true);
+document.addEventListener('mouseout',e=>{const el=e.target.closest('.metric-help');if(el&&!el.contains(e.relatedTarget))hideMetricTip()});
+document.addEventListener('focusin',e=>{
+  const el=e.target.closest('.metric-help')||e.target.querySelector('.metric-help');
+  if(el)placeMetricTip(el);
+});
+document.addEventListener('focusout',hideMetricTip);
+document.addEventListener('click',e=>{
+  const el=e.target.closest('.metric-help');
+  if(el&&el.hasAttribute('tabindex')){el.focus();placeMetricTip(el)}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')hideMetricTip()});
+document.addEventListener('scroll',()=>{
+  if(!activeMetric)return;
+  const el=activeMetric,r=el.getBoundingClientRect();
+  const focused=el===document.activeElement||el.parentElement===document.activeElement;
+  if(el.isConnected&&r.bottom>0&&r.top<innerHeight&&(el.matches(':hover')||focused))placeMetricTip(el);
+  else hideMetricTip();
+},true);
+window.addEventListener('resize',hideMetricTip);
+window.addEventListener('hashchange',hideMetricTip);
 
 function renderRank(){
+  hideMetricTip();
   const host = $('#rankChart'); if(!host) return;
   const met  = MET[state.rankMetric] || MET.aaii;
 
   /* 分段控件 */
   $('#rankMetric').innerHTML = RANK_METRICS.map(k =>
-    '<button type="button" data-rank="'+k+'" title="'+esc(MET[k].hint||MET[k].basis)+'" aria-pressed="'+(k===state.rankMetric)+'">'+esc(MET[k].short)+'</button>').join('');
+    '<button type="button" data-rank="'+k+'" aria-pressed="'+(k===state.rankMetric)+'">'+metricHelp(MET[k],MET[k].short,false)+'</button>').join('');
   $('#rankColor').textContent = state.labColor ? '厂商着色' : '单色';
   $('#rankColor').setAttribute('aria-pressed', state.labColor);
 
@@ -488,12 +518,12 @@ function renderRank(){
     marked: inCmp(m.id)
   }));
 
-  $('#rankTitle').innerHTML = esc(met.label) + ' 排行 ' + metricHelp(met);
-  $('#rankBasis').innerHTML = esc(met.basis) +
-    ' · ' + (met.better==='low' ? '越低越好' : '越高越好') +
-    ' · 共 <b class="mono">' + withVal.length + '</b> / ' + MODELS.length + ' 个模型有该项数据' +
-    (cap < withVal.length ? '，屏幕较窄，图中只画前 <b class="mono">'+cap+'</b> 名' : '')+
-    ' · 悬停指标名称旁的 ? 查看测试含义';
+  $('#rankTitle').innerHTML = metricHelp(met) + ' 排行';
+  const source=SOURCES[met.src];
+  $('#rankBasis').innerHTML = (met.better==='low' ? '越低越好' : '越高越好') +
+    ' · <b class="mono">' + withVal.length + '</b> 个有效条目'+
+    (cap < withVal.length ? ' · 展示前 <b class="mono">'+cap+'</b> 名' : '')+
+    (source&&source.url?' · <a href="'+esc(source.url)+'" target="_blank" rel="noopener">'+esc(source.name)+' ↗</a>':'');
 
   CH.rankChart(host, {
     metric: met.label, rows, better: met.better,
@@ -502,20 +532,8 @@ function renderRank(){
     aria: met.label + ' 排行：' + rows.slice(0,3).map(r=>r.name+' '+r.disp).join('，') + '，完整数据见下方表格'
   });
 
-  /* 图例：色块 + 真实 logo + 名称 */
-  const labs = [];
-  rows.forEach(r => { const m = byId[r.id]; if(labs.indexOf(m.org) < 0) labs.push(m.org); });
-  const lg = $('#rankLegend');
-  lg.className = 'chart-legend' + (state.labColor ? '' : ' mono');
-  lg.innerHTML = state.labColor ? labs.map(o =>
-    '<span class="lg"><span class="sw" style="background:'+(LAB_COLORS[o]||MONO_COLOR)+'"></span>'+
-    logoHTML(o)+esc(orgName(o))+'</span>').join('') : '';
-
-  $('#rankFoot').innerHTML =
-    (met.warn ? '<b>注意：</b>'+esc(met.warn)+'　' : '') +
-    '柱下是各家<b>真实品牌标识</b>：颜色只用来一眼看出同一家聚在哪儿，<b>识别请看标识与名称</b>' +
-    '——16 个厂商色无法两两可分（色盲视角下更甚），别只凭颜色下结论。' +
-    '数值只标了前三名与已加入对比的，其余悬停查看，完整数据见下方表格。';
+  $('#rankFoot').textContent = met.warn||'';
+  $('#rankFoot').hidden = !met.warn;
 }
 
 /* ================================================================
@@ -538,6 +556,7 @@ function renderCompareUI(){
 }
 
 function renderCompare(){
+  hideMetricTip();
   const list = state.cmp.map(id=>byId[id]).filter(Boolean);
   const tools = $('#cmpTools'), body = $('#cmpBody');
 
@@ -579,8 +598,8 @@ function rowCells(list, mk){
       bar = '<span class="cbar" title="占本行最优值的 '+Math.round(w)+'%"><i class="'+(isBest?'best':'')+
             '" style="width:'+Math.max(4,Math.min(100,w)).toFixed(1)+'%"></i></span>';
     }
-    return {txt:t, html:'<td><span class="cval'+(isBest?' best':'')+'">'+esc(t)+'<span class="u">'+esc(unitOf(mk))+'</span></span>'+
-      kindTag(val, true) + '<span class="cnote">快照 '+esc(val.asOf||'2026-09-19')+'</span>' + (val.note ? '<span class="cnote">'+esc(val.note)+'</span>' : '') + bar + '</td>'};
+    return {txt:t, html:'<td><span class="cval'+(isBest?' best':'')+'" title="数据快照 '+esc(val.asOf||'2026-09-19')+'">'+esc(t)+'<span class="u">'+esc(unitOf(mk))+'</span></span>'+
+      kindTag(val, true) + (val.asOf!==META.dataSnapshot?'<span class="cnote stale-date">旧快照 '+esc(val.asOf||'2026-09-19')+'</span>':'') + (val.note ? '<span class="cnote">'+esc(val.note)+'</span>' : '') + bar + '</td>'};
   });
   return {cells, best};
 }
@@ -609,11 +628,10 @@ function compareTable(list){
         ? '<span class="warnline">'+esc(bestNote[best.reason])+'</span>'
         : (best.partial ? '<span class="warnline">仅 '+best.have+' / '+list.length+' 个有数据，最优值只在有数据的之间比较</span>' : '');
       const source=SOURCES[met.src];
-      inner += '<tr><th class="rowh" scope="row">'+esc(met.label)+metricHelp(met)+
-        (met.better?'<span class="basis">'+(met.better==='high'?'越高越好':'越低越好')+' · '+esc(met.basis)+'</span>'
-                   :'<span class="basis">'+esc(met.basis)+'</span>')+
+      inner += '<tr><th class="rowh" scope="row">'+metricHelp(met)+
+        (met.better?'<span class="basis">'+(met.better==='high'?'越高越好':'越低越好')+'</span>':'')+
         (source&&source.url?'<a class="metric-source" href="'+esc(source.url)+'" target="_blank" rel="noopener">来源 ↗</a>':'')+
-        (met.warn?'<span class="warnline">'+esc(met.warn)+'</span>':'')+ flag +'</th>'+
+        flag +'</th>'+
         cells.map(c=>c.html).join('')+'</tr>';
     });
     if(inner) rows += '<tr class="grp"><td colspan="'+(list.length+1)+'">'+esc(grp.title)+
@@ -648,7 +666,7 @@ function compareTable(list){
 
   if(!rows) rows = '<tr><td colspan="'+(list.length+1)+'"><div class="empty"><b>这几个模型在所有指标上的展示值都相同</b>关掉「只看差异」可以看到完整对比。</div></td></tr>';
 
-  return '<div class="cmp-wrap"><table class="cmp"><thead><tr>'+
+  return '<p class="compare-note">数据快照 <span class="mono">'+esc(META.dataSnapshot)+'</span> · 旧值另标日期 · 悬停评测名称了解含义与口径</p><div class="cmp-wrap"><table class="cmp"><thead><tr>'+
     '<th class="rowh">指标</th>'+
     list.map(m=>'<th><div class="cmp-h"><div class="t">'+logoHTML(m.brand,'lg')+
       '<div><div class="nm">'+esc(m.name)+'</div><div class="org">'+esc(orgName(m.org))+(m.variant?' · '+esc(m.variant):'')+'</div></div></div>'+

@@ -489,16 +489,21 @@ tr.grp td .gn{text-transform:none;letter-spacing:0;font-family:var(--sans);font-
 }
 .kind.vendor{color:var(--warn);border-color:rgba(199,160,99,.3)}
 .kind.est{color:var(--ink-3);border-style:dashed}
-.rowh .basis{display:block;font-size:10.5px;color:var(--ink-3);line-height:1.45;margin-top:3px}
-.rowh .warnline{display:block;font-size:10.5px;color:var(--warn);line-height:1.45;margin-top:3px}
-.rowh .warnline::before{content:'⚠ '}
-.metric-source{display:inline-block;margin-top:3px;color:var(--sage);font-size:11px;text-decoration:underline;text-underline-offset:2px}
-.metric-help{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;margin-left:5px;border:1px solid var(--line-3);border-radius:50%;font:600 11px var(--sans);color:var(--ink-2);cursor:help;vertical-align:1px}
-.metric-help:hover,.metric-help:focus-visible{color:var(--ink-hi);border-color:var(--sage);outline:2px solid var(--sage-line);outline-offset:2px}
+.rowh .basis{display:inline-block;font-size:11.5px;color:var(--ink-3);line-height:1.5;margin-top:4px;margin-right:10px}
+.rowh .warnline{display:block;font-size:11.5px;color:var(--warn);line-height:1.6;margin-top:5px}
+.metric-source{display:inline-block;margin-top:4px;color:var(--ink-3);font-size:11.5px;text-underline-offset:3px}
+.metric-source:hover{color:var(--sage);text-decoration:underline}
+.rowh > .metric-help{display:block;color:var(--ink-hi);font-weight:500}
+.metric-help{cursor:help;border-radius:2px}
+.metric-help:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--sage-line);text-underline-offset:4px}
+.metric-help:focus-visible{outline:2px solid var(--sage-line);outline-offset:3px}
 .metric-tip{display:none;position:fixed;z-index:100;left:var(--tip-x,50vw);top:var(--tip-y,50vh);transform:translateX(-50%);width:min(340px,calc(100vw - 24px));padding:12px 14px;border:1px solid var(--line-3);border-radius:8px;background:var(--surface-3);box-shadow:0 14px 32px rgba(0,0,0,.4);font:13px/1.55 var(--sans);font-weight:400;color:var(--ink);text-align:left;white-space:normal;pointer-events:none}
 .metric-tip b,.metric-tip small{display:block}.metric-tip b{font-size:13px;margin-bottom:3px}.metric-tip small{font-size:11.5px;color:var(--ink-3);margin-top:6px}
+.metric-tip .tip-caution{color:var(--warn);border-top:1px solid var(--line-2);padding-top:7px}
 .metric-tip.portal{display:block}
 .metric-tip.portal[hidden]{display:none}
+.compare-note{font-size:12px;line-height:1.6;color:var(--ink-3);margin-bottom:10px}
+.stale-date{color:var(--warn)}
 .old-val{display:inline-block;margin-left:5px;color:var(--warn);font:10px var(--sans);vertical-align:1px}
 
 /* ---------- 价格 / 订阅 ---------- */
@@ -535,6 +540,8 @@ table.mx td.c .sub{display:block;font-family:var(--sans);font-size:10.5px;color:
 .chart-head .ct{flex:1;min-width:220px}
 .chart-head h2{font-size:15.5px;font-weight:650;letter-spacing:.005em;line-height:1.35}
 .chart-head .cs{font-size:12px;color:var(--ink-3);line-height:1.6;margin-top:4px;max-width:78ch}
+.chart-head .cs a{color:var(--ink-2);text-underline-offset:3px}
+.chart-head .cs a:hover{color:var(--sage)}
 .chart-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .chart-body{position:relative;padding:10px 14px 4px}
 .chart-foot{font-size:12px;line-height:1.7;color:var(--ink-3);padding:0 18px 15px}
@@ -564,6 +571,10 @@ table.mx td.c .sub{display:block;font-family:var(--sans);font-size:10.5px;color:
 .ch-plabel{font-family:var(--sans);font-size:11px;fill:var(--ink-3)}
 .ch-plabel.on{fill:var(--ink);font-weight:600}
 .ch-logo{opacity:.92}
+.ch-identity{cursor:help}
+.ch-identity:hover .ch-name,.ch-identity:focus-visible .ch-name{fill:var(--ink)}
+.ch-identity:hover .ch-logo,.ch-identity:focus-visible .ch-logo{opacity:1}
+.ch-identity:focus-visible{outline:1px solid var(--sage);outline-offset:3px}
 .ch-axis{font-family:var(--sans);font-size:10.5px;fill:var(--ink-3);letter-spacing:.02em}
 
 .ch-col{cursor:default;transition:opacity var(--t)}
@@ -587,9 +598,9 @@ table.mx td.c .sub{display:block;font-family:var(--sans);font-size:10.5px;color:
   border:1px solid var(--line-2);box-shadow:0 8px 24px rgba(0,0,0,.45);
 }
 .ch-tip b{display:block;font-size:13px;color:var(--ink);font-weight:600;line-height:1.35}
-.ch-tip .o{display:block;font-size:11px;color:var(--ink-3);margin-top:1px}
+.ch-tip .o{display:block;font-size:12px;color:var(--ink-2);margin-top:3px}
 .ch-tip .v{display:block;font-family:var(--mono);font-size:13px;color:var(--ink-hi);margin-top:5px;font-variant-numeric:tabular-nums}
-.ch-tip .s{display:block;font-size:11px;color:var(--sage-hi);margin-top:3px}
+.ch-tip .s{display:block;font-size:11.5px;line-height:1.5;color:var(--ink-3);margin-top:4px}
 
 /* 图例：色块 + 真实 logo + 名称 —— 识别永远不只靠颜色 */
 .chart-legend{
@@ -718,6 +729,12 @@ table.mx td.c .sub{display:block;font-family:var(--sans);font-size:10.5px;color:
 .snapbar .msg{font-size:12.5px;color:var(--ink-2);flex:1;min-width:200px}
 .snapbar .msg b{color:var(--brass);font-weight:600}
 .snapbar .act{margin-left:auto}
+.snap-record{position:relative;font-size:12px;color:var(--ink-3)}
+.snap-record > summary{cursor:pointer;padding:4px 0}
+.snap-record > summary:hover{color:var(--ink)}
+.snap-record .record-body{position:absolute;right:0;top:100%;z-index:10;width:280px;padding:14px;background:var(--surface-2);border:1px solid var(--line-2);border-radius:var(--r);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.snap-record .record-body .it{justify-content:space-between;margin-bottom:6px}
+.snap-record .record-body p{font-size:12px;line-height:1.7;margin-top:9px;border-top:1px solid var(--line);padding-top:9px}
 
 /* ---------- 响应式 ---------- */
 @media (max-width:1180px){
@@ -729,6 +746,9 @@ table.mx td.c .sub{display:block;font-family:var(--sans);font-size:10.5px;color:
   table.cmp th.rowh,table.cmp td.rowh{width:140px;min-width:140px;font-size:12.5px}
 }
 @media (max-width:720px){
+  .snapbar{gap:8px 14px;padding:12px 14px}
+  .snapbar .msg{min-width:100%}
+  .snap-record .record-body{right:auto;left:0;width:min(280px,calc(100vw - 60px))}
   .topbar .snap{display:none}
   .search{max-width:none}
   .tbl-wrap{border-radius:var(--r)}
@@ -829,12 +849,12 @@ table.mx td.c .sub{display:block;font-family:var(--sans);font-size:10.5px;color:
         </div>
 
         <div class="snapbar">
-          <div class="it">数据抓取 <b id="sbSnap"></b></div>
-          <div class="sep" aria-hidden="true"></div>
-          <div class="it">榜单读取 <b id="sbBasis"></b></div>
-          <div class="sep" aria-hidden="true"></div>
-          <div class="it">页面生成 <b id="sbBuilt"></b></div>
-          <div class="msg">最近增量核验 <b>2026-10-02</b>；部分旧单项仍为 9/19 快照。无自动更新管线，数值旁可查看日期与来源。</div>
+          <div class="it">数据快照 <b id="sbSnap"></b></div>
+          <div class="msg">人工核验 · 部分细项为旧快照</div>
+          <details class="snap-record">
+            <summary>时间记录</summary>
+            <div class="record-body"><div class="it">榜单读取 <b id="sbBasis"></b></div><div class="it">页面生成 <b id="sbBuilt"></b></div><p>无自动更新管线。具体数值的日期和来源见表格及详情。</p></div>
+          </details>
           <div class="act"><button class="btn sm" id="btnUpdate" type="button">复制更新指令</button></div>
         </div>
 
@@ -882,7 +902,7 @@ table.mx td.c .sub{display:block;font-family:var(--sans);font-size:10.5px;color:
       <section class="view" id="view-models" aria-labelledby="h-models">
         <div class="vhead">
           <h1 id="h-models">模型库与对比</h1>
-          <p>搜索、筛选、排序找到候选，勾选 2–4 个进入深度对比。筛选只影响下面这张表，加入对比是另一件事。</p>
+          <p>按能力、成本和使用条件筛选候选，勾选 2–4 个模型并排比较。</p>
         </div>
 
         <figure class="chart-card" id="rankCard">
@@ -897,7 +917,6 @@ table.mx td.c .sub{display:block;font-family:var(--sans);font-size:10.5px;color:
             </div>
           </figcaption>
           <div class="chart-body" id="rankChart"></div>
-          <div class="chart-legend" id="rankLegend"></div>
           <p class="chart-foot" id="rankFoot"></p>
         </figure>
 
@@ -1078,7 +1097,7 @@ table.mx td.c .sub{display:block;font-family:var(--sans);font-size:10.5px;color:
    ========================================================== */
 
 const META = {
-  pageBuilt:   '2026-10-02',
+  pageBuilt:   '2026-10-05',
   dataSnapshot:'2026-10-02',
   dataBasis:   '2026-10-02',
   arenaAsOf:   '2026-09-30',
@@ -2548,7 +2567,7 @@ CONFLICTS.push(
 
    配色约定（重要）：
      厂商色只承担「聚类」—— 一眼看出某家占据了榜首那一片。
-     它**不承担识别**：识别由柱下 logo、名称、图例、悬停提示与下方表格承担。
+     它**不承担识别**：识别由柱下 logo、名称、悬停提示与下方表格承担。
      16 个分类色在数学上无法两两可分（最糟一对正常视觉 ΔE 7.4，
      色盲视角下品红与绿会重合），所以任何一处都不能只靠颜色读懂。
      需要精确区分时用「单色」模式：一个色 + 选中态强调。
@@ -2565,6 +2584,12 @@ const CH = (function(){
 const NS = 'http://www.w3.org/2000/svg';
 const el = (n, a) => { const e = document.createElementNS(NS, n); for(const k in a){ if(a[k]!=null) e.setAttribute(k, a[k]); } return e; };
 const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')document.querySelectorAll('.ch-tip').forEach(t=>t.hidden=true);
+});
+document.addEventListener('pointerdown',e=>{
+  if(!e.target.closest('.ch-identity,.ch-col,.ch-pt'))document.querySelectorAll('.ch-tip').forEach(t=>t.hidden=true);
+});
 
 /* 读取当前主题令牌，图表文字一律走文字色，绝不穿数据色 */
 function tok(name, fallback){
@@ -2575,7 +2600,7 @@ function tok(name, fallback){
 /* ---------- 共用：悬停提示 ---------- */
 function mkTip(host){
   let tip = host.querySelector('.ch-tip');
-  if(!tip){ tip = document.createElement('div'); tip.className = 'ch-tip'; tip.hidden = true; host.appendChild(tip); }
+  if(!tip){ tip = document.createElement('div'); tip.className = 'ch-tip'; tip.hidden = true; tip.id=host.id+'Tip'; tip.setAttribute('role','tooltip'); host.appendChild(tip); }
   return {
     show(html, x, y){
       tip.innerHTML = html; tip.hidden = false;
@@ -2598,6 +2623,12 @@ function bindMark(node, tip, html, host){
   node.addEventListener('focus', on);
   node.addEventListener('mouseleave', tip.hide);
   node.addEventListener('blur', tip.hide);
+  node.addEventListener('click', () => { node.focus({preventScroll:true}); on(); });
+  node.addEventListener('keydown', e => {
+    if(e.key==='Escape')tip.hide();
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();on();}
+  });
+  node.setAttribute('aria-describedby',host.id+'Tip');
 }
 
 /* ==========================================================
@@ -2618,7 +2649,7 @@ function rankChart(host, opts){
   const surf  = tok('--surface','#171A17');
   const sage  = tok('--sage','#A8B39C');
 
-  const W = Math.max(520, host.clientWidth || 900);
+  const W = Math.max(300, host.clientWidth || 900);
   const PAD = {t:18, r:10, b:118, l:46};
   const PLOT_H = 224;
   const H = PAD.t + PLOT_H + PAD.b;
@@ -2634,7 +2665,7 @@ function rankChart(host, opts){
   const Y = v => PAD.t + PLOT_H - (v - lo) / (top - lo) * PLOT_H;
 
   const svg = el('svg', {width:'100%', viewBox:`0 0 ${W} ${H}`, class:'ch-svg',
-                         role:'img', 'aria-label': opts.aria || (opts.metric + ' 排行')});
+                         role:'group', 'aria-label': opts.aria || (opts.metric + ' 排行')});
   svg.style.height = H + 'px';
 
   /* --- 网格：一步之差的灰、1px 实线、在数据之下 --- */
@@ -2661,7 +2692,7 @@ function rankChart(host, opts){
     const rad = Math.min(4, colW/2);
 
     const g = el('g', {class:'ch-col' + (r.dim ? ' dim' : '') + (r.marked ? ' marked' : ''),
-                       tabindex:0, role:'listitem'});
+                       tabindex:0, role:'group', 'aria-label':r.name+'，'+r.orgName+'，'+r.disp});
     /* 顶端 4px 圆角、底端切平：用 path 而不是 rect，避免底部也被圆掉 */
     const d = `M${x},${y+h} L${x},${y+rad} Q${x},${y} ${x+rad},${y} L${x+colW-rad},${y} Q${x+colW},${y} ${x+colW},${y+rad} L${x+colW},${y+h} Z`;
     /* 满色渲染：柱宽只有 24px，属于「细标记」而非大色块；
@@ -2669,15 +2700,19 @@ function rankChart(host, opts){
     g.appendChild(el('path', {d, fill: r.color}));
     svg.appendChild(g);
 
-    bindMark(g, tip,
-      '<b>'+esc(r.name)+'</b><span class="o">'+esc(r.orgName)+'</span>'+
+    const help='<b>'+esc(r.name)+'</b><span class="o">'+esc(r.orgName)+'</span>'+
       '<span class="v">'+esc(r.disp)+'</span>'+
-      (r.sub ? '<span class="s">'+esc(r.sub)+'</span>' : ''), host);
+      (r.sub ? '<span class="s">'+esc(r.sub)+'</span>' : '');
+    bindMark(g, tip, help, host);
+
+    const identity=el('g',{class:'ch-identity',tabindex:0,role:'group',
+      'data-chart-model':r.id,'aria-label':r.name+'，'+r.orgName});
+    bindMark(identity,tip,help,host);
 
     /* --- 柱下品牌标识：识别的主通道 --- */
     if(r.logo){
       const sz = Math.min(17, Math.max(11, colW));
-      svg.appendChild(el('image', {href:r.logo, x:cx-sz/2, y:PAD.t+PLOT_H+9, width:sz, height:sz,
+      identity.appendChild(el('image', {href:r.logo, x:cx-sz/2, y:PAD.t+PLOT_H+9, width:sz, height:sz,
                                    preserveAspectRatio:'xMidYMid meet', class:'ch-logo'}));
     }
 
@@ -2686,7 +2721,8 @@ function rankChart(host, opts){
     const t = el('text', {x:cx, y:ty, class:'ch-name'+(r.marked?' on':''),
                           transform:`rotate(-52 ${cx} ${ty})`, 'text-anchor':'end'});
     t.textContent = r.name.length > 20 ? r.name.slice(0,19)+'…' : r.name;
-    svg.appendChild(t);
+    identity.appendChild(t);
+    svg.appendChild(identity);
   });
 
   /* --- 数值标签：只给前三与已选中的，其余交给坐标轴与悬停 --- */
@@ -2891,7 +2927,7 @@ function brandOf(key){ return BRANDS[key] || null; }
 function logoHTML(key, cls){
   const b = brandOf(key);
   const c = 'logo' + (cls?' '+cls:'') + (b && b.wide ? ' wide' : '');
-  if(b && b.logo) return '<span class="'+c+'" aria-hidden="true"><img src="'+b.logo+'" alt="" decoding="async"></span>';
+  if(b && b.logo) return '<span class="'+c+'" title="'+esc(orgName(b.of||key))+'" aria-hidden="true"><img src="'+b.logo+'" alt="" decoding="async"></span>';
   /* 找不到可核实的真实标识时，显示品牌全名文字，不用首字母头像顶替 */
   return '<span class="logo-txt">'+esc(b?b.name:key)+'</span>';
 }
@@ -2923,7 +2959,7 @@ const state = {
   chgAll: false,
   voiceAll: false,
   rankMetric: store.get('rankMetric','aaii'),
-  labColor:   store.get('labColor', true)      /* 厂商着色，默认开 */
+  labColor:   store.get('labColor', false)     /* 默认单色，保留用户已有的着色偏好 */
 };
 const MAXCMP = 4;
 const DEFAULT_COLS = ['aaii','cai','tb40','cpt','priceOut','ctx','license'];
@@ -3097,7 +3133,7 @@ function miniTable(list, opts){
   opts = opts || {};
   const cols = opts.cols || ['aaii','cai','cpt'];
   return '<thead><tr><th class="pick"><span class="sr">加入对比</span></th><th>模型</th>'+
-    cols.map(k=>'<th class="n">'+esc(MET[k].short)+'<span class="th-sub">'+esc(COL_UNIT_SHORT[k]||'')+'</span></th>').join('')+
+    cols.map(k=>'<th class="n">'+metricHelp(MET[k],MET[k].short)+'<span class="th-sub">'+esc(COL_UNIT_SHORT[k]||'')+'</span></th>').join('')+
     '</tr></thead><tbody>'+
     list.map(m=>
       '<tr'+(inCmp(m.id)?' class="picked"':'')+' data-row="'+m.id+'"'+labStrip(m)+'>'+
@@ -3216,6 +3252,7 @@ function cellFor(m, ck){
 }
 
 function renderModelTable(){
+  hideMetricTip();
   const list = filtered();
   const cols = COLS.filter(c=> state.cols.indexOf(c.k)>=0);
   const sortable = k => 'class="'+(k==='license'?'lic':'n')+' sortable'+(state.sort.k===k?' sorted':'')+'" data-sort="'+k+'" role="button" tabindex="0" aria-sort="'+(state.sort.k===k?(state.sort.dir<0?'descending':'ascending'):'none')+'"';
@@ -3226,7 +3263,7 @@ function renderModelTable(){
       '<th class="pick"><span class="sr">加入对比</span></th>'+
       '<th class="fav"><span class="sr">关注</span></th>'+
       '<th class="sortable'+(state.sort.k==='name'?' sorted':'')+'" data-sort="name" role="button" tabindex="0">模型'+arw('name')+'</th>'+
-      cols.map(c=>'<th '+sortable(c.k)+'>'+esc(colLabel(c))+(MET[c.k]?metricHelp(MET[c.k]):'')+arw(c.k)+
+      cols.map(c=>'<th '+sortable(c.k)+'>'+(MET[c.k]?metricHelp(MET[c.k],colLabel(c),false):esc(colLabel(c)))+arw(c.k)+
         '<span class="th-sub">'+esc(COL_UNIT[c.k]||'')+'</span></th>').join('')+
     '</tr></thead>'+
     '<tbody>'+ (list.length ? list.map(m=>
@@ -3255,36 +3292,65 @@ function renderModelTable(){
 const RANK_METRICS = ['aaii','cai','deepswe','tb40','arena','speed','cpt'];
 
 /* 每项说明与指标定义共用，鼠标悬停和键盘焦点都可读；不依赖远程资源。 */
-function metricHelp(m){
+function metricHelp(m, label, focusable=true){
   const hint = m.hint || m.basis;
-  return '<span class="metric-help" tabindex="0" role="button" aria-label="了解'+esc(m.label)+'">?'+
-    '<span class="metric-tip" role="tooltip"><b>'+esc(m.label)+'</b>'+esc(hint)+
-    '<small>'+esc(m.basis)+' · '+esc((SOURCES[m.src]||{}).name||'来源待核实')+'</small></span></span>';
+  return '<span class="metric-help"'+(focusable?' tabindex="0"':'')+'>'+esc(label||m.label)+
+    '<span class="metric-tip" aria-hidden="true"><b>'+esc(m.label)+'</b>'+esc(hint)+
+    '<small>'+esc(m.basis)+' · '+esc((SOURCES[m.src]||{}).name||'来源待核实')+'</small>'+
+    (m.warn?'<small class="tip-caution">'+esc(m.warn)+'</small>':'')+'</span></span>';
 }
 const metricPortal=document.createElement('span');
 metricPortal.className='metric-tip portal';metricPortal.hidden=true;metricPortal.id='metricTipPortal';
+metricPortal.setAttribute('role','tooltip');
 document.body.appendChild(metricPortal);
+let activeMetric=null,activeMetricOwner=null;
+function hideMetricTip(){
+  metricPortal.hidden=true;
+  if(activeMetricOwner)activeMetricOwner.removeAttribute('aria-describedby');
+  activeMetric=null;activeMetricOwner=null;
+}
 function placeMetricTip(el){
+  hideMetricTip();
+  activeMetric=el;
+  activeMetricOwner=el.hasAttribute('tabindex')?el:el.closest('button,[tabindex]')||el;
+  activeMetricOwner.setAttribute('aria-describedby',metricPortal.id);
   const r=el.getBoundingClientRect();
   metricPortal.innerHTML=el.querySelector('.metric-tip').innerHTML;
   metricPortal.hidden=false;
   const w=metricPortal.getBoundingClientRect().width,h=metricPortal.getBoundingClientRect().height;
-  metricPortal.style.left=Math.max(w/2+12,Math.min(innerWidth-w/2-12,r.left+r.width/2))+'px';
+  metricPortal.style.left=(Math.max(12,Math.min(innerWidth-w-12,r.left))+w/2)+'px';
   metricPortal.style.top=(r.bottom+h+12>innerHeight ? Math.max(8,r.top-h-9) : r.bottom+9)+'px';
 }
 document.addEventListener('mouseover',e=>{const el=e.target.closest('.metric-help');if(el)placeMetricTip(el)});
-document.addEventListener('mouseout',e=>{const el=e.target.closest('.metric-help');if(el&&!el.contains(e.relatedTarget))metricPortal.hidden=true});
-document.addEventListener('focusin',e=>{const el=e.target.closest('.metric-help');if(el)placeMetricTip(el)});
-document.addEventListener('focusout',e=>{if(e.target.closest('.metric-help'))metricPortal.hidden=true});
-document.addEventListener('click',e=>{if(e.target.closest('.metric-help'))e.stopPropagation()},true);
+document.addEventListener('mouseout',e=>{const el=e.target.closest('.metric-help');if(el&&!el.contains(e.relatedTarget))hideMetricTip()});
+document.addEventListener('focusin',e=>{
+  const el=e.target.closest('.metric-help')||e.target.querySelector('.metric-help');
+  if(el)placeMetricTip(el);
+});
+document.addEventListener('focusout',hideMetricTip);
+document.addEventListener('click',e=>{
+  const el=e.target.closest('.metric-help');
+  if(el&&el.hasAttribute('tabindex')){el.focus();placeMetricTip(el)}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')hideMetricTip()});
+document.addEventListener('scroll',()=>{
+  if(!activeMetric)return;
+  const el=activeMetric,r=el.getBoundingClientRect();
+  const focused=el===document.activeElement||el.parentElement===document.activeElement;
+  if(el.isConnected&&r.bottom>0&&r.top<innerHeight&&(el.matches(':hover')||focused))placeMetricTip(el);
+  else hideMetricTip();
+},true);
+window.addEventListener('resize',hideMetricTip);
+window.addEventListener('hashchange',hideMetricTip);
 
 function renderRank(){
+  hideMetricTip();
   const host = $('#rankChart'); if(!host) return;
   const met  = MET[state.rankMetric] || MET.aaii;
 
   /* 分段控件 */
   $('#rankMetric').innerHTML = RANK_METRICS.map(k =>
-    '<button type="button" data-rank="'+k+'" title="'+esc(MET[k].hint||MET[k].basis)+'" aria-pressed="'+(k===state.rankMetric)+'">'+esc(MET[k].short)+'</button>').join('');
+    '<button type="button" data-rank="'+k+'" aria-pressed="'+(k===state.rankMetric)+'">'+metricHelp(MET[k],MET[k].short,false)+'</button>').join('');
   $('#rankColor').textContent = state.labColor ? '厂商着色' : '单色';
   $('#rankColor').setAttribute('aria-pressed', state.labColor);
 
@@ -3312,12 +3378,12 @@ function renderRank(){
     marked: inCmp(m.id)
   }));
 
-  $('#rankTitle').innerHTML = esc(met.label) + ' 排行 ' + metricHelp(met);
-  $('#rankBasis').innerHTML = esc(met.basis) +
-    ' · ' + (met.better==='low' ? '越低越好' : '越高越好') +
-    ' · 共 <b class="mono">' + withVal.length + '</b> / ' + MODELS.length + ' 个模型有该项数据' +
-    (cap < withVal.length ? '，屏幕较窄，图中只画前 <b class="mono">'+cap+'</b> 名' : '')+
-    ' · 悬停指标名称旁的 ? 查看测试含义';
+  $('#rankTitle').innerHTML = metricHelp(met) + ' 排行';
+  const source=SOURCES[met.src];
+  $('#rankBasis').innerHTML = (met.better==='low' ? '越低越好' : '越高越好') +
+    ' · <b class="mono">' + withVal.length + '</b> 个有效条目'+
+    (cap < withVal.length ? ' · 展示前 <b class="mono">'+cap+'</b> 名' : '')+
+    (source&&source.url?' · <a href="'+esc(source.url)+'" target="_blank" rel="noopener">'+esc(source.name)+' ↗</a>':'');
 
   CH.rankChart(host, {
     metric: met.label, rows, better: met.better,
@@ -3326,20 +3392,8 @@ function renderRank(){
     aria: met.label + ' 排行：' + rows.slice(0,3).map(r=>r.name+' '+r.disp).join('，') + '，完整数据见下方表格'
   });
 
-  /* 图例：色块 + 真实 logo + 名称 */
-  const labs = [];
-  rows.forEach(r => { const m = byId[r.id]; if(labs.indexOf(m.org) < 0) labs.push(m.org); });
-  const lg = $('#rankLegend');
-  lg.className = 'chart-legend' + (state.labColor ? '' : ' mono');
-  lg.innerHTML = state.labColor ? labs.map(o =>
-    '<span class="lg"><span class="sw" style="background:'+(LAB_COLORS[o]||MONO_COLOR)+'"></span>'+
-    logoHTML(o)+esc(orgName(o))+'</span>').join('') : '';
-
-  $('#rankFoot').innerHTML =
-    (met.warn ? '<b>注意：</b>'+esc(met.warn)+'　' : '') +
-    '柱下是各家<b>真实品牌标识</b>：颜色只用来一眼看出同一家聚在哪儿，<b>识别请看标识与名称</b>' +
-    '——16 个厂商色无法两两可分（色盲视角下更甚），别只凭颜色下结论。' +
-    '数值只标了前三名与已加入对比的，其余悬停查看，完整数据见下方表格。';
+  $('#rankFoot').textContent = met.warn||'';
+  $('#rankFoot').hidden = !met.warn;
 }
 
 /* ================================================================
@@ -3362,6 +3416,7 @@ function renderCompareUI(){
 }
 
 function renderCompare(){
+  hideMetricTip();
   const list = state.cmp.map(id=>byId[id]).filter(Boolean);
   const tools = $('#cmpTools'), body = $('#cmpBody');
 
@@ -3403,8 +3458,8 @@ function rowCells(list, mk){
       bar = '<span class="cbar" title="占本行最优值的 '+Math.round(w)+'%"><i class="'+(isBest?'best':'')+
             '" style="width:'+Math.max(4,Math.min(100,w)).toFixed(1)+'%"></i></span>';
     }
-    return {txt:t, html:'<td><span class="cval'+(isBest?' best':'')+'">'+esc(t)+'<span class="u">'+esc(unitOf(mk))+'</span></span>'+
-      kindTag(val, true) + '<span class="cnote">快照 '+esc(val.asOf||'2026-09-19')+'</span>' + (val.note ? '<span class="cnote">'+esc(val.note)+'</span>' : '') + bar + '</td>'};
+    return {txt:t, html:'<td><span class="cval'+(isBest?' best':'')+'" title="数据快照 '+esc(val.asOf||'2026-09-19')+'">'+esc(t)+'<span class="u">'+esc(unitOf(mk))+'</span></span>'+
+      kindTag(val, true) + (val.asOf!==META.dataSnapshot?'<span class="cnote stale-date">旧快照 '+esc(val.asOf||'2026-09-19')+'</span>':'') + (val.note ? '<span class="cnote">'+esc(val.note)+'</span>' : '') + bar + '</td>'};
   });
   return {cells, best};
 }
@@ -3433,11 +3488,10 @@ function compareTable(list){
         ? '<span class="warnline">'+esc(bestNote[best.reason])+'</span>'
         : (best.partial ? '<span class="warnline">仅 '+best.have+' / '+list.length+' 个有数据，最优值只在有数据的之间比较</span>' : '');
       const source=SOURCES[met.src];
-      inner += '<tr><th class="rowh" scope="row">'+esc(met.label)+metricHelp(met)+
-        (met.better?'<span class="basis">'+(met.better==='high'?'越高越好':'越低越好')+' · '+esc(met.basis)+'</span>'
-                   :'<span class="basis">'+esc(met.basis)+'</span>')+
+      inner += '<tr><th class="rowh" scope="row">'+metricHelp(met)+
+        (met.better?'<span class="basis">'+(met.better==='high'?'越高越好':'越低越好')+'</span>':'')+
         (source&&source.url?'<a class="metric-source" href="'+esc(source.url)+'" target="_blank" rel="noopener">来源 ↗</a>':'')+
-        (met.warn?'<span class="warnline">'+esc(met.warn)+'</span>':'')+ flag +'</th>'+
+        flag +'</th>'+
         cells.map(c=>c.html).join('')+'</tr>';
     });
     if(inner) rows += '<tr class="grp"><td colspan="'+(list.length+1)+'">'+esc(grp.title)+
@@ -3472,7 +3526,7 @@ function compareTable(list){
 
   if(!rows) rows = '<tr><td colspan="'+(list.length+1)+'"><div class="empty"><b>这几个模型在所有指标上的展示值都相同</b>关掉「只看差异」可以看到完整对比。</div></td></tr>';
 
-  return '<div class="cmp-wrap"><table class="cmp"><thead><tr>'+
+  return '<p class="compare-note">数据快照 <span class="mono">'+esc(META.dataSnapshot)+'</span> · 旧值另标日期 · 悬停评测名称了解含义与口径</p><div class="cmp-wrap"><table class="cmp"><thead><tr>'+
     '<th class="rowh">指标</th>'+
     list.map(m=>'<th><div class="cmp-h"><div class="t">'+logoHTML(m.brand,'lg')+
       '<div><div class="nm">'+esc(m.name)+'</div><div class="org">'+esc(orgName(m.org))+(m.variant?' · '+esc(m.variant):'')+'</div></div></div>'+

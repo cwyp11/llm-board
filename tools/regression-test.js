@@ -49,7 +49,7 @@ const EXE = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Applicati
   // ---------- 结构 ----------
   await page.click('a[href="#models"]'); await page.waitForTimeout(600);
   out.navItems   = await count('#navMain a');
-  // 排行图：柱数 / 柱下品牌标识数 / 图例项数必须齐全
+  // 排行图：柱数与柱下真实品牌标识齐全，公司说明在名称/Logo 悬停层。
   out.rankCols   = await count('#rankChart .ch-col');
   out.rankLogos  = await count('#rankChart .ch-logo');
   out.rankLegend = await count('#rankLegend .lg');
@@ -63,9 +63,9 @@ const EXE = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Applicati
   out.rankColsAfterMetricSwitch = await count('#rankChart .ch-col');
   out.rankTitleAfterSwitch = await text('#rankTitle');
   await page.click('[data-rank="aaii"]'); await page.waitForTimeout(400);
-  // 单色模式：图例应收起
+  // 单色模式：公司仍可从模型身份提示读取，无重复图例。
   await page.click('#rankColor'); await page.waitForTimeout(400);
-  out.legendHiddenInMono = await page.$eval('#rankLegend', e => e.classList.contains('mono'));
+  out.legendHiddenInMono = await count('#rankLegend') === 0;
   await page.click('#rankColor'); await page.waitForTimeout(400);
 
   // ---------- Logo ----------
