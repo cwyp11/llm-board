@@ -50,7 +50,21 @@ table.tbl td.n .u{color:var(--ink-3);font-size:11px;margin-left:1px}
 table.tbl td.na,table.tbl td .na{color:var(--ink-3)}
 table.tbl td.lic,table.tbl th.lic{text-align:left;white-space:nowrap;width:1%}
 /* 只给模型库那张表定宽，避免波及其它表的第三列 */
-#modelTable td:nth-child(3){width:30%}
+#modelTable td:nth-child(3),#modelTable th:nth-child(3){width:270px;min-width:270px}
+#modelTable .mcell .txt{width:210px;max-width:210px}
+#modelTable .mcell .nm,#modelTable .mcell .sub{white-space:normal}
+#modelTable th:nth-child(-n+3),#modelTable td:nth-child(-n+3){position:sticky;z-index:3;background:var(--surface)}
+#modelTable th:nth-child(-n+3){z-index:4;background:var(--surface-2)}
+#modelTable td:first-child,#modelTable th:first-child{left:0;width:34px;min-width:34px;max-width:34px;padding-left:12px;padding-right:0}
+#modelTable td:nth-child(2),#modelTable th:nth-child(2){left:34px;width:30px;min-width:30px;max-width:30px;padding-left:2px;padding-right:0}
+#modelTable td:nth-child(3),#modelTable th:nth-child(3){left:64px;border-right:1px solid var(--line-2)}
+#modelTable tr:hover td:nth-child(-n+3){background:var(--surface-2)}
+#modelTable tr.picked td:nth-child(-n+3){background:var(--surface-3)}
+.cell-context{display:block;max-width:160px;white-space:normal;margin-top:3px;font:11px/1.45 var(--sans);color:var(--ink-3)}
+.table-views{display:flex;align-items:center;gap:12px;margin-top:16px}
+.table-views .seg button{font-family:var(--sans);padding:7px 13px;font-size:12.5px}
+.custom-view{font-size:12px;color:var(--ink-3)}
+.table-view-note{font-size:12px;line-height:1.6;color:var(--ink-3);margin:8px 0 12px}
 table.tbl .best{color:var(--good)}
 table.tbl th.sortable{cursor:pointer;user-select:none}
 table.tbl th.sortable:hover{color:var(--ink-2)}
@@ -483,6 +497,10 @@ table.mx td.c .sub{display:block;font-family:var(--sans);font-size:10.5px;color:
   table.cmp th.rowh,table.cmp td.rowh{width:140px;min-width:140px;font-size:12.5px}
 }
 @media (max-width:720px){
+  #modelTable td:nth-child(3),#modelTable th:nth-child(3){width:200px;min-width:200px}
+  #modelTable .mcell .txt{width:140px;max-width:140px}
+  .table-views{gap:8px;flex-wrap:wrap}
+  .table-views .seg button{padding:7px 8px;font-size:12px}
   .snapbar{gap:8px 14px;padding:12px 14px}
   .snapbar .msg{min-width:100%}
   .snap-record .record-body{right:auto;left:0;width:min(280px,calc(100vw - 60px))}

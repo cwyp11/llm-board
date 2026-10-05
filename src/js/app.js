@@ -99,22 +99,36 @@ const state = {
   chgAll: false,
   voiceAll: false,
   rankMetric: store.get('rankMetric','aaii'),
-  labColor:   store.get('labColor', false)     /* 默认单色，保留用户已有的着色偏好 */
+  labColor:   store.get('colorPreferenceVersion',0)===1 ? store.get('labColor',true) : true
 };
+/* Restore company colors once; subsequent explicit choices still persist. */
+store.set('labColor',state.labColor);
+store.set('colorPreferenceVersion',1);
 const MAXCMP = 4;
-const DEFAULT_COLS = ['aaii','cai','tb40','cpt','priceOut','ctx','license'];
+const SUMMARY_COLS = ['aaii','cai','tb40','cpt','priceOut','ctx','license'];
+const DEFAULT_COLS = ['aaii','cai','deepswe','sweatlas','tb40','gpqa','scicode','lcr','nonhall','arena'];
+const TABLE_VIEWS = [
+  {id:'capability',label:'能力评测',cols:DEFAULT_COLS,
+    note:'综合、编码、科学、长文档及问答偏好 · Agent 分数属于框架 × 模型组合 · 向右滚动查看更多'},
+  {id:'summary',label:'常用概览',cols:SUMMARY_COLS,
+    note:'能力、单任务成本、API 输出价及上下文 · 勾选 2–4 个模型可展开完整对比'},
+  {id:'usage',label:'价格与规格',cols:['cpt','priceIn','priceOut','priceCache','speed','ctx','maxOut','paramsTotal','paramsAct','license'],
+    note:'API 价格为美元 / 每百万 token · 参数量与上下文分列 · 向右滚动查看更多'},
+  {id:'history',label:'历史评测',cols:['tb21','swe','gdpval'],
+    note:'历史快照：TB 2.1、SWE-bench Verified、GDPval-AA v2 · 不与其他版本分数混排'}
+];
 
 const COLS = [
-  {k:'aaii'},{k:'cai'},{k:'tb40'},{k:'tb21'},{k:'swe'},{k:'gdpval'},{k:'gpqa'},{k:'scicode'},
+  {k:'aaii'},{k:'cai'},{k:'deepswe'},{k:'sweatlas'},{k:'tb40'},{k:'tb21'},{k:'swe'},{k:'gdpval'},{k:'gpqa'},{k:'scicode'},
   {k:'lcr'},{k:'nonhall'},{k:'arena'},
   {k:'cpt'},{k:'priceIn'},{k:'priceOut'},{k:'priceCache'},{k:'speed'},
-  {k:'ctx'},{k:'maxOut'},{k:'paramsTotal'},
+  {k:'ctx'},{k:'maxOut'},{k:'paramsTotal'},{k:'paramsAct'},
   {k:'license', label:'许可', short:'许可', special:true}
 ];
-function colLabel(c){ return c.special ? c.short : MET[c.k].short; }
+function colLabel(c){ return c.special ? c.short : ({deepswe:'DeepSWE v1.1',sweatlas:'SWE-Atlas-QnA',gpqa:'GPQA Diamond',gdpval:'GDPval v2'})[c.k]||MET[c.k].short; }
 /* 列头副标题 = 这一列的单位，写清楚免得「分数 / 百分比 / 美元 / token」混淆 */
 const COL_UNIT = {
-  aaii:'v4.3 指数', cai:'v1.5 指数', tb40:'%', tb21:'%', swe:'% · 已归档', gdpval:'%', gpqa:'%',
+  aaii:'v4.3.2 指数', cai:'v1.5 · Agent 组合', deepswe:'% · Agent 组合', sweatlas:'% · Agent 组合', tb40:'%', tb21:'% · 历史', swe:'% · 已归档', gdpval:'% · 历史', gpqa:'%',
   scicode:'%', lcr:'%', nonhall:'%', arena:'Elo',
   cpt:'$ / 任务', priceIn:'$ / 百万 token', priceOut:'$ / 百万 token', priceCache:'$ / 百万 token',
   speed:'token / 秒', ctx:'token', maxOut:'token', paramsTotal:'参数', paramsAct:'参数', license:'权重'
@@ -127,7 +141,21 @@ const COL_UNIT_SHORT = Object.assign({}, COL_UNIT, {aaii:'指数', cai:'指数',
 function initCols(){
   const known = COLS.map(c=>c.k);
   const saved = (store.get('cols', null) || []).filter(k=>known.indexOf(k)>=0);
-  state.cols = saved.length ? saved : DEFAULT_COLS.slice();
+  const legacyDefault=store.get('columnViewVersion',0)!==1&&sameCols(saved,SUMMARY_COLS);
+  state.cols = saved.length&&!legacyDefault ? saved : DEFAULT_COLS.slice();
+  store.set('columnViewVersion',1);
+  store.set('cols',state.cols);
+}
+function sameCols(a,b){return a.length===b.length&&a.every(k=>b.includes(k));}
+function renderTableViews(){
+  const host=$('#tableViews');
+  if(!host.querySelector('button'))host.innerHTML='<span class="seg" role="group" aria-label="模型库表格视图">'+
+    TABLE_VIEWS.map(v=>'<button type="button" data-table-view="'+v.id+'" aria-controls="modelTable">'+esc(v.label)+'</button>').join('')+
+    '</span><span class="custom-view" hidden>自定义列</span>';
+  const selected=TABLE_VIEWS.find(v=>sameCols(state.cols,v.cols));
+  $$('[data-table-view]',host).forEach(b=>b.setAttribute('aria-pressed',!!selected&&b.dataset.tableView===selected.id));
+  $('.custom-view',host).hidden=!!selected;
+  $('#tableViewNote').textContent=selected?selected.note:'自定义展示 '+state.cols.length+' 项指标 · 在列设置中调整 · 悬停评测名称查看解释';
 }
 initCols();
 
@@ -388,11 +416,14 @@ function cellFor(m, ck){
   }
   const val = m[ck], t = fmtVal(ck, val);
   if(!t) return '<td class="n"><span class="na">暂无数据</span></td>';
-  return '<td class="n" title="数据快照 '+esc(val.asOf||'2026-09-19')+'">'+esc(t)+'<span class="u">'+esc(unitOf(ck))+'</span>'+kindTag(val)+(val.asOf!==META.dataSnapshot?'<span class="old-val">旧快照</span>':'')+'</td>';
+  return '<td class="n" title="数据快照 '+esc(val.asOf||'2026-09-19')+(val.note?' · '+esc(val.note):'')+'">'+esc(t)+'<span class="u">'+esc(unitOf(ck))+'</span>'+kindTag(val)+
+    (['cai','deepswe','sweatlas'].includes(ck)&&val.note?'<span class="cell-context">'+esc(val.note.split(' + ')[0])+'</span>':'')+
+    (val.asOf!==META.dataSnapshot?'<span class="old-val">旧快照</span>':'')+'</td>';
 }
 
 function renderModelTable(){
   hideMetricTip();
+  renderTableViews();
   const list = filtered();
   const cols = COLS.filter(c=> state.cols.indexOf(c.k)>=0);
   const sortable = k => 'class="'+(k==='license'?'lic':'n')+' sortable'+(state.sort.k===k?' sorted':'')+'" data-sort="'+k+'" role="button" tabindex="0" aria-sort="'+(state.sort.k===k?(state.sort.dir<0?'descending':'ascending'):'none')+'"';
@@ -462,7 +493,7 @@ function placeMetricTip(el){
   metricPortal.style.top=(r.bottom+h+12>innerHeight ? Math.max(8,r.top-h-9) : r.bottom+9)+'px';
 }
 document.addEventListener('mouseover',e=>{const el=e.target.closest('.metric-help');if(el)placeMetricTip(el)});
-document.addEventListener('mouseout',e=>{const el=e.target.closest('.metric-help');if(el&&!el.contains(e.relatedTarget))hideMetricTip()});
+document.addEventListener('mouseout',e=>{const el=e.target.closest('.metric-help');if(el&&!el.contains(e.relatedTarget)&&activeMetricOwner!==document.activeElement)hideMetricTip()});
 document.addEventListener('focusin',e=>{
   const el=e.target.closest('.metric-help')||e.target.querySelector('.metric-help');
   if(el)placeMetricTip(el);
@@ -924,6 +955,15 @@ function setCmpSet(ids){
 }
 
 document.addEventListener('click', function(e){
+  const viewButton=e.target.closest('[data-table-view]');
+  if(viewButton){
+    const preset=TABLE_VIEWS.find(v=>v.id===viewButton.dataset.tableView);
+    state.cols=preset.cols.slice();store.set('cols',state.cols);
+    if(state.sort.k!=='name'&&!state.cols.includes(state.sort.k))state.sort={k:state.cols[0],dir:MET[state.cols[0]].better==='low'?1:-1};
+    renderModelTable();
+    $$('[data-col]').forEach(cb=>cb.checked=state.cols.includes(cb.dataset.col));
+    $('#modelTable').parentElement.scrollLeft=0;
+  }
   const t = e.target.closest('[data-cmp],[data-fav],[data-model],[data-vendor],[data-org],[data-flag],[data-sort],[data-view],[data-goto],[data-cmpset],[data-close]');
   if(!t) { const pop = $('#colPop'); if(pop && !e.target.closest('#colPop')) pop.classList.remove('open'); return; }
 

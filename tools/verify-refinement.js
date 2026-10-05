@@ -17,6 +17,20 @@ fs.mkdirSync(shots, { recursive: true });
     await page.goto(target, { waitUntil: 'load' });
     await page.click('a[href="#models"]');
     await page.locator('#view-models').waitFor({ state: 'visible' });
+    assert.equal(await page.locator('#rankColor').getAttribute('aria-pressed'), 'true', 'Company colors are enabled by default');
+    assert.ok((await page.locator('#rankChart .ch-col path').evaluateAll(nodes => new Set(nodes.map(n => n.getAttribute('fill'))).size)) > 3);
+    assert.equal(await page.locator('[data-table-view="capability"]').getAttribute('aria-pressed'), 'true');
+    for (const metric of ['deepswe','sweatlas','gpqa','scicode','lcr','nonhall','arena']) {
+      assert.equal(await page.locator(`#modelTable th[data-sort="${metric}"]`).count(), 1, `${metric} is available in the capability view`);
+    }
+    await page.locator('[data-table-view="summary"]').click();
+    assert.equal(await page.locator('#modelTable th[data-sort="deepswe"]').count(), 0);
+    await page.locator('[data-table-view="usage"]').click();
+    assert.equal(await page.locator('#modelTable th[data-sort="speed"]').count(), 1);
+    await page.locator('[data-table-view="history"]').click();
+    assert.equal(await page.locator('#modelTable th[data-sort="tb21"]').count(), 1);
+    assert.equal(await page.locator('#modelTable th[data-sort="tb40"]').count(), 0, 'Benchmark versions are kept distinct');
+    await page.locator('[data-table-view="capability"]').click();
     const svgLogos = await page.locator('#rankChart image').evaluateAll(async nodes => {
       const results = await Promise.all(nodes.map(node => new Promise(resolve => {
         const img = new Image();
@@ -28,6 +42,8 @@ fs.mkdirSync(shots, { recursive: true });
     });
     assert.deepEqual(svgLogos, [], 'SVG chart logos load offline and on the public release');
     await page.screenshot({ path: path.join(shots, 'refined-models-1440.png') });
+    await page.locator('#tableViews').evaluate(el=>{el.scrollIntoView({block:'start'});window.scrollBy(0,-90)});
+    await page.screenshot({path:path.join(shots,'capability-table-1440.png')});
     assert.equal(await page.locator('#rankLegend').count(), 0, 'Remove the redundant company legend');
     const rankName = page.locator('#rankTitle .metric-help');
     assert.match(await rankName.innerText(), /AA/);
@@ -93,6 +109,15 @@ fs.mkdirSync(shots, { recursive: true });
       if (width === 390) {
         await page.click('a[href="#models"]');
         await page.locator('#view-models').waitFor({ state: 'visible' });
+        const modelCell=page.locator('#modelTable tbody tr').first().locator('td').nth(2);
+        await modelCell.scrollIntoViewIfNeeded();
+        const before=await modelCell.boundingBox();
+        await page.locator('#modelTable').evaluate(table=>table.parentElement.scrollLeft=table.scrollWidth);
+        const after=await modelCell.boundingBox();
+        assert.ok(Math.abs(before.x-after.x)<1, 'Model identity stays visible while scrolling the wide table');
+        assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+        await page.screenshot({path:path.join(shots,'capability-table-390.png')});
+        await page.locator('#modelTable').evaluate(table=>table.parentElement.scrollLeft=0);
         await page.locator('#rankChart .ch-identity').first().click();
         assert.equal(await page.locator('#rankChart .ch-tip').isVisible(), true, 'Tap reveals company on mobile');
         await page.screenshot({ path: path.join(shots, 'refined-models-390.png') });
@@ -107,6 +132,30 @@ fs.mkdirSync(shots, { recursive: true });
     const broken = await page.locator('img').evaluateAll(images => images.filter(i => !i.complete || !i.naturalWidth).map(i => i.src));
     assert.deepEqual(broken, []);
     assert.deepEqual(errors, []);
+    await page.evaluate(()=>{
+      localStorage.setItem('llmboard.labColor','false');
+      localStorage.removeItem('llmboard.colorPreferenceVersion');
+      localStorage.setItem('llmboard.cols',JSON.stringify(['aaii','cai','tb40','cpt','priceOut','ctx','license']));
+      localStorage.removeItem('llmboard.columnViewVersion');
+    });
+    await page.reload();
+    assert.equal(await page.locator('#rankColor').getAttribute('aria-pressed'),'true','Existing monochrome preference is restored to company colors once');
+    assert.equal(await page.locator('[data-table-view="capability"]').getAttribute('aria-pressed'),'true','Old default columns migrate to capability view');
+    await page.click('a[href="#models"]');
+    await page.locator('#view-models').waitFor({state:'visible'});
+    await page.click('#rankColor');
+    await page.locator('[data-table-view="summary"]').click();
+    await page.reload();
+    assert.equal(await page.locator('#rankColor').getAttribute('aria-pressed'),'false','Explicit color preference persists after migration');
+    assert.equal(await page.locator('[data-table-view="summary"]').getAttribute('aria-pressed'),'true','Explicit table view persists');
+    await page.evaluate(()=>{
+      localStorage.setItem('llmboard.cols',JSON.stringify(['aaii','gpqa']));
+      localStorage.removeItem('llmboard.columnViewVersion');
+    });
+    await page.reload();
+    assert.equal(await page.locator('#modelTable th[data-sort="gpqa"]').count(),1,'Existing custom columns are preserved');
+    assert.equal(await page.locator('#modelTable th[data-sort="cai"]').count(),0);
+    assert.equal(await page.locator('.custom-view').getAttribute('hidden'),null);
     console.log(JSON.stringify({ target, contextualHelp: true, companyHoverAndTap: true, sorting: true, responsive: [1440, 1280, 390], brokenLogos: broken, errors }, null, 2));
   } finally {
     await browser.close();
