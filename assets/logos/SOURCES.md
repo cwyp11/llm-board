@@ -64,3 +64,14 @@
 新增厂商时：把 SVG 放进本目录 → 在 `src/js/data.js` 的 `BRANDS` 注册 → 在本表补一行来源。
 找不到可核实的真实标识时，`BRANDS` 里把 `logo` 留空即可，界面会自动退化为**品牌全名文字**，
 不要用首字母头像或近似图形顶替。
+
+
+## 2026-10-24 additions
+
+| Brand | Local file | Verified source | Acquisition |
+| --- | --- | --- | --- |
+| Reflection | `reflection.svg` | [Official website](https://reflection.ai/), [site icon](https://reflection.ai/icon.svg?icon.2l1p3ovm0zbbb.svg) | 2026-10-24; original SVG retained |
+| InclusionAI | `inclusionai.png` | [Official GitHub organization](https://github.com/inclusionAI), [organization avatar](https://avatars.githubusercontent.com/u/199075982?v=4) | 2026-10-24; original PNG retained |
+| Meituan | `meituan.svg` | [Official media page](https://www.meituan.com/media), inline `wk-meituan` SVG symbol | 2026-10-24; standalone SVG wrapper, original viewBox, paths and colors retained |
+
+LongCat currently uses its parent Meituan logo consistently. The wide black Meituan mark receives a restrained light carrier; its proportions and colors are not altered. No license grant was inferred from the presence of a company asset on its website. These three files are local and require no remote image loading. Machine-readable records: `research/2026-10-24-logo-sources.json`.

@@ -61,6 +61,9 @@ table.tbl td.lic,table.tbl th.lic{text-align:left;white-space:nowrap;width:1%}
 #modelTable tr:hover td:nth-child(-n+3){background:var(--surface-2)}
 #modelTable tr.picked td:nth-child(-n+3){background:var(--surface-3)}
 .cell-context{display:block;max-width:160px;white-space:normal;margin-top:3px;font:11px/1.45 var(--sans);color:var(--ink-3)}
+.data-link:hover,.data-link:focus-visible{text-decoration:underline;text-decoration-color:var(--sage);text-underline-offset:3px}
+.logo.on-light{background:var(--ink-hi);border-radius:3px;padding:2px}
+.quote-text{font-size:13px;line-height:1.75;color:var(--ink-2)}
 .table-views{display:flex;align-items:center;gap:12px;margin-top:16px}
 .table-views .seg button{font-family:var(--sans);padding:7px 13px;font-size:12.5px}
 .custom-view{font-size:12px;color:var(--ink-3)}

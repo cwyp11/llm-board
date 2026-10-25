@@ -15,16 +15,18 @@ fs.mkdirSync(shots, { recursive: true });
     const errors = [];
     page.on('pageerror', e => errors.push(e.message));
     await page.goto(target, { waitUntil: 'load' });
+    assert.equal(await page.evaluate(()=>META.dataSnapshot),'2026-10-24','Loaded the refreshed data, not an older deployment');
+    assert.equal(await page.evaluate(()=>META.pageBuilt),'2026-10-25','Build date is separate from evidence date');
     await page.click('a[href="#models"]');
     await page.locator('#view-models').waitFor({ state: 'visible' });
     assert.equal(await page.locator('#rankColor').getAttribute('aria-pressed'), 'true', 'Company colors are enabled by default');
     assert.ok((await page.locator('#rankChart .ch-col path').evaluateAll(nodes => new Set(nodes.map(n => n.getAttribute('fill'))).size)) > 3);
     assert.equal(await page.locator('[data-table-view="capability"]').getAttribute('aria-pressed'), 'true');
-    for (const metric of ['deepswe','sweatlas','gpqa','scicode','lcr','nonhall','arena']) {
+    for (const metric of ['cai2','frontiercode','gdpval21','hle','scicode','lcr','nonhall','arena']) {
       assert.equal(await page.locator(`#modelTable th[data-sort="${metric}"]`).count(), 1, `${metric} is available in the capability view`);
     }
     await page.locator('[data-table-view="summary"]').click();
-    assert.equal(await page.locator('#modelTable th[data-sort="deepswe"]').count(), 0);
+    assert.equal(await page.locator('#modelTable th[data-sort="frontiercode"]').count(), 0);
     await page.locator('[data-table-view="usage"]').click();
     assert.equal(await page.locator('#modelTable th[data-sort="speed"]').count(), 1);
     await page.locator('[data-table-view="history"]').click();
@@ -80,7 +82,7 @@ fs.mkdirSync(shots, { recursive: true });
     for (const id of ['claude-sonnet55', 'claude-opus55', 'grok47']) {
       await page.locator(`#modelTable [data-cmp="${id}"]`).click();
     }
-    const deepSWE = page.locator('#cmpBody .metric-help').filter({ has: page.locator('.metric-tip b:text-is("DeepSWE v1.1（Agent）")') });
+    const deepSWE = page.locator('#cmpBody .metric-help').filter({ has: page.locator('.metric-tip b:text-matches("^DeepSWE")') });
     await deepSWE.hover();
     assert.equal(await portal.isVisible(), true);
     assert.match(await portal.innerText(), /代码|软件|仓库/);

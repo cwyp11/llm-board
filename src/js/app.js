@@ -42,7 +42,9 @@ function fmtVal(mk, val){
   let n = val.v;
   if(m.money){
     /* 统一两位小数，价格列的小数点才能对齐；不足一分的用四位 */
-    return '$' + (n > 0 && n < 0.01 ? n.toFixed(4) : n.toFixed(2));
+    const decimals=m.perM&&Math.abs(n*100-Math.round(n*100))>1e-7?4:2;
+    const price=n.toFixed(n>0&&n<0.01?4:decimals);
+    return '$'+(decimals>2&&n>=0.01?price.replace(/0+$/,'').replace(/\.$/,'.00'):price);
   }
   return m.dec != null ? (n % 1 === 0 && m.dec > 0 ? n.toFixed(m.dec) : n.toFixed(m.dec)) : String(n);
 }
@@ -66,12 +68,22 @@ function kindTag(val, full){
 function brandOf(key){ return BRANDS[key] || null; }
 function logoHTML(key, cls){
   const b = brandOf(key);
-  const c = 'logo' + (cls?' '+cls:'') + (b && b.wide ? ' wide' : '');
+  const c = 'logo' + (cls?' '+cls:'') + (b && b.wide ? ' wide' : '')+(b&&b.light?' on-light':'');
   if(b && b.logo) return '<span class="'+c+'" title="'+esc(orgName(b.of||key))+'" aria-hidden="true"><img src="'+b.logo+'" alt="" decoding="async"></span>';
   /* 找不到可核实的真实标识时，显示品牌全名文字，不用首字母头像顶替 */
   return '<span class="logo-txt">'+esc(b?b.name:key)+'</span>';
 }
 function orgName(key){ const b = brandOf(key); return b?b.name:key; }
+function valueInfo(val){
+  const source=SOURCES[val.src];
+  return (val.asOf===META.dataSnapshot?'本次读取 ':'历史快照 ')+(val.asOf||'日期待核实')+
+    (val.sourceDate?' · 来源更新 '+val.sourceDate:' · 来源测量/更新日未披露')+
+    (val.basis?' · '+val.basis:'')+(val.note?' · '+val.note:'')+(source?' · '+source.name:'');
+}
+function valueLink(val,html){
+  const url=val.url||(SOURCES[val.src]||{}).url;
+  return url?'<a class="data-link" href="'+esc(url)+'" target="_blank" rel="noopener" title="'+esc(valueInfo(val))+'">'+html+'</a>':html;
+}
 
 /* ---------------- 图表配色 ----------------
    厂商色只做聚类，识别永远由 logo + 名称 + 图例 + 悬停 + 表格承担。*/
@@ -105,21 +117,22 @@ const state = {
 store.set('labColor',state.labColor);
 store.set('colorPreferenceVersion',1);
 const MAXCMP = 4;
-const SUMMARY_COLS = ['aaii','cai','tb40','cpt','priceOut','ctx','license'];
-const DEFAULT_COLS = ['aaii','cai','deepswe','sweatlas','tb40','gpqa','scicode','lcr','nonhall','arena'];
+const SUMMARY_COLS = ['aaii','cai2','tb40','cpt','priceOut','ctx','license'];
+const DEFAULT_COLS = ['aaii','cai2','frontiercode','tb40','gdpval21','hle','scicode','lcr','nonhall','arena'];
 const TABLE_VIEWS = [
   {id:'capability',label:'能力评测',cols:DEFAULT_COLS,
-    note:'综合、编码、科学、长文档及问答偏好 · Agent 分数属于框架 × 模型组合 · 向右滚动查看更多'},
+    note:'AAII v4.3.2 / CAI v2.0 · Agent 分数属于框架 × 模型组合 · 向右滚动查看更多'},
   {id:'summary',label:'常用概览',cols:SUMMARY_COLS,
     note:'能力、单任务成本、API 输出价及上下文 · 勾选 2–4 个模型可展开完整对比'},
   {id:'usage',label:'价格与规格',cols:['cpt','priceIn','priceOut','priceCache','speed','ctx','maxOut','paramsTotal','paramsAct','license'],
     note:'API 价格为美元 / 每百万 token · 参数量与上下文分列 · 向右滚动查看更多'},
-  {id:'history',label:'历史评测',cols:['tb21','swe','gdpval'],
-    note:'历史快照：TB 2.1、SWE-bench Verified、GDPval-AA v2 · 不与其他版本分数混排'}
+  {id:'history',label:'历史评测',cols:['cai','deepswe','sweatlas','tb21','swe','gdpval','gpqa'],
+    note:'旧 CAI v1.5 / DeepSWE / TB 2.1 / SWE / GDPval v2 / GPQA · 保留原日期，不与新版混排'}
 ];
 
 const COLS = [
-  {k:'aaii'},{k:'cai'},{k:'deepswe'},{k:'sweatlas'},{k:'tb40'},{k:'tb21'},{k:'swe'},{k:'gdpval'},{k:'gpqa'},{k:'scicode'},
+  {k:'aaii'},{k:'cai2'},{k:'frontiercode'},{k:'frontierAgent'},{k:'sweatlas2'},{k:'tb40'},{k:'gdpval21'},{k:'hle'},
+  {k:'cai'},{k:'deepswe'},{k:'sweatlas'},{k:'tb21'},{k:'swe'},{k:'gdpval'},{k:'gpqa'},{k:'scicode'},
   {k:'lcr'},{k:'nonhall'},{k:'arena'},
   {k:'cpt'},{k:'priceIn'},{k:'priceOut'},{k:'priceCache'},{k:'speed'},
   {k:'ctx'},{k:'maxOut'},{k:'paramsTotal'},{k:'paramsAct'},
@@ -128,8 +141,9 @@ const COLS = [
 function colLabel(c){ return c.special ? c.short : ({deepswe:'DeepSWE v1.1',sweatlas:'SWE-Atlas-QnA',gpqa:'GPQA Diamond',gdpval:'GDPval v2'})[c.k]||MET[c.k].short; }
 /* 列头副标题 = 这一列的单位，写清楚免得「分数 / 百分比 / 美元 / token」混淆 */
 const COL_UNIT = {
-  aaii:'v4.3.2 指数', cai:'v1.5 · Agent 组合', deepswe:'% · Agent 组合', sweatlas:'% · Agent 组合', tb40:'%', tb21:'% · 历史', swe:'% · 已归档', gdpval:'% · 历史', gpqa:'%',
-  scicode:'%', lcr:'%', nonhall:'%', arena:'Elo',
+  aaii:'v4.3.2 指数', cai2:'v2.0 · Agent 组合', frontiercode:'% · Stirrup', frontierAgent:'% · 编码 Agent', sweatlas2:'% · 编码 Agent', gdpval21:'v2.1 · Elo', hle:'%',
+  cai:'v1.5 · 历史', deepswe:'% · 历史 Agent', sweatlas:'% · 历史 Agent', tb40:'%', tb21:'% · 历史', swe:'% · 已归档', gdpval:'% · 历史', gpqa:'% · 旧快照',
+  scicode:'% · 审查中', lcr:'v1.1 · %', nonhall:'%', arena:'Text · Elo',
   cpt:'$ / 任务', priceIn:'$ / 百万 token', priceOut:'$ / 百万 token', priceCache:'$ / 百万 token',
   speed:'token / 秒', ctx:'token', maxOut:'token', paramsTotal:'参数', paramsAct:'参数', license:'权重'
 };
@@ -141,9 +155,14 @@ const COL_UNIT_SHORT = Object.assign({}, COL_UNIT, {aaii:'指数', cai:'指数',
 function initCols(){
   const known = COLS.map(c=>c.k);
   const saved = (store.get('cols', null) || []).filter(k=>known.indexOf(k)>=0);
-  const legacyDefault=store.get('columnViewVersion',0)!==1&&sameCols(saved,SUMMARY_COLS);
-  state.cols = saved.length&&!legacyDefault ? saved : DEFAULT_COLS.slice();
-  store.set('columnViewVersion',1);
+  const version=store.get('columnViewVersion',0);
+  const oldSummary=['aaii','cai','tb40','cpt','priceOut','ctx','license'];
+  const oldCapability=['aaii','cai','deepswe','sweatlas','tb40','gpqa','scicode','lcr','nonhall','arena'];
+  if(version<2&&sameCols(saved,oldCapability))state.cols=DEFAULT_COLS.slice();
+  else if(version===1&&sameCols(saved,oldSummary))state.cols=SUMMARY_COLS.slice();
+  else if(version<1&&sameCols(saved,oldSummary))state.cols=DEFAULT_COLS.slice();
+  else state.cols=saved.length?saved:DEFAULT_COLS.slice();
+  store.set('columnViewVersion',2);
   store.set('cols',state.cols);
 }
 function sameCols(a,b){return a.length===b.length&&a.every(k=>b.includes(k));}
@@ -195,14 +214,22 @@ function filtered(){
 function bestOf(list, mk){
   const m = MET[mk];
   if(!m || !m.better) return {v:null, reason:'nodir'};
+  if(m.underReview)return {v:null,reason:'review'};
+  if(/^price/.test(mk)&&list.some(x=>/retired|deprecated/.test(x.apiStatus||'')))return {v:null,reason:'unavailable'};
   if(/^price/.test(mk) && list.some(x=>/预告价/.test(x.priceMode||''))) return {v:null,reason:'future'};
   const vals = list.map(x=>x[mk]).filter(Boolean);
   if(vals.length < 2) return {v:null, reason:'thin'};
+  if(vals.some(v=>v.variantMismatch))return {v:null,reason:'variant'};
+  if(new Set(vals.map(v=>v.basis||m.basis)).size>1)return {v:null,reason:'basis'};
   const kinds = new Set(vals.map(v=>v.kind));
   if(kinds.size > 1) return {v:null, reason:'mixed'};
   if(new Set(vals.map(v=>v.asOf || '2026-09-19')).size > 1) return {v:null, reason:'dated'};
   if(kinds.has('est')) return {v:null, reason:'est'};
   const nums = vals.map(v=>v.v);
+  if(['arena','gdpval21'].includes(mk)&&vals.every(v=>v.ciLow!=null&&v.ciHigh!=null)){
+    const top=vals.slice().sort((a,b)=>b.v-a.v)[0];
+    if(vals.some(v=>v!==top&&v.ciHigh>=top.ciLow))return {v:null,reason:'ci'};
+  }
   return {v: m.better==='high' ? Math.max.apply(null,nums) : Math.min.apply(null,nums),
           partial: vals.length < list.length, have: vals.length};
 }
@@ -299,7 +326,7 @@ function renderChanges(){
 
 function miniTable(list, opts){
   opts = opts || {};
-  const cols = opts.cols || ['aaii','cai','cpt'];
+  const cols = opts.cols || ['aaii','cai2','cpt'];
   return '<thead><tr><th class="pick"><span class="sr">加入对比</span></th><th>模型</th>'+
     cols.map(k=>'<th class="n">'+metricHelp(MET[k],MET[k].short)+'<span class="th-sub">'+esc(COL_UNIT_SHORT[k]||'')+'</span></th>').join('')+
     '</tr></thead><tbody>'+
@@ -321,16 +348,17 @@ function renderOverview(){
   $('#topSnap').textContent = META.dataSnapshot;
   $('#footSnap').textContent = META.dataSnapshot;
   $('#footBuilt').textContent = META.pageBuilt;
+  $('#snapshotMsg').textContent = '人工核验 · AA 主榜覆盖 '+COVERAGE.models.updated+' / '+MODELS.length+' 个配置 · 旧字段另标日期';
 
   renderChanges();
 
   const top = MODELS.filter(m=>m.aaii && m.aaii.asOf===META.dataSnapshot).sort((a,b)=>b.aaii.v-a.aaii.v).slice(0,8);
-  $('#topTable').innerHTML = miniTable(top, {cols:['aaii','cai','cpt']});
+  $('#topTable').innerHTML = miniTable(top, {cols:['aaii','cai2','cpt']});
 
   /* ---- 场景推荐：候选与依据都从当前数据算出 ---- */
   $('#scenes').innerHTML = SCENES.map(sc=>{
     const primary = sc.metrics[0];
-    let cands = MODELS.filter(m => m[primary] && m[primary].asOf>='2026-09-30');
+    let cands = MODELS.filter(m => m[primary] && m[primary].asOf===META.dataSnapshot && !/retired|deprecated/.test(m.apiStatus||''));
     cands.sort((a,b)=>{
       for(const k of sc.metrics){
         const dir = (MET[k] && MET[k].better==='low') ? 1 : -1;   /* 价格类越低越靠前 */
@@ -362,7 +390,7 @@ function renderFav(){
   const list = state.fav.map(id=>byId[id]).filter(Boolean);
   const sec = $('#secFav');
   sec.hidden = list.length === 0;
-  if(list.length) $('#favTable').innerHTML = miniTable(list, {cols:['aaii','cai','cpt']});
+  if(list.length) $('#favTable').innerHTML = miniTable(list, {cols:['aaii','cai2','cpt']});
 
   const rail = $('#railFav');
   rail.hidden = list.length === 0;
@@ -401,11 +429,14 @@ function licenseShort(m){
   if(!t) return '';
   if(/Apache/i.test(t)) return 'Apache 2.0';
   if(/MIT/.test(t))     return 'MIT';
+  if(m.openWeights==='pending')return '待开放';
+  if(m.openWeights===false)return '未开放权重';
+  if(m.openWeights===true)return '开放权重';
   if(/预告|将开源/.test(t)) return '待开源';
   if(/闭源/.test(t))    return '闭源';
   if(/未确认/.test(t))  return '未确认';
   if(/开源/.test(t))    return '开源';
-  return t;
+  return t.length>16?'许可见详情':t;
 }
 function cellFor(m, ck){
   if(ck==='license'){
@@ -416,8 +447,8 @@ function cellFor(m, ck){
   }
   const val = m[ck], t = fmtVal(ck, val);
   if(!t) return '<td class="n"><span class="na">暂无数据</span></td>';
-  return '<td class="n" title="数据快照 '+esc(val.asOf||'2026-09-19')+(val.note?' · '+esc(val.note):'')+'">'+esc(t)+'<span class="u">'+esc(unitOf(ck))+'</span>'+kindTag(val)+
-    (['cai','deepswe','sweatlas'].includes(ck)&&val.note?'<span class="cell-context">'+esc(val.note.split(' + ')[0])+'</span>':'')+
+  return '<td class="n" title="'+esc(valueInfo(val))+'">'+valueLink(val,esc(t)+'<span class="u">'+esc(unitOf(ck))+'</span>')+kindTag(val)+
+    (['cai','deepswe','sweatlas','cai2','frontierAgent','sweatlas2'].includes(ck)&&val.note?'<span class="cell-context">'+esc(val.note.split(' + ')[0])+'</span>':'')+
     (val.asOf!==META.dataSnapshot?'<span class="old-val">旧快照</span>':'')+'</td>';
 }
 
@@ -460,7 +491,8 @@ function renderModelTable(){
 /* ================================================================
    指标排行柱状图
    ================================================================ */
-const RANK_METRICS = ['aaii','cai','deepswe','tb40','arena','speed','cpt'];
+const RANK_METRICS = ['aaii','cai2','frontiercode','tb40','arena','speed','cpt'];
+if(!RANK_METRICS.includes(state.rankMetric)){state.rankMetric='aaii';store.set('rankMetric',state.rankMetric);}
 
 /* 每项说明与指标定义共用，鼠标悬停和键盘焦点都可读；不依赖远程资源。 */
 function metricHelp(m, label, focusable=true){
@@ -526,9 +558,7 @@ function renderRank(){
   $('#rankColor').setAttribute('aria-pressed', state.labColor);
 
   /* 只画有该指标的模型；缺失的不按 0 参与，直接不进图 */
-  const withVal = MODELS.filter(m => m[met.k] && (
-    ['aaii','cpt','speed'].includes(met.k) ? m[met.k].asOf===META.dataSnapshot :
-    ['cai','deepswe','arena'].includes(met.k) ? m[met.k].asOf>='2026-09-30' : true));
+  const withVal = MODELS.filter(m => m[met.k]&&m[met.k].asOf===META.dataSnapshot&&!m[met.k].variantMismatch&&!met.underReview);
   const dir = met.better === 'low' ? 1 : -1;
   withVal.sort((a,b)=> cmpBy(a,b,met.k,dir) || a.name.localeCompare(b.name));
 
@@ -544,7 +574,7 @@ function renderRank(){
     id:m.id, name:m.name, orgName:orgName(m.org), brand:m.brand,
     value:m[met.k].v, disp:fmtVal(met.k,m[met.k]) + unitOf(met.k),
     sub:'快照 '+m[met.k].asOf+' · '+((m[met.k].note || '') || (m.variant || '')),
-    logo:(BRANDS[m.brand]||{}).logo, color:labColor(m),
+    logo:(BRANDS[m.brand]||{}).logo, logoLight:(BRANDS[m.brand]||{}).light, color:labColor(m),
     dim: inFilter.size !== MODELS.length && !inFilter.has(m.id),
     marked: inCmp(m.id)
   }));
@@ -629,7 +659,7 @@ function rowCells(list, mk){
       bar = '<span class="cbar" title="占本行最优值的 '+Math.round(w)+'%"><i class="'+(isBest?'best':'')+
             '" style="width:'+Math.max(4,Math.min(100,w)).toFixed(1)+'%"></i></span>';
     }
-    return {txt:t, html:'<td><span class="cval'+(isBest?' best':'')+'" title="数据快照 '+esc(val.asOf||'2026-09-19')+'">'+esc(t)+'<span class="u">'+esc(unitOf(mk))+'</span></span>'+
+    return {txt:t, html:'<td><span class="cval'+(isBest?' best':'')+'" title="'+esc(valueInfo(val))+'">'+valueLink(val,esc(t)+'<span class="u">'+esc(unitOf(mk))+'</span>')+'</span>'+
       kindTag(val, true) + (val.asOf!==META.dataSnapshot?'<span class="cnote stale-date">旧快照 '+esc(val.asOf||'2026-09-19')+'</span>':'') + (val.note ? '<span class="cnote">'+esc(val.note)+'</span>' : '') + bar + '</td>'};
   });
   return {cells, best};
@@ -642,12 +672,17 @@ function compareTable(list){
     mixed:'所选模型的取值口径不一致（独立评测 / 官方自报混用），不评最优',
     dated:'取值来自不同快照日期，不评最优',
     future:'包含尚未普遍开放模型的预告价，不评最优',
-    est:'含估算值，不评最优'
+    est:'含估算值，不评最优',
+    review:'源站正在审查该评测，不评最优',
+    basis:'评测版本或口径不同，不评最优',
+    variant:'来源推理档与本行配置不同，不评最优',
+    ci:'95% 置信区间重叠，不给出确定的最优结论',
+    unavailable:'含已退役或弃用的 API，不评价格最优'
   };
   let rows = '';
 
   /* --- 数值指标：按分组 --- */
-  ['cap','cost','spec'].forEach(g=>{
+  ['cap','cost','spec','history'].forEach(g=>{
     const grp = METRIC_GROUPS.find(x=>x.g===g);
     const mets = METRICS.filter(m=>m.g===g);
     let inner = '';
@@ -674,6 +709,8 @@ function compareTable(list){
     {g:'use',  label:'计价方式',   get:m=>m.priceMode || '', extra:m=>m.priceAlt||''},
     {g:'use',  label:'开放状态',   get:m=>m.license || ''},
     {g:'use',  label:'使用方式',   get:m=>m.access || ''},
+    {g:'use',  label:'输入形式',   get:m=>(m.inputs||[]).join(' / ')},
+    {g:'use',  label:'输出形式',   get:m=>(m.outputs||[]).join(' / ')},
     {g:'use',  label:'发布日期',   get:m=>m.released || '', mono:true},
     {g:'fit',  label:'适用场景',   get:m=>m.strength || ''},
     {g:'fit',  label:'已知限制',   get:m=>m.limits || ''},
@@ -711,7 +748,7 @@ function compareTable(list){
 function renderPricing(){
   const priced = MODELS.filter(m=>m.priceIn || m.priceOut)
     .sort((a,b)=> cmpBy(a,b,'priceOut',1) || 0);
-  $('#priceSub').textContent = '美元 / 每百万 token · 共 '+priced.length+' 个有公开或预告标价的模型 · 新数据核验 '+META.dataBasis+'；旧价标注快照';
+  $('#priceSub').textContent = '美元 / 每百万 token · '+priced.length+' 个含标价的条目 · 核验 '+META.dataBasis+'；含渠道参考价及带日期的历史条目';
   $('#priceTable').innerHTML =
     '<thead><tr><th class="pick"><span class="sr">加入对比</span></th><th>模型</th>'+
       '<th class="n">输入<span class="th-sub">$ / 百万 token</span></th>'+
@@ -725,9 +762,8 @@ function renderPricing(){
           '<span class="txt"><span class="nm">'+esc(m.name)+'</span><span class="sub">'+esc(orgName(m.org))+'</span></span></button></td>'+
         ['priceIn','priceOut','priceCache'].map(k=>{
           const t = fmtVal(k,m[k]);
-          return '<td class="n">'+(t?esc(t):'<span class="na">暂无数据</span>')+
-            (m[k]&&m[k].asOf!==META.dataSnapshot?'<span class="old-val" title="2026-09-19 旧价，未按本次核验">旧快照</span>':'')+
-            (m[k]&&m[k].note?'<span class="cnote">'+esc(m[k].note)+'</span>':'')+'</td>';
+          return '<td class="n">'+(t?valueLink(m[k],esc(t)):'<span class="na">暂无数据</span>')+
+            (m[k]&&m[k].asOf!==META.dataSnapshot?'<span class="old-val" title="'+esc(valueInfo(m[k]))+'">旧快照</span>':'')+'</td>';
         }).join('')+
         '<td style="font-size:12.5px;color:var(--ink-3);line-height:1.6;max-width:32ch">'+
           (m.priceMode?esc(m.priceMode):'<span class="na">暂无数据</span>')+
@@ -748,27 +784,30 @@ function renderPricing(){
       ['speed','ctx','maxOut','paramsTotal','paramsAct'].map(k=>{
         const t = fmtVal(k,m[k]);
         return '<td class="n">'+(t?esc(t)+'<span class="u">'+esc(unitOf(k))+'</span>':'<span class="na">暂无数据</span>')+
-          (m[k]&&m[k].asOf!==META.dataSnapshot?'<span class="old-val" title="2026-09-19 旧快照">旧快照</span>':'')+'</td>';
+          (m[k]&&m[k].asOf!==META.dataSnapshot?'<span class="old-val" title="'+esc(valueInfo(m[k]))+'">旧快照</span>':'')+'</td>';
       }).join('')+'</tr>').join('')+
-    '</tbody><tfoot><tr><td colspan="6">上下文窗口、最大输出长度、参数量是三件不同的事，本表分列。原始资料里把 753B、428B 这类参数量填进上下文列的条目已改为「暂无数据」并列入待核实清单。</td></tr></tfoot>';
+    '</tbody><tfoot><tr><td colspan="6">上下文窗口、最大输出与参数量分列；源站单位、渠道或定义有差异时保留说明，未确认字段不当作零。</td></tr></tfoot>';
 
   /* 模型 × Agent */
   $('#agentTable').innerHTML =
     '<thead><tr><th>模型 \\ Agent 框架</th>'+AGENT_FRAMEWORKS.map(f=>'<th class="n" style="text-align:center">'+esc(f)+'</th>').join('')+'</tr></thead><tbody>'+
     AGENT_MATRIX.map(r=>{
-      const m = byId[r.id]; if(!m) return '';
-      return '<tr><td><button class="mcell" type="button" data-model="'+m.id+'" style="text-align:left">'+logoHTML(m.brand)+
-        '<span class="txt"><span class="nm">'+esc(m.name)+'</span></span></button></td>'+
+      const m = byId[r.id];
+      return '<tr><td>'+(m?'<button class="mcell" type="button" data-model="'+m.id+'" style="text-align:left">'+logoHTML(m.brand)+
+        '<span class="txt"><span class="nm">'+esc(m.name)+'</span><span class="sub">'+esc(r.label)+'</span></span></button>':'<span class="ctext">'+esc(r.label)+'</span>')+'</td>'+
         r.cells.map(c=>'<td class="c '+c.t+'">'+(c.s!=null?c.s.toFixed(1):(c.t==='native'?'✓':c.t==='compat'?'~':'—'))+
-          (c.note?'<span class="sub">'+esc(c.note)+'</span>':'')+'</td>').join('')+'</tr>';
+          (c.note?'<span class="sub">'+esc(c.note)+'</span>':'')+(c.url?'<a class="metric-source" href="'+esc(c.url)+'" target="_blank" rel="noopener">配置来源 ↗</a>':'')+'</td>').join('')+'</tr>';
     }).join('')+'</tbody>';
+  $('#agentHistory').innerHTML='<div class="tbl-wrap"><table class="tbl mx"><thead><tr><th>历史模型 · CAI v1.5</th>'+AGENT_HISTORY.frameworks.map(f=>'<th>'+esc(f)+'</th>').join('')+'</tr></thead><tbody>'+
+    AGENT_HISTORY.rows.map(r=>'<tr><td>'+esc((byId[r.id]||{}).name||r.id)+'</td>'+r.cells.map(c=>'<td class="c">'+(c.s!=null?c.s.toFixed(1):c.t==='native'?'✓':c.t==='compat'?'~':'—')+(c.note?'<span class="sub">'+esc(c.note)+'</span>':'')+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
 
   /* 订阅 */
   $('#subsGrid').innerHTML = SUBSCRIPTIONS.map(s=>
     '<div class="plan"><div class="sh">'+(s.multi?'':logoHTML(s.brand,'lg'))+'<div><div class="nm">'+esc(s.product)+'</div>'+
       '<div class="co">'+esc(s.multi ? (s.sub||'多家厂商') : orgName(s.brand))+'</div></div></div>'+
     '<dl>'+s.tiers.map(t=>'<div class="r"><dt>'+esc(t[0])+'</dt><dd>'+esc(t[1])+'</dd></div>').join('')+'</dl>'+
-    (s.note?'<p class="note">'+esc(s.note)+'</p>':'')+'</div>').join('');
+    (s.note?'<p class="note">'+esc(s.note)+'</p>':'')+
+    '<p class="sec-note">核验 '+esc(s.checkedAt||'待核实')+' · <a class="metric-source" href="'+esc(s.url)+'" target="_blank" rel="noopener">官方套餐来源 ↗</a></p></div>').join('');
 }
 
 /* ---- 散点：智能指数 × 单任务成本（两轴同源，均为 AA 实测） ---- */
@@ -782,7 +821,7 @@ function drawChart(){
   }));
   CH.scatterChart(box, {
     points: pts,
-    aria:'散点图：纵轴为 Artificial Analysis 智能指数 v4.3，横轴为跑完一道评测任务的实测成本（美元，对数刻度）。完整数值见本页表格。'
+    aria:'散点图：纵轴为 Artificial Analysis 智能指数 v4.3.2，横轴为跑完一道评测任务的实测成本（美元，对数刻度）。完整数值见本页表格。'
   });
 
   const labs = [];
@@ -812,7 +851,7 @@ function renderIntel(){
 
   $('#timeline').innerHTML = TIMELINE.slice().reverse().map(t=>
     '<div class="tli'+(t.hot?' hot':'')+'"><span class="d">'+esc(t.d)+(t.last?' ·':'')+'</span>'+
-      '<h3>'+esc(t.t)+'</h3><p>'+esc(t.x)+'</p></div>').join('');
+      '<h3>'+esc(t.t)+'</h3><p>'+esc(t.x)+(t.url?' <a class="metric-source" href="'+esc(t.url)+'" target="_blank" rel="noopener">来源 ↗</a>':'')+'</p></div>').join('');
 
   $('#notesSub').textContent = '共 '+NOTES.length+' 条 · 点开看完整内容与来源';
   $('#notes').innerHTML = NOTES.map(n=>
@@ -821,7 +860,7 @@ function renderIntel(){
       '<span class="fig">'+esc(n.n)+'</span>'+
       '<span class="ttl">'+esc(n.t)+'</span>'+
       '<span class="src">'+esc(n.s)+'</span>'+
-    '</summary><div class="body">'+esc(n.d)+
+    '</summary><div class="body">'+esc(n.d)+(n.url?'<p><a class="metric-source" href="'+esc(n.url)+'" target="_blank" rel="noopener">具体资料来源 ↗</a></p>':'')+
       ((n.models&&n.models.length)?'<div class="refs">'+n.models.map(id=>{
         const m = byId[id]; return m?'<button class="mref" type="button" data-model="'+id+'">'+logoHTML(m.brand)+esc(m.name)+'</button>':'';
       }).join('')+'</div>':'')+
@@ -830,14 +869,14 @@ function renderIntel(){
   renderVoices();
 
   $('#srcTable').innerHTML =
-    '<thead><tr><th>来源</th><th>类型</th><th class="n">快照日期</th><th>覆盖内容</th></tr></thead><tbody>'+
+    '<thead><tr><th>来源</th><th>类型</th><th class="n">读取 / 来源更新日</th><th>覆盖内容</th></tr></thead><tbody>'+
     Object.keys(SOURCES).map(k=>{
       const s = SOURCES[k];
       const nm = s.url ? '<a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.name)+' ↗</a>' : esc(s.name);
       return '<tr><td><span class="mcell">'+(s.brand?logoHTML(s.brand):'')+'<span class="txt"><span class="nm">'+nm+'</span>'+
-        (s.url?'<span class="sub">仅站点首页链接，非逐条证据</span>':'<span class="sub">无统一链接</span>')+'</span></span></td>'+
+        (s.url?'<span class="sub">'+(s.link==='page'?'具体资料页 / 原始榜单':'旧版入口，非逐条核验证据')+'</span>':'<span class="sub">无统一链接</span>')+'</span></span></td>'+
         '<td class="u" style="font-size:12.5px;color:var(--ink-3)">'+esc(s.kind)+'</td>'+
-        '<td class="n">'+esc(s.asOf)+'</td>'+
+        '<td class="n">'+esc(s.checkedAt||s.asOf)+'<span class="cnote">来源更新 '+esc(s.sourceDate||'未披露')+'</span></td>'+
         '<td style="font-size:12.5px;color:var(--ink-3);max-width:40ch">'+esc(s.note||'')+'</td></tr>';
     }).join('')+'</tbody>';
 
@@ -862,8 +901,9 @@ function renderVoices(){
   $('#voiceSub').textContent = '共 '+VOICES.length+' 条 · 默认展示 6 条';
   $('#voiceMore').textContent = state.voiceAll ? '收起' : '展开全部 '+VOICES.length+' 条';
   $('#voices').innerHTML = list.map(v=>
-    '<figure class="quote'+(v.key?' key':'')+'"><q>'+esc(v.q)+'</q>'+
-      '<figcaption class="by"><b>'+esc(v.a)+'</b> · '+esc(v.r)+'<span class="mono">'+esc(v.d)+'</span></figcaption></figure>').join('');
+    '<figure class="quote'+(v.key?' key':'')+'"><p class="quote-text">'+esc(v.q)+'</p>'+
+      '<figcaption class="by"><b>'+esc(v.a)+'</b> · '+esc(v.r)+'<span class="mono">'+esc(v.d)+'</span>'+
+      (v.url?'<a class="metric-source" href="'+esc(v.url)+'" target="_blank" rel="noopener">原始资料 ↗</a>':'')+'</figcaption></figure>').join('');
 }
 
 /* ================================================================
@@ -878,13 +918,15 @@ function openModel(id){
   $('#drawerLogo').outerHTML = logoHTML(m.brand,'xl').replace('class="logo', 'id="drawerLogo" class="logo');
   $('#drawerTitle').textContent = m.name;
   $('#drawerSub').innerHTML = esc(orgName(m.org)) + (m.variant?' · '+esc(m.variant):'') +
-    (m.released?' · 发布 <span class="mono">'+esc(m.released)+'</span>':'') + (m.tag?' · '+esc(m.tag):'');
+    (m.released?' · 发布 <span class="mono">'+esc(m.released)+'</span>':'') + (m.tag?' · '+esc(m.tag):'')+
+    (m.releaseNote?'<br>'+esc(m.releaseNote):'');
 
   const specRow = (label, k) => {
     const t = fmtVal(k, m[k]);
     const note = (m[k] && m[k].note) ? '<small>'+esc(m[k].note)+'</small>' : (k==='ctx'&&m.ctxNote?'<small>'+esc(m.ctxNote)+'</small>':'');
     return '<div class="r"><span class="k">'+esc(label)+'</span><span class="v">'+
-      (t? esc(t)+esc(unitOf(k))+kindTag(m[k], true)+'<small>数据快照 '+esc(m[k].asOf||'2026-09-19')+'</small>' : '<span class="na">暂无数据</span>') + note + '</span></div>';
+      (t? valueLink(m[k],esc(t)+esc(unitOf(k)))+kindTag(m[k], true)+'<small>读取快照 '+esc(m[k].asOf||'日期待核实')+
+        (m[k].sourceDate?' · 来源更新 '+esc(m[k].sourceDate):' · 源测量日未披露')+'</small>' : '<span class="na">暂无数据</span>') + note + '</span></div>';
   };
   const group = g => METRICS.filter(x=>x.g===g).map(x=>specRow(x.label, x.k)).join('');
 
@@ -894,9 +936,11 @@ function openModel(id){
       (m.priceMode?'<div class="r"><span class="k">计价方式</span><span class="v" style="font-family:var(--sans);font-size:12.5px">'+esc(m.priceMode)+(m.priceAlt?'<small>'+esc(m.priceAlt)+'</small>':'')+'</span></div>':'')+
       '</div></div>'+
     '<div class="dsec"><h3>上下文与输入输出</h3><div class="dspecs">'+group('spec')+'</div></div>'+
+    '<details class="dsec"><summary>历史评测与原始快照</summary><div class="dspecs">'+group('history')+'</div></details>'+
     '<div class="dsec"><h3>使用方式</h3><div class="dspecs">'+
       '<div class="r"><span class="k">开放状态</span><span class="v" style="font-family:var(--sans);font-size:13px">'+esc(m.license||'暂无数据')+'</span></div>'+
       '<div class="r"><span class="k">获取渠道</span><span class="v" style="font-family:var(--sans);font-size:13px;max-width:60%">'+esc(m.access||'暂无数据')+'</span></div>'+
+      '<div class="r"><span class="k">输入 / 输出</span><span class="v" style="font-family:var(--sans);font-size:13px">'+esc((m.inputs||[]).join('、')||'待核实')+' → '+esc((m.outputs||[]).join('、')||'待核实')+'</span></div>'+
     '</div></div>'+
     (m.strength?'<div class="dsec"><h3>适用场景</h3><p>'+esc(m.strength)+'</p></div>':'')+
     (m.limits  ?'<div class="dsec"><h3>已知限制</h3><p>'+esc(m.limits)+'</p></div>':'')+
@@ -924,6 +968,7 @@ function openVendor(key){
     (v.tech ? '<div class="dsec"><h3>技术特点</h3><p>'+esc(v.tech)+'</p></div>':'')+
     (v.scene?'<div class="dsec"><h3>优势场景</h3><p>'+esc(v.scene)+'</p></div>':'')+
     (v.keypoints?'<div class="dsec"><h3>关键点</h3><p>'+esc(v.keypoints)+'</p></div>':'')+
+    (v.urls&&v.urls.length?'<div class="dsec"><h3>本期官方来源</h3><p>'+v.urls.map((url,i)=>'<a class="metric-source" href="'+esc(url)+'" target="_blank" rel="noopener">资料 '+(i+1)+' ↗</a>').join('　')+'</p></div>':'')+
     '<div class="dsec"><h3>本页收录的模型（'+v.models.length+'）</h3><div class="dspecs">'+
       v.models.map(id=>{ const m=byId[id]; if(!m) return '';
         return '<div class="r"><span class="k"><button type="button" data-model="'+id+'" style="color:var(--ink);font-size:13px">'+esc(m.name)+'</button></span>'+

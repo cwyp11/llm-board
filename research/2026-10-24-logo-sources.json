@@ -1,0 +1,24 @@
+[
+  {
+    "brand": "Reflection",
+    "sourcePage": "https://reflection.ai/",
+    "url": "https://reflection.ai/icon.svg?icon.2l1p3ovm0zbbb.svg",
+    "file": "assets/logos/reflection.svg",
+    "checkedAt": "2026-10-24"
+  },
+  {
+    "brand": "InclusionAI",
+    "sourcePage": "https://github.com/inclusionAI",
+    "url": "https://avatars.githubusercontent.com/u/199075982?v=4",
+    "file": "assets/logos/inclusionai.png",
+    "checkedAt": "2026-10-24"
+  },
+  {
+    "brand": "Meituan",
+    "sourcePage": "https://www.meituan.com/media",
+    "url": "https://www.meituan.com/media#WK-meituan",
+    "file": "assets/logos/meituan.svg",
+    "checkedAt": "2026-10-24",
+    "note": "Official inline wk-meituan SVG symbol; viewBox and paths preserved. Shared fallback for LongCat; light carrier for visibility."
+  }
+]

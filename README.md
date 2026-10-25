@@ -1,295 +1,76 @@
-# 大模型情报看板 · 交付包
+# LLM Research Board
 
-> 版本：**Graphite Board V4.2**（2026-10-05 界面整理；数据快照 2026-10-02）
-> 形态：纯静态单页应用（HTML + CSS + 原生 JS，零构建、零框架、零运行时依赖）
-> 数据：**2026-10-02 人工增量核验**，来源为 Artificial Analysis / Arena / 厂商官方定价页；未重新核实的细项仍标 2026-09-19。无自动更新管线。
-> **没有自动更新管线** —— 之后的变化不会自己出现在页面上。
+Public dashboard: [cwyp11.github.io/llm-board](https://cwyp11.github.io/llm-board/)
 
----
+Graphite Board, static HTML/CSS/vanilla JavaScript. Evidence snapshot: **2026-10-24**. Release generated: **2026-10-25**. Arena Text source snapshot: **2026-10-22**. There is no automatic update pipeline.
 
-## 一、这是什么
+## Current coverage
 
-一个供个人日常查阅的大模型对比工具。四个入口：
-
-| 视图 | 回答什么问题 |
+| Module | Coverage and interpretation |
 | --- | --- |
-| **概览** | 这期有哪些值得关注的变化？现在能直接比哪几个模型？ |
-| **模型库与对比** | 几个候选之间，能力、价格、速度、上下文差在哪？ |
-| **价格与使用** | API 怎么收费、订阅怎么分档、哪个 Agent 框架能用？ |
-| **动态与资料** | 某个数字从哪来、什么时候的、能不能横向比？ |
+| Model library | 72 version/effort records across 19 companies; 45 configurations mapped to the current AA model leaderboard |
+| Metrics | 28 fields, including explicitly historical metrics; this is not a count of current benchmarks |
+| Current scores | AAII v4.3.2, CAI v2.0, FrontierCode 1.1, Terminal-Bench 4.0, GDPval-AA v2.1 Elo, HLE, SciCode, AA-LCR, non-hallucination rate, Arena Text |
+| Coding agents | 24 measured configurations across 11 harnesses, including 3 router combinations; CAI v1.5 matrix retained separately |
+| Pricing | Official standard API prices and independently reported channel prices distinguished; input, output and cache read in USD / million tokens |
+| Subscriptions | 8 official product groups; region, currency, billing cycle and unverified dynamic purchase prices retained |
+| Research | 19 vendor summaries, dated events, methodology notes, sources and conflicts; earlier long-form research remains accessible |
 
-收录 **50 个模型条目 / 16 家厂商 / 22 项指标**（页面计数由 `data.js` 实际内容动态计算）。新近加入 Opus 5.5、Sonnet 5.5、Gemini 4 Argon、GPT-6.1 Sol / 6 Sol / 6 Luna、Grok 4.7、MiMo-V2.6-Pro / Flash。
+The four views are Overview, Models & Compare, Pricing & Usage, and News & Research. Hover or keyboard-focus a benchmark name for its purpose and limits; no extra question-mark icons. Hover/tap model names and local logos for company identity. Company colors are enabled by default. Search, filters, sorting, four table presets, custom columns, favorites and comparisons of 2–4 models remain available. Adding a fifth model preserves the existing selection.
 
-直接悬停评测名称或用键盘 Tab 聚焦，查看测试任务、衡量能力、口径及限制，无额外问号图标。图表模型名和 Logo 支持悬停、聚焦或轻触查看所属公司、档位与分数，移除了重复的公司图例；Escape 可关闭提示。表头名称仍可点击排序。对比表统一标明本期快照，旧值另标日期；概览的榜单读取与页面生成日期收纳在「时间记录」中。
+## Run and build
 
-默认恢复厂商着色，已有浏览器的一次旧单色状态会迁移，此后的主动切换仍会保存。模型库默认显示「能力评测」，包括 AAII、CAI、DeepSWE v1.1、SWE-Atlas-QnA、TB 4.0、GPQA、SciCode、AA-LCR、非幻觉率、Arena；另有「常用概览」「价格与规格」「历史评测」快捷视图和自定义列设置。横向滚动时模型名、勾选及关注列固定在左侧。Agent 分数标明框架，完整配置见数值悬停提示和深度对比。
+Open `index.html` directly, with `assets/logos/` beside it. `src/index.html` and `dist/artifact.html` also resolve their local logos correctly. The page needs no server, account, package installation or runtime data fetch. Optional Google Fonts fall back to system fonts offline. Preferences are local to the browser.
 
-界面验收使用 `node tools/verify-refinement.js`，可在命令末尾传入发布页的 `file:///...` 或公网 URL。
+Edit the outer delivery directory. The nested directory with the same name is an old copy and is excluded from Git.
 
-DeepSWE v1.1 和 SWE-Atlas-QnA 是「模型 × Agent 框架」的分项，不能当成裸模型分数。旧 GDPval-AA v2 仍保留为历史快照；AAII v4.3.2 使用的已是 GDPval-AA v2.1。
-
-### ★ 本次数据更新中最重要的三件事
-
-1. **三把主要的尺同时换代了。** Artificial Analysis 智能指数从 v4.1.1 升到 **v4.3**（评测 9 项变 10 项并重新标定，头部从 63 分档变成 53 分档）；Terminal-Bench 主版本从 3.0 走到 **4.0**（66 题）；编码 Agent 指数升到 **v1.5**（DeepSWE v1.1 + TB 4.0 + SWE-Atlas-QnA）。
-   **旧版页面的所有分数与本版都不在同一把尺上**，本页因此不做任何跨版本的涨跌或趋势。
-2. **SWE-bench Verified 已于 2026-09-01 被 vals.ai 归档停更**（成绩饱和）。GPT-6 Astra、Claude Fable 5.1、Muse Spark 1.3、DeepSeek V4.1 Flash 永远不会有该分数 —— 表里的空白是基准停更，不是数据没找到。
-3. **旧基准的饱和掩盖了巨大差距。** Grok 4.6 在 TB 2.1 上 88%（与头部并列），在 TB 4.0 上只剩 21%；Kimi K3 从 85% 掉到 13%。仍用 TB 2.1 或 SWE-bench 挑长链 Agent 模型，很可能选错。
-
----
-
-## 二、目录结构
-
-```
-大模型情报看板/
-├── README.md                    ← 本文件
-├── DESIGN-SYSTEM.md             ← 设计契约（改视觉前必读）
-├── index.html                   ← 单文件发布版，双击即可离线打开
-├── dist/artifact.html           ← 发布到 claude.ai 用的版本（由 build.py 一并生成）
-├── build.py                     ← 把 src/ 重新内联回 index.html 与 dist/artifact.html
-│
-├── src/                         ← 拆分源码版（改代码看这里）
-│   ├── index.html                   结构层：只含 <body> 骨架与外链
-│   ├── css/
-│   │   ├── 01-tokens.css            设计令牌（所有色值 / 字体 / 尺寸变量）
-│   │   ├── 02-layout.css            骨架 + 排版 + 通用元素 + 响应式 + 打印
-│   │   └── 03-components.css        组件层（表格 / 对比 / 抽屉 / 图表 …）
-│   └── js/
-│       ├── data.js                  ★ 数据层：模型、指标、变化、厂商、来源、冲突、厂商图表色
-│       ├── charts.js                图表层：排行柱状图 + 散点（纯 SVG，无依赖）
-│       └── app.js                   行为层：路由 / 渲染 / 筛选 / 对比 / 抽屉
-│
-├── assets/logos/                ← 26 个真实品牌 SVG + SOURCES.md 来源记录
-│
-└── tools/                       ← 可选开发工具（看板本身不需要）
-    ├── regression-test.js           交互回归（结构计数 + 行为快照 + 溢出检查）
-    ├── geometry-snapshot.js         布局几何快照（改 CSS 前后 diff）
-    └── package.json
-```
-
-**两个版本的关系**
-
-| 版本 | 用途 | 打开方式 |
-| --- | --- | --- |
-| `index.html`（根目录） | 日常使用 / 离线查看 | 直接双击 |
-| `src/index.html` | 二次开发 | 同样可双击运行 |
-| `dist/artifact.html` | 发布到 claude.ai | 由发布流程使用，不要直接双击（缺外层文档标签） |
-
-改完 `src/` 后在包根目录执行 `python build.py`，三份会一起重新生成。
-
-### 线上地址（无需登录）
-
-## **https://cwyp11.github.io/llm-board/**
-
-GitHub Pages，任何设备直接打开，**不用登录、不用账号**。仓库：
-<https://github.com/cwyp11/llm-board>
-
-**更新数据的完整流程**：
-
-```bash
-# 1. 改数据
-#    src/js/data.js
-
-# 2. 重新生成 index.html 与 dist/artifact.html
+```powershell
+python tools/review-evidence.py
+python tools/refresh-data.py
 python build.py
-
-# 3. 跑一遍回归（可选但推荐）
-cd tools && npm i playwright-core && node regression-test.js ../index.html && cd ..
-
-# 4. 推上去，约 1 分钟后线上生效
-git add -A && git commit -m "更新数据至 YYYY-MM-DD" && git push
 ```
 
-Pages 配置为 `main` 分支根目录，`index.html` 就在根目录，所以推上去即发布，无需任何构建流水线。
-根目录的 `.nojekyll` 让 GitHub 跳过 Jekyll 处理，直接按静态文件发布。
+`src/js/data.js` is generated from the dated research files. For a future refresh, collect and review new evidence, deliberately update snapshot/release dates and mappings, then regenerate. Re-running these scripts only rebuilds the recorded snapshot; it does not fetch new industry facts. The optional `tools/collect-aa-snapshot.py` captures AA public model records and retains a SHA-256 for the raw page. Raw captures are ignored by Git; structured public evidence is versioned.
 
-**账号与推送环境**（2026-09-23 由 `ccl0722` 迁移到 `cwyp11` 之后的现状）：
+`build.py` inlines the split source into root `index.html` and `dist/artifact.html`. Keep local logo assets when copying either release. `assets/logos/SOURCES.md` records provenance. The single brand mapping in `data.js` is shared by tables, filters, charts, comparisons and vendor profiles.
 
-- 仓库归属 `cwyp11`。Pages 地址是「账号名 + 仓库名」拼出来的，**换账号地址就会变**。
-- 本仓库 `.git/config` 里锁死了提交身份 `cwyp11 <261224879+cwyp11@users.noreply.github.com>`，
-  不受 GitHub Desktop 改全局配置影响。用 GitHub 官方 noreply 邮箱，避免把私人邮箱
-  永久写进公开仓库的提交历史。
-- **凭据解析是确定的**，不依赖任何继承顺序。本仓库 `.git/config` 里显式写死了三段助手链：
+## Evidence and comparisons
 
-  | 顺序 | 助手 | 作用 |
-  |---|---|---|
-  | 1 | `""`（空值） | git 遇到空值会**重置之前累积的整条链**，作废系统级继承来的 GCM，消除歧义 |
-  | 2 | `!gh auth git-credential` | 新账号 `cwyp11` 由 gh CLI 应答 |
-  | 3 | `manager` | gh 应答不了时落回 GCM，供旧账号 `ccl0722` 使用 |
+- Read/check dates, source update dates and build dates are distinct. Unknown source measurement dates remain unknown. Unreverified numbers retain their original dates and a historical label.
+- Missing values are `null`, sort last, and never act as zero. Parameters are absolute counts; context and maximum output use tokens. Tensor size, backbone parameters and active compute are not automatically interchangeable.
+- CAI v2.0 and v1.5, GDPval-AA v2.1 Elo and older percentages, and Terminal-Bench 4.0 and 2.1 use different keys. Historical scores are not relabeled as current or converted into trends.
+- Scores belong to exact checkpoints, reasoning efforts and harnesses. Mismatched Arena configurations remain explicit and cannot receive a best-value label.
+- Comparison highlights are calculated for the selected models. Incompatible bases, dates or evidence kinds, estimated values, unavailable APIs, reviewed datasets and overlapping Elo confidence intervals prevent unsupported winner claims.
+- SciCode is currently under source review. Its published values remain visible, without best-value highlights.
+- Price fields distinguish API channel, currency, cache conditions and long-input tiers. Subscription allowances are separate. Independent per-task cost is not an official per-token price.
+- A specific value links to its evidence where available. A homepage or old board archive is labeled accordingly and does not prove a current numerical claim.
 
-  两个 remote 的 URL 里都写进了账号名（`https://cwyp11@github.com/...`、
-  `https://ccl0722@github.com/...`），凭据按 username 精确匹配。即使哪天本地配置丢失、
-  退回系统 GCM，它也会去找对应账号的凭据，而不是默默拿错账号去撞 403。
+The full previous board is retained in `research/previous-2026-10-02.json`; historical content remains in secondary views. `research/2026-10-24-coverage.md` records this refresh and remaining limits.
 
-  实测结果：`origin` → `cwyp11`、`old-ccl0722` → `ccl0722`，两个 remote 的
-  `git push --dry-run` 都通过。仓库外的其他项目仍走系统 GCM 解析到 `ccl0722`，未受影响。
+## Verification
 
-- GitHub Desktop 用的是它自己的令牌存储（凭据管理器里的
-  `GitHub - https://api.github.com/cwyp11`），与上面这条链互不干涉。迁移前它推不动这个项目，
-  是因为它登的 `cwyp11` 对当时归属 `ccl0722` 的仓库没有写权限 —— 仓库迁到 `cwyp11` 之后
-  这个原因已经不存在了。
-- `gh` 是 Go 程序，**不读 Windows 系统代理设置**。本机若靠 Clash 之类的工具上网，
-  终端里必须先设环境变量，否则 `gh` 会直连 github.com 然后超时：
+Browser checks use the existing `playwright-core` development dependency in `tools/node_modules`; it is not a runtime dependency. Install from `tools/package.json` if necessary. The scripts currently default to the installed Windows Chrome path.
 
-  ```powershell
-  $env:HTTP_PROXY="http://127.0.0.1:7897"; $env:HTTPS_PROXY=$env:HTTP_PROXY
-  ```
-
-- 旧仓库 `ccl0722/llm-board` **代码仍保留**，但其 GitHub Pages 已于 2026-09-23 关闭，
-  旧地址 `https://ccl0722.github.io/llm-board/` 现在返回 404，不会再有一份无声过期的旧看板。
-  该仓库仍挂在本地 remote `old-ccl0722` 上且有写权限，真要回退的话需要两步：
-  `git push old-ccl0722 main`，再重新开启该仓库的 Pages。
-
-**另有一个 claude.ai 上的私有副本**：<https://claude.ai/artifact/KcoPwxe2juTGvcGJ77yHJq>
-（需要登录 claude.ai 才能打开，内容同源但不会随 git push 自动更新；不需要的话可以直接删掉。）
-
----
-
-## 三、怎么运行
-
-**没有构建步骤、没有 npm install、没有后端、没有登录。**
-
-- 直接双击 `index.html`，用 Chrome / Edge / Safari 打开即可。**`file://` 协议下全部功能正常** —— 数据是内联的，页面里没有任何 `fetch`。
-- 唯一的外部资源是 **Google Fonts**（Inter + Noto Serif SC）。断网时回退到系统字体（PingFang SC / 微软雅黑 + Georgia），布局不受影响。
-- Logo 全部是本地 SVG（`assets/logos/`），**必须与 `index.html` 保持同级**，单独把 HTML 拎出来会导致标识加载失败。
-- 「关注模型」「对比选择」「列设置」存在浏览器 `localStorage` 里，换设备不会同步；隐私模式下读写失败会自动降级，不影响使用。
-
----
-
-## 四、数据是怎么组织的
-
-**所有数据都在 `src/js/data.js`，页面上没有任何硬编码的分数、名次或「最优」结论。**
-
-每个指标值都是一个带口径的对象，而不是裸数字：
-
-```js
-aaii: v(53, 'ind', '与 GPT-6 Astra 并列榜首')
-//      ↑值  ↑类型  ↑备注
-// 类型：ind 独立评测 / vendor 官方自报 / est 估算 / edit 编辑判断
+```powershell
+node tools/verify-refresh.js
+python build.py
+node tools/regression-test.js index.html
+node tools/verify-refinement.js
+node tools/verify-latest.js
 ```
 
-几条硬规则：
+The first check covers evidence units, dates, source mappings and production comparison guards. Browser checks cover offline releases, 1440/1280/390 viewports, table presets, hover/focus help, logos, filtering/sorting, comparison limits and page errors. `verify-refinement.js` also accepts a public URL to validate the deployed page. Screenshots are written locally to `screenshots/`.
 
-1. **缺失写 `null`，绝不写 0。** 渲染成「暂无数据」，排序时永远排最后，不参与最优值计算。
-2. **上下文窗口、最大输出长度、参数量三者分列**，互不换算。（V3 曾把 `753B`、`428B` 这类参数量填进上下文列；本次已由 Artificial Analysis 确认 GLM-5.3 与 MiniMax-M3 的上下文均为 1M。）
-3. **不同 Benchmark 版本各占一个字段**：`tb40` 与 `tb21` 是两个独立指标，绝不混排。基准归档停更时（如 `swe`）在 `METRICS` 的 `warn` 里写明，别让空白被误读成「没找到数据」。
-4. **价格统一为美元 / 每百万 token**，促销、峰谷、渠道折扣写在 `priceMode` / `priceAlt` / `priceWas`，订阅价在 `SUBSCRIPTIONS`，两者不混。
-5. **数值打架时两个说法都记下来**，放进 `CONFLICTS`，页面上有专门的「口径冲突与待核实」表，不擅自选一个。
+## Publish
 
-6. **单任务成本优先于标价。** `cpt` 是 Artificial Analysis 实测「跑完一道智能指数任务的加权平均花费」，把推理 token 消耗与缓存命中都算了进去。它和标价经常不是一个排序 —— 例如 Claude Sonnet 5 标价只有 $2/$10，单任务成本却高达 $5.09。
+The existing repository is `cwyp11/llm-board`, with GitHub Pages serving the root of `main` and `.nojekyll` disabling Jekyll. Build and verify before a scoped commit/push. Confirm that the latest Pages build references the pushed commit, then exercise the public URL with a fresh browser context and cache-busting query. A local build or successful push alone is not deployment verification. Preserve the existing repository-specific Git identity and credential settings.
 
-`METRICS` 定义了每个指标的 `better`（越高越好 / 越低越好 / 无优劣）、`basis`（口径）、`src`（来源）与 `warn`（横比风险提示）——
-模型库的列、对比表的行、排序方向、最优值判断全部由它驱动，加一个指标只需要在这里加一行。
+## Still unresolved
 
-**指标换代时**：改 `METRICS` 的 key（例如 `tb30` → `tb40`）即可，`app.js` 的 `initCols()` 会自动丢弃
-浏览器里残留的旧列偏好，不会出现空列。
+- Kimi K3.1 Pro has different AA and official release dates; weights are promised, not already public. K3 parameter counts are not transferred to K3.1.
+- GLM-5.3 tensor count versus architecture parameter definitions remains unresolved. DeepSeek 1017 backbone/Engram and prefill/decode counts are not collapsed into an invented total.
+- Some API aliases, open-weight checkpoints, long-input boundary rules and localized subscription amounts still need confirmation; the page lists their scope and sources.
+- The official Terminal-Bench score table was not machine-readable during collection. Current model scores use the explicitly labeled AA independent environment, not a claimed transcription of the official table.
+- Old quotations were not rechecked word for word. They are labeled historical, while new source summaries are presented as paraphrases.
 
-### 最优值是怎么算的
-
-`app.js` 的 `bestOf()`，四条规则缺一不可：
-
-- 指标没有优劣方向（如参数量）→ 不评
-- 当前选中的模型里有效值少于 2 个 → 不评
-- 这些值的**取值类型不一致**（独立评测 / 官方自报 / 估算混用）→ 不评，并在行头说明原因
-- 只在有值的模型之间比较，缺失的不按 0 参与；若有模型缺数据，行头标注「仅 N / M 个有数据」
-
-**没有任何模型或分数被硬编码为最优。** 换一批选中模型，最优值就跟着变。
-
----
-
-## 五、继续升级时，从哪改起
-
-| 我想改… | 改哪 |
-| --- | --- |
-| 更新数据（分数、价格、新模型） | `src/js/data.js` —— 只改这一个文件 |
-| 颜色 / 字体 / 圆角 / 间距 | `src/css/01-tokens.css` |
-| 表格、对比表、抽屉、图表的样式 | `src/css/03-components.css` |
-| 图表的几何与绘制逻辑 | `src/js/charts.js` |
-| 厂商图表色 | `src/js/data.js` 的 `LAB_COLORS`（改前先读 DESIGN-SYSTEM 第 7 节） |
-| 骨架、响应式断点、打印样式 | `src/css/02-layout.css` |
-| 交互逻辑（筛选 / 排序 / 对比 / 路由） | `src/js/app.js` |
-| 页面结构 / 新增区块 | `src/index.html` |
-| 新增一个指标 | `data.js` 的 `METRICS` 加一行，再在各模型上补字段 |
-| 新增一家厂商 | SVG 放进 `assets/logos/` → `data.js` 的 `BRANDS` 注册 → `assets/logos/SOURCES.md` 补来源 |
-
-**动手前先读 `DESIGN-SYSTEM.md`**，尤其是第 2 节配色约束与第 8 节的数据诚实性规则。
-
----
-
-## 六、质量验证记录
-
-用无头 Chrome 实测（`tools/regression-test.js`，2026-09-19 更新数据后复跑，退出码 0）：
-
-| 项 | 实测值 |
-| --- | --- |
-| 控制台 / 页面错误 | **0** |
-| 品牌标识 | 224 个 `<img>`，**全部加载成功**，0 个降级为文字 |
-| 模型库 | 41 行 · 16 个厂商筛选项 · 20 项指标 · 搜索 `opus` → 2 行 · 无匹配 → 空状态提示 |
-| 筛选 | 单选 Anthropic → 7 行；叠加「开源权重」→ 1 行；清空 → 41 行 |
-| 排序 | AAII 降序首行 Claude Fable 5.1 / 升序首行 Mistral Large 3；**升序末行是「暂无数据」的 Muse Spark 1.2**（缺失值排最后） |
-| 对比 | 选 4 个 → 5 列 × 33 行；**第 5 次点击弹提示且仍保持 4 个（不清空）** |
-| 最优值 | 22 处动态标注；10 类「不评最优」原因（版本换代 / 组合分 / 基准不可互比 / 基准已归档 / 数据不足 / 仅 N 个有数据等） |
-| 只看差异 | GPT-5.6 Terra vs Luna：33 行 → 21 行（相同的上下文、许可、计价方式、发布日期等自动隐藏） |
-| 价格视图 | 38 行价格 · 40 行规格 · 散点 30 点 · 8 张订阅卡 |
-| 资料视图 | 16 家厂商 · 26 条时间线 · 18 条研究要点 · 14 条口径冲突 |
-| 抽屉 | 打开正常，Esc 可关闭，Tab 焦点不跑到背后页面 |
-| 横向溢出 | 1440 / 1280 / 390 三档 × 四个视图 **全部无页面级横向滚动**（宽表在自身容器内滚动） |
-| `file://` 离线 | 41 行渲染正常、224 个标识全部加载、0 报错、localStorage 降级不崩 |
-
-复跑：
-
-```bash
-cd tools && npm i playwright-core && node regression-test.js ../index.html
-```
-
-需用环境变量 `CHROME_PATH` 指定本机 Chrome 路径。脚本有非零退出码，可直接进 CI。
-
-> **不要用截图像素对比做验收**：页面有 CSS 过渡、异步字体与运行时定位的散点图，两次截图不可能逐像素相同。
-> 看 `regression-test.js` 的 JSON 输出，或用 `geometry-snapshot.js` 做改动前后的几何 diff。
-
-## 七、当前状态与已知问题（交接备忘）
-
-1. **最近核验为 2026-10-02 人工增量采集；旧单项有 2026-09-19 快照。没有自动更新管线。**
-   页面标注了数据抓取日与页面生成日，「复制更新指令」按钮**只复制一段文字**，不做也做不了真正的数据更新 —— 名字就是它的实际行为。下次更新要重新跑一遍采集。
-
-2. **本期有 5 条待核实 / 待观察**，页面「动态与资料 → 口径冲突与待核实」有完整列表（共 14 条，含已定口径与已修复），摘要见第八节。
-
-3. **来源只有站点首页链接，没有逐条证据深链。** 页面在来源表和模型详情里都写了这句话，不要把首页链接当成「该数字已逐项核实」。
-
-4. **绝大多数能力与价格数据来自同一个来源（Artificial Analysis）**，好处是口径一致、可横向比；代价是单点依赖。Arena 的 Elo 与 vals.ai 的 SWE-bench 是仅有的两个交叉源。
-
-5. **没有历史快照序列，且三把尺刚刚换代**，所以页面上没有任何涨跌曲线或排名变化趋势。即使以后攒够快照，跨 AAII 版本的数据也不能连成一条线。
-
-6. **订阅价格来自媒体汇总，未逐家核对官网**（Gemini Ultra $249.99、Grok SuperGrok Plus $100 两条尤其需要确认）。API 价格则来自 Artificial Analysis 与厂商官方定价页，可信度更高。
-
-7. **`全球大模型情报日报-设计交付包/` 嵌套子目录是旧版（V3）的完整副本**，本次没有改动它。确认新版没问题后可以直接删除。
-
-8. **`tools/` 需要自己 `npm i playwright-core`**，`node_modules` 没有打进交付包。
-
----
-
-## 八、待核实数据清单（摘要）
-
-| 模型 | 项目 | 情况 | 处理 |
-| --- | --- | --- | --- |
-| GLM-5.3 | 参数规模 | 753B（发布口径）vs 744B（基座口径） | 取 753B 并注明分歧。上下文已由 AA 确认为 1M |
-| DeepSeek V4.1 Flash | 价格口径 | AA $0.30/$1.20（高峰）vs 官方 $0.15/$0.60（低谷） | 两者都对，差别在时段。主表用高峰价与其它模型对齐，低谷价写在计价方式里 |
-| Qwen3.8-Max | SWE-bench 版本对应 | 85.6% 是 0902 之前的版本 | 已在行内注明；0902 版赶不上基准归档 |
-| GPT-6 Astra | Arena 置信区间 | 1480±12，票数仅 2,693 | 待观察，票数积累后名次会变 |
-| 订阅价 | Gemini Ultra / Grok 新档 | $249.99、SuperGrok Plus $100 | 来自媒体汇总，待官方确认 |
-
-已定口径（不算冲突，但必须知道）：
-AAII v4.3 与 v4.1.1 不可比；TB 4.0 与 TB 2.1 不可比；CAI v1.5 与 v1.4 不可比；
-SWE-bench 已归档，新模型的空白是基准停更；Claude Fable 5 / Muse Spark 1.2 在 Arena 上高于各自的继任者，但差值都落在置信区间内且档位不同。
-
----
-
-## 九、许可与素材说明
-
-- **代码**：项目自有，可自由修改。
-- **品牌标识**：26 个 SVG，来源逐个登记在 `assets/logos/SOURCES.md`（Lobe Icons MIT / Simple Icons CC0 / Motif 官网）。
-  **商标本身归各公司所有**，此处仅用于个人看板的品牌识别，未用于商业宣传或暗示合作关系。
-- **字体**：Inter（SIL OFL）、Noto Serif SC（SIL OFL），通过 Google Fonts 引用。
-- **数据来源**：Artificial Analysis（智能指数 v4.3 / 编码 Agent 指数 v1.5 / Terminal-Bench / 价格 / 速度 / 单任务成本）、
-  arena.ai（LMArena Elo）、vals.ai（SWE-bench Verified，已归档）、Terminal-Bench（Laude Institute）、
-  各厂商官方定价页与发布公告，以及路透 / 彭博 / Axios / VentureBeat / IT 之家等公开报道。
-  逐条登记在 `data.js` 的 `SOURCES`，页面「动态与资料」有完整来源表。
+Brand files identify their respective owners and do not imply endorsement. Library licenses do not transfer trademark rights. No new backend, framework, account system or continuous update service was introduced.

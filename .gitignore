@@ -10,3 +10,6 @@ tools/node_modules/
 # 系统文件
 Thumbs.db
 .DS_Store
+
+# Reproducible public-page captures; structured evidence is kept in research/.
+research/raw/

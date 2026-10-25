@@ -441,3 +441,8 @@ BRANDS 注册表（data.js，唯一数据源）
 ---
 
 *本规范与代码同步维护。改视觉前先读第 2 节，改数据展示前先读第 8 节。*
+
+
+## Snapshot maintenance: 2026-10-25
+
+The diagram counts above describe the original design baseline, not live coverage. Current counts are calculated from the generated data. This release uses a 2026-10-24 evidence snapshot and a separate 2026-10-25 build date. Current CAI v2.0 and GDPval-AA v2.1 Elo have distinct keys; older versions remain in historical views. Metric-name hover/focus help, company colors by default, sticky identity columns and four table presets remain the current interaction contract. SciCode under review, configuration mismatches, incompatible evidence dates/bases and overlapping Elo confidence intervals must not produce a best-value claim. Official black Meituan artwork uses a light carrier instead of a color alteration.
