@@ -1,6 +1,6 @@
 # Dashboard Data Refresh Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Refresh every dashboard module from public authoritative sources checked on 2026-10-24 and publish the verified static release.
 
@@ -43,5 +43,9 @@
 - [x] Expose current versus historical benchmark versions and per-value sources.
 - [x] Remove obsolete hardcoded dates and historical claims from current summaries.
 - [x] Run data audits, build, core regressions and responsive visual checks.
-- [ ] Commit the reviewed files and publish to existing main-branch GitHub Pages.
-- [ ] Verify the deployed commit and exercise public-page interactions before reporting completion.
+- [x] Commit the reviewed files and publish to existing main-branch GitHub Pages.
+- [x] Verify the deployed commit and exercise public-page interactions before reporting completion.
+
+## Verification outcome
+
+Source release commit: `04ade0cce8080f89e6d32264a2c489df905513e2`. GitHub Pages reported `built` for that commit. The public release returned HTTP 200 and matched the committed `index.html` SHA-256 (`f613ef4389d09c1bde4c0e4a409ef6a37865d7a1ba9da188d1be5044f3897459`). Public responsive/help/preference checks passed at 1440/1280/390; the browser reported zero page/console errors, zero failed requests and no broken image assets. Local CRLF is normalized by Git; byte integrity is compared against the committed LF file. A final external review worker could not run because of its usage limit; targeted manual review and executable data, comparison and browser checks were completed instead.

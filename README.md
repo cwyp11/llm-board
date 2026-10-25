@@ -57,6 +57,7 @@ python build.py
 node tools/regression-test.js index.html
 node tools/verify-refinement.js
 node tools/verify-latest.js
+node tools/verify-public.js
 ```
 
 The first check covers evidence units, dates, source mappings and production comparison guards. Browser checks cover offline releases, 1440/1280/390 viewports, table presets, hover/focus help, logos, filtering/sorting, comparison limits and page errors. `verify-refinement.js` also accepts a public URL to validate the deployed page. Screenshots are written locally to `screenshots/`.
