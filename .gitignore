@@ -13,3 +13,6 @@ Thumbs.db
 
 # Reproducible public-page captures; structured evidence is kept in research/.
 research/raw/
+
+# Python collector/generator bytecode is local development output.
+__pycache__/

@@ -25,7 +25,7 @@ def objects_from_rsc(text):
             yield value
 
 
-def collect(url, date, name):
+def collect(url, date, name, basis):
     raw_dir = ROOT / 'research' / 'raw'
     raw_dir.mkdir(parents=True, exist_ok=True)
     request = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
@@ -37,15 +37,16 @@ def collect(url, date, name):
     rows, metadata = {}, {}
     candidates = list(objects_from_rsc(rsc))
     for record in candidates:
-        if 'slug' not in record:
-            continue
         if 'intelligenceIndex' in record and 'contextWindowTokens' in record:
-            rows[record['slug']] = record
-        if record.get('releaseDate'):
+            # Current releases nest the slug under release; preserve effort rows by UUID.
+            ident = record.get('id') or record.get('slug')
+            if ident:
+                rows[ident] = record
+        if record.get('slug') and record.get('releaseDate'):
             metadata[record['slug']] = record
     result = {'checkedAt': date, 'source': url, 'sourcePublishedAt': None,
               'htmlSha256': hashlib.sha256(raw).hexdigest(),
-              'basis': 'Artificial Analysis Intelligence Index v4.3.2',
+              'basis': basis,
               'rows': list(rows.values()), 'metadata': list(metadata.values())}
     if not rows:
         result['records'] = [r for r in candidates if len(r) > 6]
@@ -60,5 +61,6 @@ if __name__ == '__main__':
     parser.add_argument('--url', default='https://artificialanalysis.ai/leaderboards/models')
     parser.add_argument('--date', required=True)
     parser.add_argument('--name', default='aa')
+    parser.add_argument('--basis', required=True, help='Verified benchmark/version; never infer the previous release version')
     args = parser.parse_args()
-    collect(args.url, args.date, args.name)
+    collect(args.url, args.date, args.name, args.basis)

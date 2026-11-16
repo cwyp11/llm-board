@@ -28,7 +28,7 @@ const digest=v=>crypto.createHash('sha256').update(v).digest('hex');
   const shots=path.join(root,'screenshots');fs.mkdirSync(shots,{recursive:true});
   await page.screenshot({path:path.join(shots,'public-overview-1440.png')});
   await page.click('a[href="#models"]');
-  for(const id of ['claude-opus55','claude-sonnet55','kimi-k31pro'])await page.locator(`#modelTable [data-cmp="${id}"]`).click();
+  for(const id of ['claude-fable52','gemini4-carbon','kimi-k31pro'])await page.locator(`#modelTable [data-cmp="${id}"]`).click();
   await page.locator('#cmpBody').evaluate(el=>{el.closest('.sec').scrollIntoView({block:'start'});window.scrollBy(0,-86)});
   await page.screenshot({path:path.join(shots,'public-compare-1440.png')});
   const broken=await page.locator('img').evaluateAll(images=>images.filter(i=>!i.complete||!i.naturalWidth).map(i=>i.src));
@@ -36,7 +36,7 @@ const digest=v=>crypto.createHash('sha256').update(v).digest('hex');
   await page.screenshot({path:path.join(shots,'public-overview-390.png')});
   console.log(JSON.stringify({target,status:response.status(),remoteHash,committedHash,info,broken,pageErrors:errors,consoleErrors,failedRequests:failed},null,2));
   assert.equal(response.status(),200);assert.equal(remoteHash,committedHash);
-  assert.equal(info.models,72);assert.equal(info.date,'2026-10-24');assert.equal(info.built,'2026-10-25');
+  assert.equal(info.models,86);assert.equal(info.date,'2026-11-16');assert.equal(info.built,'2026-11-16');
   assert.deepEqual(errors,[]);assert.deepEqual(consoleErrors,[]);assert.deepEqual(broken,[]);assert.deepEqual(failed,[]);
  }finally{await browser.close()}
 })().catch(e=>{console.error(e);process.exitCode=1});

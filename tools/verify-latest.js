@@ -17,7 +17,7 @@ fs.mkdirSync(shots,{recursive:true});
  await page.goto(url);await page.waitForTimeout(700);
  await page.screenshot({path:path.join(shots,'latest-overview-1440.png')});
  await page.click('a[href="#models"]');await page.waitForTimeout(300);
- const rankHelp=await page.locator('#rankMetric [data-rank="frontiercode"] .metric-tip').textContent();
+ const rankHelp=await page.locator('#rankMetric [data-rank="frontiercode2"] .metric-tip').textContent();
  for(const id of ['claude-sonnet55','claude-opus55','grok47'])await page.locator(`#modelTable [data-cmp="${id}"]`).click();
  await page.waitForTimeout(300);
  const tip=page.locator('#cmpBody .metric-help').filter({has:page.locator('.metric-tip b:text-matches("^DeepSWE")')});

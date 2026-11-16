@@ -446,3 +446,8 @@ BRANDS 注册表（data.js，唯一数据源）
 ## Snapshot maintenance: 2026-10-25
 
 The diagram counts above describe the original design baseline, not live coverage. Current counts are calculated from the generated data. This release uses a 2026-10-24 evidence snapshot and a separate 2026-10-25 build date. Current CAI v2.0 and GDPval-AA v2.1 Elo have distinct keys; older versions remain in historical views. Metric-name hover/focus help, company colors by default, sticky identity columns and four table presets remain the current interaction contract. SciCode under review, configuration mismatches, incompatible evidence dates/bases and overlapping Elo confidence intervals must not produce a best-value claim. Official black Meituan artwork uses a light carrier instead of a color alteration.
+
+
+## Snapshot maintenance: 2026-11-16
+
+AAII v5.0.1 and its task costs are distinct from the preserved v4 fields. Current CAI v2.1, its FrontierCode-AA 2.0 components and TB4.1 Agent results are separate from old CAI and AAII's TB4.0 model results. Defaults migrate to current columns once; explicit custom selections remain intact. New metric names retain direct hover/focus help. Task duration (minutes), first-answer wait (seconds) and output throughput (tokens/second) have distinct columns. Elo comparisons require available, non-overlapping intervals. Thinking Machines uses unchanged official artwork on a light carrier. Existing graphite styling, company colors and compare limits remain the interaction contract.

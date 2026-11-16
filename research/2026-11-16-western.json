@@ -1,0 +1,3479 @@
+{
+  "checkedAt": "2026-11-16",
+  "sources": [
+    {
+      "id": "west26-oa-log",
+      "title": "OpenAI API changelog",
+      "url": "https://developers.openai.com/api/docs/changelog",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Read current dated entries through November 5; sourceDate is not the page check date."
+    },
+    {
+      "id": "west26-oa61sol",
+      "title": "gpt-6.1-sol official model page",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-oa61terra",
+      "title": "gpt-6.1-terra official model page",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-oa6astra",
+      "title": "gpt-6-astra official model page",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-oa6sol",
+      "title": "gpt-6-sol official model page",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-oa6luna",
+      "title": "gpt-6-luna official model page",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-oa56sol",
+      "title": "gpt-5.6-sol official model page",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-oa56terra",
+      "title": "gpt-5.6-terra official model page",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-oa56luna",
+      "title": "gpt-5.6-luna official model page",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-oa55",
+      "title": "gpt-5.5 official model page",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.5",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-oa53",
+      "title": "gpt-5.3-codex official model page",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.3-codex",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-oa-price",
+      "title": "OpenAI API pricing",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-an-price",
+      "title": "Claude API pricing",
+      "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-an-effort",
+      "title": "Claude effort controls",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/effort",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-an-log",
+      "title": "Claude Platform release notes",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-an52-release",
+      "title": "Introducing Claude Fable 5.2 and Claude Mythos 5.2",
+      "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "checkedAt": "2026-11-16",
+      "sourceDate": "2026-11-09",
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-an-f52",
+      "title": "Claude fable-5-2 specifications",
+      "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-an-m52",
+      "title": "Claude mythos-5-2 specifications",
+      "url": "https://platform.claude.com/docs/en/models/mythos-5-2/overview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-an-o55",
+      "title": "Claude opus-5-5 specifications",
+      "url": "https://platform.claude.com/docs/en/models/opus-5-5/overview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-an-s55",
+      "title": "Claude sonnet-5-5 specifications",
+      "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-an-h55",
+      "title": "Claude haiku-5-5 specifications",
+      "url": "https://platform.claude.com/docs/en/models/haiku-5-5/overview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-an-f51",
+      "title": "Claude fable-5-1 specifications",
+      "url": "https://platform.claude.com/docs/en/models/fable-5-1/overview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-an-m51",
+      "title": "Claude mythos-5-1 specifications",
+      "url": "https://platform.claude.com/docs/en/models/mythos-5-1/overview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-an-f5",
+      "title": "Claude fable-5 specifications",
+      "url": "https://platform.claude.com/docs/en/models/fable-5/overview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-an-o5",
+      "title": "Claude opus-5 specifications",
+      "url": "https://platform.claude.com/docs/en/models/opus-5/overview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-an-s5",
+      "title": "Claude sonnet-5 specifications",
+      "url": "https://platform.claude.com/docs/en/models/sonnet-5/overview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-an-o48",
+      "title": "Claude opus-4-8 specifications",
+      "url": "https://platform.claude.com/docs/en/models/opus-4-8/overview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-an-h45",
+      "title": "Claude haiku-4-5 specifications",
+      "url": "https://platform.claude.com/docs/en/models/haiku-4-5/overview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-gg-price",
+      "title": "Gemini Developer API pricing",
+      "url": "https://aistudio.google.com/docs/pricing",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Current canonical destination of ai.google.dev Gemini API docs."
+    },
+    {
+      "id": "west26-gg-log",
+      "title": "Gemini API release notes",
+      "url": "https://aistudio.google.com/docs/changelog",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-gg-carbon",
+      "title": "gemini-4-carbon specifications",
+      "url": "https://aistudio.google.com/docs/models/gemini-4-carbon",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-gg-hydrogen",
+      "title": "gemini-4-hydrogen specifications",
+      "url": "https://aistudio.google.com/docs/models/gemini-4-hydrogen",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-gg-argon",
+      "title": "gemini-4-argon specifications",
+      "url": "https://aistudio.google.com/docs/models/gemini-4-argon",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-gg38",
+      "title": "gemini-3.8-flash specifications",
+      "url": "https://aistudio.google.com/docs/models/gemini-3.8-flash",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-gg31",
+      "title": "gemini-3.1-pro-preview specifications",
+      "url": "https://aistudio.google.com/docs/models/gemini-3.1-pro-preview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-gg35",
+      "title": "gemini-3.5-flash-lite specifications",
+      "url": "https://aistudio.google.com/docs/models/gemini-3.5-flash-lite",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-meta-catalog",
+      "title": "Meta Model API model catalog",
+      "url": "https://dev.meta.ai/docs/models",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-meta-price",
+      "title": "Meta Model API pricing and rate limits",
+      "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-meta-muse-wonder",
+      "title": "muse-wonder official API documentation",
+      "url": "https://dev.meta.ai/docs/muse-wonder",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-meta-muse-spark",
+      "title": "muse-spark official API documentation",
+      "url": "https://dev.meta.ai/docs/muse-spark",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-meta-muse-ember",
+      "title": "muse-ember official API documentation",
+      "url": "https://dev.meta.ai/docs/muse-ember",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-meta-muse-glimmer",
+      "title": "muse-glimmer official API documentation",
+      "url": "https://dev.meta.ai/docs/muse-glimmer",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-meta-muse-spark-open",
+      "title": "muse-spark-open official API documentation",
+      "url": "https://dev.meta.ai/docs/muse-spark-open",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-ember-release",
+      "title": "Introducing Muse Ember",
+      "url": "https://dev.meta.ai/resources/blog/build-with-muse-ember",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Article says today but exposes no absolute publication date in readable body; no release date inferred."
+    },
+    {
+      "id": "west26-meta-open-card",
+      "title": "Muse Spark Open official model card",
+      "url": "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Model card identifies release date October 15, 2026; page publication date undisclosed."
+    },
+    {
+      "id": "west26-meta-glimmer-card",
+      "title": "Muse Glimmer official model card",
+      "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-x47",
+      "title": "Grok 4.7 official model card",
+      "url": "https://docs.x.ai/developers/models/grok-4.7",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-x46",
+      "title": "Grok 4.6 official model card",
+      "url": "https://docs.x.ai/developers/models/grok-4.6",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-x45",
+      "title": "Grok 4.5 official model card",
+      "url": "https://docs.x.ai/developers/models/grok-4.5",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-x-price",
+      "title": "SpaceXSI API pricing",
+      "url": "https://docs.x.ai/developers/pricing",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-x-log",
+      "title": "SpaceXSI API release notes",
+      "url": "https://docs.x.ai/developers/release-notes",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Current official pages use SpaceXSI branding; preserve existing dashboard org id xai."
+    },
+    {
+      "id": "west26-ms4",
+      "title": "Mistral Large 4 GA model card",
+      "url": "https://docs.mistral.ai/models/mistral-large-4-0",
+      "checkedAt": "2026-11-16",
+      "sourceDate": "2026-11-05",
+      "kind": "vendor",
+      "note": "GA date on model card; do not overwrite October Preview row."
+    },
+    {
+      "id": "west26-ms4-preview",
+      "title": "Mistral Large 4 public preview announcement",
+      "url": "https://mistral.ai/news/mistral-large-4/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": "2026-10-06",
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-ms4-weights",
+      "title": "Mistral Large 4 released official weights",
+      "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Current card provides downloadable checkpoint and Mistral Ecosystem Open-Weight License."
+    },
+    {
+      "id": "west26-ms3",
+      "title": "Mistral Large 3 lifecycle model card",
+      "url": "https://docs.mistral.ai/models/mistral-large-3-25-12",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Original release December 2, 2025; current card records deprecation October 31, 2026."
+    },
+    {
+      "id": "west26-ms-price",
+      "title": "Mistral standard API pricing",
+      "url": "https://docs.mistral.ai/inference/pricing",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-ref-card",
+      "title": "Beam architecture model card",
+      "url": "https://reflection.ai/beam-model-card",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-ref-models",
+      "title": "Reflection model IDs and limits",
+      "url": "https://developers.reflection.ai/models",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-ref-weights",
+      "title": "Beam official weights and Apache-2.0 license",
+      "url": "https://huggingface.co/reflection/Beam-1.0-501B-A23B",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-ref-api",
+      "title": "Reflection API overview",
+      "url": "https://developers.reflection.ai/api-overview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-ref-console",
+      "title": "Reflection API console",
+      "url": "https://platform.reflection.ai/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "No readable prices returned; this is an access attempt, not verified tariff evidence."
+    },
+    {
+      "id": "west26-motif-card",
+      "title": "Motif 3 official model card",
+      "url": "https://huggingface.co/Motif-Technologies/Motif-3",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-motif-catalog",
+      "title": "Motif Technologies current model catalog",
+      "url": "https://motiftech.io/en/resources/models/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "west26-chat-price",
+      "title": "ChatGPT pricing",
+      "url": "https://chatgpt.com/pricing/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Plan names visible; currency amounts absent in readable page."
+    },
+    {
+      "id": "west26-chat-pro",
+      "title": "ChatGPT Pro plans",
+      "url": "https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Relative updated label not converted into a publication date."
+    },
+    {
+      "id": "west26-chat-plus",
+      "title": "ChatGPT Plus",
+      "url": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Current help article states monthly amount."
+    },
+    {
+      "id": "west26-chat-go",
+      "title": "ChatGPT Go",
+      "url": "https://help.openai.com/en/articles/11989085-what-is-chatgpt-go",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Monthly billing confirmed; current regional amount absent."
+    },
+    {
+      "id": "west26-claude-sub",
+      "title": "Claude subscription pricing",
+      "url": "https://claude.com/pricing",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Current Free, Pro, Max, Ultra tiers read."
+    },
+    {
+      "id": "west26-google-sub",
+      "title": "Google AI subscriptions, US",
+      "url": "https://one.google.com/intl/en_us/about/google-ai-plans/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "US page purchase-card amounts absent; later-read savings calculator explicitly shows Pro USD19.99/month and Ultra USD99.99/month. These are reference prices with checkout confirmation pending."
+    },
+    {
+      "id": "west26-x-sub",
+      "title": "The X Subscription pricing",
+      "url": "https://docs.x.ai/x-subscription/pricing",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Monthly charges and actual annual totals read; do not multiply rounded monthly equivalents."
+    },
+    {
+      "id": "west26-x-sub-page",
+      "title": "SpaceXSI subscription purchase pricing",
+      "url": "https://x.ai/pricing",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Current monthly prices and tax/third-party model conditions read."
+    },
+    {
+      "id": "west26-kimi-sub",
+      "title": "Kimi domestic membership prices",
+      "url": "https://www.kimi.com/help/membership/membership-pricing",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Current help table read; embedded comparison screenshot is dated October 19, 2026, not a new November price announcement."
+    },
+    {
+      "id": "west26-minimax-sub",
+      "title": "MiniMax M Plan purchase page",
+      "url": "https://www.minimax.io/m-plan",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "No rendered amounts readable."
+    },
+    {
+      "id": "west26-minimax-sub-doc",
+      "title": "MiniMax M Plan introduction",
+      "url": "https://platform.minimax.io/docs/m-plan/intro",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Go, Explore, Build benefits read."
+    },
+    {
+      "id": "west26-mistral-sub",
+      "title": "Mistral Vibe subscription pricing",
+      "url": "https://mistral.ai/pricing/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "USD display with France selector; no region-independent price claim."
+    },
+    {
+      "id": "west26-deepseek-sub",
+      "title": "DeepSeek official App download",
+      "url": "https://www.deepseek.com/en/download/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Explicit free App chat statement read."
+    },
+    {
+      "id": "west26-doubao-sub",
+      "title": "Doubao paid service agreement",
+      "url": "https://www.doubao.com/legal/ey01",
+      "checkedAt": "2026-11-16",
+      "sourceDate": "2026-08-15",
+      "kind": "vendor",
+      "note": "Updated August 15; effective August 22, 2026; plan names but no amounts."
+    },
+    {
+      "id": "west26-qianwen-sub",
+      "title": "Qianwen official app",
+      "url": "https://www.qianwen.com/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Only assistant title readable; no price/free entitlement proof."
+    },
+    {
+      "id": "west26-zhipu-sub",
+      "title": "Zhipu Qingyan official app",
+      "url": "https://chatglm.cn/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "No readable content returned; pricing unresolved."
+    }
+  ],
+  "models": [
+    {
+      "id": "gpt61-sol",
+      "evidenceIds": ["west26-oa61sol","west26-oa-price"],
+      "fields": {
+        "ctx": {
+          "value": 1050000,
+          "src": "west26-oa61sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+          "kind": "vendor",
+          "note": "Official context window; not independently measured usable prompt capacity.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-oa61sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+          "kind": "vendor",
+          "note": "Official max output tokens; reasoning tokens share output allowance.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 2,
+          "src": "west26-oa61sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 10,
+          "src": "west26-oa61sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.1,
+          "src": "west26-oa61sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+          "kind": "vendor",
+          "note": "Official cache-read rate; cache writes billed separately.",
+          "sourceDate": null
+        },
+        "license": "Hosted proprietary API; no weight distribution license provided by inspected official model page.",
+        "priceMode": "Official Standard API, USD per 1M tokens; service-tier and long-context modifiers remain separate.",
+        "priceAlt": "Short-context Standard rates apply through 272,000 input tokens. Above that, input/cache 2x and output 1.5x for the full request. Cache writes are additional; consult current retention/service-tier pricing."
+      }
+    },
+    {
+      "id": "gpt61-sol-high",
+      "evidenceIds": ["west26-oa61sol","west26-oa-price"],
+      "fields": {
+        "ctx": {
+          "value": 1050000,
+          "src": "west26-oa61sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+          "kind": "vendor",
+          "note": "Official context window; not independently measured usable prompt capacity.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-oa61sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+          "kind": "vendor",
+          "note": "Official max output tokens; reasoning tokens share output allowance.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 2,
+          "src": "west26-oa61sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 10,
+          "src": "west26-oa61sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.1,
+          "src": "west26-oa61sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+          "kind": "vendor",
+          "note": "Official cache-read rate; cache writes billed separately.",
+          "sourceDate": null
+        },
+        "license": "Hosted proprietary API; no weight distribution license provided by inspected official model page.",
+        "priceMode": "Official Standard API, USD per 1M tokens; service-tier and long-context modifiers remain separate.",
+        "priceAlt": "Short-context Standard rates apply through 272,000 input tokens. Above that, input/cache 2x and output 1.5x for the full request. Cache writes are additional; consult current retention/service-tier pricing."
+      }
+    },
+    {
+      "id": "gpt6-astra",
+      "evidenceIds": ["west26-oa6astra","west26-oa-price"],
+      "fields": {
+        "ctx": {
+          "value": 1050000,
+          "src": "west26-oa6astra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+          "kind": "vendor",
+          "note": "Official context window; not independently measured usable prompt capacity.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-oa6astra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+          "kind": "vendor",
+          "note": "Official max output tokens; reasoning tokens share output allowance.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 10,
+          "src": "west26-oa6astra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 50,
+          "src": "west26-oa6astra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 1,
+          "src": "west26-oa6astra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+          "kind": "vendor",
+          "note": "Official cache-read rate; cache writes billed separately.",
+          "sourceDate": null
+        },
+        "license": "Hosted proprietary API; no weight distribution license provided by inspected official model page.",
+        "priceMode": "Official Standard API, USD per 1M tokens; service-tier and long-context modifiers remain separate."
+      }
+    },
+    {
+      "id": "gpt6-sol",
+      "evidenceIds": ["west26-oa6sol","west26-oa-price"],
+      "fields": {
+        "ctx": {
+          "value": 1050000,
+          "src": "west26-oa6sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+          "kind": "vendor",
+          "note": "Official context window; not independently measured usable prompt capacity.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-oa6sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+          "kind": "vendor",
+          "note": "Official max output tokens; reasoning tokens share output allowance.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 2,
+          "src": "west26-oa6sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 10,
+          "src": "west26-oa6sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.2,
+          "src": "west26-oa6sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+          "kind": "vendor",
+          "note": "Official cache-read rate; cache writes billed separately.",
+          "sourceDate": null
+        },
+        "license": "Hosted proprietary API; no weight distribution license provided by inspected official model page.",
+        "priceMode": "Official Standard API, USD per 1M tokens; service-tier and long-context modifiers remain separate."
+      }
+    },
+    {
+      "id": "gpt6-luna",
+      "evidenceIds": ["west26-oa6luna","west26-oa-price"],
+      "fields": {
+        "ctx": {
+          "value": 1050000,
+          "src": "west26-oa6luna",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+          "kind": "vendor",
+          "note": "Official context window; not independently measured usable prompt capacity.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-oa6luna",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+          "kind": "vendor",
+          "note": "Official max output tokens; reasoning tokens share output allowance.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 0.1,
+          "src": "west26-oa6luna",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 0.5,
+          "src": "west26-oa6luna",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.01,
+          "src": "west26-oa6luna",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+          "kind": "vendor",
+          "note": "Official cache-read rate; cache writes billed separately.",
+          "sourceDate": null
+        },
+        "license": "Hosted proprietary API; no weight distribution license provided by inspected official model page.",
+        "priceMode": "Official Standard API, USD per 1M tokens; service-tier and long-context modifiers remain separate."
+      }
+    },
+    {
+      "id": "gpt56-sol",
+      "evidenceIds": ["west26-oa56sol","west26-oa-price"],
+      "fields": {
+        "ctx": {
+          "value": 1050000,
+          "src": "west26-oa56sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+          "kind": "vendor",
+          "note": "Official context window; not independently measured usable prompt capacity.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-oa56sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+          "kind": "vendor",
+          "note": "Official max output tokens; reasoning tokens share output allowance.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 4,
+          "src": "west26-oa56sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 20,
+          "src": "west26-oa56sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.4,
+          "src": "west26-oa56sol",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+          "kind": "vendor",
+          "note": "Official cache-read rate; cache writes billed separately.",
+          "sourceDate": null
+        },
+        "license": "Hosted proprietary API; no weight distribution license provided by inspected official model page.",
+        "priceMode": "Official Standard API, USD per 1M tokens; service-tier and long-context modifiers remain separate.",
+        "priceAlt": "Current displayed $4 input/$20 output/$0.40 cache read is promotional pricing through November 30, 2026 per official pricing page; do not extrapolate a future tariff."
+      }
+    },
+    {
+      "id": "gpt56-terra",
+      "evidenceIds": ["west26-oa56terra","west26-oa-price"],
+      "fields": {
+        "ctx": {
+          "value": 1050000,
+          "src": "west26-oa56terra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+          "kind": "vendor",
+          "note": "Official context window; not independently measured usable prompt capacity.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-oa56terra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+          "kind": "vendor",
+          "note": "Official max output tokens; reasoning tokens share output allowance.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 2,
+          "src": "west26-oa56terra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 12,
+          "src": "west26-oa56terra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.2,
+          "src": "west26-oa56terra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+          "kind": "vendor",
+          "note": "Official cache-read rate; cache writes billed separately.",
+          "sourceDate": null
+        },
+        "license": "Hosted proprietary API; no weight distribution license provided by inspected official model page.",
+        "priceMode": "Official Standard API, USD per 1M tokens; service-tier and long-context modifiers remain separate."
+      }
+    },
+    {
+      "id": "gpt56-luna",
+      "evidenceIds": ["west26-oa56luna","west26-oa-price"],
+      "fields": {
+        "ctx": {
+          "value": 1050000,
+          "src": "west26-oa56luna",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+          "kind": "vendor",
+          "note": "Official context window; not independently measured usable prompt capacity.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-oa56luna",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+          "kind": "vendor",
+          "note": "Official max output tokens; reasoning tokens share output allowance.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 0.2,
+          "src": "west26-oa56luna",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 1.2,
+          "src": "west26-oa56luna",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.02,
+          "src": "west26-oa56luna",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+          "kind": "vendor",
+          "note": "Official cache-read rate; cache writes billed separately.",
+          "sourceDate": null
+        },
+        "license": "Hosted proprietary API; no weight distribution license provided by inspected official model page.",
+        "priceMode": "Official Standard API, USD per 1M tokens; service-tier and long-context modifiers remain separate.",
+        "access": "Official page warns that a rate-limit entry does not establish organization access; check Playground/model list."
+      }
+    },
+    {
+      "id": "gpt55",
+      "evidenceIds": ["west26-oa55","west26-oa-price"],
+      "fields": {
+        "ctx": {
+          "value": 1050000,
+          "src": "west26-oa55",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.5",
+          "kind": "vendor",
+          "note": "Official context window; not independently measured usable prompt capacity.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-oa55",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.5",
+          "kind": "vendor",
+          "note": "Official max output tokens; reasoning tokens share output allowance.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 5,
+          "src": "west26-oa55",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.5",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 30,
+          "src": "west26-oa55",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.5",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.5,
+          "src": "west26-oa55",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.5",
+          "kind": "vendor",
+          "note": "Official cache-read rate; cache writes billed separately.",
+          "sourceDate": null
+        },
+        "license": "Hosted proprietary API; no weight distribution license provided by inspected official model page.",
+        "priceMode": "Official Standard API, USD per 1M tokens; service-tier and long-context modifiers remain separate."
+      }
+    },
+    {
+      "id": "gpt53-codex",
+      "evidenceIds": ["west26-oa53","west26-oa-price"],
+      "fields": {
+        "ctx": {
+          "value": 400000,
+          "src": "west26-oa53",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.3-codex",
+          "kind": "vendor",
+          "note": "Official context window; not independently measured usable prompt capacity.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-oa53",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.3-codex",
+          "kind": "vendor",
+          "note": "Official max output tokens; reasoning tokens share output allowance.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 1.75,
+          "src": "west26-oa53",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.3-codex",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 14,
+          "src": "west26-oa53",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.3-codex",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.175,
+          "src": "west26-oa53",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.3-codex",
+          "kind": "vendor",
+          "note": "Official cache-read rate; cache writes billed separately.",
+          "sourceDate": null
+        },
+        "license": "Hosted proprietary API; no weight distribution license provided by inspected official model page.",
+        "priceMode": "Official Standard API, USD per 1M tokens; service-tier and long-context modifiers remain separate.",
+        "apiStatus": "Deprecated (official model-page label); displayed tariff does not prove new-request availability.",
+        "access": "Deprecated model; consult current deprecation schedule before selecting.",
+        "releaseNote": "Preserve historical benchmark identity; do not relabel as GPT-6."
+      }
+    },
+    {
+      "id": "gpt61-terra",
+      "evidenceIds": ["west26-oa61terra","west26-oa-price","west26-oa-log"],
+      "name": "GPT-6.1 Terra",
+      "org": "openai",
+      "brand": "openai",
+      "isNew": true,
+      "variant": "max",
+      "fields": {
+        "ctx": {
+          "value": 1050000,
+          "src": "west26-oa61terra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+          "kind": "vendor",
+          "note": "Official context window; not independently measured usable prompt capacity.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-oa61terra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+          "kind": "vendor",
+          "note": "Official max output tokens; reasoning tokens share output allowance.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 1,
+          "src": "west26-oa61terra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 5,
+          "src": "west26-oa61terra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.05,
+          "src": "west26-oa61terra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+          "kind": "vendor",
+          "note": "Official cache-read rate; cache writes billed separately.",
+          "sourceDate": null
+        },
+        "license": "Hosted proprietary API; no weight distribution license provided by inspected official model page.",
+        "priceMode": "Official Standard API, USD per 1M tokens; service-tier and long-context modifiers remain separate.",
+        "released": "2026-10-26",
+        "apiStatus": "Available in official API catalog; tool calling requires Responses API.",
+        "inputs": "Text, Image",
+        "outputs": "Text",
+        "tech": "gpt-6.1-terra supports none/low/medium/high/xhigh/max; API default medium. Dashboard max/low rows are separate configurations.",
+        "priceAlt": "For input >272,000 tokens, the full request costs 2x input/cache and 1.5x output. Cache write: $1.25/1M for 30m, $2.50/1M for 12h before long-context multipliers. Batch/Flex 50% below Standard; Fast 2x; regional processing +10% where available.",
+        "strength": "厂商定位：视觉推理、电脑操作和自然写作。",
+        "releaseNote": "Released October 26, 2026; do not map gpt-5.6-terra benchmarks onto this version."
+      }
+    },
+    {
+      "id": "gpt61-terra-low",
+      "evidenceIds": ["west26-oa61terra","west26-oa-price","west26-oa-log"],
+      "name": "GPT-6.1 Terra · low",
+      "org": "openai",
+      "brand": "openai",
+      "isNew": true,
+      "variant": "low",
+      "fields": {
+        "ctx": {
+          "value": 1050000,
+          "src": "west26-oa61terra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+          "kind": "vendor",
+          "note": "Official context window; not independently measured usable prompt capacity.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-oa61terra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+          "kind": "vendor",
+          "note": "Official max output tokens; reasoning tokens share output allowance.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 1,
+          "src": "west26-oa61terra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 5,
+          "src": "west26-oa61terra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.05,
+          "src": "west26-oa61terra",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+          "kind": "vendor",
+          "note": "Official cache-read rate; cache writes billed separately.",
+          "sourceDate": null
+        },
+        "license": "Hosted proprietary API; no weight distribution license provided by inspected official model page.",
+        "priceMode": "Official Standard API, USD per 1M tokens; service-tier and long-context modifiers remain separate.",
+        "released": "2026-10-26",
+        "apiStatus": "Available in official API catalog; tool calling requires Responses API.",
+        "inputs": "Text, Image",
+        "outputs": "Text",
+        "tech": "gpt-6.1-terra supports none/low/medium/high/xhigh/max; API default medium. Dashboard max/low rows are separate configurations.",
+        "priceAlt": "For input >272,000 tokens, the full request costs 2x input/cache and 1.5x output. Cache write: $1.25/1M for 30m, $2.50/1M for 12h before long-context multipliers. Batch/Flex 50% below Standard; Fast 2x; regional processing +10% where available.",
+        "strength": "厂商定位：视觉推理、电脑操作和自然写作。",
+        "releaseNote": "Released October 26, 2026; do not map gpt-5.6-terra benchmarks onto this version."
+      }
+    },
+    {
+      "id": "claude-opus55",
+      "evidenceIds": ["west26-an-o55","west26-an-price","west26-an-effort"],
+      "fields": {
+        "ctx": {
+          "value": 1000000,
+          "src": "west26-an-o55",
+          "url": "https://platform.claude.com/docs/en/models/opus-5-5/overview",
+          "kind": "vendor",
+          "note": "Technical model card states 1M tokens; decimal API notation expanded. Not a tensor count.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-an-o55",
+          "url": "https://platform.claude.com/docs/en/models/opus-5-5/overview",
+          "kind": "vendor",
+          "note": "Technical model-card output limit; thinking plus final answer share this allowance. K notation expanded decimally.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 4,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 20,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.2,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Cache hits/refreshes, distinct from 5m/1h cache writes.",
+          "sourceDate": null
+        },
+        "license": "Proprietary hosted API; this documentation supplies no weight distribution license.",
+        "apiStatus": "Current official model catalog.",
+        "tech": "Official API default medium; adaptive thinking always on. Existing dashboard Max row remains Max."
+      }
+    },
+    {
+      "id": "claude-sonnet55",
+      "evidenceIds": ["west26-an-s55","west26-an-price"],
+      "fields": {
+        "ctx": {
+          "value": 1000000,
+          "src": "west26-an-s55",
+          "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+          "kind": "vendor",
+          "note": "Technical model card states 1M tokens; decimal API notation expanded. Not a tensor count.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-an-s55",
+          "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+          "kind": "vendor",
+          "note": "Technical model-card output limit; thinking plus final answer share this allowance. K notation expanded decimally.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 2,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 10,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.1,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Cache hits/refreshes, distinct from 5m/1h cache writes.",
+          "sourceDate": null
+        },
+        "license": "Proprietary hosted API; this documentation supplies no weight distribution license.",
+        "apiStatus": "Current official model catalog."
+      }
+    },
+    {
+      "id": "claude-sonnet55-xhigh",
+      "evidenceIds": ["west26-an-s55","west26-an-price","west26-an-effort"],
+      "fields": {
+        "ctx": {
+          "value": 1000000,
+          "src": "west26-an-s55",
+          "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+          "kind": "vendor",
+          "note": "Technical model card states 1M tokens; decimal API notation expanded. Not a tensor count.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-an-s55",
+          "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+          "kind": "vendor",
+          "note": "Technical model-card output limit; thinking plus final answer share this allowance. K notation expanded decimally.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 2,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 10,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.1,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Cache hits/refreshes, distinct from 5m/1h cache writes.",
+          "sourceDate": null
+        },
+        "license": "Proprietary hosted API; this documentation supplies no weight distribution license.",
+        "apiStatus": "Current official model catalog."
+      }
+    },
+    {
+      "id": "claude-haiku55",
+      "evidenceIds": ["west26-an-h55","west26-an-price"],
+      "fields": {
+        "ctx": {
+          "value": 1000000,
+          "src": "west26-an-h55",
+          "url": "https://platform.claude.com/docs/en/models/haiku-5-5/overview",
+          "kind": "vendor",
+          "note": "Technical model card states 1M tokens; decimal API notation expanded. Not a tensor count.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-an-h55",
+          "url": "https://platform.claude.com/docs/en/models/haiku-5-5/overview",
+          "kind": "vendor",
+          "note": "Technical model-card output limit; thinking plus final answer share this allowance. K notation expanded decimally.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 0.1,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 0.5,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.01,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Cache hits/refreshes, distinct from 5m/1h cache writes.",
+          "sourceDate": null
+        },
+        "license": "Proprietary hosted API; this documentation supplies no weight distribution license.",
+        "apiStatus": "Current official model catalog.",
+        "priceAlt": "Standard tiers: input <=100,000 tokens $0.10/$0.50/$0.01 input/output/cache; input >100,000 $0.50/$2.50/$0.05. Cache writes $0.125 (5m)/$0.20 (1h) in lower tier, $0.625/$1 in upper tier. Do not quote the lower tier for 1M-token prompts."
+      }
+    },
+    {
+      "id": "claude-fable51",
+      "evidenceIds": ["west26-an-f51","west26-an-price"],
+      "fields": {
+        "ctx": {
+          "value": 1000000,
+          "src": "west26-an-f51",
+          "url": "https://platform.claude.com/docs/en/models/fable-5-1/overview",
+          "kind": "vendor",
+          "note": "Technical model card states 1M tokens; decimal API notation expanded. Not a tensor count.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-an-f51",
+          "url": "https://platform.claude.com/docs/en/models/fable-5-1/overview",
+          "kind": "vendor",
+          "note": "Technical model-card output limit; thinking plus final answer share this allowance. K notation expanded decimally.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 10,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 50,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.25,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Cache hits/refreshes, distinct from 5m/1h cache writes.",
+          "sourceDate": null
+        },
+        "license": "Proprietary hosted API; this documentation supplies no weight distribution license.",
+        "apiStatus": "Legacy model documentation remains available; legacy does not itself mean retired.",
+        "releaseNote": "Official model page now labels this exact version Legacy; migrate explicitly to 5.2 rather than renaming the existing row."
+      }
+    },
+    {
+      "id": "claude-mythos51",
+      "evidenceIds": ["west26-an-m51","west26-an-price"],
+      "fields": {
+        "ctx": {
+          "value": 1000000,
+          "src": "west26-an-m51",
+          "url": "https://platform.claude.com/docs/en/models/mythos-5-1/overview",
+          "kind": "vendor",
+          "note": "Technical model card states 1M tokens; decimal API notation expanded. Not a tensor count.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-an-m51",
+          "url": "https://platform.claude.com/docs/en/models/mythos-5-1/overview",
+          "kind": "vendor",
+          "note": "Technical model-card output limit; thinking plus final answer share this allowance. K notation expanded decimally.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 10,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 50,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.25,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Cache hits/refreshes, distinct from 5m/1h cache writes.",
+          "sourceDate": null
+        },
+        "license": "Proprietary hosted API; this documentation supplies no weight distribution license.",
+        "apiStatus": "Verification required; not unrestricted self-serve access.",
+        "access": "Available only to organizations verified through Anthropic programs such as Cyber Verification; contact account team."
+      }
+    },
+    {
+      "id": "claude-fable5",
+      "evidenceIds": ["west26-an-f5","west26-an-price"],
+      "fields": {
+        "ctx": {
+          "value": 1000000,
+          "src": "west26-an-f5",
+          "url": "https://platform.claude.com/docs/en/models/fable-5/overview",
+          "kind": "vendor",
+          "note": "Technical model card states 1M tokens; decimal API notation expanded. Not a tensor count.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-an-f5",
+          "url": "https://platform.claude.com/docs/en/models/fable-5/overview",
+          "kind": "vendor",
+          "note": "Technical model-card output limit; thinking plus final answer share this allowance. K notation expanded decimally.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 10,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 50,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 1,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Cache hits/refreshes, distinct from 5m/1h cache writes.",
+          "sourceDate": null
+        },
+        "license": "Proprietary hosted API; this documentation supplies no weight distribution license.",
+        "apiStatus": "Legacy model documentation remains available; legacy does not itself mean retired."
+      }
+    },
+    {
+      "id": "claude-opus5",
+      "evidenceIds": ["west26-an-o5","west26-an-price"],
+      "fields": {
+        "ctx": {
+          "value": 1000000,
+          "src": "west26-an-o5",
+          "url": "https://platform.claude.com/docs/en/models/opus-5/overview",
+          "kind": "vendor",
+          "note": "Technical model card states 1M tokens; decimal API notation expanded. Not a tensor count.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-an-o5",
+          "url": "https://platform.claude.com/docs/en/models/opus-5/overview",
+          "kind": "vendor",
+          "note": "Technical model-card output limit; thinking plus final answer share this allowance. K notation expanded decimally.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 5,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 25,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.5,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Cache hits/refreshes, distinct from 5m/1h cache writes.",
+          "sourceDate": null
+        },
+        "license": "Proprietary hosted API; this documentation supplies no weight distribution license.",
+        "apiStatus": "Legacy model documentation remains available; legacy does not itself mean retired."
+      }
+    },
+    {
+      "id": "claude-sonnet5",
+      "evidenceIds": ["west26-an-s5","west26-an-price"],
+      "fields": {
+        "ctx": {
+          "value": 1000000,
+          "src": "west26-an-s5",
+          "url": "https://platform.claude.com/docs/en/models/sonnet-5/overview",
+          "kind": "vendor",
+          "note": "Technical model card states 1M tokens; decimal API notation expanded. Not a tensor count.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-an-s5",
+          "url": "https://platform.claude.com/docs/en/models/sonnet-5/overview",
+          "kind": "vendor",
+          "note": "Technical model-card output limit; thinking plus final answer share this allowance. K notation expanded decimally.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 2,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 10,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.2,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Cache hits/refreshes, distinct from 5m/1h cache writes.",
+          "sourceDate": null
+        },
+        "license": "Proprietary hosted API; this documentation supplies no weight distribution license.",
+        "apiStatus": "Legacy model documentation remains available; legacy does not itself mean retired."
+      }
+    },
+    {
+      "id": "claude-opus48",
+      "evidenceIds": ["west26-an-o48","west26-an-price"],
+      "fields": {
+        "ctx": {
+          "value": 1000000,
+          "src": "west26-an-o48",
+          "url": "https://platform.claude.com/docs/en/models/opus-4-8/overview",
+          "kind": "vendor",
+          "note": "Technical model card states 1M tokens; decimal API notation expanded. Not a tensor count.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-an-o48",
+          "url": "https://platform.claude.com/docs/en/models/opus-4-8/overview",
+          "kind": "vendor",
+          "note": "Technical model-card output limit; thinking plus final answer share this allowance. K notation expanded decimally.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 5,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 25,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.5,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Cache hits/refreshes, distinct from 5m/1h cache writes.",
+          "sourceDate": null
+        },
+        "license": "Proprietary hosted API; this documentation supplies no weight distribution license.",
+        "apiStatus": "Legacy model documentation remains available; legacy does not itself mean retired."
+      }
+    },
+    {
+      "id": "claude-haiku45",
+      "evidenceIds": ["west26-an-h45","west26-an-price"],
+      "fields": {
+        "ctx": {
+          "value": 200000,
+          "src": "west26-an-h45",
+          "url": "https://platform.claude.com/docs/en/models/haiku-4-5/overview",
+          "kind": "vendor",
+          "note": "Technical model card states 200K tokens; decimal API notation expanded. Not a tensor count.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 64000,
+          "src": "west26-an-h45",
+          "url": "https://platform.claude.com/docs/en/models/haiku-4-5/overview",
+          "kind": "vendor",
+          "note": "Technical model-card output limit; thinking plus final answer share this allowance. K notation expanded decimally.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 1,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 5,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.1,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Cache hits/refreshes, distinct from 5m/1h cache writes.",
+          "sourceDate": null
+        },
+        "license": "Proprietary hosted API; this documentation supplies no weight distribution license.",
+        "apiStatus": "Legacy model documentation remains available; legacy does not itself mean retired."
+      }
+    },
+    {
+      "id": "claude-fable52",
+      "evidenceIds": ["west26-an-f52","west26-an-price","west26-an52-release","west26-an-log","west26-an-effort"],
+      "name": "Claude Fable 5.2",
+      "org": "anthropic",
+      "brand": "claude",
+      "isNew": true,
+      "variant": "max",
+      "fields": {
+        "ctx": {
+          "value": 1000000,
+          "src": "west26-an-f52",
+          "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+          "kind": "vendor",
+          "note": "Technical model card states 1M tokens; decimal API notation expanded. Not a tensor count.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-an-f52",
+          "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+          "kind": "vendor",
+          "note": "Technical model-card output limit; thinking plus final answer share this allowance. K notation expanded decimally.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 8,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 40,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.2,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Cache hits/refreshes, distinct from 5m/1h cache writes.",
+          "sourceDate": null
+        },
+        "license": "Proprietary hosted API; this documentation supplies no weight distribution license.",
+        "apiStatus": "Current official model catalog.",
+        "released": "2026-11-09",
+        "releaseNote": "Fable 5.2 and Mythos 5.2 released November 9. New version IDs; no predecessor benchmark migration.",
+        "tech": "Always-on adaptive thinking. Supports low/medium/high/xhigh/max; API default high, distinct from dashboard max/xhigh benchmark configurations.",
+        "priceAlt": "Cache writes $10 (5m)/$16 (1h) per 1M tokens; reads $0.20. Fast mode $16 input/$80 output, separate from Standard. Regional and cloud-platform tariffs require their own conditions.",
+        "limits": "30-day data retention required unless Anthropic expressly authorizes ZDR; account-scoped thinking blocks and strict prefix checks apply."
+      }
+    },
+    {
+      "id": "claude-fable52-xhigh",
+      "evidenceIds": ["west26-an-f52","west26-an-price","west26-an52-release","west26-an-log","west26-an-effort"],
+      "name": "Claude Fable 5.2 · xhigh",
+      "org": "anthropic",
+      "brand": "claude",
+      "isNew": true,
+      "variant": "xhigh",
+      "fields": {
+        "ctx": {
+          "value": 1000000,
+          "src": "west26-an-f52",
+          "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+          "kind": "vendor",
+          "note": "Technical model card states 1M tokens; decimal API notation expanded. Not a tensor count.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-an-f52",
+          "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+          "kind": "vendor",
+          "note": "Technical model-card output limit; thinking plus final answer share this allowance. K notation expanded decimally.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 8,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 40,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.2,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Cache hits/refreshes, distinct from 5m/1h cache writes.",
+          "sourceDate": null
+        },
+        "license": "Proprietary hosted API; this documentation supplies no weight distribution license.",
+        "apiStatus": "Current official model catalog.",
+        "released": "2026-11-09",
+        "releaseNote": "Fable 5.2 and Mythos 5.2 released November 9. New version IDs; no predecessor benchmark migration.",
+        "tech": "Always-on adaptive thinking. Supports low/medium/high/xhigh/max; API default high, distinct from dashboard max/xhigh benchmark configurations.",
+        "priceAlt": "Cache writes $10 (5m)/$16 (1h) per 1M tokens; reads $0.20. Fast mode $16 input/$80 output, separate from Standard. Regional and cloud-platform tariffs require their own conditions.",
+        "limits": "30-day data retention required unless Anthropic expressly authorizes ZDR; account-scoped thinking blocks and strict prefix checks apply."
+      }
+    },
+    {
+      "id": "claude-mythos52",
+      "evidenceIds": ["west26-an-m52","west26-an-price","west26-an52-release","west26-an-log","west26-an-effort"],
+      "name": "Claude Mythos 5.2",
+      "org": "anthropic",
+      "brand": "claude",
+      "isNew": true,
+      "variant": "max",
+      "fields": {
+        "ctx": {
+          "value": 1000000,
+          "src": "west26-an-m52",
+          "url": "https://platform.claude.com/docs/en/models/mythos-5-2/overview",
+          "kind": "vendor",
+          "note": "Technical model card states 1M tokens; decimal API notation expanded. Not a tensor count.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 128000,
+          "src": "west26-an-m52",
+          "url": "https://platform.claude.com/docs/en/models/mythos-5-2/overview",
+          "kind": "vendor",
+          "note": "Technical model-card output limit; thinking plus final answer share this allowance. K notation expanded decimally.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 8,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 40,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Official standard text-token rate in USD per 1M tokens; excludes tools, subscription allowances and faster processing tiers.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.2,
+          "src": "west26-an-price",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "vendor",
+          "note": "Cache hits/refreshes, distinct from 5m/1h cache writes.",
+          "sourceDate": null
+        },
+        "license": "Proprietary hosted API; this documentation supplies no weight distribution license.",
+        "apiStatus": "Verification required; not unrestricted self-serve access.",
+        "released": "2026-11-09",
+        "releaseNote": "Fable 5.2 and Mythos 5.2 released November 9. New version IDs; no predecessor benchmark migration.",
+        "tech": "Always-on adaptive thinking. Supports low/medium/high/xhigh/max; API default high, distinct from dashboard max/xhigh benchmark configurations.",
+        "priceAlt": "Cache writes $10 (5m)/$16 (1h) per 1M tokens; reads $0.20. Fast mode $16 input/$80 output, separate from Standard. Regional and cloud-platform tariffs require their own conditions.",
+        "limits": "30-day data retention required unless Anthropic expressly authorizes ZDR; account-scoped thinking blocks and strict prefix checks apply.",
+        "access": "Available only to organizations verified through Anthropic programs such as Cyber Verification; contact account team."
+      }
+    },
+    {
+      "id": "gemini4-carbon",
+      "evidenceIds": ["west26-gg-carbon","west26-gg-price","west26-gg-log"],
+      "name": "Gemini 4 Carbon",
+      "org": "google",
+      "brand": "gemini",
+      "isNew": true,
+      "variant": "high",
+      "fields": {
+        "ctx": {
+          "value": 1048576,
+          "src": "west26-gg-carbon",
+          "url": "https://aistudio.google.com/docs/models/gemini-4-carbon",
+          "kind": "vendor",
+          "note": "Unified input + output context budget, not an independent 1,048,576-token input allowance.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 1048576,
+          "src": "west26-gg-carbon",
+          "url": "https://aistudio.google.com/docs/models/gemini-4-carbon",
+          "kind": "vendor",
+          "note": "Opt-in long decode upper bound within unified context; synchronous default output limit is 65,536. Non-empty input reduces usable long output.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 2,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Standard paid Gemini Developer API USD/1M; not Vertex or contributor pricing.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 10,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Standard paid rate includes thinking tokens.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.1,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Implicit-cache read only; explicit caching unsupported.",
+          "sourceDate": null
+        },
+        "priceMode": "Gemini Developer API Standard paid tier, USD per 1M tokens; distinguish promotions, modalities, cache storage and processing tiers.",
+        "inputs": "Text, Image, Audio, Video, PDF",
+        "outputs": "Text",
+        "license": "Hosted Gemini API; inspected page does not provide downloadable weights or a weight distribution license.",
+        "released": "2026-11-10",
+        "priceAlt": "Current introductory input/output/cache $2/$10/$0.10 through November 30, 2026; from December 1 $4/$20/$0.20. No Free tier. Tools/grounding are additional.",
+        "apiStatus": "GA official Gemini 4 catalog; introductory pricing is time limited."
+      }
+    },
+    {
+      "id": "gemini4-hydrogen",
+      "evidenceIds": ["west26-gg-hydrogen","west26-gg-price","west26-gg-log"],
+      "name": "Gemini 4 Hydrogen",
+      "org": "google",
+      "brand": "gemini",
+      "isNew": true,
+      "variant": "xhigh",
+      "fields": {
+        "ctx": {
+          "value": 1048576,
+          "src": "west26-gg-hydrogen",
+          "url": "https://aistudio.google.com/docs/models/gemini-4-hydrogen",
+          "kind": "vendor",
+          "note": "Unified input + output context budget, not an independent 1,048,576-token input allowance.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 1048576,
+          "src": "west26-gg-hydrogen",
+          "url": "https://aistudio.google.com/docs/models/gemini-4-hydrogen",
+          "kind": "vendor",
+          "note": "Opt-in long decode upper bound within unified context; synchronous default output limit is 65,536. Non-empty input reduces usable long output.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 1.5,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Standard paid Gemini Developer API USD/1M; not Vertex or contributor pricing.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 7.5,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Standard paid rate includes thinking tokens.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.075,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Implicit-cache read only; explicit caching unsupported.",
+          "sourceDate": null
+        },
+        "priceMode": "Gemini Developer API Standard paid tier, USD per 1M tokens; distinguish promotions, modalities, cache storage and processing tiers.",
+        "inputs": "Text, Image, Audio, Video, PDF",
+        "outputs": "Text",
+        "license": "Hosted Gemini API; inspected page does not provide downloadable weights or a weight distribution license.",
+        "released": "2026-11-12",
+        "priceAlt": "Paid Standard $1.50/$7.50/$0.075 input/output/implicit-cache. Free tier available subject to limits. Contributor and Batch tiers are separate.",
+        "apiStatus": "Generally available November 12, 2026; thinking low/medium/high(default)/xhigh.",
+        "tech": "Fourth xhigh thinking level; API default high does not redefine the dashboard xhigh benchmark row."
+      }
+    },
+    {
+      "id": "gemini4-argon",
+      "evidenceIds": ["west26-gg-argon","west26-gg-price"],
+      "fields": {
+        "ctx": {
+          "value": 1048576,
+          "src": "west26-gg-argon",
+          "url": "https://aistudio.google.com/docs/models/gemini-4-argon",
+          "kind": "vendor",
+          "note": "Unified input + output context budget, not an independent 1,048,576-token input allowance.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 1048576,
+          "src": "west26-gg-argon",
+          "url": "https://aistudio.google.com/docs/models/gemini-4-argon",
+          "kind": "vendor",
+          "note": "Opt-in long decode upper bound within unified context; synchronous default output limit is 65,536. Non-empty input reduces usable long output.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 2,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Standard paid Gemini Developer API USD/1M; not Vertex or contributor pricing.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 10,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Standard paid rate includes thinking tokens.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.1,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Implicit-cache read only; explicit caching unsupported.",
+          "sourceDate": null
+        },
+        "priceMode": "Gemini Developer API Standard paid tier, USD per 1M tokens; distinguish promotions, modalities, cache storage and processing tiers.",
+        "inputs": "Text, Image, Audio, Video, PDF",
+        "outputs": "Text",
+        "license": "Hosted Gemini API; inspected page does not provide downloadable weights or a weight distribution license.",
+        "priceAlt": "Current introductory input/output/cache $2/$10/$0.10 through November 30, 2026; from December 1 $4/$20/$0.20. No Free tier. Tools/grounding are additional.",
+        "apiStatus": "GA official Gemini 4 catalog; introductory pricing is time limited."
+      }
+    },
+    {
+      "id": "gemini38",
+      "evidenceIds": ["west26-gg38","west26-gg-price"],
+      "fields": {
+        "ctx": {
+          "value": 1048576,
+          "src": "west26-gg38",
+          "url": "https://aistudio.google.com/docs/models/gemini-3.8-flash",
+          "kind": "vendor",
+          "note": "Official input token limit.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 65536,
+          "src": "west26-gg38",
+          "url": "https://aistudio.google.com/docs/models/gemini-3.8-flash",
+          "kind": "vendor",
+          "note": "Official output token limit.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 0.75,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Standard paid Gemini Developer API USD/1M; not Vertex or contributor pricing.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 3.75,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Standard paid rate includes thinking tokens.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.075,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Cache-read per 1M; storage billed separately.",
+          "sourceDate": null
+        },
+        "priceMode": "Gemini Developer API Standard paid tier, USD per 1M tokens; distinguish promotions, modalities, cache storage and processing tiers.",
+        "inputs": "Text, Image, Audio, Video, PDF",
+        "outputs": "Text",
+        "license": "Hosted Gemini API; inspected page does not provide downloadable weights or a weight distribution license.",
+        "priceAlt": "Introductory Standard input/output/cache $0.75/$3.75/$0.075 until December 31, 2026; from January 1, 2027 $1.50/$7.50/$0.15. Cache storage $0.50/1M token-hour currently, then $1.00. No price inferred from Gemini 4."
+      }
+    },
+    {
+      "id": "gemini31pro",
+      "evidenceIds": ["west26-gg31","west26-gg-price"],
+      "fields": {
+        "ctx": {
+          "value": 1048576,
+          "src": "west26-gg31",
+          "url": "https://aistudio.google.com/docs/models/gemini-3.1-pro-preview",
+          "kind": "vendor",
+          "note": "Official input token limit.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 65536,
+          "src": "west26-gg31",
+          "url": "https://aistudio.google.com/docs/models/gemini-3.1-pro-preview",
+          "kind": "vendor",
+          "note": "Official output token limit.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 2,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Standard paid Gemini Developer API USD/1M; not Vertex or contributor pricing.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 12,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Standard paid rate includes thinking tokens.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.2,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Cache-read per 1M; storage billed separately.",
+          "sourceDate": null
+        },
+        "priceMode": "Gemini Developer API Standard paid tier, USD per 1M tokens; distinguish promotions, modalities, cache storage and processing tiers.",
+        "inputs": "Text, Image, Audio, Video, PDF",
+        "outputs": "Text",
+        "license": "Hosted Gemini API; inspected page does not provide downloadable weights or a weight distribution license.",
+        "priceAlt": "Input <=200,000 tokens: $2/$12/$0.20 input/output/cache; >200,000: $4/$18/$0.40. Cache storage $4.50 per 1M token-hour. Preview is a separate version."
+      }
+    },
+    {
+      "id": "gemini35lite",
+      "evidenceIds": ["west26-gg35","west26-gg-price"],
+      "fields": {
+        "ctx": {
+          "value": 1048576,
+          "src": "west26-gg35",
+          "url": "https://aistudio.google.com/docs/models/gemini-3.5-flash-lite",
+          "kind": "vendor",
+          "note": "Official input token limit.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 65536,
+          "src": "west26-gg35",
+          "url": "https://aistudio.google.com/docs/models/gemini-3.5-flash-lite",
+          "kind": "vendor",
+          "note": "Official output token limit.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 0.3,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Standard paid Gemini Developer API USD/1M; not Vertex or contributor pricing.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 2.5,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Standard paid rate includes thinking tokens.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.03,
+          "src": "west26-gg-price",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "vendor",
+          "note": "Cache-read per 1M; storage billed separately.",
+          "sourceDate": null
+        },
+        "priceMode": "Gemini Developer API Standard paid tier, USD per 1M tokens; distinguish promotions, modalities, cache storage and processing tiers.",
+        "inputs": "Text, Image, Audio, Video, PDF",
+        "outputs": "Text",
+        "license": "Hosted Gemini API; inspected page does not provide downloadable weights or a weight distribution license.",
+        "priceAlt": "Standard $0.30 input for text/image/video/audio, $2.50 output, $0.03 cache read; storage $1.00 per 1M token-hour."
+      }
+    },
+    {
+      "id": "muse13",
+      "evidenceIds": ["west26-meta-muse-spark","west26-meta-catalog","west26-meta-price"],
+      "fields": {
+        "ctx": {
+          "value": 1048576,
+          "src": "west26-meta-muse-spark",
+          "url": "https://dev.meta.ai/docs/muse-spark",
+          "kind": "vendor",
+          "note": "Official context window.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 1.25,
+          "src": "west26-meta-price",
+          "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+          "kind": "vendor",
+          "note": "Standard mode USD/1M, excludes contributor discounts.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 4.25,
+          "src": "west26-meta-price",
+          "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+          "kind": "vendor",
+          "note": "Standard mode output USD/1M.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.15,
+          "src": "west26-meta-price",
+          "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+          "kind": "vendor",
+          "note": "Standard-mode cache-read USD/1M.",
+          "sourceDate": null
+        },
+        "apiStatus": "Listed on Meta Model API; organization and region access not runtime tested.",
+        "priceMode": "Meta Model API Standard mode, USD per 1M tokens; contributor mode is separately identified.",
+        "inputs": "Text, Image, Video, Audio, PDF",
+        "outputs": "Text",
+        "priceAlt": "Standard $1.25/$4.25/$0.15 input/output/cache. Separate contributor IDs muse-spark-1.3-contributor and muse-spark-1.2-contributor: $0.10/$0.20/$0.002 with training-content permission. Standard mode content is not used to train Meta models."
+      }
+    },
+    {
+      "id": "muse12",
+      "evidenceIds": ["west26-meta-muse-spark","west26-meta-catalog","west26-meta-price"],
+      "fields": {
+        "ctx": {
+          "value": 1048576,
+          "src": "west26-meta-muse-spark",
+          "url": "https://dev.meta.ai/docs/muse-spark",
+          "kind": "vendor",
+          "note": "Official context window.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 1.25,
+          "src": "west26-meta-price",
+          "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+          "kind": "vendor",
+          "note": "Standard mode USD/1M, excludes contributor discounts.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 4.25,
+          "src": "west26-meta-price",
+          "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+          "kind": "vendor",
+          "note": "Standard mode output USD/1M.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.15,
+          "src": "west26-meta-price",
+          "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+          "kind": "vendor",
+          "note": "Standard-mode cache-read USD/1M.",
+          "sourceDate": null
+        },
+        "apiStatus": "Listed on Meta Model API; organization and region access not runtime tested.",
+        "priceMode": "Meta Model API Standard mode, USD per 1M tokens; contributor mode is separately identified.",
+        "inputs": "Text, Image, Video, Audio, PDF",
+        "outputs": "Text",
+        "priceAlt": "Standard $1.25/$4.25/$0.15 input/output/cache. Separate contributor IDs muse-spark-1.3-contributor and muse-spark-1.2-contributor: $0.10/$0.20/$0.002 with training-content permission. Standard mode content is not used to train Meta models."
+      }
+    },
+    {
+      "id": "muse-wonder",
+      "evidenceIds": ["west26-meta-muse-wonder","west26-meta-catalog","west26-meta-price"],
+      "fields": {
+        "ctx": {
+          "value": 1048576,
+          "src": "west26-meta-muse-wonder",
+          "url": "https://dev.meta.ai/docs/muse-wonder",
+          "kind": "vendor",
+          "note": "Official context window.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 4,
+          "src": "west26-meta-price",
+          "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+          "kind": "vendor",
+          "note": "Standard mode USD/1M, excludes contributor discounts.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 20,
+          "src": "west26-meta-price",
+          "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+          "kind": "vendor",
+          "note": "Standard mode output USD/1M.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.2,
+          "src": "west26-meta-price",
+          "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+          "kind": "vendor",
+          "note": "Standard-mode cache-read USD/1M.",
+          "sourceDate": null
+        },
+        "apiStatus": "Model API preview; Wonder Full is a different channel/variant.",
+        "priceMode": "Meta Model API Standard mode, USD per 1M tokens; contributor mode is separately identified.",
+        "inputs": "Text, Image, Video, Audio, PDF",
+        "outputs": "Text",
+        "priceAlt": "Standard mode only; $4 input/$20 output/$0.20 cache. Do not transfer these API prices to Wonder Full in Muse Code."
+      }
+    },
+    {
+      "id": "muse-ember",
+      "evidenceIds": ["west26-meta-muse-ember","west26-meta-catalog","west26-meta-price","west26-ember-release"],
+      "name": "Muse Ember",
+      "org": "meta",
+      "brand": "meta",
+      "isNew": true,
+      "variant": "max",
+      "fields": {
+        "ctx": {
+          "value": 1048576,
+          "src": "west26-meta-muse-ember",
+          "url": "https://dev.meta.ai/docs/muse-ember",
+          "kind": "vendor",
+          "note": "Official context window.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 0.1,
+          "src": "west26-meta-price",
+          "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+          "kind": "vendor",
+          "note": "Standard mode USD/1M, excludes contributor discounts.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 0.5,
+          "src": "west26-meta-price",
+          "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+          "kind": "vendor",
+          "note": "Standard mode output USD/1M.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.004,
+          "src": "west26-meta-price",
+          "url": "https://dev.meta.ai/docs/pricing-rate-limits",
+          "kind": "vendor",
+          "note": "Standard-mode cache-read USD/1M.",
+          "sourceDate": null
+        },
+        "apiStatus": "Listed on Meta Model API; organization and region access not runtime tested.",
+        "priceMode": "Meta Model API Standard mode, USD per 1M tokens; contributor mode is separately identified.",
+        "inputs": "Text, Image, Video, Audio, PDF",
+        "outputs": "Text",
+        "maxOut": {
+          "value": 524288,
+          "src": "west26-meta-muse-ember",
+          "url": "https://dev.meta.ai/docs/muse-ember",
+          "kind": "vendor",
+          "note": "Official maximum output tokens.",
+          "sourceDate": null
+        },
+        "tech": "muse-ember-1.0; minimal through max reasoning, API default max. Official positioning is high-volume execution and sub-agent work.",
+        "priceAlt": "Input <=200,000 tokens including cached history: $0.10/$0.50/$0.004 input/output/cache. >200,000: $0.30/$1.50/$0.012 for the entire request. Standard only; no contributor variant.",
+        "releaseNote": "Current official introduction read; absolute release date not exposed in readable article, so released is omitted."
+      }
+    },
+    {
+      "id": "muse-wonder-full",
+      "evidenceIds": ["west26-meta-catalog","west26-meta-muse-wonder","west26-meta-price"],
+      "fields": {
+        "access": "Muse Wonder Full is available in Muse Code only; the API exposes muse-wonder-1.0, not Full.",
+        "apiStatus": "No direct Meta Model API Full tariff established.",
+        "priceIn": null,
+        "priceOut": null,
+        "priceCache": null,
+        "priceMode": "Muse Code-only Full variant; do not substitute the non-Full API price."
+      }
+    },
+    {
+      "id": "muse-spark-open",
+      "evidenceIds": ["west26-meta-muse-spark-open","west26-meta-open-card","west26-meta-catalog"],
+      "fields": {
+        "ctx": {
+          "value": 1048576,
+          "src": "west26-meta-muse-spark-open",
+          "url": "https://dev.meta.ai/docs/muse-spark-open",
+          "kind": "vendor",
+          "note": "Official self-hosted/provider model context.",
+          "sourceDate": null
+        },
+        "openWeights": true,
+        "license": "Muse Model License",
+        "released": "2026-10-15",
+        "access": "Download BF16/NVFP4 or use third-party hosted providers; not a Meta Model API model ID.",
+        "inputs": "Text, Image, Audio, Video",
+        "outputs": "Text",
+        "tech": "Separate open-weight checkpoint; supports low/medium/high/xhigh, default xhigh. Published 816B/42B counts are vendor-scale descriptions, not exact tensor inventory.",
+        "paramsTotal": null,
+        "paramsAct": null
+      }
+    },
+    {
+      "id": "muse-glimmer",
+      "evidenceIds": ["west26-meta-muse-glimmer","west26-meta-glimmer-card","west26-meta-catalog"],
+      "fields": {
+        "ctx": {
+          "value": 131072,
+          "src": "west26-meta-glimmer-card",
+          "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+          "kind": "vendor",
+          "note": "Default context; card states 131,072+ and documentation permits longer runtime contexts. Not a universal maximum.",
+          "sourceDate": null
+        },
+        "openWeights": true,
+        "license": "Apache-2.0",
+        "access": "Download and self-host on local hardware; official Model API catalog lists no hosted endpoint.",
+        "inputs": "Text, Image",
+        "outputs": "Text",
+        "paramsTotal": null,
+        "paramsAct": null,
+        "tech": "Dense multimodal model; card gives approximately 29.6B total and approximately 1.8B perception encoder. No exact total substituted from the rounded 30B model name."
+      }
+    },
+    {
+      "id": "grok47",
+      "evidenceIds": ["west26-x47","west26-x-price","west26-x-log"],
+      "fields": {
+        "ctx": {
+          "value": 500000,
+          "src": "west26-x47",
+          "url": "https://docs.x.ai/developers/models/grok-4.7",
+          "kind": "vendor",
+          "note": "Official model-card context.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 2,
+          "src": "west26-x47",
+          "url": "https://docs.x.ai/developers/models/grok-4.7",
+          "kind": "vendor",
+          "note": "Standard short-context USD/1M.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 6,
+          "src": "west26-x47",
+          "url": "https://docs.x.ai/developers/models/grok-4.7",
+          "kind": "vendor",
+          "note": "Standard short-context USD/1M.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.5,
+          "src": "west26-x47",
+          "url": "https://docs.x.ai/developers/models/grok-4.7",
+          "kind": "vendor",
+          "note": "Cache-read USD/1M.",
+          "sourceDate": null
+        },
+        "inputs": "Text, Image",
+        "outputs": "Text",
+        "priceMode": "Direct SpaceXSI/xAI Standard API, USD per 1M tokens; long-context and regional conditions separate.",
+        "priceAlt": "Official pricing table labels long context >=200k tokens: input/output/cache $4/$12/$1; model page says requests exceeding 200K. Exact boundary wording conflicts, so 200,000-token requests require billing confirmation.",
+        "releaseNote": "Current official docs use SpaceXSI branding. Preserve dashboard org id xai and exact Grok version; no new text-model successor established in inspected release notes."
+      }
+    },
+    {
+      "id": "grok46",
+      "evidenceIds": ["west26-x46","west26-x-price","west26-x-log"],
+      "fields": {
+        "ctx": {
+          "value": 500000,
+          "src": "west26-x46",
+          "url": "https://docs.x.ai/developers/models/grok-4.6",
+          "kind": "vendor",
+          "note": "Official model-card context.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 2,
+          "src": "west26-x46",
+          "url": "https://docs.x.ai/developers/models/grok-4.6",
+          "kind": "vendor",
+          "note": "Standard short-context USD/1M.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 6,
+          "src": "west26-x46",
+          "url": "https://docs.x.ai/developers/models/grok-4.6",
+          "kind": "vendor",
+          "note": "Standard short-context USD/1M.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.5,
+          "src": "west26-x46",
+          "url": "https://docs.x.ai/developers/models/grok-4.6",
+          "kind": "vendor",
+          "note": "Cache-read USD/1M.",
+          "sourceDate": null
+        },
+        "inputs": "Text, Image",
+        "outputs": "Text",
+        "priceMode": "Direct SpaceXSI/xAI Standard API, USD per 1M tokens; long-context and regional conditions separate.",
+        "priceAlt": "Official pricing table labels long context >=200k tokens: input/output/cache $4/$12/$1; model page says requests exceeding 200K. Exact boundary wording conflicts, so 200,000-token requests require billing confirmation.",
+        "releaseNote": "Current official docs use SpaceXSI branding. Preserve dashboard org id xai and exact Grok version; no new text-model successor established in inspected release notes."
+      }
+    },
+    {
+      "id": "grok45",
+      "evidenceIds": ["west26-x45","west26-x-price","west26-x-log"],
+      "fields": {
+        "ctx": {
+          "value": 500000,
+          "src": "west26-x45",
+          "url": "https://docs.x.ai/developers/models/grok-4.5",
+          "kind": "vendor",
+          "note": "Official model-card context.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 2,
+          "src": "west26-x45",
+          "url": "https://docs.x.ai/developers/models/grok-4.5",
+          "kind": "vendor",
+          "note": "Standard short-context USD/1M.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 6,
+          "src": "west26-x45",
+          "url": "https://docs.x.ai/developers/models/grok-4.5",
+          "kind": "vendor",
+          "note": "Standard short-context USD/1M.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.3,
+          "src": "west26-x45",
+          "url": "https://docs.x.ai/developers/models/grok-4.5",
+          "kind": "vendor",
+          "note": "Cache-read USD/1M.",
+          "sourceDate": null
+        },
+        "inputs": "Text, Image",
+        "outputs": "Text",
+        "priceMode": "Direct SpaceXSI/xAI Standard API, USD per 1M tokens; long-context and regional conditions separate.",
+        "priceAlt": "Official card shows $2/$6/$0.30 input/output/cache; long-context and regional tariff need explicit confirmation.",
+        "releaseNote": "Current official docs use SpaceXSI branding. Preserve dashboard org id xai and exact Grok version; no new text-model successor established in inspected release notes."
+      }
+    },
+    {
+      "id": "mistral-l4-ga",
+      "evidenceIds": ["west26-ms4","west26-ms4-preview","west26-ms4-weights","west26-ms-price"],
+      "name": "Mistral Large 4",
+      "org": "mistral",
+      "brand": "mistral",
+      "isNew": true,
+      "variant": "medium",
+      "fields": {
+        "released": "2026-11-05",
+        "ctx": {
+          "value": 1048576,
+          "src": "west26-ms4-weights",
+          "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B",
+          "kind": "vendor",
+          "note": "Official Vibe local-server configuration specifies max_context_length=1048576; hosted API page abbreviates 1M.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 0.7,
+          "src": "west26-ms-price",
+          "url": "https://docs.mistral.ai/inference/pricing",
+          "kind": "vendor",
+          "note": "Direct Mistral Standard USD/1M.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 2.1,
+          "src": "west26-ms-price",
+          "url": "https://docs.mistral.ai/inference/pricing",
+          "kind": "vendor",
+          "note": "Direct Mistral Standard USD/1M.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.07,
+          "src": "west26-ms-price",
+          "url": "https://docs.mistral.ai/inference/pricing",
+          "kind": "vendor",
+          "note": "Direct Standard cache-read USD/1M.",
+          "sourceDate": null
+        },
+        "license": "Mistral Ecosystem Open-Weight License; Model-as-a-Service business requires a separate commercial license.",
+        "openWeights": true,
+        "apiStatus": "GA official card; API alias mistral-large-4. Weights available.",
+        "inputs": "Text, Image",
+        "outputs": "Text",
+        "priceMode": "Mistral Standard API, USD per 1M; regional/Batch/Priority costs separate.",
+        "tech": "API/weights support low/medium/high, default high; main adds a separate High benchmark configuration. GA is kept separate from the October Preview row.",
+        "releaseNote": "GA model card dated November 5, 2026; preview announcement dated October 6. No proof that benchmarked preview checkpoint equals current GA.",
+        "limits": "Official HF card uses approximate 1T/52B; it distinguishes 49B active from 52B including embeddings/output layers. No exact parameter count inferred."
+      }
+    },
+    {
+      "id": "mistral-l4",
+      "evidenceIds": ["west26-ms4-preview","west26-ms4","west26-ms4-weights"],
+      "fields": {
+        "apiStatus": "Historical October public Preview; mapping to current GA checkpoint is unresolved.",
+        "releaseNote": "Preserve Preview version and old benchmark values. Separate GA row mistral-l4-ga; do not silently rename or apply GA specs/pricing to this checkpoint."
+      }
+    },
+    {
+      "id": "mistral-l3",
+      "evidenceIds": ["west26-ms3"],
+      "fields": {
+        "apiStatus": "Deprecated October 31, 2026; official replacement Mistral Large 4.",
+        "license": "Apache-2.0",
+        "openWeights": true,
+        "releaseNote": "Original December 2, 2025 release remains distinct. Deprecated label does not by itself prove all deployments or downloadable weights unavailable."
+      }
+    },
+    {
+      "id": "reflection-beam",
+      "evidenceIds": ["west26-ref-card","west26-ref-models","west26-ref-weights","west26-ref-api","west26-ref-console"],
+      "fields": {
+        "paramsTotal": {
+          "value": 501300000000,
+          "src": "west26-ref-card",
+          "url": "https://reflection.ai/beam-model-card",
+          "kind": "vendor",
+          "note": "Architecture table publishes 501.3B, expanded to parameters at vendor precision; rounded 501B headline not used.",
+          "sourceDate": null
+        },
+        "paramsAct": {
+          "value": 23400000000,
+          "src": "west26-ref-card",
+          "url": "https://reflection.ai/beam-model-card",
+          "kind": "vendor",
+          "note": "Architecture table publishes 23.4B active; not rounded 23B headline.",
+          "sourceDate": null
+        },
+        "license": "Apache-2.0",
+        "openWeights": true,
+        "released": "2026-10-05",
+        "apiStatus": "Reflection API lists Beam-1.0-501B-A23B; availability may differ by organization/plan.",
+        "access": "Official API and downloadable BF16/FP8/NVFP4 variants; checkpoint/numeric formats remain distinct.",
+        "inputs": "Text",
+        "outputs": "Text",
+        "priceMode": "Direct official vendor tariff unresolved; existing AA/provider prices must not be presented as Reflection official rates.",
+        "tech": "Developer model table advertises 1M context/128K output. Exact integer limits remain pending configuration verification; no number inferred from marketing headline."
+      }
+    },
+    {
+      "id": "motif3",
+      "evidenceIds": ["west26-motif-card","west26-motif-catalog"],
+      "fields": {
+        "ctx": {
+          "value": 262144,
+          "src": "west26-motif-card",
+          "url": "https://huggingface.co/Motif-Technologies/Motif-3",
+          "kind": "vendor",
+          "note": "Official model card explicitly states native context 262,144 tokens.",
+          "sourceDate": null
+        },
+        "openWeights": true,
+        "license": "MIT",
+        "paramsTotal": null,
+        "paramsAct": null,
+        "apiStatus": "Official weights downloadable without access request; official direct API tariff not established.",
+        "access": "Open-weight self-hosting; third-party hosted API is a separate channel.",
+        "inputs": "Text",
+        "outputs": "Text",
+        "tech": "Model architecture table labels approximately 314B total and approximately 13.2B activated; these are intentionally not encoded as exact totals.",
+        "priceMode": "Official direct vendor API tariff unconfirmed; no third-party rate substituted."
+      }
+    }
+  ],
+  "subscriptions": [
+    {
+      "brand": "openai",
+      "product": "ChatGPT",
+      "tiers": [
+        [
+          "Free",
+          "Free tier; limits apply"
+        ],
+        [
+          "Go",
+          "Pending current regional monthly price"
+        ],
+        [
+          "Plus",
+          "USD 20 / month (billed monthly)"
+        ],
+        [
+          "Pro 100",
+          "USD 100 / month"
+        ],
+        [
+          "Pro 200",
+          "USD 200 / month"
+        ],
+        [
+          "Pro 500",
+          "USD 500 / month"
+        ]
+      ],
+      "note": "Monthly USD Pro/Plus prices confirmed in current official help. Go is monthly with regional/local-currency variation but no current amount exposed. Pro 200 new subscriptions are available again; prior scheduled allowance reduction was canceled, so remove the old October 29 expiry statement. Pro 500 includes Ultrafast; Pro 100/200 do not. API billing remains separate; eligible Pro/Business subscribers may claim conditional API credits.",
+      "url": "https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "status": "partial_Go_regional_amount_pending",
+      "sources": [
+        "https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers",
+        "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus",
+        "https://help.openai.com/en/articles/11989085-what-is-chatgpt-go",
+        "https://chatgpt.com/pricing/",
+        "https://developers.openai.com/api/docs/changelog"
+      ]
+    },
+    {
+      "brand": "anthropic",
+      "product": "Claude",
+      "tiers": [
+        [
+          "Free",
+          "USD 0"
+        ],
+        [
+          "Pro",
+          "USD 20 / month; USD 200 / year billed upfront"
+        ],
+        [
+          "Max",
+          "USD 100 / month"
+        ],
+        [
+          "Ultra",
+          "USD 200 / month"
+        ]
+      ],
+      "note": "Current names are Max and Ultra; do not retain Max 20x as the current USD 200 tier. Pro annual total is USD 200, despite the displayed rounded USD 17/month equivalent. Max includes 5x Pro usage and USD 100/month conditional API credits; Ultra includes 10x weekly Pro usage and USD 200/month conditional credits. Removal of the 5-hour limit on Ultra requires a verified account. Taxes extra; paid usage limits remain.",
+      "url": "https://claude.com/pricing",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "status": "verified",
+      "sources": [
+        "https://claude.com/pricing"
+      ]
+    },
+    {
+      "brand": "google",
+      "product": "Gemini / Google AI",
+      "tiers": [
+        [
+          "AI Plus",
+          "Pending checkout amount / region / storage option"
+        ],
+        [
+          "AI Pro",
+          "USD 19.99 / month shown in official US savings calculator; checkout pending"
+        ],
+        [
+          "AI Ultra 5x",
+          "USD 99.99 / month shown in official US savings calculator; checkout pending"
+        ],
+        [
+          "AI Ultra 20x",
+          "Pending checkout monthly amount"
+        ]
+      ],
+      "note": "US page freshly read. Main purchase cards omit rendered amounts; separate savings calculator explicitly displays Pro USD 19.99/month and Ultra USD 99.99/month, with Ultra monthly-only. These are labeled page references pending purchase-flow confirmation. Comparison distinguishes Ultra 5x and 20x; do not reuse rounded USD 100/200 historical announcements. Plus includes Hydrogen, Pro Argon, Ultra Carbon. Region, age, language, and personal-Google-account restrictions apply; annual checkout totals not verified.",
+      "url": "https://one.google.com/intl/en_us/about/google-ai-plans/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "status": "partial_US_page_reference_prices_checkout_pending",
+      "sources": [
+        "https://one.google.com/intl/en_us/about/google-ai-plans/"
+      ]
+    },
+    {
+      "brand": "xai",
+      "product": "Grok / The X Subscription",
+      "tiers": [
+        [
+          "Free",
+          "USD 0 / month; USD 0 / year"
+        ],
+        [
+          "Plus",
+          "USD 8 / month; USD 80 / year"
+        ],
+        [
+          "Premium",
+          "USD 30 / month; USD 300 / year"
+        ],
+        [
+          "Super",
+          "USD 100 / month; USD 1,000 / year"
+        ],
+        [
+          "Ultra",
+          "USD 200 / month; USD 2,000 / year"
+        ]
+      ],
+      "note": "Direct official monthly amounts and annual billed totals confirmed. Annual monthly-equivalent labels are rounded and not used to derive totals. New self-serve plans combine Grok/Cursor/X; legacy Cursor, SuperGrok and X Premium continue with optional migration. Taxes/fees extra; third-party Cursor model usage costs extra. Premium and above include Grok Bot from shared weekly usage, not an additive pool. Official site currently uses SpaceXSI branding.",
+      "url": "https://docs.x.ai/x-subscription/pricing",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "status": "verified",
+      "sources": [
+        "https://docs.x.ai/x-subscription/pricing",
+        "https://x.ai/pricing"
+      ]
+    },
+    {
+      "brand": "moonshot",
+      "product": "Kimi (Mainland China new memberships)",
+      "tiers": [
+        [
+          "Go",
+          "CNY 49 / month; CNY 468 / year"
+        ],
+        [
+          "Plus",
+          "CNY 99 / month; CNY 948 / year"
+        ],
+        [
+          "Pro",
+          "CNY 199 / month; CNY 1,908 / year"
+        ],
+        [
+          "Max",
+          "CNY 699 / month; CNY 6,708 / year"
+        ],
+        [
+          "Ultra",
+          "CNY 1,399 / month; CNY 13,428 / year"
+        ]
+      ],
+      "note": "Fresh official domestic membership table read; annual charges are upfront totals, not monthly-equivalent billing. Embedded screenshot is dated October 19, 2026; page publication date undisclosed. Go excludes Kimi Code; Plus and above include it. Latest purchase eligibility/pricing is governed by checkout; international memberships and legacy music-named plans are separate and not re-priced here.",
+      "url": "https://www.kimi.com/help/membership/membership-pricing",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "status": "verified_domestic_documentation_checkout_and_international_not_tested",
+      "sources": [
+        "https://www.kimi.com/help/membership/membership-pricing"
+      ]
+    },
+    {
+      "brand": "minimax",
+      "product": "MiniMax M Plan",
+      "tiers": [
+        [
+          "Go",
+          "Pending official amount / currency / billing period"
+        ],
+        [
+          "Explore",
+          "Pending official amount / currency / billing period"
+        ],
+        [
+          "Build",
+          "Pending official amount / currency / billing period"
+        ]
+      ],
+      "note": "Current official three tiers freshly confirmed, but purchase page exposes no readable amounts. Quotas are 1x/3x/7.5x Go; M3.1 Flash, images and speech included; H3 video on Explore/Build. Image/video have weekly limits and are excluded from the 5-hour limit. Do not restore old Coding/Agent price grids. Preview model name now routes to stable M3.1 Flash per current subscription documentation; Chinese/API research owned separately.",
+      "url": "https://www.minimax.io/m-plan",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "status": "partial_dynamic_prices_pending",
+      "sources": [
+        "https://www.minimax.io/m-plan",
+        "https://platform.minimax.io/docs/m-plan/intro"
+      ]
+    },
+    {
+      "brand": "mistral",
+      "product": "Mistral Vibe (formerly Le Chat)",
+      "tiers": [
+        [
+          "Free",
+          "Limited free allowance"
+        ],
+        [
+          "Pro",
+          "USD 14.99 / month, excluding taxes"
+        ],
+        [
+          "Team",
+          "USD 24.99 / user / month, excluding taxes"
+        ],
+        [
+          "Education",
+          "Pending separately selected student amount"
+        ],
+        [
+          "Enterprise",
+          "Contact sales"
+        ]
+      ],
+      "note": "Fresh official USD page read with France displayed in country selector. Pro and Team amounts are monthly; no annual total verified. Student option requires accredited higher-education status, no previous Vibe/Le Chat use, and lasts at most 12 months; separate student price not exposed. Fair-use limits apply. The Team page also shows a USD 50/month aggregate control; do not mistake it for per-seat tariff.",
+      "url": "https://mistral.ai/pricing/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "status": "verified_main_monthly_plans_region_and_student_selection_limited",
+      "sources": [
+        "https://mistral.ai/pricing/"
+      ]
+    },
+    {
+      "brand": null,
+      "product": "Chinese-provider app free tiers and memberships",
+      "tiers": [
+        [
+          "DeepSeek App",
+          "Free chat confirmed by official download page"
+        ],
+        [
+          "Kimi",
+          "See separately verified Mainland China CNY membership table"
+        ],
+        [
+          "Doubao",
+          "Standard / Enhanced / Advanced memberships; amounts pending"
+        ],
+        [
+          "Qianwen",
+          "Current free entitlements and paid amounts pending"
+        ],
+        [
+          "Zhipu Qingyan",
+          "Membership amounts and free entitlements pending"
+        ]
+      ],
+      "note": "All provider URLs freshly opened. DeepSeek explicitly says free App chat; this does not establish API or Harness pricing. Doubao agreement (updated August 15, effective August 22) confirms paid membership categories and monthly/annual auto-renewal but no actual amounts. Qianwen returns only a title and Qingyan no readable body, so no old free-price assertion is restamped.",
+      "url": "https://www.deepseek.com/en/download/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "status": "partial_provider_specific_evidence",
+      "sources": [
+        "https://www.deepseek.com/en/download/",
+        "https://www.kimi.com/help/membership/membership-pricing",
+        "https://www.doubao.com/legal/ey01",
+        "https://www.qianwen.com/",
+        "https://chatglm.cn/"
+      ],
+      "multi": true,
+      "sub": "DeepSeek / Kimi / Doubao / Qianwen / Zhipu"
+    }
+  ],
+  "events": [
+    {
+      "date": "2026-10-26",
+      "title": "OpenAI releases GPT-6.1 Terra",
+      "detail": "New API version for visual reasoning, computer use and writing. Keep separate from GPT-5.6 Terra; default API effort medium, benchmark max/low configurations separate.",
+      "url": "https://developers.openai.com/api/docs/changelog"
+    },
+    {
+      "date": "2026-10-27",
+      "title": "SpaceXSI introduces custom text moderation controls",
+      "detail": "Text Chat Completions and Responses accept category guidelines; this is an API feature, not a Grok model checkpoint release.",
+      "url": "https://docs.x.ai/developers/release-notes"
+    },
+    {
+      "date": "2026-10-28",
+      "title": "Eligible ChatGPT subscriptions gain API-credit claims",
+      "detail": "Pro and Business subscribers may claim conditional API credits up to USD 500/month by linking an owned API organization; not a blanket inclusion for all subscribers.",
+      "url": "https://developers.openai.com/api/docs/changelog"
+    },
+    {
+      "date": "2026-10-30",
+      "title": "OpenAI releases restricted GPT-6 Rosalind",
+      "detail": "Specialized biological reasoning model through trusted research access, not unrestricted general flagship availability.",
+      "url": "https://developers.openai.com/api/docs/changelog"
+    },
+    {
+      "date": "2026-10-31",
+      "title": "Mistral Large 3 marked deprecated",
+      "detail": "Official lifecycle card names Mistral Large 4 as replacement; retain Large 3 historical benchmark identity.",
+      "url": "https://docs.mistral.ai/models/mistral-large-3-25-12"
+    },
+    {
+      "date": "2026-11-02",
+      "title": "SpaceXSI retires old image-quality aliases",
+      "detail": "grok-imagine-image-quality/pro requests route to image-2.0 low quality. This image alias change does not change Grok 4.7 text benchmark identity.",
+      "url": "https://docs.x.ai/developers/release-notes"
+    },
+    {
+      "date": "2026-11-05",
+      "title": "OpenAI introduces GPT-6 Cyber",
+      "detail": "Specialized model for investigating and verifying vulnerabilities in authorized environments; separate model ID from GPT-6 Astra.",
+      "url": "https://developers.openai.com/api/docs/changelog"
+    },
+    {
+      "date": "2026-11-05",
+      "title": "Mistral Large 4 reaches GA",
+      "detail": "GA card dated November 5 and released official weights use the Mistral Ecosystem Open-Weight License. New mistral-l4-ga row; October Preview is preserved.",
+      "url": "https://docs.mistral.ai/models/mistral-large-4-0"
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Anthropic releases Fable 5.2 and Mythos 5.2",
+      "detail": "New model IDs, USD 8 input / USD 40 output per 1M tokens. Mythos requires verification; Fable5.1 remains a separate legacy version.",
+      "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Gemini 4 Carbon is generally available",
+      "detail": "New gemini-4-carbon; introductory Standard USD 2 input / USD 10 output through November 30, then USD 4 / USD 20 from December 1.",
+      "url": "https://aistudio.google.com/docs/changelog"
+    },
+    {
+      "date": "2026-11-11",
+      "title": "Google introduces Gemini Decision 1",
+      "detail": "Specialized Decisions API for calibrated judgments without output tokens; not a conventional text-generation flagship benchmark row.",
+      "url": "https://aistudio.google.com/docs/changelog"
+    },
+    {
+      "date": "2026-11-12",
+      "title": "Gemini 4 Hydrogen is generally available",
+      "detail": "New gemini-4-hydrogen; paid Standard USD 1.50 input / USD 7.50 output. Supports low/medium/high(default)/xhigh thinking.",
+      "url": "https://aistudio.google.com/docs/changelog"
+    }
+  ],
+  "vendorUpdates": {
+    "openai": {
+      "family": "GPT-6 Astra / GPT-6.1 Sol / GPT-6.1 Terra / GPT-6 Luna",
+      "keypoints": [
+        "Terra released October 26; max and low dashboard rows remain separate effort configurations.",
+        "Official context 1,050,000 and max output 128,000 for current GPT-6/6.1 cards. Parameter counts not disclosed in inspected pages.",
+        "Pro200 allowance reduction canceled; USD100/200/500 Pro monthly plans freshly confirmed. Conditional API-credit benefit is separate from standard API billing."
+      ],
+      "urls": [
+        "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+        "https://developers.openai.com/api/docs/changelog",
+        "https://help.openai.com/en/articles/9793128-about-chatgpt-pro-tiers"
+      ]
+    },
+    "anthropic": {
+      "family": "Claude Fable 5.2 / Mythos 5.2 / Opus 5.5 / Sonnet 5.5 / Haiku 5.5",
+      "keypoints": [
+        "Fable/Mythos5.2 released November9; do not rename 5.1 rows.",
+        "Cache-read rates are model-specific: Fable5.2 USD0.20 vs USD8 input, not a blanket 10% rule.",
+        "Haiku5.5 has an input-length price threshold at 100,000 tokens; Max/Ultra subscription names and limits changed."
+      ],
+      "urls": [
+        "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+        "https://platform.claude.com/docs/en/about-claude/pricing",
+        "https://claude.com/pricing"
+      ]
+    },
+    "google": {
+      "family": "Gemini 4 Carbon / Argon / Hydrogen",
+      "keypoints": [
+        "Carbon GA November10 and Hydrogen GA November12; Argon retained as separate model.",
+        "Gemini4 has unified 1,048,576 input+output budget; synchronous output65,536 and opt-in long-decode ceiling1,048,576.",
+        "Carbon/Argon introductory Standard pricing expires November30; implicit caching only. Google AI subscription purchase prices remain partially dynamic."
+      ],
+      "urls": [
+        "https://aistudio.google.com/docs/changelog",
+        "https://aistudio.google.com/docs/models/gemini-4-carbon",
+        "https://aistudio.google.com/docs/pricing"
+      ]
+    },
+    "meta": {
+      "family": "Muse Wonder / Spark 1.3 / Ember 1.0 / Spark Open / Glimmer",
+      "keypoints": [
+        "Ember current official API spec: context1,048,576/output524,288; long-context price tier above200,000 input tokens.",
+        "Standard and Contributor modes have different data-use conditions and prices. Wonder Full is Muse Code-only.",
+        "Spark Open uses Muse Model License; Glimmer uses Apache-2.0. Rounded parameter scales are not exact inventory."
+      ],
+      "urls": [
+        "https://dev.meta.ai/docs/models",
+        "https://dev.meta.ai/docs/muse-ember",
+        "https://dev.meta.ai/docs/pricing-rate-limits"
+      ]
+    },
+    "xai": {
+      "family": "Grok 4.7; official site now branded SpaceXSI",
+      "keypoints": [
+        "Current inspected catalog still calls Grok4.7 flagship; no new text flagship release established for the interval.",
+        "Standard short/long-context pricing stays separate; exact200K boundary wording conflicts between pages.",
+        "New The X Subscription monthly/annual USD amounts verified; legacy plans continue optionally."
+      ],
+      "urls": [
+        "https://docs.x.ai/developers/models/grok-4.7",
+        "https://docs.x.ai/developers/pricing",
+        "https://docs.x.ai/developers/release-notes",
+        "https://docs.x.ai/x-subscription/pricing"
+      ]
+    },
+    "mistral": {
+      "family": "Mistral Large 4 GA versus October Preview",
+      "keypoints": [
+        "New stable row mistral-l4-ga; retain mistral-l4 Preview historical/pending exact checkpoint mapping.",
+        "GA November5; current direct Standard USD0.70 input/USD2.10 output/USD0.07 cache.",
+        "Released weight license requires a separate commercial agreement for Model-as-a-Service business. Large3 deprecated October31."
+      ],
+      "urls": [
+        "https://docs.mistral.ai/models/mistral-large-4-0",
+        "https://mistral.ai/news/mistral-large-4/",
+        "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B",
+        "https://docs.mistral.ai/models/mistral-large-3-25-12"
+      ]
+    },
+    "reflection": {
+      "family": "Beam 1.0",
+      "keypoints": [
+        "Fresh official catalog still lists Beam-1.0-501B-A23B, created October5; no new successor established.",
+        "Architecture table gives501.3B total/23.4B active at vendor-published precision; Apache-2.0 weights confirmed.",
+        "Official API access confirmed in docs; direct public numeric tariff and exact integer limits remain pending."
+      ],
+      "urls": [
+        "https://developers.reflection.ai/models",
+        "https://reflection.ai/beam-model-card",
+        "https://huggingface.co/reflection/Beam-1.0-501B-A23B"
+      ]
+    },
+    "motif": {
+      "family": "Motif 3",
+      "keypoints": [
+        "Fresh catalog and official HF card still list Motif3; no successor established from inspected current sources.",
+        "Native context262,144 and MIT downloadable weights confirmed.",
+        "Architecture table explicitly uses approximate314B/13.2B; do not restamp those as exact numeric totals. No official direct API price confirmed."
+      ],
+      "urls": [
+        "https://huggingface.co/Motif-Technologies/Motif-3",
+        "https://motiftech.io/en/resources/models/"
+      ]
+    }
+  },
+  "unresolved": [
+    {
+      "model": "gemini37",
+      "field": "apiStatus",
+      "why": "Prior routing claim was not freshly re-established; do not restamp the old 3.7->3.8 routing assertion.",
+      "url": "https://aistudio.google.com/docs/changelog"
+    },
+    {
+      "model": "reflection-beam",
+      "field": "ctx/maxOut",
+      "why": "Official developer table gives only 1M/128K; raw config retrieval failed. Need exact integer limits before numeric replacement.",
+      "url": "https://developers.reflection.ai/models"
+    },
+    {
+      "model": "reflection-beam",
+      "field": "priceIn/priceOut/priceCache",
+      "why": "Official API/console inspected but no public readable tariff found. AA/reference prices are not official vendor prices.",
+      "url": "https://platform.reflection.ai/"
+    },
+    {
+      "model": "motif3",
+      "field": "paramsTotal/paramsAct",
+      "why": "Official architecture table explicitly uses ~314B/~13.2B. Prior exact-looking numerics should be cleared; need authoritative tensor count to restore.",
+      "url": "https://huggingface.co/Motif-Technologies/Motif-3"
+    },
+    {
+      "model": "motif3",
+      "field": "maxOut/official API tariff",
+      "why": "Official card and catalog establish weights/context/license but no explicit output cap or direct standard API tariff.",
+      "url": "https://motiftech.io/en/resources/models/"
+    },
+    {
+      "model": "muse-spark-open",
+      "field": "paramsTotal/paramsAct/maxOut",
+      "why": "816B/42B are published at rounded scale; no exact tensor inventory or explicit independent max-output cap verified.",
+      "url": "https://dev.meta.ai/docs/muse-spark-open"
+    },
+    {
+      "model": "muse-glimmer",
+      "field": "paramsTotal/maxOut",
+      "why": "Card gives ~29.6B total and 131,072+ context; exact parameter inventory/output cap unconfirmed.",
+      "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B"
+    },
+    {
+      "model": "muse-ember",
+      "field": "released/paramsTotal/paramsAct",
+      "why": "Current introduction and API spec read, but no absolute release date or parameter count exposed. Do not convert 'today' into 2026-11-16.",
+      "url": "https://dev.meta.ai/resources/blog/build-with-muse-ember"
+    },
+    {
+      "model": "muse-wonder-full",
+      "field": "priceIn/priceOut/priceCache",
+      "why": "Muse Code-only Full variant; non-Full API rates cannot be assigned to Full.",
+      "url": "https://dev.meta.ai/docs/models"
+    },
+    {
+      "model": "muse12",
+      "field": "maxOut",
+      "why": "Fresh official model documentation states context but no independent maximum output token count in inspected page.",
+      "url": "https://dev.meta.ai/docs/muse-spark"
+    },
+    {
+      "model": "muse13",
+      "field": "maxOut",
+      "why": "Fresh official model documentation states context but no independent maximum output token count in inspected page.",
+      "url": "https://dev.meta.ai/docs/muse-spark"
+    },
+    {
+      "model": "muse-wonder",
+      "field": "maxOut",
+      "why": "Fresh official model documentation states context but no independent maximum output token count in inspected page.",
+      "url": "https://dev.meta.ai/docs/muse-wonder"
+    },
+    {
+      "model": "mistral-l4",
+      "field": "checkpoint mapping",
+      "why": "October 6 preview and November 5 GA are separate release states; no immutable checkpoint equality established. Preserve Preview row and historical metrics.",
+      "url": "https://mistral.ai/news/mistral-large-4/"
+    },
+    {
+      "model": "mistral-l4-ga",
+      "field": "paramsTotal/paramsAct/maxOut",
+      "why": "GA card says 1.05T/52B while HF card says ~1T, 49B active excluding vs 52B including embeddings/output. Exact tensor total/output cap not confirmed; no predecessor values borrowed.",
+      "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
+    },
+    {
+      "model": "mistral-l3",
+      "field": "current direct API prices",
+      "why": "Fresh card says Deprecated with date October 31; current pricing list does not establish legacy-request tariff.",
+      "url": "https://docs.mistral.ai/models/mistral-large-3-25-12"
+    },
+    {
+      "model": "grok47",
+      "field": "maxOut/parameter counts",
+      "why": "Inspected official pages establish context and pricing but no independent maximum output or model parameter count.",
+      "url": "https://docs.x.ai/developers/models/grok-4.7"
+    },
+    {
+      "model": "grok46",
+      "field": "maxOut/parameter counts",
+      "why": "Inspected official pages establish context and pricing but no independent maximum output or model parameter count.",
+      "url": "https://docs.x.ai/developers/models/grok-4.6"
+    },
+    {
+      "model": "grok45",
+      "field": "maxOut/parameter counts",
+      "why": "Inspected official pages establish context and pricing but no independent maximum output or model parameter count.",
+      "url": "https://docs.x.ai/developers/models/grok-4.5"
+    },
+    {
+      "model": "grok47/grok46",
+      "field": "long-context exact boundary",
+      "why": "Central price table says >=200K; individual cards say exceeds 200K. Higher-tier rates confirmed, equality boundary pending.",
+      "url": "https://docs.x.ai/developers/pricing"
+    },
+    {
+      "model": "OpenAI/Anthropic/Gemini hosted families",
+      "field": "parameter counts/open-weight license",
+      "why": "Inspected model API pages do not establish exact private-model parameter counts or weight licenses. No predecessor counts inferred.",
+      "url": "https://developers.openai.com/api/docs/models"
+    },
+    {
+      "model": "ChatGPT Go",
+      "field": "subscription amount",
+      "why": "Monthly/region availability confirmed, current numeric amount not visible; historical USD 8 not revalidated.",
+      "url": "https://help.openai.com/en/articles/11989085-what-is-chatgpt-go"
+    },
+    {
+      "model": "Google AI",
+      "field": "subscription checkout amounts/annual totals",
+      "why": "Pro USD 19.99 and Ultra USD 99.99 visible only in official US calculator; purchase-card amounts blank. Plus/storage alternatives and Ultra20x still missing.",
+      "url": "https://one.google.com/intl/en_us/about/google-ai-plans/"
+    },
+    {
+      "model": "MiniMax M Plan",
+      "field": "subscription amounts",
+      "why": "Current Go/Explore/Build confirmed but official purchase page has no readable numeric price; currency and monthly/annual totals pending.",
+      "url": "https://www.minimax.io/m-plan"
+    },
+    {
+      "model": "Mistral Vibe",
+      "field": "student/annual/local currency prices",
+      "why": "Current USD Pro/Team monthly values confirmed; student toggle, annual totals and EUR checkout amounts not read.",
+      "url": "https://mistral.ai/pricing/"
+    },
+    {
+      "model": "Kimi",
+      "field": "international/legacy subscriptions",
+      "why": "Current official domestic pricing table read; not evidence for international or legacy music-named subscriptions.",
+      "url": "https://www.kimi.com/help/membership/membership-pricing"
+    },
+    {
+      "model": "Doubao",
+      "field": "membership amounts",
+      "why": "Official agreement establishes paid tiers, not numeric charge amounts.",
+      "url": "https://www.doubao.com/legal/ey01"
+    },
+    {
+      "model": "Qianwen",
+      "field": "free entitlements/subscription prices",
+      "why": "Current official app is a title-only dynamic page; no usable price/entitlement evidence returned.",
+      "url": "https://www.qianwen.com/"
+    },
+    {
+      "model": "Zhipu Qingyan",
+      "field": "free entitlements/subscription prices",
+      "why": "Official app returned no readable content; no today's price assertion possible.",
+      "url": "https://chatglm.cn/"
+    }
+  ],
+  "newBrands": [],
+  "coverage": {
+    "timezone": "Asia/Shanghai",
+    "intervalStart": "2026-10-25",
+    "intervalEnd": "2026-11-16",
+    "scope": "Official vendor model/spec/API/lifecycle changes and all eight existing subscription groups. Outer workspace only.",
+    "primarySourcesReadFresh": true,
+    "benchmarkScoresWritten": false,
+    "apiRuntimeTested": false,
+    "oldResearchUsedOnlyForDiscovery": true,
+    "numericPolicy": "Prices are USD per 1,000,000 tokens. Token limits use absolute tokens; technical API K/M notation is expanded only where unambiguous. Rounded or approximate parameter counts are not promoted to exact tensor totals.",
+    "integration": "Existing model IDs retained for the same version. New GA/checkpoint/effort IDs align with main-agent instructions; official API defaults do not redefine AA effort mappings.",
+    "conflictsResolved": [
+      "New IDs aligned: claude-fable52, claude-fable52-xhigh, gemini4-carbon(high), gemini4-hydrogen(xhigh), gpt61-terra(max), gpt61-terra-low, muse-ember(max), mistral-l4-ga(medium).",
+      "mistral-l4 is retained as Preview; current GA uses a separate id and no benchmark score is transferred.",
+      "Claude Fable5.1 legacy, Mythos access verification, Mistral Large3 deprecation and GPT5.3Codex deprecated label preserved distinctly.",
+      "Current Claude subscription tier USD200 is Ultra rather than old Max20x; ChatGPT Pro200 scheduled allowance cut canceled.",
+      "Google's current US page contains Pro19.99/Ultra99.99 only in its savings calculator; labeled checkout-pending rather than either silently omitted or treated as paid checkout proof.",
+      "Motif approximately314B/13.2B and Glimmer approximately29.6B are not exact parameter inventory."
+    ],
+    "pending": [
+      "Benchmark identity/metrics integration belongs to main agent; this file contains no performance patches or comparisons.",
+      "Mistral checkpoint equality Preview vs GA unproven; exact tensor totals and independent output cap not verified.",
+      "Dynamic regional subscription checkout and actual API request/billing are not tested.",
+      "No newly assigned company outside existing brands confirmed; no logo download required by this sidecar."
+    ],
+    "subscriptionGroupsRead": 8,
+    "modelPatchCount": 47,
+    "sourceCount": 79,
+    "existingRowsNotPatched": [
+      "gemini37"
+    ],
+    "newModelIds": [
+      "gpt61-terra",
+      "gpt61-terra-low",
+      "claude-fable52",
+      "claude-fable52-xhigh",
+      "claude-mythos52",
+      "gemini4-carbon",
+      "gemini4-hydrogen",
+      "muse-ember",
+      "mistral-l4-ga"
+    ],
+    "aliases": {
+      "claude-fable-5-2": "claude-fable52",
+      "gemini-4-carbon": "gemini4-carbon",
+      "gemini-4-hydrogen": "gemini4-hydrogen",
+      "gpt-6.1-terra": "gpt61-terra",
+      "muse-ember-1.0": "muse-ember",
+      "mistral-large-4 (GA, Medium)": "mistral-l4-ga"
+    },
+    "fieldProvenance": "Numeric fields carry source IDs. Nonnumeric fields trace to the corresponding model card/pricing/lifecycle URLs in sources and vendorUpdates. No row-level lastVerified date implies every historical field was checked."
+  }
+}

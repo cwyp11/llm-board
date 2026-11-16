@@ -75,3 +75,12 @@
 | Meituan | `meituan.svg` | [Official media page](https://www.meituan.com/media), inline `wk-meituan` SVG symbol | 2026-10-24; standalone SVG wrapper, original viewBox, paths and colors retained |
 
 LongCat currently uses its parent Meituan logo consistently. The wide black Meituan mark receives a restrained light carrier; its proportions and colors are not altered. No license grant was inferred from the presence of a company asset on its website. These three files are local and require no remote image loading. Machine-readable records: `research/2026-10-24-logo-sources.json`.
+
+
+## 2026-11-16 addition
+
+| Brand | Local file | Official source | Acquisition |
+| --- | --- | --- | --- |
+| Thinking Machines Lab | `thinkingmachines.svg` | [Tinker pricing](https://thinkingmachines.ai/tinker/pricing/), [official SVG](https://thinkingmachines.ai/_astro/thinking-machines.ByAxsVPV.svg) | 2026-11-16; original 91.7998 × 34 viewBox, paths and black fill retained |
+
+The original wide company mark is used consistently for Inkling 2 Small and the company profile. A restrained light carrier makes the black official artwork legible on graphite surfaces; no recoloring, cropping or stretching is applied. Provenance and SHA-256 are in `research/2026-11-16-logo-sources.json`. Earlier local assets remain in place; current browser checks verify their load paths.

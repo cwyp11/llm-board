@@ -1,0 +1,182 @@
+{
+  "checkedAt": "2026-11-16",
+  "basis": "Artificial Analysis Intelligence Index v5.0.1",
+  "selections": {
+    "claude-opus55": "2f3c4dc9-a450-4303-8697-0237257cf08f",
+    "claude-sonnet55": "b171d979-5ec1-45de-b8b9-db1ee65e77ec",
+    "gemini4-argon": "d366dfa1-d940-4788-aa73-d298c45699b3",
+    "gpt61-sol": "b25ac058-1e33-4c31-bbc9-a20c3ad0717a",
+    "gpt6-luna": "6fb13851-40ce-4bda-ad3f-6b38e0c5daa7",
+    "grok47": "59627802-1546-422c-9a65-65b61c022d36",
+    "mimo26pro": "24d8fdfe-6241-424e-b7b7-1b6efb06e4fb",
+    "mimo26flash": "127de816-57d3-4037-8484-480a613cd413",
+    "gpt6-astra": "2f339a97-9a0d-499a-9cb5-e0db665bfa25",
+    "glm53": "cd684ea4-b475-4269-b001-d469d06d8a7a",
+    "step5": "094ea3e3-ce41-419e-8bd1-723389663158",
+    "glm53flash": "19496b81-9f41-4214-a77a-1df803b3c5ae",
+    "gemini38": "8a999846-4c1d-4ce7-a8b7-1310a7166fd7",
+    "qwen38flashnext": "9ac3908c-9eb2-44db-8c01-3ec7da6fc2ae",
+    "ds-v4pro": "83173329-c09a-41f1-a028-a282a5f908d7",
+    "qwen38-27b": "b01dee41-c62b-48ed-8d16-984adc405e5c",
+    "motif3": "b01eefb1-c9f8-412d-8353-571031a52f23",
+    "gpt53-codex": "59b5b14b-5365-4ee7-824a-18a8e6309644",
+    "gemini31pro": "bbd93ebe-80da-4594-bb19-61e69d0331df",
+    "minimax-m3": "277f939a-985b-4b37-859d-b3eabc7c0b26",
+    "kimi-k27code": "8d0cb231-7303-452c-9923-a9620b948475",
+    "hy3": "b23e6c69-96e5-44c9-8f58-4b42e0c399d5",
+    "nemotron3ultra": "5b52def2-ac9b-4465-ad80-91ea8079e253",
+    "gemini35lite": "093b9df2-ebee-4309-943f-5a7e88360adf",
+    "muse-glimmer": "583f98fb-c4b8-4df3-8d40-60ac0ed69882",
+    "nemotron35": "29976311-665a-4b2f-ac72-557c33e0758e",
+    "kimi-k31pro": "665c67ca-09eb-48f0-a7a3-0096e1d5de51",
+    "muse-wonder-full": "e994a6e0-d36b-4dab-8ae1-c1b469e4d9e2",
+    "muse-wonder": "ff2f3f3d-783f-4e27-8a39-47237501a313",
+    "muse-spark-open": "3661c8fb-caf7-4118-aa18-65b84fea8e44",
+    "claude-haiku55": "7d064a11-6e78-4030-b535-cdf940615041",
+    "minimax-m31flash": "d49c8680-e29b-400e-9511-824f7ddebe07",
+    "ds-v41flash-1017": "f151fd0b-2139-40cf-a3ec-995e8cedc592",
+    "nemotron35-supervl": "e2c0623e-c855-4a61-bb66-be1f1ed43234",
+    "nemotron35-bolt": "7d2aa050-888e-4c27-a92d-10337a4dfb3a",
+    "nemotron35-bolt4gb": "610595ba-a40d-46c4-acfd-44fa239a6351",
+    "ling31-flash1019": "539ed227-38f4-4bea-a015-117057c14b18",
+    "reflection-beam": "69468cce-7b5c-414a-b498-41df4c34df85",
+    "claude-sonnet55-xhigh": "975aeaef-50bd-4a65-9c73-f1015adcd4d4",
+    "gpt61-sol-high": "3b84fee3-b70a-41bc-819e-5fbdef9a0042",
+    "longcat20": "5c3bdc0d-abab-4526-8079-34de4089bb4a",
+    "claude-fable52": "593f2d23-247b-41c9-a679-cebd225f0a9a",
+    "claude-fable52-xhigh": "76942526-cc96-46b0-bc27-29561c53ed70",
+    "gemini4-carbon": "909ed0ba-bcc5-4f38-8162-08a4e187a772",
+    "gemini4-hydrogen": "dad0e3b1-e3e7-477a-99f9-c14457a91114",
+    "gpt61-terra": "b0c462cf-f2d0-4126-9434-28db9502219f",
+    "gpt61-terra-low": "c955b262-a17f-4f1a-b097-6860b866295b",
+    "qwen4max": "fef6625d-9097-45f6-95c0-bcaa06e3d8e1",
+    "muse-ember": "dbf63365-127f-41ee-9e51-81173adb3502",
+    "hy4": "d274918e-ea82-4951-8b37-8ed9ab898dbc",
+    "inkling2small": "e2ed7885-d46b-4da7-a873-f12f88af0081",
+    "mistral-l4-ga": "ea5019ae-b0b7-49a5-80b3-0e584807af0f"
+  },
+  "newModels": [
+    {
+      "id": "claude-fable52",
+      "name": "Claude Fable 5.2",
+      "org": "anthropic",
+      "brand": "claude",
+      "variant": "Max, Default Fallback",
+      "aaSlug": "claude-fable-5-2",
+      "aaConfigId": "593f2d23-247b-41c9-a679-cebd225f0a9a"
+    },
+    {
+      "id": "claude-fable52-xhigh",
+      "name": "Claude Fable 5.2 · xhigh",
+      "org": "anthropic",
+      "brand": "claude",
+      "variant": "Xhigh, Default Fallback",
+      "aaSlug": "claude-fable-5-2",
+      "aaConfigId": "76942526-cc96-46b0-bc27-29561c53ed70"
+    },
+    {
+      "id": "gemini4-carbon",
+      "name": "Gemini 4 Carbon",
+      "org": "google",
+      "brand": "gemini",
+      "variant": "High",
+      "aaSlug": "gemini-4-carbon",
+      "aaConfigId": "909ed0ba-bcc5-4f38-8162-08a4e187a772"
+    },
+    {
+      "id": "gemini4-hydrogen",
+      "name": "Gemini 4 Hydrogen",
+      "org": "google",
+      "brand": "gemini",
+      "variant": "Xhigh",
+      "aaSlug": "gemini-4-hydrogen",
+      "aaConfigId": "dad0e3b1-e3e7-477a-99f9-c14457a91114"
+    },
+    {
+      "id": "gpt61-terra",
+      "name": "GPT-6.1 Terra",
+      "org": "openai",
+      "brand": "openai",
+      "variant": "Max",
+      "aaSlug": "gpt-6-1-terra",
+      "aaConfigId": "b0c462cf-f2d0-4126-9434-28db9502219f"
+    },
+    {
+      "id": "gpt61-terra-low",
+      "name": "GPT-6.1 Terra · low",
+      "org": "openai",
+      "brand": "openai",
+      "variant": "Low",
+      "aaSlug": "gpt-6-1-terra",
+      "aaConfigId": "c955b262-a17f-4f1a-b097-6860b866295b"
+    },
+    {
+      "id": "qwen4max",
+      "name": "Qwen4 Max",
+      "org": "alibaba",
+      "brand": "qwen",
+      "variant": "AA 默认配置",
+      "aaSlug": "qwen4-max",
+      "aaConfigId": "fef6625d-9097-45f6-95c0-bcaa06e3d8e1"
+    },
+    {
+      "id": "muse-ember",
+      "name": "Muse Ember",
+      "org": "meta",
+      "brand": "meta",
+      "variant": "Max",
+      "aaSlug": "muse-ember",
+      "aaConfigId": "dbf63365-127f-41ee-9e51-81173adb3502"
+    },
+    {
+      "id": "hy4",
+      "name": "Tencent Hy4",
+      "org": "tencent",
+      "brand": "hunyuan",
+      "variant": "AA 默认配置",
+      "aaSlug": "tencent-hy4",
+      "aaConfigId": "d274918e-ea82-4951-8b37-8ed9ab898dbc"
+    },
+    {
+      "id": "inkling2small",
+      "name": "Inkling 2 Small",
+      "org": "thinkingmachines",
+      "brand": "thinkingmachines",
+      "variant": "AA 默认配置",
+      "aaSlug": "inkling-2-small",
+      "aaConfigId": "e2ed7885-d46b-4da7-a873-f12f88af0081"
+    },
+    {
+      "id": "mistral-l4-ga",
+      "name": "Mistral Large 4",
+      "org": "mistral",
+      "brand": "mistral",
+      "variant": "High",
+      "aaSlug": "mistral-large-4",
+      "aaConfigId": "ea5019ae-b0b7-49a5-80b3-0e584807af0f"
+    }
+  ],
+  "unmatched": [
+    [
+      "claude-fable51",
+      "claude-fable-5-1",
+      0
+    ],
+    [
+      "qwen38max",
+      "qwen3-8-max",
+      0
+    ],
+    [
+      "gpt56-terra",
+      "gpt-5-6-terra",
+      0
+    ],
+    [
+      "mistral-l4",
+      "mistral-large-4",
+      0
+    ]
+  ],
+  "note": "Explicit UUID mappings keep checkpoints and efforts separate. Unmatched previous rows remain historical, not missing=zero."
+}

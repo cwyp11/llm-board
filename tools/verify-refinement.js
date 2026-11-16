@@ -15,18 +15,18 @@ fs.mkdirSync(shots, { recursive: true });
     const errors = [];
     page.on('pageerror', e => errors.push(e.message));
     await page.goto(target, { waitUntil: 'load' });
-    assert.equal(await page.evaluate(()=>META.dataSnapshot),'2026-10-24','Loaded the refreshed data, not an older deployment');
-    assert.equal(await page.evaluate(()=>META.pageBuilt),'2026-10-25','Build date is separate from evidence date');
+    assert.equal(await page.evaluate(()=>META.dataSnapshot),'2026-11-16','Loaded the refreshed data, not an older deployment');
+    assert.equal(await page.evaluate(()=>META.pageBuilt),'2026-11-16','Build date is separate from evidence date');
     await page.click('a[href="#models"]');
     await page.locator('#view-models').waitFor({ state: 'visible' });
     assert.equal(await page.locator('#rankColor').getAttribute('aria-pressed'), 'true', 'Company colors are enabled by default');
     assert.ok((await page.locator('#rankChart .ch-col path').evaluateAll(nodes => new Set(nodes.map(n => n.getAttribute('fill'))).size)) > 3);
     assert.equal(await page.locator('[data-table-view="capability"]').getAttribute('aria-pressed'), 'true');
-    for (const metric of ['cai2','frontiercode','gdpval21','hle','scicode','lcr','nonhall','arena']) {
+    for (const metric of ['cai21','frontiercode2','briefcase','automation','gdppdf','hleDiamond','nonhall','arena']) {
       assert.equal(await page.locator(`#modelTable th[data-sort="${metric}"]`).count(), 1, `${metric} is available in the capability view`);
     }
     await page.locator('[data-table-view="summary"]').click();
-    assert.equal(await page.locator('#modelTable th[data-sort="frontiercode"]').count(), 0);
+    assert.equal(await page.locator('#modelTable th[data-sort="frontiercode2"]').count(), 0);
     await page.locator('[data-table-view="usage"]').click();
     assert.equal(await page.locator('#modelTable th[data-sort="speed"]').count(), 1);
     await page.locator('[data-table-view="history"]').click();
@@ -107,6 +107,7 @@ fs.mkdirSync(shots, { recursive: true });
         await page.click(`a[href="#${view}"]`);
         await page.locator(`#view-${view}`).waitFor({ state: 'visible' });
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${view} does not overflow at ${width}`);
+        if(view==='pricing')assert.equal(await page.locator('.plan .r dd').evaluateAll(nodes=>nodes.some(n=>n.getBoundingClientRect().right>n.closest('.plan').getBoundingClientRect().right-8)),false,'Subscription amounts stay within their own plan columns');
       }
       if (width === 390) {
         await page.click('a[href="#models"]');
@@ -158,6 +159,13 @@ fs.mkdirSync(shots, { recursive: true });
     assert.equal(await page.locator('#modelTable th[data-sort="gpqa"]').count(),1,'Existing custom columns are preserved');
     assert.equal(await page.locator('#modelTable th[data-sort="cai"]').count(),0);
     assert.equal(await page.locator('.custom-view').getAttribute('hidden'),null);
+    await page.evaluate(()=>{
+      localStorage.setItem('llmboard.cols',JSON.stringify(['aaii','cai2','frontiercode','tb40','gdpval21','hle','scicode','lcr','nonhall','arena']));
+      localStorage.setItem('llmboard.columnViewVersion','2');
+    });
+    await page.reload();
+    assert.equal(await page.locator('#modelTable th[data-sort="frontiercode2"]').count(),1,'October default columns migrate to current benchmark versions');
+    assert.equal(await page.locator('#modelTable th[data-sort="aaii4"]').count(),0,'Old index stays outside the current default view');
     console.log(JSON.stringify({ target, contextualHelp: true, companyHoverAndTap: true, sorting: true, responsive: [1440, 1280, 390], brokenLogos: broken, errors }, null, 2));
   } finally {
     await browser.close();

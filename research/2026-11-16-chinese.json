@@ -1,0 +1,2111 @@
+{
+  "checkedAt": "2026-11-16",
+  "sources": [
+    {
+      "id": "cn1116-ds-price",
+      "title": "DeepSeek current API checkpoints and prices",
+      "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-ds-models",
+      "title": "DeepSeek documented model metadata example",
+      "url": "https://api-docs.deepseek.com/api/list-models/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Documentation example, not an authenticated API request."
+    },
+    {
+      "id": "cn1116-ds-chat",
+      "title": "DeepSeek exact accepted output limit",
+      "url": "https://api-docs.deepseek.com/api/create-chat-completion/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-ds1017",
+      "title": "DeepSeek V4.1 Flash 1017 official model card",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-dspro",
+      "title": "DeepSeek V4 Pro family model card",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-q-release",
+      "title": "QwenCloud dated model releases",
+      "url": "https://docs.qwencloud.com/changelog/models",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-q4",
+      "title": "Qwen4 Max API specifications",
+      "url": "https://docs.qwencloud.com/developer-guides/getting-started/latest-model",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-q-price",
+      "title": "Alibaba Model Studio regional standard prices",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+      "checkedAt": "2026-11-16",
+      "sourceDate": "2026-11-16",
+      "kind": "vendor",
+      "note": "Page update date."
+    },
+    {
+      "id": "cn1116-q-next",
+      "title": "Qwen3.8 Flash Next official model card",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-q27",
+      "title": "Qwen3.8 27B official model card",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-z-price",
+      "title": "Z.ai USD ordinary API pricing",
+      "url": "https://docs.z.ai/guides/overview/pricing",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-z53",
+      "title": "GLM 5.3 API guide",
+      "url": "https://docs.z.ai/guides/llm/glm-5.3",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-zflash",
+      "title": "GLM 5.3 Flash and FlashX API guide",
+      "url": "https://docs.z.ai/guides/vlm/glm-5.3-flash",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-z-release",
+      "title": "Z.ai release archive",
+      "url": "https://docs.z.ai/release-notes/new-released",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-z53-card",
+      "title": "GLM 5.3 official weight/license card",
+      "url": "https://huggingface.co/zai-org/GLM-5.3",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-zflash-card",
+      "title": "GLM 5.3 Flash official MIT weights",
+      "url": "https://huggingface.co/zai-org/GLM-5.3-Flash",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-k-models",
+      "title": "Kimi available models and retirement restrictions",
+      "url": "https://platform.kimi.ai/docs/models",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-k-price",
+      "title": "Kimi current billing policy and exact context",
+      "url": "https://platform.kimi.ai/docs/pricing/chat",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Numeric tables absent from extraction; browser reads timed out."
+    },
+    {
+      "id": "cn1116-k-guide",
+      "title": "Kimi K3.1 Pro API guide",
+      "url": "https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart.md",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-k-cache",
+      "title": "Kimi cache billing and K3 rates",
+      "url": "https://platform.kimi.ai/docs/guide/context-caching",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-k31-card",
+      "title": "Kimi K3.1 Pro official model summary",
+      "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-k31-files",
+      "title": "Kimi K3.1 Pro downloadable weight shards",
+      "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro/tree/main",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-k31-history",
+      "title": "Kimi K3.1 Pro repository commit history",
+      "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro/commits/main",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-k31-license",
+      "title": "Kimi K3.1 Pro custom license",
+      "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro/blob/main/LICENSE",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-k-index",
+      "title": "Kimi research index publication dates",
+      "url": "https://www.kimi.ai/blog/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-k31-blog",
+      "title": "Kimi K3.1 Pro launch blog",
+      "url": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Still promises weights by Nov 4; current shard listing supersedes future-tense availability."
+    },
+    {
+      "id": "cn1116-mi-price",
+      "title": "MiMo overseas USD and domestic CNY API prices",
+      "url": "https://mimo.mi.com/docs/zh-CN/price/pay-as-you-go",
+      "checkedAt": "2026-11-16",
+      "sourceDate": "2026-10-21",
+      "kind": "vendor",
+      "note": "Page update date."
+    },
+    {
+      "id": "cn1116-mi-retire",
+      "title": "MiMo replacement and name-retirement schedule",
+      "url": "https://mimo.mi.com/docs/zh-CN/updates/deprecate",
+      "checkedAt": "2026-11-16",
+      "sourceDate": "2026-10-09",
+      "kind": "vendor",
+      "note": "Page update date."
+    },
+    {
+      "id": "cn1116-mi-pro",
+      "title": "MiMo V2.6 Pro RL official card",
+      "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-mi-flash",
+      "title": "MiMo V2.6 Flash RL official card",
+      "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-RL",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-mi-config",
+      "title": "MiMo ordinary API integration limit configuration",
+      "url": "https://mimo.mi.com/docs/en-US/tokenplan/integration/openclaw",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor",
+      "note": "Only the pay-as-you-go configuration example is used, not subscription prices."
+    },
+    {
+      "id": "cn1116-mm-price",
+      "title": "MiniMax USD price tiers",
+      "url": "https://platform.minimax.io/docs/pricing/overview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-mm-guide",
+      "title": "MiniMax current supported models and effort",
+      "url": "https://platform.minimax.io/docs/guides/text-generation",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-mm-release",
+      "title": "MiniMax dated model releases",
+      "url": "https://platform.minimax.io/docs/release-notes/models",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-mm31",
+      "title": "MiniMax M3.1 Flash official weights",
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-mm3",
+      "title": "MiniMax M3 official weights",
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-hy-models",
+      "title": "Tencent TokenHub current models and retirement dates",
+      "url": "https://cloud.tencent.com/document/product/1823/130051",
+      "checkedAt": "2026-11-16",
+      "sourceDate": "2026-11-16",
+      "kind": "vendor",
+      "note": "Updated 12:15:30."
+    },
+    {
+      "id": "cn1116-hy-usd",
+      "title": "Tencent international USD list prices and promotions",
+      "url": "https://intl.cloud.tencent.com/document/product/1300/78937",
+      "checkedAt": "2026-11-16",
+      "sourceDate": "2026-11-16",
+      "kind": "vendor",
+      "note": "Updated 12:15:10. Displayed Singapore table used; other region tabs not assumed equivalent."
+    },
+    {
+      "id": "cn1116-hy-cny",
+      "title": "Tencent domestic CNY list prices and promotions",
+      "url": "https://cloud.tencent.com/document/product/1823/130055",
+      "checkedAt": "2026-11-16",
+      "sourceDate": "2026-11-16",
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-hy4-release",
+      "title": "Tencent Hy4 stable official launch",
+      "url": "https://www.tencent.com/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/",
+      "checkedAt": "2026-11-16",
+      "sourceDate": "2026-11-04",
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-hy4preview",
+      "title": "Hy4 Preview official Apache 2.0 weights",
+      "url": "https://huggingface.co/tencent/Hy4-preview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-step-guide",
+      "title": "Step 5 Preview managed API specifications",
+      "url": "https://platform.stepfun.ai/docs/en/guides/models/step-5-preview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-step-price",
+      "title": "StepFun USD API pricing",
+      "url": "https://platform.stepfun.ai/docs/en/guides/pricing/details",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-step-card",
+      "title": "Step 5 Preview official weights and license",
+      "url": "https://huggingface.co/stepfun-ai/Step-5-Preview",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-ling",
+      "title": "Ling 3.1 Flash official model card",
+      "url": "https://huggingface.co/inclusionAI/Ling-3.1-flash",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-ling-config",
+      "title": "Ling 3.1 Flash current configuration",
+      "url": "https://huggingface.co/inclusionAI/Ling-3.1-flash/raw/main/config.json",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-ling-org",
+      "title": "InclusionAI official organization and access links",
+      "url": "https://huggingface.co/inclusionAI",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-ling-github",
+      "title": "InclusionAI Ling repository",
+      "url": "https://github.com/inclusionAI/Ling",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-lc25-release",
+      "title": "Meituan LongCat 2.5 official release",
+      "url": "https://tech.meituan.com/2026/11/02/Meituan-LongCat-2.5.html",
+      "checkedAt": "2026-11-16",
+      "sourceDate": "2026-11-02",
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-lc25",
+      "title": "LongCat 2.5 official MIT weights",
+      "url": "https://huggingface.co/meituan-longcat/LongCat-2.5",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-lc25-config",
+      "title": "LongCat 2.5 current configuration",
+      "url": "https://huggingface.co/meituan-longcat/LongCat-2.5/raw/main/config.json",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-lc20",
+      "title": "LongCat 2.0 official MIT weights",
+      "url": "https://huggingface.co/meituan-longcat/LongCat-2.0",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-nv-ultra",
+      "title": "Nemotron 3 Ultra NVFP4 official card",
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-nv-light",
+      "title": "Nemotron 3.5 Lightning BF16 official card",
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-nv-light-config",
+      "title": "Nemotron 3.5 Lightning BF16 configuration",
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16/raw/main/config.json",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-nv-super",
+      "title": "Nemotron 3.5 Super VL BF16 official card",
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-nv-bolt",
+      "title": "Nemotron 3.5 Bolt 74B A9B BF16 official card",
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-BF16",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-nv-e4b",
+      "title": "Nemotron 3.5 Bolt E4B 4GB official card",
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    },
+    {
+      "id": "cn1116-nv-e4b-api",
+      "title": "NVIDIA Build Bolt E4B prototype endpoint",
+      "url": "https://build.nvidia.com/nvidia/nemotron-3.5-bolt-e4b",
+      "checkedAt": "2026-11-16",
+      "sourceDate": null,
+      "kind": "vendor"
+    }
+  ],
+  "models": [
+    {
+      "id": "ds-v41flash-1017",
+      "fields": {
+        "priceIn": {
+          "value": 0.3,
+          "src": "cn1116-ds-price",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; direct API PEAK. Weekdays 01:00-04:00 and 06:00-10:00 UTC, excluding Chinese public holidays.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 1.2,
+          "src": "cn1116-ds-price",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; direct API PEAK. Weekdays 01:00-04:00 and 06:00-10:00 UTC, excluding Chinese public holidays.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.006,
+          "src": "cn1116-ds-price",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; direct API PEAK. Weekdays 01:00-04:00 and 06:00-10:00 UTC, excluding Chinese public holidays.",
+          "sourceDate": null
+        },
+        "ctx": {
+          "value": 1048576,
+          "src": "cn1116-ds-models",
+          "url": "https://api-docs.deepseek.com/api/list-models/",
+          "kind": "vendor",
+          "note": "Documented API metadata example, corroborating 1M; not a live API result.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 393216,
+          "src": "cn1116-ds-chat",
+          "url": "https://api-docs.deepseek.com/api/create-chat-completion/",
+          "kind": "vendor",
+          "note": "Exact accepted max_tokens ceiling; input/output share context.",
+          "sourceDate": null
+        },
+        "apiStatus": "available",
+        "access": "deepseek-flash serves V4.1-Flash-1017; legacy V4-Flash names redirect.",
+        "inputs": "text, image",
+        "outputs": "text",
+        "priceMode": "Direct API peak USD/1M tokens",
+        "priceAlt": "Off-peak input/output/cache USD 0.15/0.60/0.003 per 1M tokens; all other hours, weekends and Chinese public holidays.",
+        "openWeights": true,
+        "license": "MIT"
+      },
+      "evidenceIds": [
+        "cn1116-ds-price",
+        "cn1116-ds-models",
+        "cn1116-ds-chat",
+        "cn1116-ds1017"
+      ]
+    },
+    {
+      "id": "ds-v4pro",
+      "fields": {
+        "priceIn": {
+          "value": 1.32,
+          "src": "cn1116-ds-price",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; direct API PEAK. Weekdays 01:00-04:00 and 06:00-10:00 UTC, excluding Chinese public holidays.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 3.96,
+          "src": "cn1116-ds-price",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; direct API PEAK. Weekdays 01:00-04:00 and 06:00-10:00 UTC, excluding Chinese public holidays.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.044,
+          "src": "cn1116-ds-price",
+          "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; direct API PEAK. Weekdays 01:00-04:00 and 06:00-10:00 UTC, excluding Chinese public holidays.",
+          "sourceDate": null
+        },
+        "ctx": {
+          "value": 1048576,
+          "src": "cn1116-ds-models",
+          "url": "https://api-docs.deepseek.com/api/list-models/",
+          "kind": "vendor",
+          "note": "Documented API metadata example, corroborating 1M; not a live API result.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 393216,
+          "src": "cn1116-ds-chat",
+          "url": "https://api-docs.deepseek.com/api/create-chat-completion/",
+          "kind": "vendor",
+          "note": "Exact accepted max_tokens ceiling; input/output share context.",
+          "sourceDate": null
+        },
+        "apiStatus": "available",
+        "access": "deepseek-v4-pro serves V4-Pro-0813.",
+        "inputs": "text",
+        "outputs": "text",
+        "priceMode": "Direct API peak USD/1M tokens",
+        "priceAlt": "Off-peak input/output/cache USD 0.66/1.98/0.022 per 1M tokens; all other hours, weekends and Chinese public holidays."
+      },
+      "evidenceIds": [
+        "cn1116-ds-price",
+        "cn1116-ds-models",
+        "cn1116-ds-chat",
+        "cn1116-dspro"
+      ]
+    },
+    {
+      "id": "ds-v4flash0731",
+      "fields": {
+        "apiStatus": "retired on direct API; old alias redirects",
+        "access": "Direct deepseek-v4-flash requests now serve 1017. TokenHub separately lists checkpoint channels; do not assume matching retirement or pricing."
+      },
+      "evidenceIds": [
+        "cn1116-ds-price",
+        "cn1116-hy-models"
+      ]
+    },
+    {
+      "id": "qwen4max",
+      "name": "Qwen4 Max",
+      "org": "alibaba",
+      "brand": "qwen",
+      "isNew": true,
+      "fields": {
+        "ctx": {
+          "value": 1000000,
+          "src": "cn1116-q4",
+          "url": "https://docs.qwencloud.com/developer-guides/getting-started/latest-model",
+          "kind": "vendor",
+          "note": "Exact decimal context tokens.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 262144,
+          "src": "cn1116-q4",
+          "url": "https://docs.qwencloud.com/developer-guides/getting-started/latest-model",
+          "kind": "vendor",
+          "note": "Thinking plus final answer combined; non-thinking cap 131072.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 1.5,
+          "src": "cn1116-q-price",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; Singapore / International standard API; 0<input<=1000000.",
+          "sourceDate": "2026-11-16"
+        },
+        "priceOut": {
+          "value": 4.5,
+          "src": "cn1116-q-price",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; Singapore / International standard API; 0<input<=1000000.",
+          "sourceDate": "2026-11-16"
+        },
+        "priceCache": {
+          "value": 0.075,
+          "src": "cn1116-q-price",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; Singapore / International standard API; 0<input<=1000000.",
+          "sourceDate": "2026-11-16"
+        },
+        "released": "2026-11-16",
+        "apiStatus": "available",
+        "access": "Production qwen4-max API; separate from qwen4-max-preview.",
+        "inputs": "text, image, video",
+        "outputs": "text",
+        "priceMode": "Singapore / International list USD/1M tokens",
+        "priceAlt": "Singapore cache writes USD 1.875 (5m), USD 3 (1h). Beijing and Hong Kong Global input/output/cache USD 1.413/4.24/0.071; writes USD 1.767 (5m), USD 2.827 (1h). Batch unsupported.",
+        "limits": "Max input: non-thinking 991808, thinking 983616. Non-thinking output 131072. Effort low/high/xhigh; API default high, independent of benchmark suffix.",
+        "tech": "Native vision, explicit cache, tools, structured output, CoT summaries. Parameter totals not inferred from Qwen3.8.",
+        "releaseNote": "Preview November 11 and production API November 16 are separate."
+      },
+      "evidenceIds": [
+        "cn1116-q4",
+        "cn1116-q-price",
+        "cn1116-q-release"
+      ]
+    },
+    {
+      "id": "qwen38max",
+      "fields": {
+        "priceIn": {
+          "value": 2,
+          "src": "cn1116-q-price",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; Singapore / International; exact qwen3.8-max-0902 row.",
+          "sourceDate": "2026-11-16"
+        },
+        "priceOut": {
+          "value": 6,
+          "src": "cn1116-q-price",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; Singapore / International; exact qwen3.8-max-0902 row.",
+          "sourceDate": "2026-11-16"
+        },
+        "apiStatus": "listed as available",
+        "priceMode": "Singapore / International standard USD/1M tokens",
+        "priceAlt": "Beijing 0902 input/output USD 1.65/4.951 per 1M tokens."
+      },
+      "evidenceIds": [
+        "cn1116-q-price"
+      ]
+    },
+    {
+      "id": "qwen38-flash-api",
+      "fields": {
+        "priceIn": {
+          "value": 0.15,
+          "src": "cn1116-q-price",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; managed qwen3.8-flash Singapore / International.",
+          "sourceDate": "2026-11-16"
+        },
+        "priceOut": {
+          "value": 0.47,
+          "src": "cn1116-q-price",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; managed qwen3.8-flash Singapore / International.",
+          "sourceDate": "2026-11-16"
+        },
+        "apiStatus": "available",
+        "priceMode": "Singapore / International standard USD/1M tokens",
+        "priceAlt": "Beijing input/output USD 0.113/0.382. Frankfurt EU and Hong Kong scoped deployment USD 0.15/0.47; Global scope there USD 0.113/0.382. Cache scalar not inferred.",
+        "access": "Managed Flash API; October 27 adds Frankfurt EU and Hong Kong scope. Not asserted identical to downloadable Flash Next."
+      },
+      "evidenceIds": [
+        "cn1116-q-price",
+        "cn1116-q-release"
+      ]
+    },
+    {
+      "id": "qwen38flashnext",
+      "fields": {
+        "ctx": {
+          "value": 262144,
+          "src": "cn1116-q-next",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+          "kind": "vendor",
+          "note": "Native downloadable context; extension to 1000000 needs RoPE/YaRN configuration.",
+          "sourceDate": null
+        },
+        "openWeights": true,
+        "license": "Qwen Community License 1.0",
+        "inputs": "text, image, video",
+        "outputs": "text",
+        "tech": "Language backbone declaration: 125000000000 parameters / 6000000000 activated, plus 51000000000 n-gram embedding and 4000000000 MTP. Rounded components are not an exact full multimodal total.",
+        "access": "Official downloadable weights; no managed Flash price copied without checkpoint equivalence."
+      },
+      "evidenceIds": [
+        "cn1116-q-next"
+      ]
+    },
+    {
+      "id": "qwen38-27b",
+      "fields": {
+        "ctx": {
+          "value": 262144,
+          "src": "cn1116-q27",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+          "kind": "vendor",
+          "note": "Native open-weight context; configurable extension to 1000000. Hosted version is a distinct channel.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 0.5,
+          "src": "cn1116-q-price",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; hosted qwen3.8-27b Singapore / International.",
+          "sourceDate": "2026-11-16"
+        },
+        "priceOut": {
+          "value": 3,
+          "src": "cn1116-q-price",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; hosted qwen3.8-27b Singapore / International.",
+          "sourceDate": "2026-11-16"
+        },
+        "openWeights": true,
+        "license": "Apache-2.0",
+        "apiStatus": "hosted model listed",
+        "priceMode": "Hosted Singapore / International USD/1M tokens",
+        "priceAlt": "Beijing hosted input/output USD 0.424/1.696 per 1M tokens.",
+        "tech": "Card specifies language model 27000000000 parameters, not a complete multimodal tensor census."
+      },
+      "evidenceIds": [
+        "cn1116-q27",
+        "cn1116-q-price"
+      ]
+    },
+    {
+      "id": "glm53",
+      "fields": {
+        "priceIn": {
+          "value": 1.4,
+          "src": "cn1116-z-price",
+          "url": "https://docs.z.ai/guides/overview/pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; ordinary model API, not Coding Plan quota.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 4.4,
+          "src": "cn1116-z-price",
+          "url": "https://docs.z.ai/guides/overview/pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; ordinary model API, not Coding Plan quota.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.26,
+          "src": "cn1116-z-price",
+          "url": "https://docs.z.ai/guides/overview/pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; ordinary model API, not Coding Plan quota.",
+          "sourceDate": null
+        },
+        "apiStatus": "listed as available",
+        "priceMode": "Z.ai ordinary API USD/1M tokens",
+        "priceAlt": "Cached input storage temporarily free; not a permanent zero rate. Search costs USD 0.01/use.",
+        "inputs": "text",
+        "outputs": "text",
+        "limits": "Official labels context 1M, output 128K; exact normalization not assumed. Thinking required; effort low/high/max, default max.",
+        "openWeights": true,
+        "license": "GLM-5.3 custom license; not plain MIT"
+      },
+      "evidenceIds": [
+        "cn1116-z-price",
+        "cn1116-z53",
+        "cn1116-z53-card"
+      ]
+    },
+    {
+      "id": "glm53flash",
+      "fields": {
+        "priceIn": {
+          "value": 0.15,
+          "src": "cn1116-z-price",
+          "url": "https://docs.z.ai/guides/overview/pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; ordinary model API, not Coding Plan quota.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 0.5,
+          "src": "cn1116-z-price",
+          "url": "https://docs.z.ai/guides/overview/pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; ordinary model API, not Coding Plan quota.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.03,
+          "src": "cn1116-z-price",
+          "url": "https://docs.z.ai/guides/overview/pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; ordinary model API, not Coding Plan quota.",
+          "sourceDate": null
+        },
+        "apiStatus": "listed as available",
+        "priceMode": "Z.ai ordinary API USD/1M tokens",
+        "priceAlt": "Cached input storage temporarily free; not a permanent zero rate. Search costs USD 0.01/use.",
+        "inputs": "text, image, video, file",
+        "outputs": "text",
+        "limits": "Official labels context 1M, output 128K; exact normalization not assumed. Thinking required; effort low/high/max, default max.",
+        "openWeights": true,
+        "license": "MIT",
+        "tech": "Spec declares 320000000000 total / 18000000000 activated; sparse plus linear attention; not an exact tensor census."
+      },
+      "evidenceIds": [
+        "cn1116-z-price",
+        "cn1116-zflash",
+        "cn1116-zflash-card"
+      ]
+    },
+    {
+      "id": "glm53flashx",
+      "fields": {
+        "priceIn": {
+          "value": 0.37,
+          "src": "cn1116-z-price",
+          "url": "https://docs.z.ai/guides/overview/pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; ordinary model API, not Coding Plan quota.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 1.25,
+          "src": "cn1116-z-price",
+          "url": "https://docs.z.ai/guides/overview/pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; ordinary model API, not Coding Plan quota.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.075,
+          "src": "cn1116-z-price",
+          "url": "https://docs.z.ai/guides/overview/pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; ordinary model API, not Coding Plan quota.",
+          "sourceDate": null
+        },
+        "apiStatus": "listed as available",
+        "priceMode": "Z.ai ordinary API USD/1M tokens",
+        "priceAlt": "Cached input storage temporarily free; not a permanent zero rate. Search costs USD 0.01/use.",
+        "inputs": "text, image, video, file",
+        "outputs": "text",
+        "limits": "Official labels context 1M, output 128K; exact normalization not assumed. Thinking required; effort low/high/max, default max."
+      },
+      "evidenceIds": [
+        "cn1116-z-price",
+        "cn1116-zflash"
+      ]
+    },
+    {
+      "id": "glm52",
+      "fields": {
+        "priceIn": {
+          "value": 1.4,
+          "src": "cn1116-z-price",
+          "url": "https://docs.z.ai/guides/overview/pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; ordinary model API, not Coding Plan quota.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 4.4,
+          "src": "cn1116-z-price",
+          "url": "https://docs.z.ai/guides/overview/pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; ordinary model API, not Coding Plan quota.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.26,
+          "src": "cn1116-z-price",
+          "url": "https://docs.z.ai/guides/overview/pricing",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; ordinary model API, not Coding Plan quota.",
+          "sourceDate": null
+        },
+        "apiStatus": "listed as available",
+        "priceMode": "Z.ai ordinary API USD/1M tokens",
+        "priceAlt": "Cached input storage temporarily free; not a permanent zero rate. Search costs USD 0.01/use."
+      },
+      "evidenceIds": [
+        "cn1116-z-price"
+      ]
+    },
+    {
+      "id": "kimi-k31pro",
+      "fields": {
+        "ctx": {
+          "value": 1048576,
+          "src": "cn1116-k-price",
+          "url": "https://platform.kimi.ai/docs/pricing/chat",
+          "kind": "vendor",
+          "note": "Exact K3-series total context.",
+          "sourceDate": null
+        },
+        "apiStatus": "available",
+        "access": "API available; official K3.1 Pro weight shards now downloadable.",
+        "priceMode": "Flat pay-as-you-go API; numeric rates unresolved",
+        "priceAlt": "Numeric current table unreadable; no stale prices restamped. Cache writes 5m/1h, cache hits and remaining input separate; taxes depend on jurisdiction.",
+        "limits": "Always thinking; effort low/high/max, default max. API default does not replace benchmark suffix.",
+        "releaseNote": "Official research index dates K3.1 Pro October 24. Repository initial commit November 2 is not first public availability proof.",
+        "maxOut": {
+          "value": 1048576,
+          "src": "cn1116-k-guide",
+          "url": "https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart.md",
+          "kind": "vendor",
+          "note": "Accepted max_completion_tokens ceiling; default 131072; remaining shared context constrains actual output.",
+          "sourceDate": null
+        },
+        "openWeights": true,
+        "license": "Kimi K3.1 Pro custom license; commercial service and attribution conditions apply.",
+        "tech": "Specific K3.1 summary reports 2800000000000 total / 104000000000 activated, plus separately specified 401000000 vision encoder. Reported precision is not an exact tensor census."
+      },
+      "evidenceIds": [
+        "cn1116-k-models",
+        "cn1116-k-price",
+        "cn1116-k-guide",
+        "cn1116-k-index",
+        "cn1116-k31-card",
+        "cn1116-k31-files",
+        "cn1116-k31-history",
+        "cn1116-k31-license"
+      ]
+    },
+    {
+      "id": "kimi-k31pro-highspeed",
+      "fields": {
+        "ctx": {
+          "value": 1048576,
+          "src": "cn1116-k-price",
+          "url": "https://platform.kimi.ai/docs/pricing/chat",
+          "kind": "vendor",
+          "note": "Exact K3-series total context.",
+          "sourceDate": null
+        },
+        "apiStatus": "available",
+        "access": "Separate kimi-k3.1-pro-highspeed API available.",
+        "priceMode": "Flat pay-as-you-go API; numeric rates unresolved",
+        "priceAlt": "Numeric current table unreadable; no stale prices restamped. Cache writes 5m/1h, cache hits and remaining input separate; taxes depend on jurisdiction.",
+        "limits": "Always thinking; effort low/high/max, default max. API default does not replace benchmark suffix.",
+        "releaseNote": "Official research index dates K3.1 Pro October 24. Repository initial commit November 2 is not first public availability proof."
+      },
+      "evidenceIds": [
+        "cn1116-k-models",
+        "cn1116-k-price",
+        "cn1116-k-guide",
+        "cn1116-k-index"
+      ]
+    },
+    {
+      "id": "kimi-k3",
+      "fields": {
+        "ctx": {
+          "value": 1048576,
+          "src": "cn1116-k-price",
+          "url": "https://platform.kimi.ai/docs/pricing/chat",
+          "kind": "vendor",
+          "note": "Explicit K3-series context.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 3,
+          "src": "cn1116-k-cache",
+          "url": "https://platform.kimi.ai/docs/guide/context-caching",
+          "kind": "vendor",
+          "note": "USD/1000000 uncached input tokens; K3 ordinary API.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.3,
+          "src": "cn1116-k-cache",
+          "url": "https://platform.kimi.ai/docs/guide/context-caching",
+          "kind": "vendor",
+          "note": "USD/1000000 cached input tokens; K3 ordinary API.",
+          "sourceDate": null
+        },
+        "apiStatus": "available",
+        "priceMode": "Kimi ordinary API USD/1M tokens",
+        "priceAlt": "K3 writes USD 3/1M tokens (5m), USD 6 (1h); output scalar not refreshed."
+      },
+      "evidenceIds": [
+        "cn1116-k-price",
+        "cn1116-k-cache",
+        "cn1116-k-models"
+      ]
+    },
+    {
+      "id": "kimi-k27code",
+      "fields": {
+        "ctx": {
+          "value": 262144,
+          "src": "cn1116-k-price",
+          "url": "https://platform.kimi.ai/docs/pricing/chat",
+          "kind": "vendor",
+          "note": "Explicit K2-series context.",
+          "sourceDate": null
+        },
+        "apiStatus": "restricted legacy access; planned retirement",
+        "access": "No new registrations; accounts registered before November 1 retain access. Retirement expected late December 2026.",
+        "releaseNote": "Pricing page says restriction starts October 31; model list uses before-November-1 wording. Boundary/time zone unresolved."
+      },
+      "evidenceIds": [
+        "cn1116-k-price",
+        "cn1116-k-models"
+      ]
+    },
+    {
+      "id": "mimo26pro",
+      "fields": {
+        "priceIn": {
+          "value": 0.435,
+          "src": "cn1116-mi-price",
+          "url": "https://mimo.mi.com/docs/zh-CN/price/pay-as-you-go",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; overseas ordinary real-time API, not domestic CNY, batch or subscription.",
+          "sourceDate": "2026-10-21"
+        },
+        "priceOut": {
+          "value": 0.87,
+          "src": "cn1116-mi-price",
+          "url": "https://mimo.mi.com/docs/zh-CN/price/pay-as-you-go",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; overseas ordinary real-time API, not domestic CNY, batch or subscription.",
+          "sourceDate": "2026-10-21"
+        },
+        "priceCache": {
+          "value": 0.0036,
+          "src": "cn1116-mi-price",
+          "url": "https://mimo.mi.com/docs/zh-CN/price/pay-as-you-go",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; overseas ordinary real-time API, not domestic CNY, batch or subscription.",
+          "sourceDate": "2026-10-21"
+        },
+        "apiStatus": "available",
+        "priceMode": "Overseas ordinary real-time API USD/1M tokens",
+        "priceAlt": "Domestic CNY input/output/cache per 1M: 3/6/0.025. Cache writes temporarily free. Batch overseas input/output/cache: 50% of real-time rates.",
+        "access": "Ordinary pay-as-you-go API balance; official downloadable -RL checkpoint also available.",
+        "ctx": {
+          "value": 1048576,
+          "src": "cn1116-mi-config",
+          "url": "https://mimo.mi.com/docs/en-US/tokenplan/integration/openclaw",
+          "kind": "vendor",
+          "note": "Ordinary API integration contextWindow configuration; not measured runtime.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 131072,
+          "src": "cn1116-mi-config",
+          "url": "https://mimo.mi.com/docs/en-US/tokenplan/integration/openclaw",
+          "kind": "vendor",
+          "note": "Ordinary API integration maxTokens configuration; not measured runtime.",
+          "sourceDate": null
+        },
+        "openWeights": true,
+        "license": "MIT for official Pro-RL weights",
+        "inputs": "text, image, video, audio",
+        "outputs": "text",
+        "tech": "Pro-RL: declared 1020000000000 total / 42000000000 active. Separate encoders: vision 681000000; audio 308000000 and 127000000; MTP separate. Not an exact aggregate tensor census."
+      },
+      "evidenceIds": [
+        "cn1116-mi-price",
+        "cn1116-mi-config",
+        "cn1116-mi-pro"
+      ]
+    },
+    {
+      "id": "mimo26flash",
+      "fields": {
+        "priceIn": {
+          "value": 0.14,
+          "src": "cn1116-mi-price",
+          "url": "https://mimo.mi.com/docs/zh-CN/price/pay-as-you-go",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; overseas ordinary real-time API, not domestic CNY, batch or subscription.",
+          "sourceDate": "2026-10-21"
+        },
+        "priceOut": {
+          "value": 0.28,
+          "src": "cn1116-mi-price",
+          "url": "https://mimo.mi.com/docs/zh-CN/price/pay-as-you-go",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; overseas ordinary real-time API, not domestic CNY, batch or subscription.",
+          "sourceDate": "2026-10-21"
+        },
+        "priceCache": {
+          "value": 0.0028,
+          "src": "cn1116-mi-price",
+          "url": "https://mimo.mi.com/docs/zh-CN/price/pay-as-you-go",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; overseas ordinary real-time API, not domestic CNY, batch or subscription.",
+          "sourceDate": "2026-10-21"
+        },
+        "apiStatus": "available",
+        "priceMode": "Overseas ordinary real-time API USD/1M tokens",
+        "priceAlt": "Domestic CNY input/output/cache per 1M: 1/2/0.02. Cache writes temporarily free. Batch overseas input/output/cache: 50% of real-time rates.",
+        "access": "Ordinary pay-as-you-go API balance; official downloadable -RL checkpoint also available.",
+        "ctx": {
+          "value": 1048576,
+          "src": "cn1116-mi-config",
+          "url": "https://mimo.mi.com/docs/en-US/tokenplan/integration/openclaw",
+          "kind": "vendor",
+          "note": "Ordinary API integration contextWindow configuration; not measured runtime.",
+          "sourceDate": null
+        },
+        "maxOut": {
+          "value": 131072,
+          "src": "cn1116-mi-config",
+          "url": "https://mimo.mi.com/docs/en-US/tokenplan/integration/openclaw",
+          "kind": "vendor",
+          "note": "Ordinary API integration maxTokens configuration; not measured runtime.",
+          "sourceDate": null
+        },
+        "openWeights": true,
+        "license": "MIT for official Flash-RL weights",
+        "inputs": "text, image, video, audio",
+        "outputs": "text",
+        "tech": "Flash-RL: declared 309000000000 total / 15000000000 active. Separate encoders: vision 681000000; audio 308000000 and 127000000; MTP separate. Not an exact aggregate tensor census."
+      },
+      "evidenceIds": [
+        "cn1116-mi-price",
+        "cn1116-mi-config",
+        "cn1116-mi-flash"
+      ]
+    },
+    {
+      "id": "mimo26pro-ultraspeed",
+      "fields": {
+        "priceIn": {
+          "value": 4.35,
+          "src": "cn1116-mi-price",
+          "url": "https://mimo.mi.com/docs/zh-CN/price/pay-as-you-go",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; overseas ordinary real-time API, not domestic CNY, batch or subscription.",
+          "sourceDate": "2026-10-21"
+        },
+        "priceOut": {
+          "value": 8.7,
+          "src": "cn1116-mi-price",
+          "url": "https://mimo.mi.com/docs/zh-CN/price/pay-as-you-go",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; overseas ordinary real-time API, not domestic CNY, batch or subscription.",
+          "sourceDate": "2026-10-21"
+        },
+        "priceCache": {
+          "value": 0.036,
+          "src": "cn1116-mi-price",
+          "url": "https://mimo.mi.com/docs/zh-CN/price/pay-as-you-go",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; overseas ordinary real-time API, not domestic CNY, batch or subscription.",
+          "sourceDate": "2026-10-21"
+        },
+        "apiStatus": "available",
+        "priceMode": "Overseas ordinary real-time API USD/1M tokens",
+        "priceAlt": "Domestic CNY input/output/cache per 1M: 30/60/0.25. Cache writes temporarily free. UltraSpeed does not support batch.",
+        "access": "Ordinary pay-as-you-go API balance; separate UltraSpeed service."
+      },
+      "evidenceIds": [
+        "cn1116-mi-price"
+      ]
+    },
+    {
+      "id": "mimo25pro",
+      "fields": {
+        "apiStatus": "retired",
+        "access": "API name invalid since October 21 10:00 UTC+8; automatic routing to V2.6 Pro started October 14 18:00 UTC+8. Distinct milestones."
+      },
+      "evidenceIds": [
+        "cn1116-mi-retire"
+      ]
+    },
+    {
+      "id": "minimax-m31flash",
+      "fields": {
+        "ctx": {
+          "value": 1000000,
+          "src": "cn1116-mm-guide",
+          "url": "https://platform.minimax.io/docs/guides/text-generation",
+          "kind": "vendor",
+          "note": "Exact decimal supported-model context.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 0.15,
+          "src": "cn1116-mm-price",
+          "url": "https://platform.minimax.io/docs/pricing/overview",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; ordinary M3.1 Flash API.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 0.6,
+          "src": "cn1116-mm-price",
+          "url": "https://platform.minimax.io/docs/pricing/overview",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; ordinary M3.1 Flash API.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.015,
+          "src": "cn1116-mm-price",
+          "url": "https://platform.minimax.io/docs/pricing/overview",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; ordinary M3.1 Flash API.",
+          "sourceDate": null
+        },
+        "openWeights": true,
+        "license": "MiniMax Community License",
+        "apiStatus": "available",
+        "released": "2026-10-19",
+        "inputs": "text, image, video",
+        "outputs": "text",
+        "priceMode": "MiniMax ordinary API USD/1M tokens",
+        "limits": "Effort low/medium/high/xhigh/max, default max; benchmark effort independent.",
+        "tech": "Card explicitly says approximately 428000000000 total / 23000000000 activated; no exact parameter scalar imported. MSA and DSpark."
+      },
+      "evidenceIds": [
+        "cn1116-mm-guide",
+        "cn1116-mm-price",
+        "cn1116-mm31",
+        "cn1116-mm-release"
+      ]
+    },
+    {
+      "id": "minimax-m3",
+      "fields": {
+        "ctx": {
+          "value": 1000000,
+          "src": "cn1116-mm-guide",
+          "url": "https://platform.minimax.io/docs/guides/text-generation",
+          "kind": "vendor",
+          "note": "Exact decimal context entry.",
+          "sourceDate": null
+        },
+        "priceIn": {
+          "value": 0.3,
+          "src": "cn1116-mm-price",
+          "url": "https://platform.minimax.io/docs/pricing/overview",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; M3 Standard, input <= raw official threshold 512k; current permanent 50%-off rates.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 1.2,
+          "src": "cn1116-mm-price",
+          "url": "https://platform.minimax.io/docs/pricing/overview",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; M3 Standard, input <= raw official threshold 512k; current permanent 50%-off rates.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.06,
+          "src": "cn1116-mm-price",
+          "url": "https://platform.minimax.io/docs/pricing/overview",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; M3 Standard, input <= raw official threshold 512k; current permanent 50%-off rates.",
+          "sourceDate": null
+        },
+        "openWeights": true,
+        "apiStatus": "available",
+        "inputs": "text, image, video",
+        "outputs": "text",
+        "priceMode": "M3 Standard current USD/1M tokens",
+        "priceAlt": ">512k input: USD 0.60/2.40/0.12 input/output/cache. Priority 1.5x: <=512k USD 0.45/1.80/0.09; >512k USD 0.90/3.60/0.18. Struck-through prior list rates are not current effective prices.",
+        "tech": "Approximate card scale 428000000000 total / 23000000000 active; not exact counts. Thinking enabled/adaptive/disabled."
+      },
+      "evidenceIds": [
+        "cn1116-mm-guide",
+        "cn1116-mm-price",
+        "cn1116-mm3"
+      ]
+    },
+    {
+      "id": "hy4",
+      "name": "Tencent Hy4",
+      "org": "tencent",
+      "brand": "hunyuan",
+      "isNew": true,
+      "fields": {
+        "priceIn": {
+          "value": 0.834,
+          "src": "cn1116-hy-usd",
+          "url": "https://intl.cloud.tencent.com/document/product/1300/78937",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; displayed Singapore TokenHub LIST rates before limited-time discount.",
+          "sourceDate": "2026-11-16"
+        },
+        "priceOut": {
+          "value": 2.501,
+          "src": "cn1116-hy-usd",
+          "url": "https://intl.cloud.tencent.com/document/product/1300/78937",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; displayed Singapore TokenHub LIST rates before limited-time discount.",
+          "sourceDate": "2026-11-16"
+        },
+        "priceCache": {
+          "value": 0.042,
+          "src": "cn1116-hy-usd",
+          "url": "https://intl.cloud.tencent.com/document/product/1300/78937",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; displayed Singapore TokenHub LIST rates before limited-time discount.",
+          "sourceDate": "2026-11-16"
+        },
+        "apiStatus": "available",
+        "priceMode": "International TokenHub list USD/1M tokens",
+        "inputs": "text, image",
+        "outputs": "text",
+        "access": "Separate TokenHub hy4 model; not Preview.",
+        "priceAlt": "50% of list until December 31 23:59:59 UTC+8, then list resumes. Domestic CNY list input/output/cache 6/18/0.3 per 1M.",
+        "limits": "Official labels context 1M, max input 960k, max output 64k; no binary/decimal expansion inferred.",
+        "released": "2026-11-04",
+        "releaseNote": "Stable introduces vision and computer use. Launch promises weights later; Preview license/parameters not transferred."
+      },
+      "evidenceIds": [
+        "cn1116-hy-usd",
+        "cn1116-hy-models",
+        "cn1116-hy4-release"
+      ]
+    },
+    {
+      "id": "hy4flash",
+      "name": "Tencent Hy4 Flash",
+      "org": "tencent",
+      "brand": "hunyuan",
+      "isNew": true,
+      "fields": {
+        "priceIn": {
+          "value": 0.07,
+          "src": "cn1116-hy-usd",
+          "url": "https://intl.cloud.tencent.com/document/product/1300/78937",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; displayed Singapore TokenHub LIST rates before limited-time discount.",
+          "sourceDate": "2026-11-16"
+        },
+        "priceOut": {
+          "value": 0.281,
+          "src": "cn1116-hy-usd",
+          "url": "https://intl.cloud.tencent.com/document/product/1300/78937",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; displayed Singapore TokenHub LIST rates before limited-time discount.",
+          "sourceDate": "2026-11-16"
+        },
+        "priceCache": {
+          "value": 0.003,
+          "src": "cn1116-hy-usd",
+          "url": "https://intl.cloud.tencent.com/document/product/1300/78937",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; displayed Singapore TokenHub LIST rates before limited-time discount.",
+          "sourceDate": "2026-11-16"
+        },
+        "apiStatus": "available",
+        "priceMode": "International TokenHub list USD/1M tokens",
+        "inputs": "text, image",
+        "outputs": "text",
+        "access": "Separate TokenHub hy4-flash model; not Preview.",
+        "priceAlt": "50% of list until November 30 12:00:00 UTC+8, then list resumes. Domestic CNY list 0.5/2/0.02 input/output/cache per 1M.",
+        "limits": "Official labels context 1M, max input 960k, max output 64k; no binary/decimal expansion inferred."
+      },
+      "evidenceIds": [
+        "cn1116-hy-usd",
+        "cn1116-hy-models",
+        "cn1116-hy-cny"
+      ]
+    },
+    {
+      "id": "hy4preview",
+      "fields": {
+        "priceIn": {
+          "value": 0.834,
+          "src": "cn1116-hy-usd",
+          "url": "https://intl.cloud.tencent.com/document/product/1300/78937",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; displayed Singapore TokenHub LIST rates before limited-time discount.",
+          "sourceDate": "2026-11-16"
+        },
+        "priceOut": {
+          "value": 2.501,
+          "src": "cn1116-hy-usd",
+          "url": "https://intl.cloud.tencent.com/document/product/1300/78937",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; displayed Singapore TokenHub LIST rates before limited-time discount.",
+          "sourceDate": "2026-11-16"
+        },
+        "priceCache": {
+          "value": 0.042,
+          "src": "cn1116-hy-usd",
+          "url": "https://intl.cloud.tencent.com/document/product/1300/78937",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; displayed Singapore TokenHub LIST rates before limited-time discount.",
+          "sourceDate": "2026-11-16"
+        },
+        "apiStatus": "available; retirement scheduled 2026-12-07",
+        "priceMode": "International TokenHub list USD/1M tokens",
+        "inputs": "text",
+        "outputs": "text",
+        "openWeights": true,
+        "license": "Apache-2.0 for Hy4 Preview weights",
+        "access": "Separate hy4-preview endpoint; December 7 shutdown scheduled."
+      },
+      "evidenceIds": [
+        "cn1116-hy-usd",
+        "cn1116-hy-models",
+        "cn1116-hy4preview"
+      ]
+    },
+    {
+      "id": "hy3",
+      "fields": {
+        "priceIn": {
+          "value": 0.132,
+          "src": "cn1116-hy-usd",
+          "url": "https://intl.cloud.tencent.com/document/product/1300/78937",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; displayed Singapore TokenHub LIST rates before limited-time discount.",
+          "sourceDate": "2026-11-16"
+        },
+        "priceOut": {
+          "value": 0.528,
+          "src": "cn1116-hy-usd",
+          "url": "https://intl.cloud.tencent.com/document/product/1300/78937",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; displayed Singapore TokenHub LIST rates before limited-time discount.",
+          "sourceDate": "2026-11-16"
+        },
+        "priceCache": {
+          "value": 0.033,
+          "src": "cn1116-hy-usd",
+          "url": "https://intl.cloud.tencent.com/document/product/1300/78937",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; displayed Singapore TokenHub LIST rates before limited-time discount.",
+          "sourceDate": "2026-11-16"
+        },
+        "apiStatus": "available",
+        "priceMode": "International TokenHub list USD/1M tokens",
+        "inputs": "text",
+        "outputs": "text"
+      },
+      "evidenceIds": [
+        "cn1116-hy-usd",
+        "cn1116-hy-models"
+      ]
+    },
+    {
+      "id": "step5",
+      "fields": {
+        "priceIn": {
+          "value": 1,
+          "src": "cn1116-step-price",
+          "url": "https://platform.stepfun.ai/docs/en/guides/pricing/details",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; managed step-5-preview. Cache miss includes write; output includes reasoning plus final answer.",
+          "sourceDate": null
+        },
+        "priceOut": {
+          "value": 2.7,
+          "src": "cn1116-step-price",
+          "url": "https://platform.stepfun.ai/docs/en/guides/pricing/details",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; managed step-5-preview. Cache miss includes write; output includes reasoning plus final answer.",
+          "sourceDate": null
+        },
+        "priceCache": {
+          "value": 0.1,
+          "src": "cn1116-step-price",
+          "url": "https://platform.stepfun.ai/docs/en/guides/pricing/details",
+          "kind": "vendor",
+          "note": "USD/1000000 tokens; managed step-5-preview. Cache miss includes write; output includes reasoning plus final answer.",
+          "sourceDate": null
+        },
+        "apiStatus": "available",
+        "openWeights": true,
+        "license": "StepFun Model License 1.0; Apache-2.0-style plus attribution and commercial-license conditions.",
+        "inputs": "text, image, video",
+        "outputs": "text",
+        "access": "Managed step-5-preview and downloadable Preview weights.",
+        "priceMode": "StepFun ordinary API USD/1M tokens",
+        "limits": "Managed context/input 1M, output 64k. Downloadable card separately labels output up to 1M. Channel distinction preserved.",
+        "tech": "Card spec 600000000000 total / 27000000000 active; rounded 604B HF size label is not an exact census."
+      },
+      "evidenceIds": [
+        "cn1116-step-guide",
+        "cn1116-step-price",
+        "cn1116-step-card"
+      ]
+    },
+    {
+      "id": "ling31flash",
+      "fields": {
+        "openWeights": true,
+        "license": "MIT",
+        "inputs": "text",
+        "outputs": "text",
+        "access": "Generic Ling-3.1-flash official weights; vendor recommends ZenMux/OpenRouter for hosted access. No direct USD tariff confirmed.",
+        "tech": "Card spec 560000000000 total / 25000000000 active; 63 KDA + 9 Gated MLA layers. Not an exact tensor census.",
+        "limits": "Card says 1M context; current config max_position_embeddings=262144. No generic-card equivalence to 1019 asserted."
+      },
+      "evidenceIds": [
+        "cn1116-ling",
+        "cn1116-ling-config",
+        "cn1116-ling-org"
+      ]
+    },
+    {
+      "id": "longcat25",
+      "name": "LongCat 2.5",
+      "org": "meituan",
+      "brand": "longcat",
+      "isNew": true,
+      "fields": {
+        "ctx": {
+          "value": 524288,
+          "src": "cn1116-lc25-config",
+          "url": "https://huggingface.co/meituan-longcat/LongCat-2.5/raw/main/config.json",
+          "kind": "vendor",
+          "note": "Downloaded-checkpoint config max_position_embeddings, not a hosted API hard cap.",
+          "sourceDate": null
+        },
+        "released": "2026-11-02",
+        "openWeights": true,
+        "license": "MIT",
+        "inputs": "text, image",
+        "outputs": "text",
+        "access": "Official LongCat-2.5 weights available; separate from 2.0. No direct USD tariff confirmed.",
+        "tech": "Card reports 1600000000000 total and approximately 48000000000 active/token. Not exact tensor counts.",
+        "releaseNote": "Official technical launch November 2; first public weight-release timestamp not established."
+      },
+      "evidenceIds": [
+        "cn1116-lc25-release",
+        "cn1116-lc25",
+        "cn1116-lc25-config"
+      ]
+    },
+    {
+      "id": "longcat20",
+      "fields": {
+        "openWeights": true,
+        "license": "MIT",
+        "access": "Original 2.0 weights remain available; benchmarks separate from 2.5.",
+        "tech": "Card scale 1600000000000 total, approximately 48000000000 active/token, including 135000000000 n-gram embeddings. No exact census inferred."
+      },
+      "evidenceIds": [
+        "cn1116-lc20"
+      ]
+    },
+    {
+      "id": "nemotron3ultra",
+      "fields": {
+        "released": "2026-06-04",
+        "openWeights": true,
+        "license": "Open Model, Data and Weights License 1.1 (OpenMDW-1.1)",
+        "inputs": "text",
+        "outputs": "text",
+        "access": "Official NVIDIA weights; self-hosting and partner prices separate.",
+        "tech": "Spec 550000000000 total / 55000000000 active; Mamba-2/attention LatentMoE with MTP; NVFP4. Published precision not an exact tensor census.",
+        "ctx": {
+          "value": 1048576,
+          "src": "cn1116-nv-ultra",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4",
+          "kind": "vendor",
+          "note": "Official serving recipe explicitly supports 1048576; default example context 262144.",
+          "sourceDate": null
+        }
+      },
+      "evidenceIds": [
+        "cn1116-nv-ultra"
+      ]
+    },
+    {
+      "id": "nemotron35",
+      "fields": {
+        "released": "2026-08-11",
+        "openWeights": true,
+        "license": "Open Model, Data and Weights License 1.1 (OpenMDW-1.1)",
+        "inputs": "text",
+        "outputs": "text",
+        "access": "Official NVIDIA weights; self-hosting and partner prices separate.",
+        "tech": "Spec 30000000000 total / 3000000000 active; hybrid MoE with MTP; BF16 reference. Published precision not an exact tensor census.",
+        "limits": "Card up to 1M; current BF16 config max_position_embeddings=262144. Deployment-specific extension unresolved."
+      },
+      "evidenceIds": [
+        "cn1116-nv-light",
+        "cn1116-nv-light-config"
+      ]
+    },
+    {
+      "id": "nemotron35-supervl",
+      "fields": {
+        "released": "2026-10-15",
+        "openWeights": true,
+        "license": "Open Model, Data and Weights License 1.1 (OpenMDW-1.1)",
+        "inputs": "text, image, video",
+        "outputs": "text",
+        "access": "Official NVIDIA weights; self-hosting and partner prices separate.",
+        "tech": "Spec 120000000000 total / 12000000000 active; C-RADIO vision; BF16 reference. Published precision not an exact tensor census.",
+        "limits": "Up to raw 1M shared context; deployment may configure less."
+      },
+      "evidenceIds": [
+        "cn1116-nv-super"
+      ]
+    },
+    {
+      "id": "nemotron35-bolt",
+      "fields": {
+        "released": "2026-10-15",
+        "openWeights": true,
+        "license": "Open Model, Data and Weights License 1.1 (OpenMDW-1.1)",
+        "inputs": "text, image, video",
+        "outputs": "text",
+        "access": "Official NVIDIA weights; self-hosting and partner prices separate.",
+        "tech": "Spec 74000000000 total / 9000000000 active; compressed multimodal LatentMoE; BF16 distinct from optimized 24GB variants. Published precision not an exact tensor census.",
+        "limits": "Up to raw 256K shared context; deployment may configure less."
+      },
+      "evidenceIds": [
+        "cn1116-nv-bolt"
+      ]
+    },
+    {
+      "id": "nemotron35-bolt4gb",
+      "fields": {
+        "released": "2026-10-23",
+        "openWeights": true,
+        "license": "Open Model, Data and Weights License 1.1 (OpenMDW-1.1)",
+        "inputs": "text",
+        "outputs": "text",
+        "access": "Weights plus free prototype endpoint nvidia/nemotron-3.5-bolt-e4b; no standard commercial per-token tariff established.",
+        "tech": "Spec 8000000000 total / 4000000000 EFFECTIVE; Gemma-4-E4B-derived Q4_K_M, not 4B total or MoE active. Published precision not an exact tensor census.",
+        "apiStatus": "NVIDIA Build prototype endpoint listed",
+        "priceMode": "Self-hosted / prototype; commercial token price unresolved",
+        "limits": "Input/output labels up to 64K; effective 4B is not MoE active. 4GB is a deployment label."
+      },
+      "evidenceIds": [
+        "cn1116-nv-e4b",
+        "cn1116-nv-e4b-api"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "date": "2026-11-16",
+      "title": "Qwen4 Max production API launches",
+      "detail": "Official feed adds production model; prior preview is separate.",
+      "url": "https://docs.qwencloud.com/changelog/models"
+    },
+    {
+      "date": "2026-10-27",
+      "title": "Qwen3.8 Flash regional access expands",
+      "detail": "Frankfurt EU and Hong Kong scoped deployments added.",
+      "url": "https://docs.qwencloud.com/changelog/models"
+    },
+    {
+      "date": "2026-11-02",
+      "title": "Kimi K3.1 Pro repository initial commit",
+      "detail": "Current official shard listing confirms weights; initial commit date does not establish public first-release timestamp.",
+      "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro/commits/main"
+    },
+    {
+      "date": "2026-10-31",
+      "title": "Kimi K2 new-account restriction notice",
+      "detail": "Pricing page states October 31; model list uses before-November-1 account boundary. Late December retirement remains planned.",
+      "url": "https://platform.kimi.ai/docs/pricing/chat"
+    },
+    {
+      "date": "2026-11-10",
+      "title": "MiniMax H3 Image release",
+      "detail": "Official release notes add an open-weight image model, separate from M3.1 Flash.",
+      "url": "https://platform.minimax.io/docs/release-notes/models"
+    },
+    {
+      "date": "2026-11-04",
+      "title": "Tencent Hy4 stable launches",
+      "detail": "Vision and computer use announced; current model list also includes separate Flash, whose precise release date is unresolved.",
+      "url": "https://www.tencent.com/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/"
+    },
+    {
+      "date": "2026-12-07",
+      "title": "Scheduled Hy4 Preview retirement",
+      "detail": "Future shutdown listed by TokenHub; not completed as of November 16.",
+      "url": "https://cloud.tencent.com/document/product/1823/130051"
+    },
+    {
+      "date": "2026-11-02",
+      "title": "Meituan LongCat 2.5 releases",
+      "detail": "New native multimodal checkpoint with currently available MIT weights; preserve 2.0 row.",
+      "url": "https://tech.meituan.com/2026/11/02/Meituan-LongCat-2.5.html"
+    }
+  ],
+  "vendorUpdates": {
+    "deepseek": {
+      "family": "V4.1 Flash 1017 / V4 Pro 0813",
+      "keypoints": [
+        "Checkpoint aliases and legacy retirements checked.",
+        "Peak/off-peak pricing and exact completion cap retained."
+      ],
+      "urls": [
+        "https://api-docs.deepseek.com/quick_start/pricing/",
+        "https://api-docs.deepseek.com/api/create-chat-completion/"
+      ]
+    },
+    "alibaba": {
+      "family": "Qwen4 Max / Qwen3.8 Max 0902, Flash API, Flash Next, 27B",
+      "keypoints": [
+        "New production ID qwen4max; preview separate.",
+        "Regional price/cache/effort and native versus hosted context retained."
+      ],
+      "urls": [
+        "https://docs.qwencloud.com/changelog/models",
+        "https://docs.qwencloud.com/developer-guides/getting-started/latest-model",
+        "https://www.alibabacloud.com/help/en/model-studio/model-pricing"
+      ]
+    },
+    "zai": {
+      "family": "GLM 5.3 / Flash / FlashX / 5.2",
+      "keypoints": [
+        "Current USD API pricing checked.",
+        "5.3 custom license and Flash MIT retained; bounded release archive does not prove no later launch."
+      ],
+      "urls": [
+        "https://docs.z.ai/guides/overview/pricing",
+        "https://docs.z.ai/release-notes/new-released",
+        "https://huggingface.co/zai-org/GLM-5.3",
+        "https://huggingface.co/zai-org/GLM-5.3-Flash"
+      ]
+    },
+    "moonshot": {
+      "family": "Kimi K3.1 Pro / Highspeed / K3 / legacy K2.7 Code",
+      "keypoints": [
+        "K3.1 Pro weights and custom license now confirmed.",
+        "Official October 24 index date remains separate from prior AA October 23.",
+        "Current K3.1 API rate table unreadable; no numeric refresh claimed."
+      ],
+      "urls": [
+        "https://platform.kimi.ai/docs/models",
+        "https://platform.kimi.ai/docs/pricing/chat",
+        "https://huggingface.co/moonshotai/Kimi-K3.1-Pro/tree/main",
+        "https://huggingface.co/moonshotai/Kimi-K3.1-Pro/blob/main/LICENSE",
+        "https://www.kimi.ai/blog/"
+      ]
+    },
+    "xiaomi": {
+      "family": "MiMo V2.6 Pro / Flash / UltraSpeed",
+      "keypoints": [
+        "USD overseas and CNY domestic checked without conversion.",
+        "V2.5 Pro retirement and separate -RL checkpoint specifications preserved."
+      ],
+      "urls": [
+        "https://mimo.mi.com/docs/zh-CN/price/pay-as-you-go",
+        "https://mimo.mi.com/docs/zh-CN/updates/deprecate",
+        "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL",
+        "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-RL"
+      ]
+    },
+    "minimax": {
+      "family": "M3.1 Flash / M3; H3 Image update",
+      "keypoints": [
+        "Standard/Priority, long-input and permanent-discount rates retained.",
+        "Approximate parameter figures not promoted to exact totals."
+      ],
+      "urls": [
+        "https://platform.minimax.io/docs/pricing/overview",
+        "https://platform.minimax.io/docs/guides/text-generation",
+        "https://platform.minimax.io/docs/release-notes/models"
+      ]
+    },
+    "tencent": {
+      "family": "Hy4 stable / Flash / Preview / Hy3",
+      "keypoints": [
+        "Stable and Preview have separate IDs.",
+        "Current billing table overrides approximate launch-announcement prices; promotion deadlines retained.",
+        "Stable weight/license details unresolved."
+      ],
+      "urls": [
+        "https://cloud.tencent.com/document/product/1823/130051",
+        "https://intl.cloud.tencent.com/document/product/1300/78937",
+        "https://www.tencent.com/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/"
+      ]
+    },
+    "stepfun": {
+      "family": "Step 5 Preview",
+      "keypoints": [
+        "API prices checked; open weights use StepFun Model License 1.0.",
+        "Managed and open-weight output caps distinct. Speech-price changes effective Nov 23 noon UTC+8 are future, not current LLM prices."
+      ],
+      "urls": [
+        "https://platform.stepfun.ai/docs/en/guides/models/step-5-preview",
+        "https://platform.stepfun.ai/docs/en/guides/pricing/details",
+        "https://huggingface.co/stepfun-ai/Step-5-Preview"
+      ]
+    },
+    "inclusionai": {
+      "family": "Ling 3.1 Flash; newer lead unresolved",
+      "keypoints": [
+        "Model card, config, organization and repository read.",
+        "Generic card not conflated with 1019; secondary Ling 3.2 lead remains unconfirmed."
+      ],
+      "urls": [
+        "https://huggingface.co/inclusionAI/Ling-3.1-flash",
+        "https://huggingface.co/inclusionAI/Ling-3.1-flash/raw/main/config.json",
+        "https://huggingface.co/inclusionAI",
+        "https://github.com/inclusionAI/Ling"
+      ]
+    },
+    "meituan": {
+      "family": "LongCat 2.5 / 2.0",
+      "keypoints": [
+        "New 2.5 ID and dated official launch.",
+        "MIT weights verified; config context separated from API limits."
+      ],
+      "urls": [
+        "https://tech.meituan.com/2026/11/02/Meituan-LongCat-2.5.html",
+        "https://huggingface.co/meituan-longcat/LongCat-2.5",
+        "https://huggingface.co/meituan-longcat/LongCat-2.5/raw/main/config.json",
+        "https://huggingface.co/meituan-longcat/LongCat-2.0"
+      ]
+    },
+    "nvidia": {
+      "family": "Nemotron 3 Ultra / 3.5 Lightning / Super VL / Bolt 74B / Bolt E4B",
+      "keypoints": [
+        "Five official cards reread; precision variants and release dates retained.",
+        "OpenMDW-1.1 verified; E4B effective count distinguished from active.",
+        "Prototype endpoint confirmed for E4B; standard commercial tariff unresolved.",
+        "Bounded card checks do not prove absence of other post-October-24 releases."
+      ],
+      "urls": [
+        "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4",
+        "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+        "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+        "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-BF16",
+        "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB",
+        "https://build.nvidia.com/nvidia/nemotron-3.5-bolt-e4b"
+      ]
+    }
+  },
+  "unresolved": [
+    {
+      "model": "ds-v41flash",
+      "field": "current API pricing",
+      "why": "Original V4.1 Flash is distinct from 1017; current deepseek-flash alias serves 1017 only. No current price assigned to original row.",
+      "url": "https://api-docs.deepseek.com/quick_start/pricing/"
+    },
+    {
+      "model": "ds-v4pro",
+      "field": "openWeights / paramsTotal",
+      "why": "Family MIT repository was read, but exact correspondence of its files to hosted 0813 not established. No predecessor parameter/license transfer.",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"
+    },
+    {
+      "model": "ds-v41flash-1017",
+      "field": "paramsTotal / paramsAct",
+      "why": "No exact parameter census on this checkpoint card; rounded HF size label not imported.",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+    },
+    {
+      "model": "qwen4max",
+      "field": "paramsTotal / paramsAct / weights / license",
+      "why": "No exact parameter totals or downloadable production Qwen4 Max checkpoint/license established. No closed/open inference.",
+      "url": "https://docs.qwencloud.com/developer-guides/getting-started/latest-model"
+    },
+    {
+      "model": "qwen38flashnext",
+      "field": "paramsTotal",
+      "why": "Backbone, n-gram, MTP and vision are separate; do not sum rounded components into an exact total.",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"
+    },
+    {
+      "model": "glm53 / glm53flash / glm53flashx",
+      "field": "ctx / maxOut",
+      "why": "Current API guides use 1M/128K without retrieved explicit decimal/binary convention. Labels preserved; no guessed scalar.",
+      "url": "https://docs.z.ai/guides/llm/glm-5.3"
+    },
+    {
+      "model": "glm53",
+      "field": "paramsTotal / paramsAct",
+      "why": "Exact checkpoint totals not established; same-base language not used to borrow predecessor totals.",
+      "url": "https://huggingface.co/zai-org/GLM-5.3"
+    },
+    {
+      "model": "glm53flashx",
+      "field": "weights / license",
+      "why": "Separate service variant; Flash MIT weights do not establish an independent FlashX downloadable checkpoint/license.",
+      "url": "https://docs.z.ai/guides/vlm/glm-5.3-flash"
+    },
+    {
+      "model": "kimi-k31pro / kimi-k31pro-highspeed",
+      "field": "prices",
+      "why": "Current numeric HTML/Markdown tables absent; browser reads timed out. Old evidence and static rates checked in October not used for current scalars.",
+      "url": "https://platform.kimi.ai/docs/pricing/chat"
+    },
+    {
+      "model": "kimi-k31pro",
+      "field": "released",
+      "why": "Official index still says October 24, prior AA metadata October 23. No timestamp/timezone evidence resolves the difference; keep official publication separate. Weight availability is resolved.",
+      "url": "https://www.kimi.ai/blog/"
+    },
+    {
+      "model": "kimi-k31pro",
+      "field": "paramsTotal / paramsAct",
+      "why": "K3.1-specific summary now exists, but published 2.8T/104B are precision-limited declarations, not exact tensor census.",
+      "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro"
+    },
+    {
+      "model": "kimi-k31pro-highspeed",
+      "field": "maxOut / weights / license",
+      "why": "No separately downloadable Highspeed checkpoint/license or independently stated Highspeed output cap established; standard Pro facts not copied.",
+      "url": "https://platform.kimi.ai/docs/models"
+    },
+    {
+      "model": "mimo26pro-ultraspeed",
+      "field": "ctx / maxOut / weights / parameters",
+      "why": "Separate price row confirmed; generic Pro weights and API limits do not establish identical UltraSpeed checkpoint properties.",
+      "url": "https://mimo.mi.com/docs/zh-CN/price/pay-as-you-go"
+    },
+    {
+      "model": "mimo26pro / mimo26flash",
+      "field": "paramsTotal",
+      "why": "Precision-limited -RL architecture and auxiliary encoder counts are not a complete exact hosted-checkpoint census.",
+      "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL"
+    },
+    {
+      "model": "minimax-m3 / minimax-m31flash",
+      "field": "paramsTotal / paramsAct / maxOut",
+      "why": "Cards qualify parameter scale as approximate; exact tensor census and exact output hard cap not established. TokenHub output labels are a different channel.",
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"
+    },
+    {
+      "model": "minimax-m3",
+      "field": "long-input threshold",
+      "why": "Official price threshold says 512k without explicit retrieved decimal/binary convention; not silently expanded.",
+      "url": "https://platform.minimax.io/docs/pricing/overview"
+    },
+    {
+      "model": "hy4 / hy4flash",
+      "field": "weights / license / paramsTotal / paramsAct",
+      "why": "Stable launch promises weights later; readable stable official weight repository not located. Preview Apache-2.0 and 770B/49B not transferred.",
+      "url": "https://www.tencent.com/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/"
+    },
+    {
+      "model": "hy4 / hy4flash / hy4preview",
+      "field": "ctx / maxOut",
+      "why": "1M/960k/64k labels lack independently established exact normalization.",
+      "url": "https://cloud.tencent.com/document/product/1823/130051"
+    },
+    {
+      "model": "step5",
+      "field": "ctx / maxOut",
+      "why": "Managed output 64k versus downloadable card up to 1M; exact K normalization and channel difference not resolved.",
+      "url": "https://platform.stepfun.ai/docs/en/guides/models/step-5-preview"
+    },
+    {
+      "model": "step5",
+      "field": "paramsTotal",
+      "why": "Architecture 600B and HF size label 604B are not a complete exact count.",
+      "url": "https://huggingface.co/stepfun-ai/Step-5-Preview"
+    },
+    {
+      "model": "ling31-flash1019",
+      "field": "checkpoint specs",
+      "why": "Generic official card does not mention 1019. No exact 1019 specs assigned. AA mapping remains only ling31-flash1019; generic benchmark mapping untouched.",
+      "url": "https://huggingface.co/inclusionAI/Ling-3.1-flash"
+    },
+    {
+      "model": "ling31flash",
+      "field": "ctx",
+      "why": "Card 1M versus config 262144; runtime extension and hosted limits not established.",
+      "url": "https://huggingface.co/inclusionAI/Ling-3.1-flash/raw/main/config.json"
+    },
+    {
+      "model": "Ling 3.2 Flash",
+      "field": "existence / release / specs",
+      "why": "Secondary lead only; guessed official repository inaccessible and official retrieved README did not confirm it. No row added; non-existence not claimed.",
+      "url": "https://github.com/inclusionAI/Ling"
+    },
+    {
+      "model": "inclusionai",
+      "field": "standard direct USD API pricing",
+      "why": "Organization recommends hosted partners, but no direct-vendor USD tariff established.",
+      "url": "https://huggingface.co/inclusionAI"
+    },
+    {
+      "model": "longcat25 / longcat20",
+      "field": "paramsTotal / paramsAct / standard USD prices",
+      "why": "Published scale/active figures have limited precision; exact tensor census and direct USD tariff not established.",
+      "url": "https://huggingface.co/meituan-longcat/LongCat-2.5"
+    },
+    {
+      "model": "nemotron35-bolt4gb",
+      "field": "paramsAct",
+      "why": "4B means effective parameters, not MoE active. Review/clear any old active-parameter scalar during integration; no replacement numeric scalar supplied.",
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB"
+    },
+    {
+      "model": "nvidia Nemotron family",
+      "field": "paramsTotal / standard USD API pricing",
+      "why": "B-scale card specs not exact complete tensor census. Free prototype does not establish zero commercial price.",
+      "url": "https://build.nvidia.com/nvidia/nemotron-3.5-bolt-e4b"
+    },
+    {
+      "model": "nemotron35",
+      "field": "ctx",
+      "why": "Card up-to-1M versus BF16 config 262144 needs deployment-specific interpretation.",
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16/raw/main/config.json"
+    },
+    {
+      "model": "nemotron35-supervl / nemotron35-bolt / nemotron35-bolt4gb",
+      "field": "ctx / maxOut",
+      "why": "Raw K labels, shared context and example generation settings are distinct; exact caps not guessed.",
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16"
+    }
+  ],
+  "newBrands": [],
+  "coverageSummary": {
+    "timezone": "Asia/Shanghai",
+    "vendors": [
+      "deepseek",
+      "alibaba",
+      "zai",
+      "moonshot",
+      "xiaomi",
+      "minimax",
+      "tencent",
+      "stepfun",
+      "inclusionai",
+      "meituan",
+      "nvidia"
+    ],
+    "scope": "Eleven assigned vendors checked. No subscription research or benchmark score changes.",
+    "newModelIds": [
+      "qwen4max",
+      "hy4",
+      "hy4flash",
+      "longcat25"
+    ],
+    "idAlignment": {
+      "qwen4max": "Production API distinct from preview",
+      "hy4": "Stable distinct from hy4preview",
+      "ling31-flash1019": "AA-only checkpoint mapping preserved; generic card not equated",
+      "step5": "Existing ID; no AA suffix changed"
+    },
+    "numericPolicy": "USD per 1000000 tokens. Region, standard/priority/batch, TTL, time-of-day, promotions and native/hosted limits preserved. Rounded architecture declarations recorded as text, not exact total scalars.",
+    "evidencePolicy": "checkedAt means official page read in this task, not runtime execution. Prior research only supplied discovery URLs. Unknown fields not assigned zero or stamped current.",
+    "limitations": "Kimi current numeric price table could not be read; browser timed out. No API inference, model downloads, logo downloads, source edits, Git operations or deployment.",
+    "newBrands": "None required; all companies/brands already registered in current data.js."
+  }
+}

@@ -244,7 +244,7 @@ function scatterChart(host, opts){
   xt.textContent = '单任务实测成本（美元 · 对数刻度）→ 越左越便宜';
   svg.appendChild(xt);
   const yt = el('text', {x:0, y:0, class:'ch-axis', transform:`translate(14 ${PAD.t+PLOT_H/2}) rotate(-90)`, 'text-anchor':'middle'});
-  yt.textContent = 'AA 智能指数 v4.3.2 →';
+  yt.textContent = opts.yTitle || 'AA 智能指数 →';
   svg.appendChild(yt);
 
   /* --- 点：r≥4，带 2px 表面描边，避免重叠处糊在一起 --- */

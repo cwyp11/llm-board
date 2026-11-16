@@ -117,21 +117,24 @@ const state = {
 store.set('labColor',state.labColor);
 store.set('colorPreferenceVersion',1);
 const MAXCMP = 4;
-const SUMMARY_COLS = ['aaii','cai2','tb40','cpt','priceOut','ctx','license'];
-const DEFAULT_COLS = ['aaii','cai2','frontiercode','tb40','gdpval21','hle','scicode','lcr','nonhall','arena'];
+const CURRENT_CAI = META.caiKey;
+const SUMMARY_COLS = ['aaii',CURRENT_CAI,'tb40','cpt','priceOut','ctx','license'];
+const DEFAULT_COLS = ['aaii',CURRENT_CAI,'frontiercode2','tb40','briefcase','automation','gdppdf','hleDiamond','nonhall','arena'];
 const TABLE_VIEWS = [
   {id:'capability',label:'能力评测',cols:DEFAULT_COLS,
-    note:'AAII v4.3.2 / CAI v2.0 · Agent 分数属于框架 × 模型组合 · 向右滚动查看更多'},
+    note:'AAII v'+META.intelligenceVersion+' / CAI v'+META.caiVersion+' · 模型统一环境与 Agent 实际框架分开 · 向右滚动查看更多'},
   {id:'summary',label:'常用概览',cols:SUMMARY_COLS,
     note:'能力、单任务成本、API 输出价及上下文 · 勾选 2–4 个模型可展开完整对比'},
-  {id:'usage',label:'价格与规格',cols:['cpt','priceIn','priceOut','priceCache','speed','ctx','maxOut','paramsTotal','paramsAct','license'],
-    note:'API 价格为美元 / 每百万 token · 参数量与上下文分列 · 向右滚动查看更多'},
-  {id:'history',label:'历史评测',cols:['cai','deepswe','sweatlas','tb21','swe','gdpval','gpqa'],
-    note:'旧 CAI v1.5 / DeepSWE / TB 2.1 / SWE / GDPval v2 / GPQA · 保留原日期，不与新版混排'}
+  {id:'usage',label:'价格与规格',cols:['cpt','priceIn','priceOut','priceCache','taskTime','firstAnswer','speed','ctx','maxOut','license'],
+    note:'API 为 USD / 百万 token · 任务用时（分钟）、首答（秒）、吞吐（token/s）分开'},
+  {id:'history',label:'历史评测',cols:['aaii4','cpt4','cai2','frontiercode','gdpval21','lcr','scicode','cai','deepswe','sweatlas','tb21','swe','gdpval','gpqa'],
+    note:'旧 AAII v4、CAI v2.0/v1.5 与旧基准另存 · 保留原始版本和日期，不计算跨版涨跌'}
 ];
 
 const COLS = [
-  {k:'aaii'},{k:'cai2'},{k:'frontiercode'},{k:'frontierAgent'},{k:'sweatlas2'},{k:'tb40'},{k:'gdpval21'},{k:'hle'},
+  {k:'aaii'},{k:CURRENT_CAI},{k:'briefcase'},{k:'automation'},{k:'frontiercode2'},{k:'gdppdf'},{k:'hleDiamond'},{k:'critpt2'},{k:'tbScience'},
+  {k:'frontierAgent20'},{k:'tb41Agent'},{k:'sweatlas21'},{k:'taskTime'},{k:'firstAnswer'},
+  {k:'aaii4'},{k:'cpt4'},{k:'nonhallOld'},{k:'cai2'},{k:'frontiercode'},{k:'frontierAgent'},{k:'sweatlas2'},{k:'tb40'},{k:'gdpval21'},{k:'hle'},
   {k:'cai'},{k:'deepswe'},{k:'sweatlas'},{k:'tb21'},{k:'swe'},{k:'gdpval'},{k:'gpqa'},{k:'scicode'},
   {k:'lcr'},{k:'nonhall'},{k:'arena'},
   {k:'cpt'},{k:'priceIn'},{k:'priceOut'},{k:'priceCache'},{k:'speed'},
@@ -141,7 +144,10 @@ const COLS = [
 function colLabel(c){ return c.special ? c.short : ({deepswe:'DeepSWE v1.1',sweatlas:'SWE-Atlas-QnA',gpqa:'GPQA Diamond',gdpval:'GDPval v2'})[c.k]||MET[c.k].short; }
 /* 列头副标题 = 这一列的单位，写清楚免得「分数 / 百分比 / 美元 / token」混淆 */
 const COL_UNIT = {
-  aaii:'v4.3.2 指数', cai2:'v2.0 · Agent 组合', frontiercode:'% · Stirrup', frontierAgent:'% · 编码 Agent', sweatlas2:'% · 编码 Agent', gdpval21:'v2.1 · Elo', hle:'%',
+  aaii:'v'+META.intelligenceVersion+' 指数', cai21:'v2.1 · Agent 组合', briefcase:'v1.1 · Elo', automation:'% · 工作流', frontiercode2:'v2.0 · Stirrup',
+  gdppdf:'All-pass · %', hleDiamond:'Diamond · %', critpt2:'v2 Hard · %', tbScience:'v0.1 · %',
+  frontierAgent20:'v2.0 · Agent', tb41Agent:'v4.1 · Agent', sweatlas21:'% · Agent', taskTime:'分钟 · 越低越快', firstAnswer:'秒 · 越低越快',
+  aaii4:'v4 · 历史', cpt4:'$ / 旧版任务', nonhallOld:'旧版 · %', cai2:'v2.0 · 历史', frontiercode:'v1.1 · 历史', frontierAgent:'% · 历史 Agent', sweatlas2:'% · 历史 Agent', gdpval21:'v2.1 · 旧基准 Elo', hle:'旧 HLE · %',
   cai:'v1.5 · 历史', deepswe:'% · 历史 Agent', sweatlas:'% · 历史 Agent', tb40:'%', tb21:'% · 历史', swe:'% · 已归档', gdpval:'% · 历史', gpqa:'% · 旧快照',
   scicode:'% · 审查中', lcr:'v1.1 · %', nonhall:'%', arena:'Text · Elo',
   cpt:'$ / 任务', priceIn:'$ / 百万 token', priceOut:'$ / 百万 token', priceCache:'$ / 百万 token',
@@ -158,11 +164,15 @@ function initCols(){
   const version=store.get('columnViewVersion',0);
   const oldSummary=['aaii','cai','tb40','cpt','priceOut','ctx','license'];
   const oldCapability=['aaii','cai','deepswe','sweatlas','tb40','gpqa','scicode','lcr','nonhall','arena'];
-  if(version<2&&sameCols(saved,oldCapability))state.cols=DEFAULT_COLS.slice();
+  const octoberCapability=['aaii','cai2','frontiercode','tb40','gdpval21','hle','scicode','lcr','nonhall','arena'];
+  const octoberSummary=['aaii','cai2','tb40','cpt','priceOut','ctx','license'];
+  if(version<3&&sameCols(saved,octoberCapability))state.cols=DEFAULT_COLS.slice();
+  else if(version<3&&sameCols(saved,octoberSummary))state.cols=SUMMARY_COLS.slice();
+  else if(version<2&&sameCols(saved,oldCapability))state.cols=DEFAULT_COLS.slice();
   else if(version===1&&sameCols(saved,oldSummary))state.cols=SUMMARY_COLS.slice();
   else if(version<1&&sameCols(saved,oldSummary))state.cols=DEFAULT_COLS.slice();
   else state.cols=saved.length?saved:DEFAULT_COLS.slice();
-  store.set('columnViewVersion',2);
+  store.set('columnViewVersion',3);
   store.set('cols',state.cols);
 }
 function sameCols(a,b){return a.length===b.length&&a.every(k=>b.includes(k));}
@@ -226,7 +236,8 @@ function bestOf(list, mk){
   if(new Set(vals.map(v=>v.asOf || '2026-09-19')).size > 1) return {v:null, reason:'dated'};
   if(kinds.has('est')) return {v:null, reason:'est'};
   const nums = vals.map(v=>v.v);
-  if(['arena','gdpval21'].includes(mk)&&vals.every(v=>v.ciLow!=null&&v.ciHigh!=null)){
+  if(['arena','gdpval21','briefcase'].includes(mk)){
+    if(!vals.every(v=>v.ciLow!=null&&v.ciHigh!=null))return {v:null,reason:'ciMissing'};
     const top=vals.slice().sort((a,b)=>b.v-a.v)[0];
     if(vals.some(v=>v!==top&&v.ciHigh>=top.ciLow))return {v:null,reason:'ci'};
   }
@@ -326,7 +337,7 @@ function renderChanges(){
 
 function miniTable(list, opts){
   opts = opts || {};
-  const cols = opts.cols || ['aaii','cai2','cpt'];
+  const cols = opts.cols || ['aaii',CURRENT_CAI,'cpt'];
   return '<thead><tr><th class="pick"><span class="sr">加入对比</span></th><th>模型</th>'+
     cols.map(k=>'<th class="n">'+metricHelp(MET[k],MET[k].short)+'<span class="th-sub">'+esc(COL_UNIT_SHORT[k]||'')+'</span></th>').join('')+
     '</tr></thead><tbody>'+
@@ -353,7 +364,7 @@ function renderOverview(){
   renderChanges();
 
   const top = MODELS.filter(m=>m.aaii && m.aaii.asOf===META.dataSnapshot).sort((a,b)=>b.aaii.v-a.aaii.v).slice(0,8);
-  $('#topTable').innerHTML = miniTable(top, {cols:['aaii','cai2','cpt']});
+  $('#topTable').innerHTML = miniTable(top, {cols:['aaii',CURRENT_CAI,'cpt']});
 
   /* ---- 场景推荐：候选与依据都从当前数据算出 ---- */
   $('#scenes').innerHTML = SCENES.map(sc=>{
@@ -390,7 +401,7 @@ function renderFav(){
   const list = state.fav.map(id=>byId[id]).filter(Boolean);
   const sec = $('#secFav');
   sec.hidden = list.length === 0;
-  if(list.length) $('#favTable').innerHTML = miniTable(list, {cols:['aaii','cai2','cpt']});
+  if(list.length) $('#favTable').innerHTML = miniTable(list, {cols:['aaii',CURRENT_CAI,'cpt']});
 
   const rail = $('#railFav');
   rail.hidden = list.length === 0;
@@ -448,7 +459,7 @@ function cellFor(m, ck){
   const val = m[ck], t = fmtVal(ck, val);
   if(!t) return '<td class="n"><span class="na">暂无数据</span></td>';
   return '<td class="n" title="'+esc(valueInfo(val))+'">'+valueLink(val,esc(t)+'<span class="u">'+esc(unitOf(ck))+'</span>')+kindTag(val)+
-    (['cai','deepswe','sweatlas','cai2','frontierAgent','sweatlas2'].includes(ck)&&val.note?'<span class="cell-context">'+esc(val.note.split(' + ')[0])+'</span>':'')+
+    (['cai','deepswe','sweatlas','cai2','frontierAgent','sweatlas2',CURRENT_CAI,'frontierAgent20','tb41Agent','sweatlas21'].includes(ck)&&val.note?'<span class="cell-context">'+esc(val.note.split(' + ')[0])+'</span>':'')+
     (val.asOf!==META.dataSnapshot?'<span class="old-val">旧快照</span>':'')+'</td>';
 }
 
@@ -491,7 +502,7 @@ function renderModelTable(){
 /* ================================================================
    指标排行柱状图
    ================================================================ */
-const RANK_METRICS = ['aaii','cai2','frontiercode','tb40','arena','speed','cpt'];
+const RANK_METRICS = ['aaii',CURRENT_CAI,'frontiercode2','briefcase','tb40','arena','taskTime','cpt'];
 if(!RANK_METRICS.includes(state.rankMetric)){state.rankMetric='aaii';store.set('rankMetric',state.rankMetric);}
 
 /* 每项说明与指标定义共用，鼠标悬停和键盘焦点都可读；不依赖远程资源。 */
@@ -677,6 +688,7 @@ function compareTable(list){
     basis:'评测版本或口径不同，不评最优',
     variant:'来源推理档与本行配置不同，不评最优',
     ci:'95% 置信区间重叠，不给出确定的最优结论',
+    ciMissing:'未取得完整置信区间，不给出确定的最优结论',
     unavailable:'含已退役或弃用的 API，不评价格最优'
   };
   let rows = '';
@@ -775,18 +787,19 @@ function renderPricing(){
   /* 速度与规格 */
   const spec = MODELS.filter(m=>m.speed||m.ctx||m.maxOut||m.paramsTotal)
     .sort((a,b)=> cmpBy(a,b,'ctx',-1) || cmpBy(a,b,'speed',-1));
+  const specKeys=['taskTime','firstAnswer','speed','ctx','maxOut','paramsTotal','paramsAct'];
   $('#specTable').innerHTML =
     '<thead><tr><th>模型</th>'+
-      ['speed','ctx','maxOut','paramsTotal','paramsAct'].map(k=>'<th class="n">'+esc(MET[k].label)+'</th>').join('')+
+      specKeys.map(k=>'<th class="n">'+metricHelp(MET[k])+'<span class="th-sub">'+esc(COL_UNIT[k]||unitOf(k))+'</span></th>').join('')+
     '</tr></thead><tbody>'+
     spec.map(m=>'<tr data-row="'+m.id+'"'+labStrip(m)+'><td><button class="mcell" type="button" data-model="'+m.id+'" style="text-align:left">'+
       logoHTML(m.brand)+'<span class="txt"><span class="nm">'+esc(m.name)+'</span></span></button></td>'+
-      ['speed','ctx','maxOut','paramsTotal','paramsAct'].map(k=>{
+      specKeys.map(k=>{
         const t = fmtVal(k,m[k]);
-        return '<td class="n">'+(t?esc(t)+'<span class="u">'+esc(unitOf(k))+'</span>':'<span class="na">暂无数据</span>')+
+        return '<td class="n">'+(t?valueLink(m[k],esc(t)+'<span class="u">'+esc(unitOf(k))+'</span>'):'<span class="na">暂无数据</span>')+
           (m[k]&&m[k].asOf!==META.dataSnapshot?'<span class="old-val" title="'+esc(valueInfo(m[k]))+'">旧快照</span>':'')+'</td>';
       }).join('')+'</tr>').join('')+
-    '</tbody><tfoot><tr><td colspan="6">上下文窗口、最大输出与参数量分列；源站单位、渠道或定义有差异时保留说明，未确认字段不当作零。</td></tr></tfoot>';
+    '</tbody><tfoot><tr><td colspan="8">任务用时、首答等待、输出吞吐分列；上下文、最大输出与参数量互不换算。具体日期、渠道与定义见数值来源。</td></tr></tfoot>';
 
   /* 模型 × Agent */
   $('#agentTable').innerHTML =
@@ -798,8 +811,8 @@ function renderPricing(){
         r.cells.map(c=>'<td class="c '+c.t+'">'+(c.s!=null?c.s.toFixed(1):(c.t==='native'?'✓':c.t==='compat'?'~':'—'))+
           (c.note?'<span class="sub">'+esc(c.note)+'</span>':'')+(c.url?'<a class="metric-source" href="'+esc(c.url)+'" target="_blank" rel="noopener">配置来源 ↗</a>':'')+'</td>').join('')+'</tr>';
     }).join('')+'</tbody>';
-  $('#agentHistory').innerHTML='<div class="tbl-wrap"><table class="tbl mx"><thead><tr><th>历史模型 · CAI v1.5</th>'+AGENT_HISTORY.frameworks.map(f=>'<th>'+esc(f)+'</th>').join('')+'</tr></thead><tbody>'+
-    AGENT_HISTORY.rows.map(r=>'<tr><td>'+esc((byId[r.id]||{}).name||r.id)+'</td>'+r.cells.map(c=>'<td class="c">'+(c.s!=null?c.s.toFixed(1):c.t==='native'?'✓':c.t==='compat'?'~':'—')+(c.note?'<span class="sub">'+esc(c.note)+'</span>':'')+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
+  $('#agentHistory').innerHTML=(AGENT_HISTORY.snapshots||[AGENT_HISTORY]).map(snapshot=>'<p class="sec-note">CAI v'+esc(snapshot.version)+' · '+esc(snapshot.asOf)+'</p><div class="tbl-wrap"><table class="tbl mx"><thead><tr><th>历史模型 / 配置</th>'+snapshot.frameworks.map(f=>'<th>'+esc(f)+'</th>').join('')+'</tr></thead><tbody>'+
+    snapshot.rows.map(r=>'<tr><td>'+esc(r.label||(byId[r.id]||{}).name||r.id)+'</td>'+r.cells.map(c=>'<td class="c">'+(c.s!=null?c.s.toFixed(1):c.t==='native'?'✓':c.t==='compat'?'~':'—')+(c.note?'<span class="sub">'+esc(c.note)+'</span>':'')+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>').join('');
 
   /* 订阅 */
   $('#subsGrid').innerHTML = SUBSCRIPTIONS.map(s=>
@@ -821,7 +834,8 @@ function drawChart(){
   }));
   CH.scatterChart(box, {
     points: pts,
-    aria:'散点图：纵轴为 Artificial Analysis 智能指数 v4.3.2，横轴为跑完一道评测任务的实测成本（美元，对数刻度）。完整数值见本页表格。'
+    aria:'散点图：纵轴为 Artificial Analysis 智能指数 v'+META.intelligenceVersion+'，横轴为同版任务集的成本（美元，对数刻度）。完整数值见本页表格。',
+    yTitle:'AA 智能指数 v'+META.intelligenceVersion+' →'
   });
 
   const labs = [];
@@ -1110,7 +1124,7 @@ document.addEventListener('click', function(e){
 /* 更新指令：这个按钮只做「复制文字」，不做也做不了真正的数据更新 */
 $('#updCmd').textContent = META.updateCommand;
 $('#updMeta').innerHTML = '当前数据抓取于 <b class="mono">'+esc(META.dataSnapshot)+'</b> · 页面生成 <b class="mono">'+esc(META.pageBuilt)+'</b><br>'+
-  '这是一个纯静态页面，没有后端、没有定时任务，也没有抓取脚本。';
+  '这是人工维护的数据快照。复制指令后请发送给 AI 助手，此按钮不会自动更新页面。';
 $('#updCopy').addEventListener('click', async function(){
   const txt = $('#updCmd').textContent.trim();
   let ok = false;

@@ -1,0 +1,296 @@
+{
+  "checkedAt": "2026-11-16",
+  "sources": [
+    {
+      "id": "tml-card-nov",
+      "title": "Thinking Machines · Inkling 2 Small 模型卡",
+      "url": "https://thinkingmachines.ai/model-card/inkling-2-small/",
+      "kind": "厂商官方",
+      "checkedAt": "2026-11-16",
+      "sourceDate": "2026-11-05"
+    },
+    {
+      "id": "tml-pricing-nov",
+      "title": "Thinking Machines · Tinker 定价",
+      "url": "https://thinkingmachines.ai/tinker/pricing/",
+      "kind": "厂商官方",
+      "checkedAt": "2026-11-16",
+      "sourceDate": "2026-10-19"
+    },
+    {
+      "id": "tml-release-nov",
+      "title": "Inkling 2 Small · 权重开放更新",
+      "url": "https://thinkingmachines.ai/news/inkling-2-small/",
+      "kind": "厂商官方",
+      "checkedAt": "2026-11-16",
+      "sourceDate": "2026-11-12"
+    }
+  ],
+  "models": [
+    {
+      "id": "inkling2small",
+      "fields": {
+        "paramsTotal": {
+          "value": 594000000000,
+          "src": "tml-card-nov",
+          "url": "https://thinkingmachines.ai/model-card/inkling-2-small/",
+          "kind": "vendor",
+          "note": "官方公布的约 594B 规模，不声称是精确张量计数。",
+          "sourceDate": "2026-11-05"
+        },
+        "paramsAct": {
+          "value": 17000000000,
+          "src": "tml-card-nov",
+          "url": "https://thinkingmachines.ai/model-card/inkling-2-small/",
+          "kind": "vendor",
+          "note": "官方公布约 17B 激活参数。",
+          "sourceDate": "2026-11-05"
+        },
+        "ctx": {
+          "value": 1000000,
+          "src": "tml-card-nov",
+          "url": "https://thinkingmachines.ai/model-card/inkling-2-small/",
+          "kind": "vendor",
+          "note": "模型卡最大窗口；Tinker 当前 serverless Beta 标价档为 256K，渠道上限不同。",
+          "sourceDate": "2026-11-05"
+        },
+        "license": "Apache 2.0",
+        "openWeights": true,
+        "inputs": [
+          "文本",
+          "图像"
+        ],
+        "outputs": [
+          "文本"
+        ],
+        "released": "2026-11-05",
+        "releaseNote": "11/5 发布模型，11/12 官方更新宣布权重可下载；两种事件分开。",
+        "access": "官方 Hugging Face 权重；Tinker 微调与 Beta serverless；第三方推理 API。",
+        "apiStatus": "available",
+        "priceMode": "官方 Tinker Serverless Beta · 256K 上下文档 · USD / 百万 token",
+        "priceAlt": "该价格不是 Tinker 训练价。模型卡最大窗口 1M；其他托管渠道规格与价格另外核对。Beta 生产使用需关注官方资格说明。",
+        "priceIn": {
+          "value": 0.3,
+          "src": "tml-pricing-nov",
+          "url": "https://thinkingmachines.ai/tinker/pricing/",
+          "kind": "vendor",
+          "note": "Serverless inference Beta，256K 档；表头日期10/19，包含之后新增模型。",
+          "sourceDate": "2026-10-19"
+        },
+        "priceOut": {
+          "value": 1.0,
+          "src": "tml-pricing-nov",
+          "url": "https://thinkingmachines.ai/tinker/pricing/",
+          "kind": "vendor",
+          "note": "Serverless inference Beta，256K 档；不混为训练/采样价。",
+          "sourceDate": "2026-10-19"
+        },
+        "priceCache": {
+          "value": 0.03,
+          "src": "tml-pricing-nov",
+          "url": "https://thinkingmachines.ai/tinker/pricing/",
+          "kind": "vendor",
+          "note": "Serverless cached input。",
+          "sourceDate": "2026-10-19"
+        }
+      }
+    },
+    {
+      "id": "kimi-k31pro",
+      "fields": {
+        "released": "",
+        "releaseNote": "发布日期待核实：AA记录10/23；官方研究索引10/24。权重当前可下载，但不能从仓库初始提交推断首次公开时间。"
+      }
+    }
+  ],
+  "changes": [
+    {
+      "rank": 1,
+      "title": "智能指数换代为 v5.0.1，旧分数与旧成本单独归档",
+      "detail": "当前任务集覆盖知识工作、编码、科学和通用能力；新增 Briefcase、工作流、文档与科学终端等维度。",
+      "impact": "不能从旧 v4 与新 v5 的分数或任务成本之差推断模型涨跌。",
+      "models": [
+        "claude-fable52",
+        "gemini4-carbon"
+      ],
+      "src": "aa5-method",
+      "kind": "评测",
+      "date": "2026-11-16",
+      "view": "models"
+    },
+    {
+      "rank": 2,
+      "title": "Fable 5.2 进入当前前沿候选，需同时比较成本与档位",
+      "detail": "AA max 配置当前指数约 65，单任务成本 $26.54；Opus 5.5 同版指数约 59、$10.04。",
+      "impact": "这是同一期、同口径的观察；可按自己任务权衡质量、用时与成本，不把指数首位当作所有场景最强。",
+      "models": [
+        "claude-fable52",
+        "claude-fable52-xhigh",
+        "claude-opus55"
+      ],
+      "src": "aa5",
+      "kind": "评测",
+      "date": "2026-11-16",
+      "view": "models"
+    },
+    {
+      "rank": 3,
+      "title": "Gemini 4 Carbon 与 Hydrogen 分别加入比较",
+      "detail": "AA 当前 high / xhigh 配置指数约 60 / 54；模型家族与推理档各自记录。",
+      "impact": "Carbon、Hydrogen 与 Argon 不合并；跨模态输入、上下文与官方价格在详情分开核对。",
+      "models": [
+        "gemini4-carbon",
+        "gemini4-hydrogen",
+        "gemini4-argon"
+      ],
+      "src": "aa5",
+      "kind": "评测",
+      "date": "2026-11-16",
+      "view": "models"
+    },
+    {
+      "rank": 4,
+      "title": "Qwen4 Max 新版本加入，API 与旧 Max 分开记录",
+      "detail": "当前 AAII v5 约43；官方国际新加坡标准输入/输出/缓存读取为 $1.50/$4.50/$0.075 每百万 token。",
+      "impact": "已单列 qwen4-max；区域、显式缓存写入及是否支持 Batch 各有条件，不沿用 Qwen3.8-Max 配置。",
+      "models": [
+        "qwen4max",
+        "qwen38max"
+      ],
+      "src": "cn1116-q-price",
+      "kind": "评测",
+      "date": "2026-11-16",
+      "view": "models"
+    },
+    {
+      "rank": 5,
+      "title": "Inkling 2 Small 权重已开放，API 渠道窗口需区分",
+      "detail": "官方 11/12 更新宣布开放 Apache 2.0 权重；支持文本与图像输入。Tinker Beta 标价 $0.30 输入 / $1 输出 / $0.03 缓存读取。",
+      "impact": "Tinker 标价档为 256K，模型卡最大窗口 1M，不能把模型规格当作每个托管渠道的保证。",
+      "models": [
+        "inkling2small"
+      ],
+      "src": "tml-release-nov",
+      "kind": "开放状态",
+      "date": "2026-11-12",
+      "view": "models"
+    },
+    {
+      "rank": 6,
+      "title": "速度拆成任务用时、首答等待与输出吞吐",
+      "detail": "同样的 token/s 不意味着相同等待时间；推理时间和工具调用也会影响完成一次任务的用时。",
+      "impact": "价格与使用视图可查看分钟、秒和 token/s，不把三种单位混在一列。",
+      "models": [
+        "gpt61-terra-low",
+        "claude-fable52"
+      ],
+      "src": "aa5",
+      "kind": "评测",
+      "date": "2026-11-16",
+      "view": "models"
+    },
+    {
+      "rank": 7,
+      "title": "Kimi K3.1 Pro 权重现可下载，官方即时报价仍待确认",
+      "detail": "本次已核对官方权重文件与自定义许可；没有把初始提交时间当作首次公开时间。",
+      "impact": "可以作为自部署候选；当前主表 API 数字标为 AA 渠道参考价，官方文档未读出的即时报价不冒充已核实。",
+      "models": [
+        "kimi-k31pro"
+      ],
+      "src": "cn1116-k31-files",
+      "kind": "开放状态",
+      "date": "2026-11-16",
+      "view": "models"
+    }
+  ],
+  "notes": [
+    {
+      "n": "v5.0.1",
+      "t": "当前指数的任务与权重已经变化",
+      "s": "AA Intelligence Benchmarking · 11/16 读取",
+      "url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+      "models": [],
+      "d": "当前九项评测分知识工作、编码、科学和通用能力。AAII 与任务成本的旧 v4 字段独立归档；没有制造跨版本涨跌或趋势。"
+    },
+    {
+      "n": "口径",
+      "t": "新编码、知识工作与文档任务分别衡量什么",
+      "s": "AA 当前方法页 · 11/16 读取",
+      "url": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+      "models": [],
+      "d": "FrontierCode-AA 2.0 是仓库开发；Briefcase 是复杂专业交付；AutomationBench 是跨应用工作流；GDP.pdf 是真实文档任务的 All-pass。悬停各指标名可看任务、单位与限制，不能互相替代。"
+    },
+    {
+      "n": "Elo",
+      "t": "分差与置信区间要一起看",
+      "s": "AA / Arena · 11/16 读取",
+      "url": "https://artificialanalysis.ai/evaluations/gdpval-aa",
+      "models": [],
+      "d": "Elo 不是正确率，任务与拟合方式也会影响数值。比较时保留实际档位和区间；区间重叠或未获得完整区间时不授予确定的最优值。"
+    },
+    {
+      "n": "单位",
+      "t": "任务用时、首答等待和输出吞吐不是一件事",
+      "s": "AA 公开模型榜 · 11/16 读取",
+      "url": "https://artificialanalysis.ai/leaderboards/models",
+      "models": [],
+      "d": "任务用时使用本版指数的加权任务集，单位分钟；首答等待单位秒；输出吞吐单位 token/s。前两者越低越快，后者越高吞吐越大，但不能直接换算。"
+    },
+    {
+      "n": "渠道",
+      "t": "公开权重、模型最大窗口与托管 API 档位分别核对",
+      "s": "Thinking Machines 官方模型卡与价目表",
+      "url": "https://thinkingmachines.ai/tinker/pricing/",
+      "models": [
+        "inkling2small"
+      ],
+      "d": "模型卡公布1M窗口，Tinker当前Serverless Beta价目表为256K档。训练与采样价格不是Serverless推理价格；第三方推理渠道还有自己的条件。"
+    }
+  ],
+  "events": [
+    {
+      "date": "2026-11-12",
+      "title": "Inkling 2 Small 权重开放",
+      "detail": "官方更新宣布权重可下载，Apache 2.0；模型发布日为11/5。",
+      "url": "https://thinkingmachines.ai/news/inkling-2-small/"
+    }
+  ],
+  "vendorUpdates": {
+    "thinkingmachines": {
+      "family": "Inkling 2 Small / Inkling",
+      "keypoints": "Inkling 2 Small权重已开放；区分模型卡1M窗口、Tinker Beta256K档，以及训练/采样/推理计价。",
+      "urls": [
+        "https://thinkingmachines.ai/model-card/inkling-2-small/",
+        "https://thinkingmachines.ai/tinker/pricing/",
+        "https://thinkingmachines.ai/news/inkling-2-small/"
+      ]
+    }
+  },
+  "unresolved": [],
+  "conflicts": [
+    {
+      "model": "inkling2small",
+      "field": "模型窗口与官方托管档位",
+      "a": "模型卡最高1M",
+      "b": "Tinker Beta定价档256K",
+      "status": "已分口径",
+      "why": "主字段为模型最大规格，API价格明确绑定256K档；不把该价格套给1M托管请求。"
+    },
+    {
+      "model": "—",
+      "field": "AAII新旧指数与任务成本",
+      "a": "上期v4.3.2",
+      "b": "当前v5.0.1",
+      "status": "已分版本",
+      "why": "旧分数与旧成本移入独立历史键，不生成跨版涨跌。"
+    },
+    {
+      "model": "kimi-k31pro",
+      "field": "发布日期与权重公开事件",
+      "a": "AA发布日10/23",
+      "b": "官方研究索引10/24；当前权重已可下载",
+      "status": "日期待核实 / 权重已确认",
+      "why": "模型发布时间保留空值和双来源说明；权重开放状态已更新，不把仓库初始提交当作首次公开。"
+    }
+  ]
+}
