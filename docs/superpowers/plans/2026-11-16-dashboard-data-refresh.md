@@ -41,9 +41,9 @@
 
 ### Task 3: Public release
 
-- [ ] Commit and push scoped verified files to existing main.
-- [ ] Confirm Pages built the pushed commit; verify public response, integrity, console, logos and responsive interactions.
-- [ ] Record actual release evidence and return the public URL.
+- [x] Commit and push scoped verified files to existing main.
+- [x] Confirm Pages built the pushed commit; verify public response, integrity, console, logos and responsive interactions.
+- [x] Record actual release evidence and return the public URL.
 
 ## Execution rulings
 
@@ -51,3 +51,8 @@
 - Use the existing checked-out main for this authorized static refresh; no competing edits were present and the remote still matched the prior release. No broad refactor or new framework.
 - Retain model-card max context separately from API pricing conditions; do not silently resolve conflicting release dates.
 - A fresh-context independent review found no Critical/Important findings; executable gates and public verification remain required.
+
+
+## Public verification
+
+Source release commit `29aaf0f1b8cba2107986ae5b4e2903ec182a7349` was reported `built` by GitHub Pages. The public page returned HTTP200 and matched committed HTML SHA-256 `e3064931dd83333fbf55c517caec3c5a347a2aba5f1f98e8183165b05e20b2ad`. It exposed the 2026-11-16 snapshot/build, 86 model records, 20 companies, 29 Agent configurations and 8 subscription groups. Public runtime reported zero page errors, console errors, failed requests and broken images. Public refinement checks passed 1440/1280/390, direct metric help, company hover/tap, sorting, preset/custom preference migration and subscription-column boundaries. Public overview/compare/mobile screenshots were visually inspected. No live authenticated model API or paid checkout tests are claimed.
